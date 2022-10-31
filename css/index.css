@@ -1,0 +1,181 @@
+html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 241, 178);
+    opacity: 1;
+    background-image: url(../imagens/gif/estrelasL.webp);
+    background-repeat: repeat;
+    background-size: auto auto;
+    background-attachment: local;
+    background-position: center;
+}
+
+/*////////////////////////////*/
+
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    border: 10px solid rgb(85, 85, 85);
+}
+
+#sectionNorte {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 10px solid rgb(255, 255, 255);
+}
+
+/**/
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border: 00px solid rgb(0, 22, 119);
+}
+
+#sectionCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 10px solid rgb(0, 26, 255);
+}
+
+/**/
+
+#footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    border: 10px solid rgb(94, 34, 0);
+}
+
+#sectionSul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 10px solid rgb(255, 102, 0);
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.0);
+    /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.0);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 2px solid rgb(107, 31, 247);
+    /* creates padding around scroll thumb */
+}
+
+/*
+  .load
+  {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 10px solid rgb(60, 255, 0);
+  }
+*/
+
+.load {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 1%;
+    padding: 3%;
+}
+
+.load .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 255, 255);
+    transform: scale(0.2);
+    animation: animacao 1.2s infinite;
+    /*border: 10px solid rgb(107, 31, 247);*/
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.dot:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+@keyframes animacao {
+
+    0%,
+    100% {
+        transform: scale(0.2);
+    }
+
+    50% {
+        background-color: rgb(107, 31, 247);
+        transform: scale(1);
+    }
+}
+
+#statusSistema {
+    display: none;
+    flex-direction: row;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
