@@ -7,7 +7,7 @@ html {
     height: auto;
     background-color: rgb(209, 209, 209);
     opacity: 1;
-    background-image: url("/images/logos/LogoWODA.png");
+    background-image: url(../images/logos/LogoWODA.png);
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-attachment: fixed;
@@ -116,7 +116,7 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 0px solid rgb(204, 17, 17);
+    border: 2px solid rgba(177, 177, 177, 0.7);
     margin: 0%;
 }
 
