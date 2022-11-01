@@ -7,7 +7,7 @@ html {
     height: auto;
     background-color: rgb(209, 209, 209);
     opacity: 1;
-    background-image: url(../images/logos/LogoWODA.png);
+    background-image: url("/images/logos/LogoWODA.png");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-attachment: fixed;
