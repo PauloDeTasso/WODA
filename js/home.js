@@ -52,5 +52,5 @@ if (detectar_mobile())
 
 function abrirMenu()
 {
-    secaoMenu.style.visible = "visible";
+    //secaoMenu.style.visible = "visible";
 }

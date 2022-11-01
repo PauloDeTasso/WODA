@@ -5,7 +5,7 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(58, 58, 58);
     opacity: 1;
     /*background-image: url("../images/logos/LogoWODA.png");
     background-repeat: no-repeat;
@@ -17,7 +17,7 @@ html {
 
 /*////////////////////////////*/
 
-#header {
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,116 +65,116 @@ html {
     opacity: .8;
 }
 
+#imagemBotaoMenu:hover {
+    opacity: .9;
+    width: 4.2%;
+    cursor: pointer;
+}
+
 /**/
 
-#body {
+body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: auto;
-    border: 0px solid rgb(0, 22, 119);
-}
-
-#sectionCenter {
-    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(81, 255, 0);
+    border: 0px solid rgb(0, 22, 119);
+    margin-top: 7%;
 }
 
-/*
-#sectionLogoWoda {
+#secaoGaleria {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgba(255, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.SecaoObras {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    border: 0px solid rgb(255, 255, 255);
-    visibility: hidden;
+    height: auto;
+    border: 5px solid rgb(255, 255, 255);
 }
 
-#imageLogoWoda {
+.SectionImageObras {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border: 10px solid rgb(255, 1, 170);
+    background-color: rgb(255, 184, 104);
+}
+
+.ImagesObras {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
     border: 0px solid rgb(0, 0, 0);
 }
-*/
 
-#sectionLogin {
+.SectionAuthorObras {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 20%;
+    border: 0px solid rgb(81, 255, 0);
+    background-color: rgb(255, 184, 104);
+    overflow: auto;
+}
+
+.TitlesAuthor {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgba(82, 82, 82, .5);
+    background-color: rgba(151, 126, 96, 0);
+    font-size: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(44, 41, 0);
+    margin: 2%;
+}
+
+.sectionImageAuthorObras {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(0, 183, 255);
+}
+
+.ImageAuthorsObras {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
     height: auto;
     border: 0px solid rgb(255, 0, 0);
-    margin: 50%;
-}
-
-
-#formLogin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    border: 10px solid rgba(255, 255, 255, .5);
-    visibility: visible;
-}
-
-
-#sectionButtonLogin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 2px solid rgba(177, 177, 177, 0.7);
-    margin: 0%;
-}
-
-#botaoLogin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: 2px solid rgba(177, 177, 177, 0.7);
-}
-
-#botaoLogin:hover {
-    background-color: rgba(255, 255, 255, .8);
-    border: 2px solid rgba(177, 177, 177, 0.9);
-    cursor: pointer;
-}
-
-#imageButtonLogin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    border: 0px solid rgb(204, 17, 120);
 }
 
 /**/
 
-#footer {
+footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -186,7 +186,7 @@ html {
     border: 2px solid rgba(189, 118, 53, 0.5);
 }
 
-#sectionSul {
+#sectionFooter {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -199,6 +199,16 @@ html {
     text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
     font-size: 87%;
 }
+
+
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
 
 body::-webkit-scrollbar {
     width: 12px;
@@ -288,6 +298,7 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+/*
 #statusSistema {
     display: none;
     flex-direction: row;
@@ -297,57 +308,4 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
 }
-
-#imagemBotaoMenu:hover {
-    opacity: .9;
-    width: 4.2%;
-    cursor: pointer;
-}
-
-.Inputs {
-    width: 100%;
-    height: 50px;
-    color: rgb(126, 69, 0);
-    background-color: rgba(255, 255, 255, .7);
-    border: 2px solid rgba(177, 177, 177, 0.7);
-    font-size: 100%;
-    text-align: center;
-    text-shadow: 0px 0px 30px rgb(255, 174, 0);
-}
-
-.Inputs:hover {
-    text-shadow: 0px 0px 10px rgb(255, 174, 0);
-    border: 2px solid rgba(177, 177, 177, 0.9);
-    background-color: rgba(255, 255, 255, .9);
-    cursor: text;
-}
-
-#secaoGaleria {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(255, 0, 0, 1);
-}
-
-.secaoObras {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(255, 238, 0, 1);
-}
-
-.ObrasHome {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: auto;
-    border: 10px solid rgba(52, 255, 1, 1);
-}
+*/
