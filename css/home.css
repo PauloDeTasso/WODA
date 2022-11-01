@@ -1,0 +1,353 @@
+html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(209, 209, 209);
+    opacity: 1;
+    /*background-image: url("../images/logos/LogoWODA.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: center;
+*/
+}
+
+/*////////////////////////////*/
+
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 7%;
+    top: 0px;
+    border: 2px solid rgba(189, 118, 53, 0.2);
+}
+
+#sectionMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(255, 255, 255);
+    background-color: rgba(255, 159, 70, 0.1);
+    /*background-color: rgb(255, 205, 159);*/
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(85, 85, 85);
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+#imagemBotaoMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 4%;
+    height: auto;
+    border: 0px solid rgba(85, 85, 85, .1);
+    background-color: rgba(0, 0, 0, 0.0);
+    margin: 2%;
+    opacity: .8;
+}
+
+/**/
+
+#body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    border: 0px solid rgb(0, 22, 119);
+}
+
+#sectionCenter {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgb(81, 255, 0);
+}
+
+/*
+#sectionLogoWoda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(255, 255, 255);
+    visibility: hidden;
+}
+
+#imageLogoWoda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(0, 0, 0);
+}
+*/
+
+#sectionLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(255, 0, 0);
+    margin: 50%;
+}
+
+
+#formLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border: 10px solid rgba(255, 255, 255, .5);
+    visibility: visible;
+}
+
+
+#sectionButtonLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 2px solid rgba(177, 177, 177, 0.7);
+    margin: 0%;
+}
+
+#botaoLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(177, 177, 177, 0.7);
+}
+
+#botaoLogin:hover {
+    background-color: rgba(255, 255, 255, .8);
+    border: 2px solid rgba(177, 177, 177, 0.9);
+    cursor: pointer;
+}
+
+#imageButtonLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border: 0px solid rgb(204, 17, 120);
+}
+
+/**/
+
+#footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    position: fixed;
+    bottom: 0px;
+    border: 2px solid rgba(189, 118, 53, 0.5);
+}
+
+#sectionSul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(255, 102, 0);
+    background-color: rgba(255, 159, 70, 0.5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
+    font-size: 87%;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.0);
+    /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.0);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 2px solid rgb(209, 160, 69);
+    /* creates padding around scroll thumb */
+}
+
+/*
+  .load
+  {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 10px solid rgb(60, 255, 0);
+  }
+*/
+
+.load {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 1%;
+    padding: 3%;
+}
+
+.load .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 255, 255);
+    transform: scale(0.2);
+    animation: animacao 1.2s infinite;
+    /*border: 10px solid rgb(107, 31, 247);*/
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.dot:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+@keyframes animacao {
+
+    0%,
+    100% {
+        transform: scale(0.2);
+    }
+
+    50% {
+        background-color: rgb(107, 31, 247);
+        transform: scale(1);
+    }
+}
+
+#statusSistema {
+    display: none;
+    flex-direction: row;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagemBotaoMenu:hover {
+    opacity: .9;
+    width: 4.2%;
+    cursor: pointer;
+}
+
+.Inputs {
+    width: 100%;
+    height: 50px;
+    color: rgb(126, 69, 0);
+    background-color: rgba(255, 255, 255, .7);
+    border: 2px solid rgba(177, 177, 177, 0.7);
+    font-size: 100%;
+    text-align: center;
+    text-shadow: 0px 0px 30px rgb(255, 174, 0);
+}
+
+.Inputs:hover {
+    text-shadow: 0px 0px 10px rgb(255, 174, 0);
+    border: 2px solid rgba(177, 177, 177, 0.9);
+    background-color: rgba(255, 255, 255, .9);
+    cursor: text;
+}
+
+#secaoGaleria {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 0, 0, 1);
+}
+
+.secaoObras {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 238, 0, 1);
+}
+
+.ObrasHome {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: auto;
+    border: 10px solid rgba(52, 255, 1, 1);
+}
