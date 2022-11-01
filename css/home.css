@@ -87,12 +87,16 @@ body {
 #secaoGaleria {
     display: grid;
     grid-template-columns: auto auto;
+
+    /*display: flex;
+    flex-direction: row;
+   */
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: auto;
-    border: 0px solid rgba(255, 0, 0, 1);
-    background-color: rgba(255, 255, 255, 1);
+    border: 10px solid rgba(255, 0, 0, 1);
+    background-color: rgb(0, 0, 0);
 }
 
 .SecaoObras {
@@ -100,9 +104,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: auto;
-    border: 5px solid rgb(255, 255, 255);
+    border: 0px solid rgb(0, 0, 0);
 }
 
 .SectionImageObras {
@@ -110,9 +114,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 80%;
-    border: 10px solid rgb(255, 1, 170);
+    border: 0px solid rgb(255, 1, 170);
     background-color: rgb(255, 184, 104);
 }
 
@@ -122,7 +126,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 100%;
     border: 0px solid rgb(0, 0, 0);
 }
 
@@ -131,7 +135,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 20%;
     border: 0px solid rgb(81, 255, 0);
     background-color: rgb(255, 184, 104);
@@ -157,9 +161,9 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
-    height: auto;
-    border: 0px solid rgb(0, 183, 255);
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgb(0, 183, 255);
 }
 
 .ImageAuthorsObras {
@@ -167,9 +171,9 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: auto;
     height: auto;
-    border: 0px solid rgb(255, 0, 0);
+    border: 10px solid rgb(255, 0, 0);
 }
 
 /**/
@@ -199,7 +203,6 @@ footer {
     text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
     font-size: 87%;
 }
-
 
 /***/
 /***/
