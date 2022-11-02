@@ -5,7 +5,7 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(255, 192, 120);
     opacity: 1;
     /*background-image: url("../images/logos/LogoWODA.png");
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ header {
     align-items: center;
     position: fixed;
     width: 100%;
-    height: 7%;
+    height: 100px;
     top: 0px;
     border: 2px solid rgba(189, 118, 53, 0.2);
 }
@@ -36,12 +36,56 @@ header {
     align-items: flex-end;
     width: 100%;
     height: 100%;
-    border: 0px solid rgb(255, 255, 255);
-    background-color: rgba(255, 159, 70, 0.1);
+    border: 10px solid rgba(255, 255, 255, .1);
+    background-color: rgba(255, 159, 70, 0.7);
     /*background-color: rgb(255, 205, 159);*/
 }
 
+#sectionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    visibility: hidden;
+}
+
 .Buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 0px solid rgb(255, 255, 255);
+}
+
+.ImagesButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.Buttons:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+#sectionMenuButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+}
+
+#buttonMenu {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -52,12 +96,12 @@ header {
     background-color: rgba(0, 0, 0, 0.0);
 }
 
-#imagemBotaoMenu {
+#imagemButtonMenu {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    width: 4%;
+    width: 100%;
     height: auto;
     border: 0px solid rgba(85, 85, 85, .1);
     background-color: rgba(0, 0, 0, 0.0);
@@ -65,10 +109,10 @@ header {
     opacity: .8;
 }
 
-#imagemBotaoMenu:hover {
-    opacity: .9;
-    width: 4.2%;
+#imagemButtonMenu:hover {
+    opacity: .7;
     cursor: pointer;
+    animation: escala .5s alternate infinite;
 }
 
 /**/
@@ -81,10 +125,29 @@ body {
     width: 100%;
     height: auto;
     border: 0px solid rgb(0, 22, 119);
-    margin-top: 7%;
+    margin-top: 120px;
 }
 
-#secaoGaleria {
+#seacher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+#tableSeacher {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgb(0, 22, 119);
+}
+
+#sectionGallery {
     display: grid;
     grid-template-columns: 50% 50%;
 
@@ -96,10 +159,27 @@ body {
     width: 100%;
     height: 100%;
     border: 0px solid rgba(255, 0, 0, 1);
-    background-color: rgb(0, 0, 0);
 }
 
-.SecaoObras {
+#sectionAdmin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#sectionAdminButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
+.SectionArts {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,7 +189,7 @@ body {
     border: 0px solid rgba(255, 255, 255, 0.555);
 }
 
-.SectionImageObras {
+.SectionImageArts {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -120,7 +200,7 @@ body {
     background-color: rgb(0, 0, 0);
 }
 
-.ImagesObras {
+.ImagesArts {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -131,7 +211,7 @@ body {
     cursor: pointer;
 }
 
-.SectionAuthorObras {
+.SectionAuthorArts {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -159,7 +239,7 @@ body {
     font-weight: 700;
 }
 
-.sectionImageAuthorObras {
+.sectionImageAuthorArts {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -169,7 +249,7 @@ body {
     border: 0px solid rgb(0, 183, 255);
 }
 
-.ImageAuthorsObras {
+.ImageAuthorsArts {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -301,6 +381,17 @@ body::-webkit-scrollbar-thumb {
     50% {
         background-color: rgb(107, 31, 247);
         transform: scale(1);
+    }
+}
+
+@keyframes escala {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.5);
     }
 }
 

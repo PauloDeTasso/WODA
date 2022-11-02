@@ -1,6 +1,14 @@
 var botaoLogin = document.getElementById('body');
 
-var secaoMenu = document.getElementById('secaoMenu');
+var html = document.getElementsByTagName('html');
+
+var header = document.getElementsByTagName('header');
+
+var sectionMenu = document.getElementById('sectionMenu');
+
+var sectionButtons = document.getElementById('sectionButtons');
+
+/////////
 
 function alterarImagem(pagina)
 {
@@ -16,7 +24,7 @@ function alterarImagem(pagina)
     }
 };
 
-function abrirPagina(link, target)
+function openPagina(link, target)
 {
     window.open(link, target);
 };
@@ -50,7 +58,16 @@ if (detectar_mobile())
 
 ////
 
-function abrirMenu()
+function openMenu()
 {
-    //secaoMenu.style.visible = "visible";
+    var estiloCabecalho = window.getComputedStyle(sectionButtons);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue('visibility');
+
+    if (propriedadeCabecalho == "hidden")
+    {
+        sectionButtons.style.visibility = "visible";
+    } else 
+    {
+        sectionButtons.style.visibility = "hidden";
+    }
 }

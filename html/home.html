@@ -27,11 +27,47 @@
 
         <section id="sectionMenu">
 
-            <button type="button" id="botaoMenu" class="Buttons">
+            <section id="sectionButtons">
 
-                <img id="imagemBotaoMenu" src="../images/icons/menu01.png" alt="" onclick="abrirMenu()">
+                <button type="button" id="seacherButton" class="Buttons">
 
-            </button>
+                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/pesquisar.png" alt=""
+                        onclick="openMenu()">
+
+                </button>
+
+                <button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="../images/icons/cadastrar.png" alt=""
+                        onclick="openMenu()">
+
+                </button>
+
+                <button type="button" id="configButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageConfigButton" src="../images/icons/configurações.png" alt=""
+                        onclick="openMenu()">
+
+                </button>
+
+                <button type="button" id="infoButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageInfoButton" src="../images/icons/info.png" alt=""
+                        onclick="openMenu()">
+
+                </button>
+
+            </section>
+
+            <section id="sectionMenuButton">
+
+                <button type="button" id="buttonMenu">
+
+                    <img id="imagemButtonMenu" src="../images/icons/menu01.png" alt="" onclick="openMenu()">
+
+                </button>
+
+            </section>
 
         </section>
 
@@ -39,21 +75,91 @@
 
     <body>
 
-        <section id="secaoGaleria">
+        <section id="seacher">
 
-            <!-- OBRA -->
+            <img src="../images/icons/pesquisar.png" alt="" width="70px">
 
-            <section class="SecaoObras">
+            <form action="seacher">
 
-                <section class="SectionImageObras">
+                <input type="text" name="seacherText" placeholder="Seacher">
 
-                    <img class="ImagesObras" src="../images/logos/LogoWODA2.png" alt="">
+                <label>
+                    <input type="radio" name="seacherCheckbox" value="Authors" />
+                    Authors</label>
+                <label>
+                    <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+
+            </form>
+
+        </section>
+
+        <section id="tableSeacher">
+            <table id="tabela">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            NOME
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <%for (int i=0; i < lista.size(); i++) { %>
+
+                        <tr>
+
+                            <td>
+                                <%=lista.get(i).getIdcon()%>
+                            </td>
+
+                            <td>
+                                <%=lista.get(i).getNome()%>
+                            </td>
+
+                            <td>
+
+                                <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
+
+                                <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
+                                    class="Botao2">Excluir</a>
+
+                            </td>
+
+                        </tr>
+
+                        <%} %>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <section id="sectionGallery">
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/logos/LogoWODA2.png" alt="">
 
                 </section>
 
-                <!--  -->
+                <!-- AUTHOR -->
 
-                <section class="SectionAuthorObras">
+                <section class="SectionAuthorArts">
 
                     <section class="TitlesAuthor">
 
@@ -65,55 +171,7 @@
 
             </section>
 
-            <!-- OBRA -->
-
-            <section class="SecaoObras">
-
-                <section class="SectionImageObras">
-
-                    <img class="ImagesObras" src="../images/logos/LogoWODA2.png" alt="">
-
-                </section>
-
-                <!--  -->
-
-                <section class="SectionAuthorObras">
-
-                    <section class="TitlesAuthor">
-
-                        <a href=""> ARTIST: NOME.</a>
-
-                    </section>
-
-                </section>
-
-            </section>
-
-            <!-- OBRA -->
-
-            <section class="SecaoObras">
-
-                <section class="SectionImageObras">
-
-                    <img class="ImagesObras" src="../images/logos/LogoWODA2.png" alt="">
-
-                </section>
-
-                <!--  -->
-
-                <section class="SectionAuthorObras">
-
-                    <section class="TitlesAuthor">
-
-                        <a href=""> ARTIST: NOME.</a>
-
-                    </section>
-
-                </section>
-
-            </section>
-
-            <!-- OBRA -->
+            <!-- ART -->
 
         </section>
 
