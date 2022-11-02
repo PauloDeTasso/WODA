@@ -8,6 +8,8 @@ var sectionMenu = document.getElementById('sectionMenu');
 
 var sectionButtons = document.getElementById('sectionButtons');
 
+var seacher = document.getElementById('seacher');
+
 /////////
 
 function alterarImagem(pagina)
@@ -58,16 +60,38 @@ if (detectar_mobile())
 
 ////
 
-function openMenu()
+function openClose(elemento, propriedade)
 {
-    var estiloCabecalho = window.getComputedStyle(sectionButtons);
-    var propriedadeCabecalho = estiloCabecalho.getPropertyValue('visibility');
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
 
-    if (propriedadeCabecalho == "hidden")
+    switch (propriedade)
     {
-        sectionButtons.style.visibility = "visible";
-    } else 
-    {
-        sectionButtons.style.visibility = "hidden";
+        case "display":
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "flex";
+            } else 
+            {
+                elemento.style.display = "none";
+            }
+
+            break;
+
+        case "visibility":
+
+            if (propriedadeCabecalho == "hidden")
+            {
+                elemento.style.visibility = "visible";
+            } else 
+            {
+                elemento.style.visibility = "hidden";
+            }
+
+            break;
+
+        default:
+
     }
 }

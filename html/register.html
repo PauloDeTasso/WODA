@@ -31,15 +31,8 @@
 
                 <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/pesquisar.png" alt=""
-                        onclick="openMenu()">
-
-                </button>
-
-                <button type="button" id="registerButton" class="Buttons">
-
-                    <img class="ImagesButtons" id="imageRegisterButton" src="../images/icons/cadastrar.png" alt=""
-                        onclick="openMenu()">
+                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/voltar.png" alt=""
+                        onclick="openPagina('home.html', '_self')">
 
                 </button>
 
@@ -63,7 +56,8 @@
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="../images/icons/menu01.png" alt="" onclick="openMenu()">
+                    <img id="imagemButtonMenu" src="../images/icons/menu01.png" alt=""
+                        onclick="openClose(sectionButtons,'visibility')">
 
                 </button>
 
@@ -75,7 +69,8 @@
 
     <body>
 
-        <form name="f1">
+        <form id="formRegister" name="formRegister" action="/formArtistRegister" method="post" autocomplete="on"
+            novalidate>
             <h3>REGISTER ARTISTS:</h3>
             <table>
                 <tr>
@@ -103,8 +98,8 @@
                 <tr>
                     <td>
 
-                        <input type="text" name="email" onblur="validacaoEmail(f1.email)" maxlength="60" size='65'
-                            placeholder="E-mail">
+                        <input type="email" name="email" onblur="validacaoEmail(formRegister.email)" maxlength="60"
+                            size='65' placeholder="E-mail">
 
                     </td>
                     <td>
@@ -326,6 +321,13 @@
 
             </table>
 
+            <button action="saveForm" type="submit" form="formRegister" formmethod="post" id="submitButton"
+                class="Buttons" autofocus>
+
+                <img class="ImagesButtons" id="imageInfoButton" src="../images/icons/save.png" alt="">
+
+            </button>
+
         </form>
 
     </body>
@@ -350,6 +352,10 @@
         </section>
 
     </footer>
+
+    <script src="../js/home.js">
+
+    </script>
 
     <script src="../js/validator.js">
 
