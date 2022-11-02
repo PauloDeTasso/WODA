@@ -406,3 +406,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
 }
 */
+
+#cpf {
+    visibility: hidden;
+}

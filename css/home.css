@@ -143,8 +143,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
-    border: 10px solid rgb(0, 22, 119);
+    height: 100%;
+    border: 10px solid rgb(139, 139, 139);
 }
 
 #sectionGallery {
