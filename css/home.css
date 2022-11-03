@@ -254,7 +254,7 @@ body {
     align-items: center;
     width: 100%;
     height: 20%;
-    border: 2px solid rgb(209, 209, 209);
+    border: 20px solid rgb(255, 255, 255);
     background-color: rgb(255, 184, 104);
     overflow: auto;
 }
@@ -351,6 +351,29 @@ footer {
     border: 5px solid rgba(255, 255, 255, 0.363);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 70%;
+}
+
+#titleArtistName {
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(53, 53, 53, 0.24);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.589);
+    font-size: 100%;
+    border: 10px solid rgba(0, 0, 0, 0);
+}
+
+#artistName {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+    border: 20px solid rgba(0, 0, 0, 0);
+}
+
+#artistName:hover {
+    color: rgb(0, 47, 255);
+    cursor: pointer;
 }
 
 /***/
@@ -472,3 +495,92 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
 }
 */
+
+
+/* ARTIST.HTML */
+
+#sectionArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 20px solid rgb(255, 0, 0);
+}
+
+.SubsectionArtist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 20px solid rgb(4, 0, 255);
+}
+
+.SectionImageArtist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 0, 0, 0.1);
+}
+
+.ImagesArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 0, 0, 0.1);
+}
+
+.SectionArtsArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 0, 0, 0.1);
+}
+
+.TitlesArts {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 0, 0, 0.1);
+}
+
+#titleArtsName {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 174, 0, 0.1);
+}
+
+#artName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 174, 0, 0.1);
+}
+
+.EditButtonsSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 10px solid rgb(24, 143, 0);
+}
