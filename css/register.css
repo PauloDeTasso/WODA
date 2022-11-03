@@ -48,7 +48,7 @@ header {
     align-items: center;
     width: 100%;
     height: auto;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .Buttons {
@@ -285,6 +285,36 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
     font-size: 87%;
+}
+
+#info {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    /* posição absoluta ao elemento pai, neste caso o BODY */
+    /* Posiciona no meio, tanto em relação a esquerda como ao topo */
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    /* Largura da DIV */
+    height: 70px;
+    /* Altura da DIV */
+    /* A margem a esquerda deve ser menos a metade da largura */
+    /* A margem ao topo deve ser menos a metade da altura */
+    /* Fazendo isso, centralizará a DIV */
+    margin-left: -100px;
+    margin-top: -100px;
+    color: rgb(209, 209, 209);
+    background-color: rgba(0, 0, 0, 0.959);
+    text-align: center;
+    /* Centraliza o texto */
+    z-index: 1000;
+    /* Faz com que fique sobre todos os elementos da página */
+    border: 5px solid rgba(255, 255, 255, 0.363);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70%;
 }
 
 /***/

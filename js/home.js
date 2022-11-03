@@ -10,21 +10,59 @@ var sectionButtons = document.getElementById('sectionButtons');
 
 var seacher = document.getElementById('seacher');
 
+var saveStatusOn = document.getElementById('saveStatusOn');
+
+var saveStatusOff = document.getElementById('saveStatusOff');
+
 /////////
 
-function alterarImagem(pagina)
-{
-    if (pagina == "")
-    {
+//SE SALVE ESTADO FOR TRUE ENTAO:
 
-    } else if (pagina == "")
+if (localStorage.getItem("statusSaveConfig") == "true")
+{
+    if (localStorage.getItem('menuMain') == "true")
     {
+        sectionButtons.style.visibility = "visible";
+
+    } else if (localStorage.getItem('menuMain') == "false")
+    {
+        sectionButtons.style.visibility = "hidden";
 
     } else
     {
-
+        sectionButtons.style.visibility = "hidden";
     }
-};
+
+    //
+
+    if (localStorage.getItem('menuSeacher') == "true")
+    {
+        seacher.style.display = "flex";
+
+    } else if (localStorage.getItem('menuSeacher') == "false")
+    {
+        seacher.style.display = "none";
+
+    } else
+    {
+        seacher.style.display = "none";
+    }
+
+    saveStatusOn.checked = true;
+    saveStatusOff.checked = false;
+
+} else if (localStorage.getItem("statusSaveConfig") == "false")
+{
+    saveStatusOn.checked = false;
+    saveStatusOff.checked = true;
+
+} else
+{
+    saveStatusOn.checked = true;
+    saveStatusOff.checked = false;
+}
+
+//
 
 function openPagina(link, target)
 {
@@ -50,17 +88,9 @@ function detectar_mobile()
     }
 };
 
-if (detectar_mobile())
-{
-
-} else
-{
-
-};
-
 ////
 
-function openClose(elemento, propriedade)
+function openClose(elemento, propriedade, conteiner)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -72,9 +102,14 @@ function openClose(elemento, propriedade)
             if (propriedadeCabecalho == "none")
             {
                 elemento.style.display = "flex";
+
+                localStorage.setItem(conteiner, true);
+
             } else 
             {
                 elemento.style.display = "none";
+
+                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -84,9 +119,40 @@ function openClose(elemento, propriedade)
             if (propriedadeCabecalho == "hidden")
             {
                 elemento.style.visibility = "visible";
+
+                localStorage.setItem(conteiner, true);
+
             } else 
             {
                 elemento.style.visibility = "hidden";
+
+                localStorage.setItem(conteiner, false);
+            }
+
+            break;
+
+        default:
+
+    }
+}
+
+function saveConfig(option, status)
+{
+    switch (option)
+    {
+        case "statusSaveConfig":
+
+            if (status == true)
+            {
+                localStorage.setItem("statusSaveConfig", true);
+
+            } else if (status == false)
+            {
+                localStorage.setItem("statusSaveConfig", false);
+
+            } else
+            {
+                localStorage.setItem("statusSaveConfig", false);
             }
 
             break;
