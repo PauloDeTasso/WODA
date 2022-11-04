@@ -75,7 +75,7 @@
                         <button type="button" id="editButton" class="Buttons">
 
                             <img class="ImagesButtons" id="imageZoomIn" src="../images/icons/zoom.png" alt=""
-                                onclick="zoom(imageArtist,'in')">
+                                onclick="zoom(imageArtist,sectionImageArtist,'in')">
 
                         </button>
 
@@ -110,7 +110,7 @@
                         <button type="button" id="editButton" class="Buttons">
 
                             <img class="ImagesButtons" id="imageZoomOut" src="../images/icons/zoom out.png" alt=""
-                                onclick="zoom(imageArtist,'out')">
+                                onclick="zoom(imageArtist,sectionImageArtist,'out')">
 
                         </button>
 
@@ -118,7 +118,7 @@
 
                 </section>
 
-                <section class="SectionImageArtist">
+                <section id="sectionImageArtist" class="SectionImageArtist">
 
                     <img id="imageArtist" src="../images/artistsandarts/leonard-de-vinci.jpg" alt="">
 
@@ -208,8 +208,6 @@
 
                     <section id="artArtist" class="ArtsArtist">
 
-                        <img id="imageArt" src="../images/artistsandarts/monalisa.png" alt="">
-
                         <section id="buttonsZoom">
 
                             <section id="sectionButtonsArtist">
@@ -262,11 +260,13 @@
 
                         </section>
 
+                        <img id="imageArt" src="../images/artistsandarts/monalisa.png" alt="">
+
                         <section class="TitlesArts">
 
                             <section class="TitlesNames">ART:</section>
 
-                            <section class="Names" id="artName" onclick="openPagina('art.html','_self',artName.value)">
+                            <section class="Names" id="artName" onclick="openPagina('art.html','_self')">
 
                                 Mona Lisa
 
@@ -284,7 +284,7 @@
 
                             <section class="TitlesNames">PARTICIPATING ARTIST:</section>
 
-                            <section class="Names" onclick="openPagina('art.html','_self',artName.value)">
+                            <section class="Names" onclick="openPagina('art.html','_self')">
 
                                 None
 

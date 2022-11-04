@@ -20,7 +20,9 @@ var imageArtist = document.getElementById('imageArtist');
 
 var ArtsArtist = document.getElementsByClassName('ArtsArtist');
 
-var artArtist = document.getElementsByClassName('artArtist');
+var artArtist = document.getElementById('artArtist');
+
+var sectionImageArtist = document.getElementById('sectionImageArtist');
 
 /////////
 
@@ -97,22 +99,72 @@ function openClose(elemento, propriedade, conteiner)
 
 function zoom(image, section, zoom)
 {
-    var imageArtistWidth = image.clientWidth;
-    var sectionImageWidth = section.clientWidth;
+    var imageWidth = image.clientWidth;
+    var sectionWidth = section.clientWidth;
 
-    //alert(imageArtistWidth);
-    //alert(sectionImageWidth);
+    /*
+    var sectionImageWidth2 = section.offsetWidth;
+    var positionInfo = section.getBoundingClientRect();
+    var sectionWidth = positionInfo.width;
+    */
 
-    if (zoom == "in")
+    switch (image)
     {
-        image.style.width = (imageArtistWidth + 100) + "px";
+        case imageArt:
 
-    } else if (zoom == "out")
-    {
-        image.style.width = (imageArtistWidth - 100) + "px";
+            if (zoom == "in")
+            {
+                if (imageWidth >= sectionWidth - 50)
+                {
+                    image.style.width = (sectionWidth - 100) + "px";
+                } else
+                {
+                    image.style.width = (imageWidth + 50) + "px";
+                }
 
-    } else
-    {
-        image.style.width = (imageArtistWidth - 100) + "px";
+            } else if (zoom == "out")
+            {
+                if (imageWidth <= 100)
+                {
+                    image.style.width = "100px";
+                } else
+                {
+                    image.style.width = (imageWidth - 50) + "px";
+                }
+
+            } else
+            {
+
+            }
+
+            break;
+
+        case imageArtist:
+
+            if (zoom == "in")
+            {
+                if (imageWidth >= sectionWidth - 50)
+                {
+                    image.style.width = (sectionWidth - 100) + "px";
+                } else
+                {
+                    image.style.width = (imageWidth + 50) + "px";
+                }
+
+            } else if (zoom == "out")
+            {
+                if (imageWidth <= 100)
+                {
+                    image.style.width = "100px";
+                } else
+                {
+                    image.style.width = (imageWidth - 50) + "px";
+                }
+            }
+
+            break;
+
+        default:
+
     }
 }
