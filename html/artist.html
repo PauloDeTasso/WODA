@@ -68,22 +68,20 @@
 
             <section class="SectionArtistArts">
 
-                <section class="SectionImageArtist">
+                <section id="buttonsZoom">
 
-                    <img class="ImagesArtist" src="../images/artistsandarts/leonard-de-vinci.jpg" alt="">
+                    <section id="sectionButtonsArtist">
+
+                        <button type="button" id="editButton" class="Buttons">
+
+                            <img class="ImagesButtons" id="imageZoomIn" src="../images/icons/zoom.png" alt=""
+                                onclick="zoom(imageArtist,'in')">
+
+                        </button>
+
+                    </section>
 
                     <section class="EditButtonsSection">
-
-                        <section id="sectionButtonsArtist">
-
-                            <button type="button" id="editButton" class="Buttons">
-
-                                <img class="ImagesButtons" id="imageZoomIn" src="../images/icons/zoom.png" alt=""
-                                    onclick="zoom('ImagesArtist','in')">
-
-                            </button>
-
-                        </section>
 
                         <section id="sectionButtonsArtist">
 
@@ -105,18 +103,24 @@
 
                         </section>
 
-                        <section id="sectionButtonsArtist">
+                    </section>
 
-                            <button type="button" id="editButton" class="Buttons">
+                    <section id="sectionButtonsArtist">
 
-                                <img class="ImagesButtons" id="imageZoomOut" src="../images/icons/zoom out.png" alt=""
-                                    onclick="zoom('ImagesArtist','out')">
+                        <button type="button" id="editButton" class="Buttons">
 
-                            </button>
+                            <img class="ImagesButtons" id="imageZoomOut" src="../images/icons/zoom out.png" alt=""
+                                onclick="zoom(imageArtist,'out')">
 
-                        </section>
+                        </button>
 
                     </section>
+
+                </section>
+
+                <section class="SectionImageArtist">
+
+                    <img id="imageArtist" src="../images/artistsandarts/leonard-de-vinci.jpg" alt="">
 
                     <section class="SectionAuthorArts">
 
@@ -124,10 +128,56 @@
 
                             <section class="TitlesNames">
                                 ARTIST:
+
+                                <section class="Data" onclick="openPagina('artist.html','_self')">
+                                    Leonardo da Vinci
+                                </section>
+
                             </section>
 
-                            <section class="Names" onclick="openPagina('artist.html','_self')">
-                                Leonardo da Vinci
+                            <section class="TitlesNames">
+                                GENDER:
+
+                                <section class="Data">
+                                    Male
+                                </section>
+
+                            </section>
+
+                            <section class="TitlesNames">
+                                E-MAIL:
+
+                                <section class="Data">
+                                    davinci@hotmail.com
+                                </section>
+
+                            </section>
+
+                            <section class="TitlesNames">
+                                BIRTH DATE:
+
+                                <section class="Data">
+                                    01-01-01
+                                </section>
+
+                            </section>
+
+                            <section class="TitlesNames">
+                                NATIONALITY:
+
+                                <section class="Data">
+                                    FRANCE
+                                </section>
+
+                            </section>
+
+                            <section class="TitlesNames">
+                                CPF:
+
+                                <section class="Data">
+                                    111.111.111-01
+                                </section>
+
                             </section>
 
                         </section>
@@ -158,18 +208,44 @@
 
                     <section class="ArtsArtist">
 
-                        <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt="">
+                        <img id="imageArt" src="../images/artistsandarts/monalisa.png" alt="">
 
-                        <section class="EditButtonsSection">
+                        <section id="buttonsZoom">
 
                             <section id="sectionButtonsArtist">
 
                                 <button type="button" id="editButton" class="Buttons">
 
-                                    <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png"
-                                        alt="">
+                                    <img class="ImagesButtons" id="imageZoomIn" src="../images/icons/zoom.png" alt=""
+                                        onclick="zoom(imageArt,'in')">
 
                                 </button>
+
+                            </section>
+
+                            <section class="EditButtonsSection">
+
+                                <section id="sectionButtonsArtist">
+
+                                    <button type="button" id="editButton" class="Buttons">
+
+                                        <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png"
+                                            alt="">
+
+                                    </button>
+
+                                </section>
+
+                                <section id="sectionButtonsArtist">
+
+                                    <button type="button" id="editButton" class="Buttons">
+
+                                        <img class="ImagesButtons" id="imageEditButton" src="../images/icons/delete.png"
+                                            alt="">
+
+                                    </button>
+
+                                </section>
 
                             </section>
 
@@ -177,8 +253,8 @@
 
                                 <button type="button" id="editButton" class="Buttons">
 
-                                    <img class="ImagesButtons" id="imageEditButton" src="../images/icons/delete.png"
-                                        alt="">
+                                    <img class="ImagesButtons" id="imageZoomOut" src="../images/icons/zoom out.png"
+                                        alt="" onclick="zoom(imageArt,'out')">
 
                                 </button>
 
@@ -239,7 +315,6 @@
     </body>
 
     <!--  
-
     <div class="load">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -247,7 +322,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
     </div>
--->
+    -->
 
     <footer>
 

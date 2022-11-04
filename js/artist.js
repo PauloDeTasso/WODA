@@ -14,7 +14,9 @@ var saveStatusOn = document.getElementById('saveStatusOn');
 
 var saveStatusOff = document.getElementById('saveStatusOff');
 
-var ImagesArtist = document.getElementsByClassName('ImagesArtist');
+//var ImagesArtist = document.getElementsByClassName('ImagesArtist');
+
+var imageArtist = document.getElementById('imageArtist');
 
 /////////
 
@@ -91,32 +93,19 @@ function openClose(elemento, propriedade, conteiner)
 
 function zoom(image, zoom)
 {
+    var imageArtistWidth = image.clientWidth;
 
-    //var estiloCabecalho = window.getComputedStyle(image);
-    //var propriedadeCabecalho = estiloCabecalho.getPropertyValue('width');
-
-    if (zoom == "in" && image == 'ImagesArtist')
+    if (zoom == "in")
     {
+        image.style.width = (imageArtistWidth + 100) + "px";
 
-        for (let i = 0; i < ImagesArtist.length; i++)
-        {
-            ImagesArtist[ i ].style.width = "100%";
-        }
-
-    } else if (zoom == "out" && image == 'ImagesArtist')
+    } else if (zoom == "out")
     {
-        for (let i = 0; i < ImagesArtist.length; i++)
-        {
-            ImagesArtist[ i ].style.width = "10%";
-        }
+        image.style.width = (imageArtistWidth - 100) + "px";
 
     } else
     {
-        for (let i = 0; i < ImagesArtist.length; i++)
-        {
-            ImagesArtist[ i ].style.width = "100%";
-        }
+        image.style.width = (imageArtistWidth - 100) + "px";
     }
-
 
 }
