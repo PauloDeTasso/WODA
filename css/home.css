@@ -289,8 +289,7 @@ body {
     font-size: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(44, 41, 0);
-    margin: 2%;
-    overflow: auto;
+    margin: 1%;
     font-weight: 700;
 }
 
@@ -399,12 +398,12 @@ footer {
 
 .Data {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: auto;
     height: auto;
-    border: 20px solid rgba(255, 174, 0, 0);
+    border: 10px solid rgba(255, 174, 0, 0);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 100%;
     background-color: rgb(211, 145, 69);
@@ -545,8 +544,8 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 0px solid rgb(255, 0, 0);
-    background-color: rgb(211, 145, 69);
+    border: 10px solid rgb(211, 145, 69);
+    background-color: rgba(211, 145, 69, 0);
 }
 
 #sectionArtist {
@@ -566,7 +565,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 0px solid rgb(4, 0, 255);
+    border: 10px solid rgb(211, 145, 69);
 }
 
 .SectionImageArtist {
@@ -576,8 +575,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 0px solid rgb(255, 251, 0);
-    margin-bottom: 10%;
+    border: 10px solid rgb(211, 145, 69);
 }
 
 #sectionImageArtist {}
@@ -586,7 +584,6 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     border: 20px solid rgba(0, 0, 0, 0.1);
-    margin: 1%;
     border-image: url(/images/texture/wood/wood01.jpg) 10% round;
 }
 
@@ -608,7 +605,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: auto;
     border: 0px solid rgb(0, 0, 0);
-    background-color: rgb(255, 192, 120);
+    background-color: rgb(211, 145, 69);
 }
 
 .ArtsArtist {
@@ -618,7 +615,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: auto;
     height: auto;
-    border: 5px solid rgb(0, 0, 0);
+    border: 10px solid rgba(53, 53, 53, 0.24);
     background-color: rgb(211, 145, 69);
 }
 
@@ -629,7 +626,7 @@ body::-webkit-scrollbar-thumb {
     align-items: flex-start;
     width: 100%;
     height: auto;
-    border: 0px solid rgb(255, 192, 120);
+    border: 0px solid rgba(53, 53, 53, 0.24);
 }
 
 .TitlesNames {
@@ -641,6 +638,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
+    margin: 1%;
 }
 
 .EditButtonsSection {
@@ -668,5 +666,5 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 100%;
-
+    background-color: rgb(211, 145, 69);
 }
