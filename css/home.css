@@ -126,6 +126,7 @@ body {
     height: auto;
     border: 0px solid rgb(0, 22, 119);
     margin-top: 120px;
+    margin-bottom: 70px;
 }
 
 #config {
@@ -232,7 +233,7 @@ body {
     align-items: center;
     width: 100%;
     height: 80%;
-    border: 0px solid rgb(148, 148, 148);
+    border: 10px solid rgb(148, 148, 148);
     background-color: rgb(0, 0, 0);
 }
 
@@ -243,7 +244,7 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 2px solid rgb(209, 209, 209);
+    border: 0px solid rgb(209, 209, 209);
     cursor: pointer;
 }
 
@@ -254,7 +255,7 @@ body {
     align-items: center;
     width: 100%;
     height: 20%;
-    border: 20px solid rgb(255, 255, 255);
+    border: 0px solid rgb(255, 255, 255);
     background-color: rgb(255, 184, 104);
     overflow: auto;
 }
@@ -363,15 +364,22 @@ footer {
     border: 10px solid rgba(0, 0, 0, 0);
 }
 
-#artistName {
+.Names {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: auto;
+    height: auto;
+    border: 20px solid rgba(255, 174, 0, 0);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 100%;
-    border: 20px solid rgba(0, 0, 0, 0);
+    background-color: rgb(211, 145, 69);
+    color: rgb(0, 4, 255);
+    cursor: pointer;
 }
 
-#artistName:hover {
+.Name:hover {
     color: rgb(0, 47, 255);
     cursor: pointer;
 }
@@ -499,6 +507,17 @@ body::-webkit-scrollbar-thumb {
 
 /* ARTIST.HTML */
 
+#sectionRegisterButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(255, 0, 0);
+    background-color: rgb(211, 145, 69);
+}
+
 #sectionArtist {
     display: flex;
     flex-direction: row;
@@ -506,17 +525,17 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 20px solid rgb(255, 0, 0);
+    border: 0px solid rgb(255, 0, 0);
 }
 
-.SubsectionArtist {
+.SectionArtistArts {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
-    border: 20px solid rgb(4, 0, 255);
+    border: 0px solid rgb(4, 0, 255);
 }
 
 .SectionImageArtist {
@@ -526,7 +545,8 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgba(255, 0, 0, 0.1);
+    border: 0px solid rgb(255, 251, 0);
+    margin-bottom: 10%;
 }
 
 .ImagesArtist {
@@ -540,13 +560,25 @@ body::-webkit-scrollbar-thumb {
 }
 
 .SectionArtsArtist {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 50% 50%;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgba(255, 0, 0, 0.1);
+    border: 0px solid rgb(0, 0, 0);
+    background-color: rgb(255, 192, 120);
+}
+
+.ArtsArtist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border: 5px solid rgb(0, 0, 0);
+    background-color: rgb(211, 145, 69);
 }
 
 .TitlesArts {
@@ -554,25 +586,18 @@ body::-webkit-scrollbar-thumb {
     align-items: flex-start;
     width: 100%;
     height: auto;
-    border: 10px solid rgba(255, 0, 0, 0.1);
+    border: 0px solid rgb(255, 192, 120);
 }
 
-#titleArtsName {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(255, 174, 0, 0.1);
-}
-
-#artName {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(255, 174, 0, 0.1);
+.TitlesNames {
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(53, 53, 53, 0.24);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
+    font-size: 100%;
+    border: 10px solid rgba(0, 0, 0, 0);
+    font-weight: 700;
 }
 
 .EditButtonsSection {
@@ -582,5 +607,13 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 10px solid rgb(24, 143, 0);
+}
+
+.TextDescription {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+    border: 10px solid rgba(0, 0, 0, 0);
+    text-align: justify;
 }

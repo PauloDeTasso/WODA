@@ -66,13 +66,24 @@
 
             <!-- ARTIST -->
 
-            <section class="SubsectionArtist">
+            <section class="SectionArtistArts">
 
                 <section class="SectionImageArtist">
 
-                    <img class="ImagesArtist" src="../images/logos/LogoWODA.png" alt="">
+                    <img class="ImagesArtist" src="../images/artistsandarts/leonard-de-vinci.jpg" alt="">
 
                     <section class="EditButtonsSection">
+
+                        <section id="sectionButtonsArtist">
+
+                            <button type="button" id="editButton" class="Buttons">
+
+                                <img class="ImagesButtons" id="imageZoomIn" src="../images/icons/zoom.png" alt=""
+                                    onclick="zoom('ImagesArtist','in')">
+
+                            </button>
+
+                        </section>
 
                         <section id="sectionButtonsArtist">
 
@@ -88,7 +99,18 @@
 
                             <button type="button" id="editButton" class="Buttons">
 
-                                <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png" alt="">
+                                <img class="ImagesButtons" id="imageEditButton" src="../images/icons/delete.png" alt="">
+
+                            </button>
+
+                        </section>
+
+                        <section id="sectionButtonsArtist">
+
+                            <button type="button" id="editButton" class="Buttons">
+
+                                <img class="ImagesButtons" id="imageZoomOut" src="../images/icons/zoom out.png" alt=""
+                                    onclick="zoom('ImagesArtist','out')">
 
                             </button>
 
@@ -100,9 +122,13 @@
 
                         <section class="TitlesAuthor">
 
-                            <h1 id="titleArtistName">ARTIST:</h1>
+                            <section class="TitlesNames">
+                                ARTIST:
+                            </section>
 
-                            <h3 id="artistName" onclick="openPagina('artist.html','_self')">NOME.</h3>
+                            <section class="Names" onclick="openPagina('artist.html','_self')">
+                                Leonardo da Vinci
+                            </section>
 
                         </section>
 
@@ -112,47 +138,89 @@
 
                 <!-- ARTS -->
 
+                <section id="sectionRegisterButtons">
+
+                    <section class="TitlesNames">
+                        ARTS:
+                    </section>
+
+                    <button type="button" class="Buttons">
+
+                        <img class="ImagesButtons" id="imageRegisterButton" src="../images/icons/cadastrar.png" alt="">
+
+                    </button>
+
+                </section>
+
                 <section class="SectionArtsArtist">
 
-                    <section class="TitlesArts">
+                    <!-- ARTS 1 -->
 
-                        <h1 id="titleArtsName">ARTS:</h1>
+                    <section class="ArtsArtist">
 
-                        <section id="artName" onclick="openPagina('art.html','_self',artName.value)">
-                            NOME
+                        <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt="">
 
-                            <img class="ImagesArts" src="../images/logos/LogoWODA2.png" alt="">
+                        <section class="EditButtonsSection">
+
+                            <section id="sectionButtonsArtist">
+
+                                <button type="button" id="editButton" class="Buttons">
+
+                                    <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png"
+                                        alt="">
+
+                                </button>
+
+                            </section>
+
+                            <section id="sectionButtonsArtist">
+
+                                <button type="button" id="editButton" class="Buttons">
+
+                                    <img class="ImagesButtons" id="imageEditButton" src="../images/icons/delete.png"
+                                        alt="">
+
+                                </button>
+
+                            </section>
+
+                        </section>
+
+                        <section class="TitlesArts">
+
+                            <section class="TitlesNames">ART:</section>
+
+                            <section class="Names" id="artName" onclick="openPagina('art.html','_self',artName.value)">
+
+                                Mona Lisa
+
+                            </section>
+
+                            <section class="TitlesNames">
+                                <h3>Description:</h3>
+                            </section>
+
+                            <p class="TextDescription">
+                                The painting represents a woman with an introspective and somewhat shy expression. Her
+                                narrow smile is very seductive, if a little conservative. Her body represents the
+                                standard of beauty for women in Leonardo's time.
+                            </p>
+
+                            <section class="TitlesNames">PARTICIPATING ARTIST:</section>
+
+                            <section class="Names" onclick="openPagina('art.html','_self',artName.value)">
+
+                                None
+
+                            </section>
 
                         </section>
 
                     </section>
 
-                </section>
-
-                <section class="EditButtonsSection">
-
-                    <section id="sectionButtonsArtist">
-
-                        <button type="button" id="editButton" class="Buttons">
-
-                            <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png" alt="">
-
-                        </button>
-
-                    </section>
-
-                    <section id="sectionButtonsArtist">
-
-                        <button type="button" id="editButton" class="Buttons">
-
-                            <img class="ImagesButtons" id="imageEditButton" src="../images/icons/EDITAR.png" alt="">
-
-                        </button>
-
-                    </section>
+                    <!-- ARTS 2 -->
 
                 </section>
-
 
             </section>
 
@@ -191,7 +259,7 @@
 
     </footer>
 
-    <script src="../js/home.js">
+    <script src="../js/artist.js">
 
     </script>
 

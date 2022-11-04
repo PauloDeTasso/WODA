@@ -18,54 +18,6 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 /////////
 
-//SE SALVE ESTADO FOR TRUE ENTAO:
-
-if (localStorage.getItem("statusSaveConfig") == "true")
-{
-    if (localStorage.getItem('menuMain') == "true")
-    {
-        sectionButtons.style.visibility = "visible";
-
-    } else if (localStorage.getItem('menuMain') == "false")
-    {
-        sectionButtons.style.visibility = "hidden";
-
-    } else
-    {
-        sectionButtons.style.visibility = "hidden";
-    }
-
-    //
-
-    if (localStorage.getItem('menuSeacher') == "true")
-    {
-        seacher.style.display = "flex";
-
-    } else if (localStorage.getItem('menuSeacher') == "false")
-    {
-        seacher.style.display = "none";
-
-    } else
-    {
-        seacher.style.display = "none";
-    }
-
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-
-} else if (localStorage.getItem("statusSaveConfig") == "false")
-{
-    saveStatusOn.checked = false;
-    saveStatusOff.checked = true;
-
-} else
-{
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-}
-
-//
-
 function openPagina(link, target)
 {
     window.open(link, target);
@@ -137,58 +89,34 @@ function openClose(elemento, propriedade, conteiner)
     }
 }
 
-function saveConfig(option, status)
-{
-    switch (option)
-    {
-        case "statusSaveConfig":
-
-            if (status == true)
-            {
-                localStorage.setItem("statusSaveConfig", true);
-
-            } else if (status == false)
-            {
-                localStorage.setItem("statusSaveConfig", false);
-
-            } else
-            {
-                localStorage.setItem("statusSaveConfig", false);
-            }
-
-            break;
-
-        default:
-
-    }
-}
-
 function zoom(image, zoom)
 {
-    var estiloCabecalho = window.getComputedStyle(image);
-    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(width);
 
-    alert(propriedadeCabecalho)
+    //var estiloCabecalho = window.getComputedStyle(image);
+    //var propriedadeCabecalho = estiloCabecalho.getPropertyValue('width');
 
-    if (zoom == "in")
+    if (zoom == "in" && image == 'ImagesArtist')
     {
-        for (let i = 0; i < image.length; i++)
+
+        for (let i = 0; i < ImagesArtist.length; i++)
         {
-            image[ i ].style.width = '100%';
+            ImagesArtist[ i ].style.width = "100%";
         }
 
-    } else if (zoom == "out")
+    } else if (zoom == "out" && image == 'ImagesArtist')
     {
-        for (let i = 0; i < image.length; i++)
+        for (let i = 0; i < ImagesArtist.length; i++)
         {
-            image[ i ].style.width = '10%';
+            ImagesArtist[ i ].style.width = "10%";
         }
 
     } else
     {
-        for (let i = 0; i < image.length; i++)
+        for (let i = 0; i < ImagesArtist.length; i++)
         {
-            image[ i ].style.width = propriedadeCabecalho;
+            ImagesArtist[ i ].style.width = "100%";
         }
     }
+
+
 }
