@@ -127,7 +127,7 @@ body {
     height: auto;
     border: 0px solid rgb(0, 22, 119);
     margin-top: 120px;
-    margin-bottom: 70px;
+    margin-bottom: 200px;
 }
 
 #config {
@@ -188,7 +188,8 @@ body {
 #sectionGallery {
     display: grid;
     grid-template-columns: 50% 50%;
-
+    column-gap: 1%;
+    row-gap: 1%;
     /*display: flex;
     flex-direction: row;
    */
@@ -243,9 +244,10 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 94%;
-    height: 90%;
+    width: 87%;
+    height: auto;
     border: 10px solid rgb(209, 209, 209);
+    margin: 1%;
     border-image: url(/images/texture/wood/wood01.jpg) 10% round;
     cursor: pointer;
 }
@@ -255,8 +257,8 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 87%;
+    height: auto;
     border: 20px solid rgba(0, 0, 0, 0.1);
     margin: 1%;
     border-image: url(/images/texture/wood/wood01.jpg) 10% round;
@@ -272,25 +274,38 @@ body {
     height: 20%;
     border: 0px solid rgb(255, 255, 255);
     background-color: rgb(255, 184, 104);
-    overflow: auto;
 }
 
 .TitlesAuthor {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 2px;
-    row-gap: 2px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
-    border: 0px solid rgba(82, 82, 82, .5);
+    height: 100%;
+    border: 20px solid rgb(255, 192, 120);
     background-color: rgba(151, 126, 96, 0);
+    font-size: 200%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(44, 41, 0);
+    font-weight: 700;
+    background-color: rgb(255, 192, 120);
+    margin: 1%;
+}
+
+.SectionDataArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(255, 0, 0);
+    background-color: rgb(211, 145, 69);
     font-size: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(44, 41, 0);
-    margin: 1%;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .sectionImageAuthorArts {
@@ -374,7 +389,7 @@ footer {
 #titleArtistName {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgba(53, 53, 53, 0.24);
+    background-color: rgb(172, 116, 53);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.589);
     font-size: 100%;
@@ -396,6 +411,19 @@ footer {
     cursor: pointer;
 }
 
+.DataArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border: 10px solid rgb(211, 145, 69);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+    background-color: rgb(211, 145, 69);
+}
+
 .Data {
     display: flex;
     flex-direction: row;
@@ -403,7 +431,7 @@ footer {
     align-items: center;
     width: auto;
     height: auto;
-    border: 10px solid rgba(255, 174, 0, 0);
+    border: 10px solid rgba(0, 225, 255, 0);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 100%;
     background-color: rgb(211, 145, 69);
@@ -425,21 +453,16 @@ footer {
 
 body::-webkit-scrollbar {
     width: 12px;
-    /* width of the entire scrollbar */
 }
 
 body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.0);
-    /* color of the tracking area */
+    background: rgb(211, 145, 69);
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.0);
-    /* color of the scroll thumb */
-    border-radius: 20px;
-    /* roundness of the scroll thumb */
-    border: 2px solid rgb(209, 160, 69);
-    /* creates padding around scroll thumb */
+    background-color: rgb(0, 0, 0);
+    border-radius: 50px;
+    border: 3px solid rgb(255, 192, 120);
 }
 
 /*
@@ -534,7 +557,6 @@ body::-webkit-scrollbar-thumb {
 }
 */
 
-
 /* ARTIST.HTML */
 
 #sectionRegisterButtons {
@@ -585,6 +607,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     border: 20px solid rgba(0, 0, 0, 0.1);
     border-image: url(/images/texture/wood/wood01.jpg) 10% round;
+    margin: 1%;
 }
 
 .ImagesArtist {
@@ -592,7 +615,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 94%;
     height: auto;
     border: 10px solid rgba(255, 0, 0, 0.1);
 }
@@ -600,6 +623,8 @@ body::-webkit-scrollbar-thumb {
 .SectionArtsArtist {
     display: grid;
     grid-template-columns: 50% 50%;
+    column-gap: 1%;
+    row-gap: 1%;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -615,7 +640,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: auto;
     height: auto;
-    border: 10px solid rgba(53, 53, 53, 0.24);
+    border: 10px solid rgb(172, 116, 53);
     background-color: rgb(211, 145, 69);
 }
 
@@ -624,21 +649,45 @@ body::-webkit-scrollbar-thumb {
 .TitlesArts {
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: 94%;
     height: auto;
-    border: 0px solid rgba(53, 53, 53, 0.24);
+    border: 0px solid rgb(172, 116, 53);
 }
 
 .TitlesNames {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgba(53, 53, 53, 0.24);
+    background-color: rgb(172, 116, 53);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
     margin: 1%;
+}
+
+.DataTitlesArtist {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
+    font-size: 100%;
+    border: 20px solid rgba(0, 0, 0, 0);
+    font-weight: 700;
+    background-color: rgb(255, 192, 120);
+}
+
+.TitlesArtist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
+    font-size: 100%;
+    border: 0px solid rgb(0, 0, 0);
+    font-weight: 500;
+    color: rgb(68, 0, 255);
 }
 
 .EditButtonsSection {
