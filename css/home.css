@@ -5,7 +5,7 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgb(255, 192, 120);
+    background-color: rgb(211, 145, 69);
     opacity: 1;
     /*
     background-image: url("../images/logos/LogoWODA.png");
@@ -283,13 +283,13 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 20px solid rgb(255, 192, 120);
+    border: 20px solid rgb(252, 178, 100);
     background-color: rgba(151, 126, 96, 0);
     font-size: 200%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(44, 41, 0);
     font-weight: 700;
-    background-color: rgb(255, 192, 120);
+    background-color: rgb(252, 178, 100);
     margin: 1%;
 }
 
@@ -462,7 +462,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: rgb(0, 0, 0);
     border-radius: 50px;
-    border: 3px solid rgb(255, 192, 120);
+    border: 3px solid rgb(252, 178, 100);
 }
 
 /*
@@ -672,7 +672,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 20px solid rgba(0, 0, 0, 0);
     font-weight: 700;
-    background-color: rgb(255, 192, 120);
+    background-color: rgb(252, 178, 100);
 }
 
 .TitlesArtist {
