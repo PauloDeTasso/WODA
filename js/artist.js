@@ -18,6 +18,10 @@ var saveStatusOff = document.getElementById('saveStatusOff');
 
 var imageArtist = document.getElementById('imageArtist');
 
+var ArtsArtist = document.getElementsByClassName('ArtsArtist');
+
+var artArtist = document.getElementsByClassName('artArtist');
+
 /////////
 
 function openPagina(link, target)
@@ -91,9 +95,13 @@ function openClose(elemento, propriedade, conteiner)
     }
 }
 
-function zoom(image, zoom)
+function zoom(image, section, zoom)
 {
     var imageArtistWidth = image.clientWidth;
+    var sectionImageWidth = section.clientWidth;
+
+    //alert(imageArtistWidth);
+    //alert(sectionImageWidth);
 
     if (zoom == "in")
     {
@@ -107,5 +115,4 @@ function zoom(image, zoom)
     {
         image.style.width = (imageArtistWidth - 100) + "px";
     }
-
 }

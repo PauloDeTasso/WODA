@@ -581,8 +581,8 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     border: 10px solid rgba(0, 0, 0, 0.1);
-    margin: 10%;
-    border-image: url(/images/texture/wood/wood_table_001_diff_2k.jpg) 10% round;
+    margin: 1%;
+    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
 }
 
 .ImagesArtist {
@@ -616,6 +616,8 @@ body::-webkit-scrollbar-thumb {
     border: 5px solid rgb(0, 0, 0);
     background-color: rgb(211, 145, 69);
 }
+
+#artArtist {}
 
 .TitlesArts {
     justify-content: flex-start;
