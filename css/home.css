@@ -1,3 +1,8 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
 html {
     display: flex;
     flex-direction: column;
@@ -14,6 +19,7 @@ html {
     background-attachment: fixed;
     background-position: center;
     */
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*////////////////////////////*/
@@ -286,24 +292,29 @@ body {
     border: 20px solid rgb(252, 178, 100);
     background-color: rgba(151, 126, 96, 0);
     font-size: 200%;
+    /*
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    */
     color: rgb(44, 41, 0);
     font-weight: 700;
     background-color: rgb(252, 178, 100);
     margin: 1%;
+    border-radius: 100px;
 }
 
 .SectionDataArtist {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     height: 100%;
     border: 0px solid rgb(255, 0, 0);
     background-color: rgb(211, 145, 69);
     font-size: 100%;
+    /*
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    */
     color: rgb(44, 41, 0);
     font-weight: 400;
 }
@@ -351,7 +362,9 @@ footer {
     height: 100%;
     border: 0px solid rgb(255, 102, 0);
     background-color: rgba(255, 159, 70, 0.5);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
     font-size: 87%;
 }
@@ -382,7 +395,9 @@ footer {
     z-index: 1000;
     /* Faz com que fique sobre todos os elementos da página */
     border: 5px solid rgba(255, 255, 255, 0.363);
+    /*
     font-family: Arial, Helvetica, sans-serif;
+   */
     font-size: 70%;
 }
 
@@ -390,7 +405,9 @@ footer {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: rgb(172, 116, 53);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   */
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.589);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -404,11 +421,15 @@ footer {
     width: auto;
     height: auto;
     border: 20px solid rgba(255, 174, 0, 0);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     font-size: 100%;
     background-color: rgb(211, 145, 69);
     color: rgb(0, 4, 255);
     cursor: pointer;
+
+    border-radius: 10px;
 }
 
 .DataArtist {
@@ -416,12 +437,16 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: auto;
-    height: auto;
-    border: 10px solid rgb(211, 145, 69);
+    column-gap: 10px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(0, 0, 0);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     font-size: 100%;
-    background-color: rgb(211, 145, 69);
+    background-color: rgb(172, 116, 53);
+    border-radius: 7px;
 }
 
 .Data {
@@ -432,9 +457,13 @@ footer {
     width: auto;
     height: auto;
     border: 10px solid rgba(0, 225, 255, 0);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     font-size: 100%;
     background-color: rgb(211, 145, 69);
+
+    border-radius: 10px;
 }
 
 .Name:hover {
@@ -658,7 +687,9 @@ body::-webkit-scrollbar-thumb {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: rgb(172, 116, 53);
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -668,11 +699,19 @@ body::-webkit-scrollbar-thumb {
 
 .DataTitlesArtist {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
-    border: 20px solid rgba(0, 0, 0, 0);
+    border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
     background-color: rgb(252, 178, 100);
+    border-radius: 100px;
 }
 
 .TitlesArtist {
@@ -682,7 +721,9 @@ body::-webkit-scrollbar-thumb {
     vertical-align: middle;
     align-items: center;
     width: 100%;
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 0px solid rgb(0, 0, 0);
@@ -702,7 +743,9 @@ body::-webkit-scrollbar-thumb {
 .TextDescription {
     justify-content: center;
     align-items: center;
+    /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    */
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     text-align: justify;
