@@ -29,14 +29,14 @@
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                <button type="button" id="seacherButton" class="ButtonsRegister">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/voltar.png" alt=""
                         onclick="openPagina('home.html', '_self')">
 
                 </button>
 
-                <button type="button" id="infoButton" class="Buttons">
+                <button type="button" id="infoButton" class="ButtonsRegister">
 
                     <img class="ImagesButtons" id="imageInfoButton" src="../images/icons/info.png" alt=""
                         onclick="openClose(info,'display','menuInfo')">
@@ -126,8 +126,9 @@
                     <tr>
                         <td>
 
-                            <input type="date" name="
-                            birthday" id="birthday" onchange="validadata()">
+                            <input type="text" name="
+                            birthday" id="birthday" placeholder="...Birthday..." onfocus="(this.type='date')"
+                                onchange="validadata()">
 
                         </td>
                         <td>
@@ -341,16 +342,20 @@
 
                 <section class="SectionButtons">
 
+                    <section id="msgStatus" class="AlertMsgs">
+
+                    </section>
+
                     <button type="reset" class="Buttons">
 
-                        <img class="ImagesButtons" src="../images/icons/LIMPAR.png" alt="">
+                        <img class="ImagesButtonsRegister" src="../images/icons/LIMPAR.png" alt="">
 
                     </button>
 
                     <button action="saveForm" type="submit" form="formRegister" formmethod="post" id="submitButton"
                         class="Buttons">
 
-                        <img class="ImagesButtons" id="imageInfoButton" src="../images/icons/save01.png" alt="">
+                        <img class="ImagesButtonsRegister" src="../images/icons/save01.png" alt="">
 
                     </button>
 

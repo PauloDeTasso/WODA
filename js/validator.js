@@ -6,6 +6,8 @@ var msgNationality = document.getElementById("msgNationality");
 var msgCpf = document.getElementById("msgCpf");
 var msgStatus = document.getElementById("msgStatus");
 
+var formRegister = document.getElementById("formRegister");
+
 function validacaoEmail(campo)
 {
     usuario = campo.value.substring(0, campo.value.indexOf("@"));
@@ -160,3 +162,21 @@ setTimeout(() =>
         cpf.style.visibility = "hidden";
     }
 }, 2000);
+
+function clear()
+{
+    msgName.innerHTML = "";
+    msgEmail.innerHTML = "";
+    msgGender.innerHTML = "";
+    msgBirthday.innerHTML = "";
+    msgNationality.innerHTML = "";
+    msgCpf.innerHTML = "";
+    msgStatus.innerHTML = "";
+}
+
+//
+
+formRegister.onreset = function ()
+{
+    clear()
+};
