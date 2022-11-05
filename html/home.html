@@ -31,7 +31,7 @@
 
                 <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/pesquisar.png" alt=""
+                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/PESQUISAR04.png" alt=""
                         onclick="openClose(seacher,'display','menuSeacher')">
 
                 </button>
@@ -45,7 +45,7 @@
 
                 <button type="button" id="configButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageConfigButton" src="../images/icons/configurações.png" alt=""
+                    <img class="ImagesButtons" id="imageConfigButton" src="../images/icons/configurações02.png" alt=""
                         onclick="openClose(config,'display','menuConfig')">
 
                 </button>
@@ -106,7 +106,11 @@
 
             <section id="sectionSeacher">
 
-                <img src="../images/icons/pesquisar.png" alt="" width="70px">
+                <button class="Buttons" type="submit" value="Seacher" autofocus>
+
+                    <img class="ImagesButton" src="../images/icons/pesquisar02.png" alt="" width="70px">
+
+                </button>
 
                 <form action="seacher">
 
@@ -118,15 +122,70 @@
                     <label>
                         <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
 
-                    <input type="submit" value="Seacher" autofocus>
-
                 </form>
 
             </section>
 
             <section id="tableSeacher">
 
-                TABELA
+
+                <table id="tabela">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Id
+                            </th>
+
+                            <th>
+                                Nome
+                            </th>
+
+                            <th>
+                                Fone
+                            </th>
+
+                            <th>
+                                E-mail
+                            </th>
+
+                            <th>
+                                Opções
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <%for (int i=0; i < lista.size(); i++) { %>
+                            <tr>
+                                <td>
+                                    <%=lista.get(i).getIdcon()%>
+                                </td>
+                                <td>
+                                    <%=lista.get(i).getNome()%>
+                                </td>
+                                <td>
+                                    <%=lista.get(i).getFone()%>
+                                </td>
+                                <td>
+                                    <%=lista.get(i).getEmail()%>
+                                </td>
+                                <td>
+                                    <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
+                                    <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
+                                        class="Botao2">Excluir</a>
+                                </td>
+                            </tr>
+                            <%} %>
+
+                    </tbody>
+
+                </table>
 
             </section>
 
@@ -140,22 +199,180 @@
 
                 <section class="SectionImageArts">
 
+                    <img class="ImagesArts" src="../images/artistsandarts/leonard-de-vinci.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
                     <img class="ImagesArts" src="../images/logos/LogoWODA2.png" alt=""
                         onclick="openPagina('artist.html','_self')">
 
                 </section>
 
-                <!-- AUTHOR -->
+            </section>
 
-                <section class="SectionAuthorArts">
+            <!-- ART -->
 
-                    <section class="TitlesAuthor">
+            <section class="SectionArts">
 
-                        <section class="TitlesNames">ARTIST:</section>
+                <section class="SectionImageArts">
 
-                        <section class="Names" onclick="openPagina('artist.html','_self')">NOME</section>
+                    <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
 
-                    </section>
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/author/01.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/logos/LogoWODA.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/author/02.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/artistsandarts/leonard-de-vinci.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/logos/LogoWODA2.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/artistsandarts/monalisa.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/author/01.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/logos/LogoWODA.png" alt=""
+                        onclick="openPagina('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+
+            <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="../images/author/02.jpg" alt=""
+                        onclick="openPagina('artist.html','_self')">
 
                 </section>
 
@@ -170,6 +387,8 @@
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
+
+            <img class="ImagesButtons" src="../images/icons/SUPORTE01.png" alt="">
 
         </section>
 

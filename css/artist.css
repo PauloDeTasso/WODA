@@ -119,16 +119,6 @@ header {
     opacity: .8;
 }
 
-.ImagesButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(85, 85, 85, 0);
-}
-
 #imagemButtonMenu:hover {
     opacity: .7;
     cursor: pointer;
@@ -146,7 +136,7 @@ body {
     height: auto;
     border: 0px solid rgb(0, 22, 119);
     margin-top: 120px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 #config {
@@ -192,8 +182,6 @@ body {
     align-items: center;
     width: 100%;
     height: auto;
-    border-top: 10px solid rgb(252, 178, 100);
-    border-radius: 100px;
 }
 
 #tableSeacher {
@@ -201,24 +189,24 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 87%;
+    width: 100%;
     height: 100%;
-    border: 10px solid rgb(252, 178, 100);
-    border-radius: 10px;
-    margin: 2%;
+    border: 10px solid rgb(139, 139, 139);
 }
 
 #sectionGallery {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 50% 50%;
     column-gap: 1%;
     row-gap: 1%;
+    /*display: flex;
+    flex-direction: row;
+   */
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     border: 0px solid rgba(255, 0, 0, 1);
-    margin-top: 2%;
 }
 
 #sectionAdmin {
@@ -241,12 +229,12 @@ body {
 
 .SectionArts {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 0px solid rgb(255, 217, 0);
+    border: 0px solid rgba(255, 255, 255, 0.555);
 }
 
 .SectionImageArts {
@@ -255,8 +243,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    border: 0px solid rgb(255, 255, 255);
+    height: 80%;
+    border: 0px solid rgb(148, 148, 148);
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -268,7 +256,8 @@ body {
     width: 87%;
     height: auto;
     border: 10px solid rgb(209, 209, 209);
-    border-image: url(/images/texture/wood/wood01.jpg) 7% round;
+    margin: 1%;
+    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
     cursor: pointer;
 }
 
@@ -281,7 +270,7 @@ body {
     height: auto;
     border: 20px solid rgba(0, 0, 0, 0.1);
     margin: 1%;
-    border-image: url(/images/texture/wood/wood01.jpg) 7% round;
+    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
     cursor: pointer;
 }
 
@@ -320,7 +309,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     width: 100%;
     height: 100%;
     border: 0px solid rgb(255, 0, 0);
@@ -450,7 +439,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     column-gap: 10px;
     width: 100%;
     height: 100%;
@@ -609,8 +598,9 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(211, 145, 69);
     background-color: rgba(211, 145, 69, 0);
+    border-top: 10px solid rgb(252, 178, 100);
+    border-radius: 3px;
 }
 
 #sectionArtist {
@@ -714,8 +704,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    vertical-align: top;
+    align-items: stretch;
     width: 100%;
     height: 100%;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
@@ -731,7 +720,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: row;
     justify-content: center;
     vertical-align: middle;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
     /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -771,4 +760,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     background-color: rgb(211, 145, 69);
+    border-top: 10px solid rgb(252, 178, 100);
+    border-radius: 100px;
+    margin: 1%;
 }
