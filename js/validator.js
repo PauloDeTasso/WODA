@@ -1,9 +1,15 @@
+var msgName = document.getElementById("msgName");
+var msgEmail = document.getElementById("msgEmail");
+var msgGender = document.getElementById("msgGender");
+var msgBirthday = document.getElementById("msgBirthday");
+var msgNationality = document.getElementById("msgNationality");
+var msgCpf = document.getElementById("msgCpf");
+var msgStatus = document.getElementById("msgStatus");
 
-
-function validacaoEmail(field)
+function validacaoEmail(campo)
 {
-    usuario = field.value.substring(0, field.value.indexOf("@"));
-    dominio = field.value.substring(field.value.indexOf("@") + 1, field.value.length);
+    usuario = campo.value.substring(0, campo.value.indexOf("@"));
+    dominio = campo.value.substring(campo.value.indexOf("@") + 1, campo.value.length);
 
     if ((usuario.length >= 1) &&
         (dominio.length >= 3) &&
@@ -15,13 +21,11 @@ function validacaoEmail(field)
         (dominio.indexOf(".") >= 1) &&
         (dominio.lastIndexOf(".") < dominio.length - 1))
     {
-        document.getElementById("msgemail").innerHTML = "E-mail válido";
-        alert("E-mail valido");
+        msgEmail.innerHTML = "<font color= 'green'>Ok</font>";
     }
     else
     {
-        document.getElementById("msgemail").innerHTML = "<font color='red'>E-mail inválido </font>";
-        alert("E-mail invalido");
+        msgEmail.innerHTML = "Invalid email!";
     }
 }
 
@@ -29,7 +33,7 @@ function validacaoEmail(field)
 
 function validadata()
 {
-    var data = document.getElementById("nascimento").value; // pega o valor do input
+    var data = document.getElementById("birthday").value; // pega o valor do input
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
     var data_array = data.split("-"); // quebra a data em array
 
@@ -46,20 +50,14 @@ function validadata()
     var m = hoje.getMonth() - nasc.getMonth();
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
+
     if (idade < 18)
     {
-        alert("Pessoas menores de 18 não podem se cadastrar.");
-        return false;
-    }
-
-    if (idade >= 18 && idade <= 60)
+        msgBirthday.innerHTML = "Only for over 18s!";
+    } else
     {
-        alert("Maior de 18, pode se cadastrar.");
-        return true;
+        msgBirthday.innerHTML = "<font color= 'green'>Ok</font>";
     }
-
-    // se for maior que 60 não vai acontecer nada!
-    return false;
 }
 
 /////
@@ -104,14 +102,22 @@ function formatarCpf()
         cpf.value = cpf.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");
     }
 
-    msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "CPF VÁLIDO" : "CPF INVÁLIDO";
+    msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "<font color= 'green'>Ok</font>" : "Invalid CPF";
 }
 
 ////
 
-function verificarNacionalidade(escolha)
+function verificarNacionalidade(valor)
 {
-    if (escolha == "Brasil")
+    if (valor == "nationality" || valor == "" || valor == null)
+    {
+        msgNationality.innerHTML = "Inform your nationality!";
+    } else
+    {
+        msgNationality.innerHTML = "<font color= 'green'>Ok</font>";
+    }
+
+    if (valor == "Brasil")
     {
         cpf.style.visibility = "visible";
     } else 
@@ -119,3 +125,38 @@ function verificarNacionalidade(escolha)
         cpf.style.visibility = "hidden";
     }
 }
+
+function verificarGenero(valor)
+{
+    if (valor == "gender" || valor == null)
+    {
+        msgGender.innerHTML = "Inform your gender!";
+    } else
+    {
+        msgGender.innerHTML = "<font color= 'green'>Ok</font>";
+    }
+}
+
+function verificarNome(valor)
+{
+    if (valor == "" || valor == null)
+    {
+        msgName.innerHTML = "Inform your name!";
+    } else
+    {
+        msgName.innerHTML = "<font color= 'green'>Ok</font>";
+    }
+}
+
+setTimeout(() =>
+{
+    document.getElementById("nationality");
+
+    if (nationality.value == "Brasil")
+    {
+        cpf.style.visibility = "visible";
+    } else 
+    {
+        cpf.style.visibility = "hidden";
+    }
+}, 2000);

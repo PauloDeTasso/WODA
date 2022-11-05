@@ -163,6 +163,7 @@ body {
     width: 100%;
     height: auto;
     border: 10px solid rgb(0, 22, 119);
+    overflow: auto;
 }
 
 #sectionGallery {
@@ -457,4 +458,80 @@ body::-webkit-scrollbar-thumb {
 
 #cpf {
     visibility: hidden;
+}
+
+input {
+    height: 50px;
+    border-radius: 7px;
+    font-size: 100%;
+    background-color: rgb(252, 215, 166);
+    color: rgb(0, 54, 155);
+
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 89, 255, 0.3);
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(0, 89, 255, 0.3);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(0, 89, 255, 0.3);
+}
+
+select {
+    border-radius: 7px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 50px;
+    background-color: rgb(252, 215, 166);
+    color: rgb(0, 54, 155);
+    font-size: 100%;
+}
+
+option:not(:first-of-type) {
+    color: black;
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: rgba(0, 89, 255, 1);
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: rgb(0, 54, 155);
+}
+
+/* regular text style */
+input[type="date"].date-input--has-value::-webkit-datetime-edit-text,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-month-field,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-day-field,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-year-field {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+input,
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+}
+
+.AlertMsgs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    border: 5px solid rgba(255, 0, 0, 0);
+    color: rgb(240, 30, 30);
+    font-weight: 550;
 }
