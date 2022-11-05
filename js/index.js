@@ -1,4 +1,12 @@
-var botaoLogin = document.getElementById('body')
+var botaoLogin = document.getElementById('body');
+
+var imagemFacebook = document.getElementById('imagemFacebook');
+
+var imagemSkype = document.getElementById('imagemSkype');
+
+var imagemTwitter = document.getElementById('imagemTwitter');
+
+var imagemInstagram = document.getElementById('imagemInstagram');
 
 function alterarImagem(pagina)
 {
@@ -45,3 +53,15 @@ if (detectar_mobile())
 {
 
 };
+
+function iconeOpacidade(icone)
+{
+    icone.style.opacity = "1";
+    icone.style.backgroundColor = "rgba(200,200,200,.5)";
+}
+
+function iconeOpacidadeMenor(icone)
+{
+    icone.style.opacity = ".5";
+    icone.style.backgroundColor = "rgba(200,200,200,0)";
+}
