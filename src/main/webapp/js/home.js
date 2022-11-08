@@ -192,3 +192,18 @@ function zoom(image, zoom)
         }
     }
 }
+
+ function confirmar(idcon)
+ {
+	var resposta = confirm("Confirma a exclusão desse contato?");
+	
+	if(resposta === true)
+	{
+		//TESTE DE RECEBIMENTO:
+		//alert(idcon);
+		
+		//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+		 
+		window.location.href = "delete?idcon=" + idcon;
+	}
+}

@@ -65,3 +65,10 @@ function iconeOpacidadeMenor(icone)
     icone.style.opacity = ".5";
     icone.style.backgroundColor = "rgba(200,200,200,0)";
 }
+
+//
+
+function validar(valor)
+ {	    
+	document.forms["formRegister"].submit();
+}

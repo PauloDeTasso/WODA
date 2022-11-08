@@ -8,6 +8,9 @@ var msgStatus = document.getElementById("msgStatus");
 
 var formRegister = document.getElementById("formRegister");
 
+var cpf = document.getElementById("cpf");
+var nationality = document.getElementById("nationality");
+
 function validacaoEmail(campo)
 {
     usuario = campo.value.substring(0, campo.value.indexOf("@"));
@@ -121,7 +124,8 @@ function verificarNacionalidade(valor)
 
     if (valor == "Brasil")
     {
-        cpf.style.visibility = "visible";
+        cpf.style.visibility = "visible";        
+        
     } else 
     {
         cpf.style.visibility = "hidden";
@@ -152,16 +156,15 @@ function verificarNome(valor)
 
 setTimeout(() =>
 {
-    document.getElementById("nationality");
-
-    if (nationality.value == "Brasil")
-    {
+    if (nationality.value === "Brasil")
+    {	
         cpf.style.visibility = "visible";
     } else 
     {
         cpf.style.visibility = "hidden";
     }
 }, 2000);
+
 
 function clear()
 {
@@ -180,3 +183,73 @@ formRegister.onreset = function ()
 {
     clear()
 };
+
+ function validar()
+ {
+	/*
+	var nome = formRegister.name.value;
+	
+	var email = formRegister.email.value;
+	
+	var genero = formRegister.gender.value;
+		
+	var dataDeNascimento = formRegister.birthday.value;
+		
+	var nacionalidade = formRegister.nationality.value;
+		
+	var cpf = formRegister.cpf.value;
+	
+	if(nome === "")
+	{
+		alert("Preencha o campo Nome");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else if (email === "")
+	{
+		alert("Preencha o campo E-mail");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else if (genero === "")
+	{
+		alert("Preencha o campo Gênero");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else if (dataDeNascimento === "")
+	{
+		alert("Preencha o campo Data de Nascimento");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else if (nacionalidade === "")
+	{
+		alert("Preencha o campo Nacionalidade");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else if (cpf === "")
+	{
+		alert("Preencha o campo CPF");
+		
+		frmContato.nome.focus();
+		return false;
+		
+	}else
+	{
+		document.forms["formArtistRegister"].submit();
+	}	
+	*/	
+		
+	//document.forms["formRegister"].submit();
+		
+	//alert(document.forms["formRegister"].submit())
+	
+	document.forms["formRegister"].submit();
+}

@@ -9,11 +9,11 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../css/register.css" />
+        <link rel="stylesheet" href="css/register.css" />
 
         <title>WODA</title>
 
-        <link rel="icon" href="../images/logos/LogoWODA2.png" type="image/gif">
+        <link rel="icon" href="images/logos/LogoWODA2.png" type="image/gif">
 
     </head>
 
@@ -31,14 +31,14 @@
 
                 <button type="button" id="seacherButton" class="ButtonsRegister">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="../images/icons/voltar.png" alt=""
-                        onclick="openPagina('home.html', '_self')">
+                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/voltar.png" alt=""
+                        onclick="openPagina('main', '_self')">
 
                 </button>
 
                 <button type="button" id="infoButton" class="ButtonsRegister">
 
-                    <img class="ImagesButtons" id="imageInfoButton" src="../images/icons/info.png" alt=""
+                    <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
                         onclick="openClose(info,'display','menuInfo')">
 
                 </button>
@@ -49,7 +49,7 @@
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="../images/icons/menu01.png" alt=""
+                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
                         onclick="openClose(sectionButtons,'visibility')">
 
                 </button>
@@ -62,13 +62,12 @@
 
     <body>
 
-        <form id="formRegister" name="formRegister" action="/formArtistRegister" method="post" autocomplete="on"
-            novalidate autofocus>
+        <form id="formRegister" name="formRegister" action="insert" method="get">
 
             <fieldset>
 
                 <legend>
-
+                    REGISTER ARTISTS:
                 </legend>
 
                 <table>
@@ -101,9 +100,7 @@
 
                             <select name="gender" onchange="verificarGenero(this.value)" required>
 
-                                <option value="gender" selected>
-                                    ...Gender...
-                                </option>
+                                <option value="gender" selected>...Gender...</option>
 
                                 <option value="MALE">
                                     MALE
@@ -128,8 +125,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="
-                            birthday" id="birthday" placeholder="...Birthday..." onfocus="(this.type='date')"
+                            <input type="text" name="birthday" id="birthday" placeholder="...Birthday..." onfocus="(this.type='date')"
                                 onchange="validadata()">
 
                         </td>
@@ -228,7 +224,7 @@
                                 <option value="Ilhas Cook">Ilhas Cook</option>
                                 <option value="Ilhas Curaçao">Ilhas Curaçao</option>
                                 <option value="Ilhas Marshall">Ilhas Marshall</option>
-                                <option value="Ilhas Turks &#038; Caicos">Ilhas Turks & Caicos</option>
+                                <option value="Ilhas Turks &#038; Caicos">Ilhas Turks e Caicos</option>
                                 <option value="Ilhas Virgens (brit.)">Ilhas Virgens (brit.)</option>
                                 <option value="Ilhas Virgens(amer.)">Ilhas Virgens(amer.)</option>
                                 <option value="Ilhas Wallis e Futuna">Ilhas Wallis e Futuna</option>
@@ -296,7 +292,7 @@
                                 <option value="Singapura">Singapura</option>
                                 <option value="Síria">Síria</option>
                                 <option value="Sri Lanka">Sri Lanka</option>
-                                <option value="St. Kitts &#038; Nevis">St. Kitts & Nevis</option>
+                                <option value="St. Kitts &#038; Nevis">St. Kitts E Nevis</option>
                                 <option value="St. Lúcia">St. Lúcia</option>
                                 <option value="St. Vincent">St. Vincent</option>
                                 <option value="Sudão">Sudão</option>
@@ -307,7 +303,7 @@
                                 <option value="Taiwan">Taiwan</option>
                                 <option value="Tanzânia">Tanzânia</option>
                                 <option value="Togo">Togo</option>
-                                <option value="Trinidad &#038; Tobago">Trinidad & Tobago</option>
+                                <option value="Trinidad &#038; Tobago">Trinidad E Tobago</option>
                                 <option value="Tunísia">Tunísia</option>
                                 <option value="Turquia">Turquia</option>
                                 <option value="Ucrânia">Ucrânia</option>
@@ -341,6 +337,7 @@
                     </tr>
 
                 </table>
+                             
 
                 <section class="SectionButtons">
 
@@ -348,24 +345,26 @@
 
                     </section>
 
+
                     <button type="reset" class="Buttons">
 
-                        <img class="ImagesButtonsRegister" src="../images/icons/LIMPAR.png" alt="">
+                        <img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
 
                     </button>
 
-                    <button action="saveForm" type="submit" form="formRegister" formmethod="post" id="submitButton"
-                        class="Buttons">
+                    <button type="submit" id="submitButton"
+                        class="Buttons" onclick="validar()">
 
-                        <img class="ImagesButtonsRegister" src="../images/icons/save01.png" alt="">
+                        <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
                     </button>
-
+ 					
                 </section>
-
+               
             </fieldset>
-
+			
         </form>
+    
 
         <section id="info">
 
@@ -373,7 +372,7 @@
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
 
-            <img class="ImagesButtons" src="../images/icons/SUPORTE01.png" alt="">
+            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
         </section>
 
@@ -400,11 +399,11 @@
 
     </footer>
 
-    <script src="../js/home.js">
+    <script src="js/home.js">
 
     </script>
 
-    <script src="../js/validator.js">
+    <script src="js/validator.js">
 
     </script>
 

@@ -268,7 +268,7 @@ body {
     width: 87%;
     height: auto;
     border: 10px solid rgb(209, 209, 209);
-    border-image: url(/images/texture/wood/wood01.jpg) 7% round;
+    border-image: url('../images/texture/wood/wood01.jpg') 7% round;
     cursor: pointer;
 }
 
@@ -281,7 +281,7 @@ body {
     height: auto;
     border: 20px solid rgba(0, 0, 0, 0.1);
     margin: 1%;
-    border-image: url(/images/texture/wood/wood01.jpg) 7% round;
+    border-image: url('../images/texture/wood/wood01.jpg') 7% round;
     cursor: pointer;
 }
 
@@ -647,7 +647,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     border: 20px solid rgba(0, 0, 0, 0.1);
-    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
+    border-image: url('../images/texture/wood/wood01.jpg') 10% round;
     margin: 1%;
 }
 
@@ -684,8 +684,6 @@ body::-webkit-scrollbar-thumb {
     border: 10px solid rgb(172, 116, 53);
     background-color: rgb(211, 145, 69);
 }
-
-#artArtist {}
 
 .TitlesArts {
     justify-content: flex-start;
@@ -771,4 +769,57 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     background-color: rgb(211, 145, 69);
+}
+
+#tabela
+{
+	/*margin-top: 30px;*/
+	/*border-collapse: collapse;*/
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;    
+	font-weight: 700;
+	border-radius: 10px;
+	overflow: auto;
+}
+
+#tabela th
+{
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
+	background-color: #66bbff;
+	color: #fff;
+}
+
+#tabela td
+{
+	border: 1px solid #ddd;
+	padding: 10px;	
+	
+}
+
+.Botao1
+{
+	text-decoration: none;
+	background-color: #66bbff;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	font-size:1.2em;
+	font-weight: 700;
+	border-radius: 5px;
+	border: 0;
+	cursor: pointer;
+}
+
+.Botao2
+{
+	text-decoration: none;
+	background-color: #d51213;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	font-size:1.2em;
+	font-weight: 700;
+	border-radius: 5px;
 }
