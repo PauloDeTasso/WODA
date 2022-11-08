@@ -1,8 +1,9 @@
 
 package model;
 
-public class Artists
-{
+import java.io.Serializable;
+
+public class Artists implements Serializable {
 	private String idcon;
 
 	private String nome;
@@ -19,14 +20,12 @@ public class Artists
 
 	// CONTRUTORES:
 
-	public Artists()
-	{
+	public Artists() {
 		super();
 	}
 
 	public Artists(String idcon, String nome, String sexo, String email, String datadenascimento, String nacionalidade,
-			String cpf)
-	{
+			String cpf) {
 		super();
 		this.idcon = idcon;
 		this.nome = nome;
@@ -39,53 +38,43 @@ public class Artists
 
 	// GETS E SETS:
 
-	public String getIdcon()
-	{
+	public String getIdcon() {
 		return idcon;
 	}
 
-	public void setIdcon(String idcon)
-	{
+	public void setIdcon(String idcon) {
 		this.idcon = idcon;
 	}
 
-	public String getNome()
-	{
+	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome)
-	{
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public String getSexo()
-	{
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo)
-	{
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email)
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getDatadenascimento()
-	{
+	public String getDatadenascimento() {
 		return datadenascimento;
 	}
 
-	public void setDatadenascimento(String datadenascimento)
-	{
+	public void setDatadenascimento(String datadenascimento) {
 		this.datadenascimento = datadenascimento;
 		/*-
 		 DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -97,23 +86,19 @@ public class Artists
 		 */
 	}
 
-	public String getNacionalidade()
-	{
+	public String getNacionalidade() {
 		return nacionalidade;
 	}
 
-	public void setNacionalidade(String nacionalidade)
-	{
+	public void setNacionalidade(String nacionalidade) {
 		this.nacionalidade = nacionalidade;
 	}
 
-	public String getCpf()
-	{
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf)
-	{
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 }
