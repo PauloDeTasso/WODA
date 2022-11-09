@@ -9,7 +9,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="css/home.css"/>
+        <link rel="stylesheet" href="css/home.css" />
 
         <title>WODA</title>
 
@@ -106,86 +106,140 @@
 
             <section id="sectionSeacher">
 
-                <button class="Buttons" type="submit" value="Seacher" autofocus>
+                <section id="subSectionSeacher">
 
-                    <img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
+                    <button class="Buttons" type="submit" value="Seacher" autofocus>
 
-                </button>
+                        <img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
 
-                <form action="seacher">
+                    </button>
 
-                    <input type="text" name="seacherText" placeholder="Seacher">
+                    <form action="seacher">
 
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Authors" checked />
-                        Authors</label>
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+                        <input type="text" name="seacherText" placeholder="Seacher">
 
-                </form>
+                        <label>
+                            <input type="radio" name="seacherCheckbox" value="Authors" checked />
+                            Authors</label>
+                        <label>
+                            <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+
+                    </form>
+
+                </section>
 
             </section>
 
-            <section id="tableSeacher">
+            <section id="sectionTableSeacher">
+
+                <section id="tableSeacher">
+
+                    <section id="headerTable">
+
+                        <section class="HeaderTitles">
+                            ID
+                        </section>
+
+                        <section class="HeaderTitles">
+                            NAME
+                        </section>
+
+                        <section class="HeaderTitles">
+                            E-MAIL
+                        </section>
+
+                        <section class="HeaderTitles">
+                            GENDER
+                        </section>
+
+                        <section class="HeaderTitles">
+                            BIRTHDAY
+                        </section>
+
+                        <section class="HeaderTitles">
+                            NATIONALITY
+                        </section>
+
+                        <section class="HeaderTitles">
+                            CPF
+                        </section>
+
+                        <section class="HeaderTitles">
+                            ADMIN OPTIONS
+                        </section>
+
+                    </section>
+
+                    <%for (int i=0; i < lista.size(); i++) { %>
+
+                        <section id="bodyTable">
 
 
-                <table id="tabela">
+                            <section class="TableItens">
+                                <%=lista.get(i).getIdcon()%>
+                            </section>
 
-                    <thead>
+                            <section class="TableItens">
+                                <%=lista.get(i).getNome()%>
+                            </section>
 
-                        <tr>
+                            <section class="TableItens">
+                                <%=lista.get(i).getEmail()%>
+                            </section>
 
-                            <th>
-                                Id
-                            </th>
+                            <section class="TableItens">
+                                <%=lista.get(i).getSexo()%>
+                            </section>
 
-                            <th>
-                                Nome
-                            </th>
+                            <section class="TableItens">
+                                <%=lista.get(i).getDatadenascimento("br")%>
+                            </section>
 
-                            <th>
-                                Fone
-                            </th>
+                            <section class="TableItens">
+                                <%=lista.get(i).getNacionalidade()%>
+                            </section>
 
-                            <th>
-                                E-mail
-                            </th>
+                            <section class="TableItens">
+                                <%=lista.get(i).getCpf()%>
+                            </section>
 
-                            <th>
-                                Opções
-                            </th>
+                            <section class="TableItens">
 
-                        </tr>
+                                <section id="buttonsAdminOptions">
 
-                    </thead>
+                                    <button type="button" id="editButton" class="Buttons">
 
-                    <tbody>
+                                        <img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
+                                            alt=""
+                                            onclick="openPagina('select?idcon=<%=lista.get(i).getIdcon() %>','_self')">
 
-                        <%for (int i=0; i < lista.size(); i++) { %>
-                            <tr>
-                                <td>
-                                    <%=lista.get(i).getIdcon()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getNome()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getFone()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getEmail()%>
-                                </td>
-                                <td>
-                                    <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
-                                    <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
+                                    </button>
+
+                                    <button type="button" id="editButton" class="Buttons">
+
+                                        <img class="ImagesButtons" id="imageEditButton"
+                                            src="images/icons/deletar01Vazio.png" alt=""
+                                            onclick="openPagina('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
+
+                                    </button>
+
+                                    <!-- 
+                                
+                                  <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
+                                  
+                                  <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
                                         class="Botao2">Excluir</a>
-                                </td>
-                            </tr>
+                              	 -->
+
+                                </section>
+
+                            </section>
+
                             <%} %>
 
-                    </tbody>
+                        </section>
 
-                </table>
+                </section>
 
             </section>
 
