@@ -62,21 +62,21 @@
 
     <body>
 
-        <form id="formRegisterArt" name="formregisterart" enctype="multipart/form-data" action="uploadimage"
+        <form id="formRegisterArt" name="formregisterart" enctype="multipart/form-data" action="artregister"
             method="post" onreset="clear()">
 
             <fieldset>
 
                 <legend>
-                    REGISTER ARTISTS:
+                    REGISTER ART:
                 </legend>
 
                 <table>
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
-                                onchange="verificarNome(this.value)">
+                            <input type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
+                                onchange="verificarNome(this.value)" required>
 
                         </td>
                         <td>
@@ -87,77 +87,69 @@
                     <tr>
                         <td>
 
-                            <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="60" size='65' placeholder="E-mail">
+                            <input type="text" id="description" name="description"
+                                onchange="descriptionValidate(this.value)" maxlength="240" placeholder="ART DESCRIPTION"
+                                required>
 
                         </td>
                         <td>
-                            <div id="msgEmail" class="AlertMsgs"></div>
+                            <div id="msgDescription" class="AlertMsgs"></div>
                         </td>
                     </tr>
 
                     <tr>
+
                         <td>
 
-                            <select name="gender" onchange="verificarGenero(this.value)" required>
-
-                                <option value="gender" selected>...Gender...</option>
-
-                                <option value="MALE">
-                                    MALE
-                                </option>
-
-                                <option value="FEMALE">
-                                    FEMALE
-                                </option>
-
-                                <option value="OTHER">
-                                    OTHER
-                                </option>
-
-                            </select>
+                            <input type="text" name="publicationdate" id="publicationDate"
+                                placeholder="...PUBLICATION DATE..." onfocus="(this.type='date')"
+                                onchange="validateDate('publicationDate',msgPublicationDate)" required>
 
                         </td>
                         <td>
-                            <div id="msgGender" class="AlertMsgs"></div>
+                            <div id="msgPublicationDate" class="AlertMsgs"></div>
                         </td>
                     </tr>
 
                     <tr>
+
                         <td>
 
-                            <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validadata()">
+                            <input type="text" name="exposuredate" id="exposureDate" placeholder="...EXPOSURE DATE..."
+                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)"
+                                required>
 
                         </td>
+
                         <td>
-                            <div id="msgBirthday" class="AlertMsgs"></div>
+                            <div id="msgExposureDate" class="AlertMsgs"></div>
                         </td>
+
                     </tr>
 
                     <tr>
+
                         <td>
 
-                            <input name="image" type="file" accept="image/png, image/jpeg" onchange="imageValidate()" />
+                            <br>
+                            <input id="filesInputArts" name="images[]" type="file" accept="image/*"
+                                onchange="imageValidate(this.value,filesInputArts)" multiple required />
+                            <br>
+
+                            <output id="list">
+
+                                Files:
+
+                            </output>
 
                         </td>
 
                         <td>
-                            <div id="msgImage" class="AlertMsgs"></div>
-                        </td>
-                    </tr>
+                            <div id="msgImageArt" class="AlertMsgs">
 
-                    <tr>
-                        <td>
-
-                            <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
-                                placeholder="CPF">
-
+                            </div>
                         </td>
 
-                        <td>
-                            <div id="msgCpf" class="AlertMsgs"></div>
-                        </td>
                     </tr>
 
                 </table>
@@ -174,7 +166,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar()">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formregisterart')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 

@@ -1,19 +1,37 @@
-
-
-var msgName = document.getElementById("msgName");
-var msgEmail = document.getElementById("msgEmail");
-var msgGender = document.getElementById("msgGender");
-var msgBirthday = document.getElementById("msgBirthday");
-var msgNationality = document.getElementById("msgNationality");
-var msgImage = document.getElementById("msgImage");
-var msgCpf = document.getElementById("msgCpf");
-var msgStatus = document.getElementById("msgStatus");
-
-var formRegister = document.getElementById("formRegister");
+var formRegisterArtist = document.getElementById("formRegisterArtist");
 var formRegisterArt = document.getElementById("formRegisterArt");
 
-var cpf = document.getElementById("cpf");
-var nationality = document.getElementById("nationality");
+
+
+if (formRegisterArtist)
+{
+    var msgName = document.getElementById("msgName");
+    var msgEmail = document.getElementById("msgEmail");
+    var msgGender = document.getElementById("msgGender");
+    var msgBirthday = document.getElementById("msgBirthday");
+    var msgNationality = document.getElementById("msgNationality");
+    var nationality = document.getElementById("nationality");
+    var cpf = document.getElementById("cpf");
+    var msgCpf = document.getElementById("msgCpf");
+    var msgStatus = document.getElementById("msgStatus");
+    var fileInputArtist = document.getElementById("fileInputArtist");
+    var listArtist = document.getElementById("list");
+    var cpfOriginal;
+}
+
+if (formRegisterArt)
+{
+    var msgName = document.getElementById("msgName");
+    var msgDescription = document.getElementById("msgDescription");
+    var msgPublicationDate = document.getElementById("msgPublicationDate");
+    var msgExposureDate = document.getElementById("msgExposureDate");
+    var msgImage = document.getElementById("msgImage");
+    var msgStatus = document.getElementById("msgStatus");
+    var filesInputArts = document.getElementById("filesInputArts");
+    var listArt = document.getElementById("list");
+}
+
+//
 
 function validacaoEmail(campo)
 {
@@ -40,32 +58,47 @@ function validacaoEmail(campo)
 
 ////
 
-function validadata()
+function validateDate(campo, msgAlert)
 {
-    var data = document.getElementById("birthday").value; // pega o valor do input
-    data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
-    var data_array = data.split("-"); // quebra a data em array
+    var data = document.getElementById(campo).value;
 
-    // para o IE onde será inserido no formato dd/MM/yyyy
+    data = data.replace(/\//g, "-");
+
+    var data_array = data.split("-");
+
     if (data_array[ 0 ].length != 4)
     {
-        data = data_array[ 2 ] + "-" + data_array[ 1 ] + "-" + data_array[ 0 ]; // remonto a data no formato yyyy/MM/dd
+        data = data_array[ 2 ] + "-" + data_array[ 1 ] + "-" + data_array[ 0 ];
     }
 
-    // comparo as datas e calculo a idade
     var hoje = new Date();
+
     var nasc = new Date(data);
+
     var idade = hoje.getFullYear() - nasc.getFullYear();
+
     var m = hoje.getMonth() - nasc.getMonth();
+
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
-
-    if (idade < 18)
+    if (idade < 0)
     {
-        msgBirthday.innerHTML = "Only for over 18s!";
+        msgAlert.innerHTML = "Invalid date!";
     } else
     {
-        msgBirthday.innerHTML = "<font color= 'green'>Ok</font>";
+        msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
+    }
+
+    if (campo == "publicationDate")
+    {
+        exposureDate.style.visibility = "hidden";
+
+    } else if (campo == "exposureDate")
+    {
+        publicationDate.style.visibility = "hidden";
+    } else
+    {
+        //
     }
 }
 
@@ -93,14 +126,7 @@ function TestaCPF(strCPF)
     return true;
 }
 
-var strCPF = "12345678909";
-
-//alert(TestaCPF(strCPF));
-
 //
-var cpf = document.getElementById("cpf");
-var msgCpf = document.getElementById("msgCpf")
-var cpfOriginal;
 
 function formatarCpf()
 {
@@ -136,6 +162,8 @@ function verificarNacionalidade(valor)
     }
 }
 
+//
+
 function verificarGenero(valor)
 {
     if (valor == "gender" || valor == null)
@@ -147,6 +175,8 @@ function verificarGenero(valor)
     }
 }
 
+//
+
 function verificarNome(valor)
 {
     if (valor == "" || valor == null)
@@ -157,24 +187,73 @@ function verificarNome(valor)
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
     }
 }
-function imageValidate()
+function imageValidate(value, input)
 {
-    msgImage.innerHTML = "<font color= 'green'>Ok</font>";
-}
-setTimeout(() =>
-{
-    if (nationality.value === "Brasil")
+    if (value == null || value == "" || value == undefined)
     {
-        cpf.style.visibility = "visible";
+
+        if (input == fileInputArtist)
+        {
+            msgImageArtist.innerHTML = "Insert the art file!";
+
+        } else if (input == filesInputArts)
+        {
+            msgImageArt.innerHTML = "Insert the art file!";
+        } else
+        {
+            //
+        }
+
     } else 
     {
-        cpf.style.visibility = "hidden";
+        var file;
+
+        if (input == fileInputArtist)
+        {
+
+            file = input.files[ 0 ];
+            list.innerHTML += " <br><br>* " + file.name + "<br>";
+
+            msgImageArtist.innerHTML = "<font color= 'green'>Ok</font>";
+
+        } else if (input == filesInputArts)
+        {
+            for (var i = 0; i < input.files.length; i++)
+            {
+                file = input.files[ i ];
+
+                list.innerHTML += " <br><br>* " + file.name + "<br>";
+            }
+
+            msgImageArt.innerHTML = "<font color= 'green'>Ok</font>";
+
+        } else
+        {
+            msgStatus.innerHTML = "Erro";
+
+        }
+        list.style.backgroundColor = "rgba(255, 159, 70, 0.7)";
+        list.style.color = "rgb(0, 55, 173)";
+
     }
-}, 2000);
+}
+
+function descriptionValidate(value)
+{
+    if (value != null || value != "" || value != undefined)
+    {
+        msgDescription.innerHTML = "<font color= 'green'>Ok</font>";
+    } else 
+    {
+        msgDescription.innerHTML = "Enter a description!";
+    }
+}
+
+//
 
 function clear()
 {
-    if (formRegister)
+    if (formRegisterArtist)
     {
         msgName.innerHTML = "";
         msgEmail.innerHTML = "";
@@ -189,16 +268,27 @@ function clear()
     if (formRegisterArt)
     {
         msgName.innerHTML = "";
+        msgDescription.innerHTML = "";
+        msgPublicationDate.innerHTML = "";
+        msgExposureDate.innerHTML = "";
         msgImage.innerHTML = "";
         msgStatus.innerHTML = "";
+        exposureDate.style.visibility = "visible";
+        publicationDate.style.visibility = "visible";
+
+        //
+
+        list.innerHTML = "";
+        list.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        list.style.backgroundColor = "rgb(255, 192, 120)";
     }
 }
 
 //
 
-if (formRegister)
+if (formRegisterArtist)
 {
-    formRegister.onreset = function ()
+    formRegisterArtist.onreset = function ()
     {
         clear()
     };
@@ -212,20 +302,20 @@ if (formRegisterArt)
     };
 }
 
-function validar()
+function validar(form)
 {
     /*
-    var nome = formRegister.name.value;
+    var nome = form.name.value;
 	
-    var email = formRegister.email.value;
+    var email = form.email.value;
 	
-    var genero = formRegister.gender.value;
+    var genero = form.gender.value;
     	
-    var dataDeNascimento = formRegister.birthday.value;
+    var dataDeNascimento = form.birthday.value;
     	
-    var nacionalidade = formRegister.nationality.value;
+    var nacionalidade = form.nationality.value;
     	
-    var cpf = formRegister.cpf.value;
+    var cpf = form.cpf.value;
 	
     if(nome === "")
     {
@@ -275,12 +365,94 @@ function validar()
     }	
     */
 
-    //document.forms["formRegister"].submit();
+    //document.forms["form"].submit();
 
-    //alert(document.forms["formRegister"].submit())
-
-    cpf.value = cpfOriginal;
-
-    document.forms[ "formRegister" ].submit();
+    //alert(document.forms["form"].submit())
+    if (formRegisterArtist)
+    {
+        cpf.value = cpfOriginal;
+    }
+    document.forms[ form ].submit();
 }
 
+////
+/*
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+*/
+
+function handleFileSelect(evt)
+{
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+
+    var output = [];
+
+    for (var i = 0, f; f = files[ i ]; i++)
+    {
+
+        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ',
+
+            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+            '</li>');
+    }
+
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+}
+
+
+
+/*
+
+var fileSelector = document.getElementById('file-selector');
+
+fileSelector.onchange = function ()
+{
+    var fileList = event.target.files;
+
+    output.innerHTML = fileList;
+};
+
+fileSelector.addEventListener('change', (event) =>
+{
+    var fileList = event.target.files;
+
+    output.innerHTML = fileList;
+});
+
+*/
+
+/*
+// fileInput é um elemento HTML input: <input type="file" id="myfileinput" multiple>
+var fileInput = document.getElementById("myfileinput");
+
+// files é um objeto FileList (similar ao NodeList)
+var files = fileInput.files;
+var file;
+
+// percorre os arquivos
+for (var i = 0; i < files.length; i++) {
+
+    // obtém o item
+    file = files.item(i);
+    // ou
+    file = files[i];
+
+    alert(file.name);
+}
+*/
+
+//
+
+setTimeout(() =>
+{
+    if (nationality.value === "Brasil")
+    {
+        cpf.style.visibility = "visible";
+    } else 
+    {
+        cpf.style.visibility = "hidden";
+    }
+}, 2000);

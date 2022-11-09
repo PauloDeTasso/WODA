@@ -62,7 +62,7 @@
 
     <body>
 
-        <form id="formRegister" name="formRegister" action="insert" method="get" onreset="clear()">
+        <form id="formRegisterArtist" name="formregisterartist" action="insert" method="get" onreset="clear()">
 
             <fieldset>
 
@@ -75,7 +75,7 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
-                                onchange="verificarNome(this.value)">
+                                onchange="verificarNome(this.value)" required>
 
                         </td>
                         <td>
@@ -98,7 +98,7 @@
                     <tr>
                         <td>
 
-                            <select name="gender" onchange="verificarGenero(this.value)" required>
+                            <select name="gender" onchange="verificarGenero(this.value)">
 
                                 <option value="gender" selected>...Gender...</option>
 
@@ -126,7 +126,7 @@
                         <td>
 
                             <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validadata()">
+                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required>
 
                         </td>
                         <td>
@@ -327,13 +327,39 @@
                         <td>
 
                             <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
-                                placeholder="CPF">
+                                placeholder="CPF" required>
 
                         </td>
 
                         <td>
                             <div id="msgCpf" class="AlertMsgs"></div>
                         </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <br>
+                            <input id="fileInputArtist" name="image" type="file" accept="image/*"
+                                onchange="imageValidate(this.value, fileInputArtist)" />
+                            <br>
+
+                            <output id="list">
+
+                                File:
+
+                            </output>
+
+                        </td>
+
+                        <td>
+
+                            <div id="msgImageArtist" class="AlertMsgs">
+
+                            </div>
+                        </td>
+
                     </tr>
 
                 </table>
@@ -352,7 +378,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar()">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArtist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
