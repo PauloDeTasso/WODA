@@ -1,12 +1,16 @@
+
+
 var msgName = document.getElementById("msgName");
 var msgEmail = document.getElementById("msgEmail");
 var msgGender = document.getElementById("msgGender");
 var msgBirthday = document.getElementById("msgBirthday");
 var msgNationality = document.getElementById("msgNationality");
+var msgImage = document.getElementById("msgImage");
 var msgCpf = document.getElementById("msgCpf");
 var msgStatus = document.getElementById("msgStatus");
 
 var formRegister = document.getElementById("formRegister");
+var formRegisterArt = document.getElementById("formRegisterArt");
 
 var cpf = document.getElementById("cpf");
 var nationality = document.getElementById("nationality");
@@ -94,7 +98,7 @@ var strCPF = "12345678909";
 //alert(TestaCPF(strCPF));
 
 //
-var cpf = document.querySelector("#cpf");
+var cpf = document.getElementById("cpf");
 var msgCpf = document.getElementById("msgCpf")
 var cpfOriginal;
 
@@ -124,8 +128,8 @@ function verificarNacionalidade(valor)
 
     if (valor == "Brasil")
     {
-        cpf.style.visibility = "visible";        
-        
+        cpf.style.visibility = "visible";
+
     } else 
     {
         cpf.style.visibility = "hidden";
@@ -153,11 +157,14 @@ function verificarNome(valor)
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
     }
 }
-
+function imageValidate()
+{
+    msgImage.innerHTML = "<font color= 'green'>Ok</font>";
+}
 setTimeout(() =>
 {
     if (nationality.value === "Brasil")
-    {	
+    {
         cpf.style.visibility = "visible";
     } else 
     {
@@ -165,91 +172,115 @@ setTimeout(() =>
     }
 }, 2000);
 
-
 function clear()
 {
-    msgName.innerHTML = "";
-    msgEmail.innerHTML = "";
-    msgGender.innerHTML = "";
-    msgBirthday.innerHTML = "";
-    msgNationality.innerHTML = "";
-    msgCpf.innerHTML = "";
-    msgStatus.innerHTML = "";
+    if (formRegister)
+    {
+        msgName.innerHTML = "";
+        msgEmail.innerHTML = "";
+        msgGender.innerHTML = "";
+        msgBirthday.innerHTML = "";
+        msgNationality.innerHTML = "";
+        msgImage.innerHTML = "";
+        msgCpf.innerHTML = "";
+        msgStatus.innerHTML = "";
+    }
+
+    if (formRegisterArt)
+    {
+        msgName.innerHTML = "";
+        msgImage.innerHTML = "";
+        msgStatus.innerHTML = "";
+    }
 }
 
 //
 
-formRegister.onreset = function ()
+if (formRegister)
 {
-    clear()
-};
-
- function validar()
- {
-	/*
-	var nome = formRegister.name.value;
-	
-	var email = formRegister.email.value;
-	
-	var genero = formRegister.gender.value;
-		
-	var dataDeNascimento = formRegister.birthday.value;
-		
-	var nacionalidade = formRegister.nationality.value;
-		
-	var cpf = formRegister.cpf.value;
-	
-	if(nome === "")
-	{
-		alert("Preencha o campo Nome");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else if (email === "")
-	{
-		alert("Preencha o campo E-mail");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else if (genero === "")
-	{
-		alert("Preencha o campo Gênero");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else if (dataDeNascimento === "")
-	{
-		alert("Preencha o campo Data de Nascimento");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else if (nacionalidade === "")
-	{
-		alert("Preencha o campo Nacionalidade");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else if (cpf === "")
-	{
-		alert("Preencha o campo CPF");
-		
-		frmContato.nome.focus();
-		return false;
-		
-	}else
-	{
-		document.forms["formArtistRegister"].submit();
-	}	
-	*/	
-		
-	//document.forms["formRegister"].submit();
-		
-	//alert(document.forms["formRegister"].submit())
-	
-	document.forms["formRegister"].submit();
+    formRegister.onreset = function ()
+    {
+        clear()
+    };
 }
+
+if (formRegisterArt)
+{
+    formRegisterArt.onreset = function ()
+    {
+        clear()
+    };
+}
+
+function validar()
+{
+    /*
+    var nome = formRegister.name.value;
+	
+    var email = formRegister.email.value;
+	
+    var genero = formRegister.gender.value;
+    	
+    var dataDeNascimento = formRegister.birthday.value;
+    	
+    var nacionalidade = formRegister.nationality.value;
+    	
+    var cpf = formRegister.cpf.value;
+	
+    if(nome === "")
+    {
+        alert("Preencha o campo Nome");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else if (email === "")
+    {
+        alert("Preencha o campo E-mail");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else if (genero === "")
+    {
+        alert("Preencha o campo Gênero");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else if (dataDeNascimento === "")
+    {
+        alert("Preencha o campo Data de Nascimento");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else if (nacionalidade === "")
+    {
+        alert("Preencha o campo Nacionalidade");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else if (cpf === "")
+    {
+        alert("Preencha o campo CPF");
+    	
+        frmContato.nome.focus();
+        return false;
+    	
+    }else
+    {
+        document.forms["formArtistRegister"].submit();
+    }	
+    */
+
+    //document.forms["formRegister"].submit();
+
+    //alert(document.forms["formRegister"].submit())
+
+    cpf.value = cpfOriginal;
+
+    document.forms[ "formRegister" ].submit();
+}
+

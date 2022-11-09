@@ -181,7 +181,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 94%;
     height: auto;
 }
 
@@ -196,17 +196,18 @@ body {
     border-radius: 100px;
 }
 
-#tableSeacher {
-    display: flex;
-    flex-direction: column;
+#subSectionSeacher
+{
+	display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 87%;
-    height: 100%;
-    border: 10px solid rgb(252, 178, 100);
-    border-radius: 10px;
-    margin: 2%;
+    width: 100%;
+    height: auto;
+    border-top: 10px solid rgba(252, 178, 100,0);
+    padding: 1%
 }
+
 
 #sectionGallery {
     display: grid;
@@ -771,110 +772,80 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(211, 145, 69);
 }
 
-#tabela {
-    /*margin-top: 30px;*/
-    /*border-collapse: collapse;*/
+#tabela
+{
+	/*margin-top: 30px;*/
+	/*border-collapse: collapse;*/
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
-    font-weight: 700;
-    border-radius: 10px;
-    overflow: auto;
+    height: 100%;    
+	font-weight: 700;
+	border-radius: 10px;
+	padding: 4px 4px 4px 4px;	
+	text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
 }
 
-#tabela th {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-    background-color: #66bbff;
-    color: #fff;
-}
-
-#tabela td {
-    border: 1px solid #ddd;
-    padding: 10px;
-
-}
-
-.Botao1 {
-    text-decoration: none;
-    background-color: #66bbff;
-    padding: 5px 10px 5px 10px;
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: 700;
-    border-radius: 5px;
-    border: 0;
-    cursor: pointer;
-}
-
-.Botao2 {
-    text-decoration: none;
-    background-color: #d51213;
-    padding: 5px 10px 5px 10px;
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-#sectionTableSeacher {
-    display: flex;
-    flex-direction: column;
+#tabela th
+{
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgba(255, 0, 0, 1);
+  	width: auto;
+    height: 100%;    
+	border: 1px solid rgb(252, 178, 100);
+	text-align: center;
+	background-color: #66bbff;
+	color: #fff;
+	padding: 4px 4px 4px 4px;
 }
 
-#tableSeacher {
-    display: flex;
-    flex-direction: column;
+#tabela td
+{
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgb(255, 230, 0);
+   	width: auto;
+    height: 100%; ;    
+	border: 1px solid rgb(252, 178, 100);
+	padding: 4px 4px 4px 4px;
+	background-color:rgb(211, 145, 69);
 }
 
-#headerTable {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgb(170, 54, 0);
-}
-
-.HeaderTitles {
-    display: flex;
+#buttonsAdminOptions
+{
+	display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
-    border: 10px solid rgb(170, 54, 0);
+    height: 100%;
+    background-color: rgb(252, 178, 100);
 }
 
-#bodyTable {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgb(54, 231, 0);
+.Botao1
+{
+	width: 70px;
+    height: auto; 
+	text-decoration: none;
+	background-color: #66bbff;
+	padding: 4px 4px 4px 4px;
+	color: #fff;
+	font-size:100%;
+	font-weight: 700;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
-.TableItens {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 10px solid rgb(54, 231, 0);
+.Botao2
+{	
+	width: 70px;
+    height: auto; 
+	text-decoration: none;
+	background-color: #d51213;
+	padding: 4px 4px 4px 4px;
+	color: #fff;
+	font-size:100%;
+	font-weight: 700;
+	border-radius: 5px;
+	cursor: pointer;
 }
+

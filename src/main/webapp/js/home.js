@@ -195,7 +195,7 @@ function zoom(image, zoom)
 
  function confirmar(idcon)
  {
-	var resposta = confirm("Confirma a exclusão desse contato?");
+	var resposta = confirm("Delete this artist?");
 	
 	if(resposta === true)
 	{

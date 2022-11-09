@@ -62,7 +62,7 @@
 
     <body>
 
-        <form id="formRegister" name="formRegister" action="insert" method="get">
+        <form id="formRegister" name="formRegister" action="insert" method="get" onreset="clear()">
 
             <fieldset>
 
@@ -125,8 +125,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="birthday" id="birthday" placeholder="...Birthday..." onfocus="(this.type='date')"
-                                onchange="validadata()">
+                            <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
+                                onfocus="(this.type='date')" onchange="validadata()">
 
                         </td>
                         <td>
@@ -337,7 +337,7 @@
                     </tr>
 
                 </table>
-                             
+
 
                 <section class="SectionButtons">
 
@@ -352,19 +352,17 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton"
-                        class="Buttons" onclick="validar()">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar()">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
                     </button>
- 					
+
                 </section>
-               
+
             </fieldset>
-			
+
         </form>
-    
 
         <section id="info">
 
@@ -387,7 +385,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
     </div>
--->
+    -->
 
     <footer>
 

@@ -8,7 +8,9 @@
         
   <%
   
+  
   ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");
+  
   
     /*
     REMOVE A CHECAGEM DESNECESSARIA DO ARRAYLIST DO CODIGO NO ECLIPSE:
@@ -136,28 +138,31 @@
 
             <section id="sectionSeacher">
 
-                <button class="Buttons" type="submit" value="Seacher" autofocus>
+				<section id="subSectionSeacher">
 
-                    <img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
+                	<button class="Buttons" type="submit" value="Seacher" autofocus>
 
-                </button>
+                    	<img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
 
-                <form action="seacher">
+                	</button>
 
-                    <input type="text" name="seacherText" placeholder="Seacher">
+                	<form action="seacher">
 
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Authors" checked />
-                        Authors</label>
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+                    	<input type="text" name="seacherText" placeholder="Seacher">
 
-                </form>
+                    	<label>
+                        	<input type="radio" name="seacherCheckbox" value="Authors" checked />
+                        	Authors</label>
+                    	<label>
+                    	    <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+
+                	</form>
+
+				</section>
 
             </section>
 
-            <section id="tableSeacher">
-
+            <section id="sectionTableSeacher">
 
                 <table id="tabela">
 
@@ -166,27 +171,27 @@
                         <tr>
 
                             <th>
-                                Id
+                                ID
                             </th>
 
                             <th>
-                                Nome
+                                NAME
                             </th>
 
                             <th>
-                                E-mail
+                                E-MAIL
                             </th>
 
                             <th>
-                               Sexo
+                               GENDER
                             </th>
 
                             <th>
-                                Data de Nascimento
+                                BIRTHDAY
                             </th>
                             
                               <th>
-                                Nacionalidade
+                                NATIONALITY
                             </th>
                             
                               <th>
@@ -194,7 +199,7 @@
                             </th>      
                             
                               <th>
-                                OPÇÕES
+                               ADMIN OPTIONS
                             </th>                         
 
                         </tr>
@@ -218,7 +223,7 @@
                                     <%=lista.get(i).getSexo()%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getDatadenascimento()%>
+                                    <%=lista.get(i).getDatadenascimento("br")%>
                                 </td>
                                 <td>
                                     <%=lista.get(i).getNacionalidade()%>
@@ -227,9 +232,33 @@
                                     <%=lista.get(i).getCpf()%>
                                 </td>
                                 <td>
-                                    <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
-                                    <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
+                                
+                                <section id="buttonsAdminOptions"> 
+                                   
+                                	<button type="button" id="editButton" class="Buttons">
+
+                                    	<img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
+                                        alt="" onclick="openPagina('select?idcon=<%=lista.get(i).getIdcon() %>','_self')">
+
+                                	</button>
+                                	
+                                	<button type="button" id="editButton" class="Buttons">
+
+                                    	<img class="ImagesButtons" id="imageEditButton"
+                                        src="images/icons/deletar01Vazio.png" alt="" onclick="openPagina('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
+
+                                	</button>
+                                  
+                                  <!-- 
+                                
+                                  <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
+                                  
+                                  <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
                                         class="Botao2">Excluir</a>
+                              	 -->                                     
+                                    
+                              	</section>
+                              	
                                 </td>
                             </tr>
                             <%} %>
