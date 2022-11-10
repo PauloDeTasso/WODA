@@ -26,7 +26,7 @@ var sectionImageArtist = document.getElementById('sectionImageArtist');
 
 /////////
 
-function openPagina(link, target)
+function openPage(link, target)
 {
     window.open(link, target);
 };

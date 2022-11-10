@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
 
@@ -62,12 +65,16 @@
 
     <body>
 
+
+<% //O SERVLET TRATA AS REQUISIÇÕES RECEBIDAS POR MEIO DE 'NOMES', 'EVENTOS', 'AÇÕES' OU 'LINKS' 
+%>
+
         <form id="formRegisterArtist" name="formregisterartist" action="update" method="get" onreset="clear()">
 
             <fieldset>
 
                 <legend>
-                    REGISTER ARTISTS:
+                    EDIT ARTIST:
                 </legend>
 
                 <table>
@@ -75,7 +82,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="idArtist" size='10' placeholder="ID" readonly>
+                            <input type="text" name="idartist" size='10' placeholder="ID" readonly value="<%out.print(request.getAttribute("idcon"));%>">
 
                         </td>
                         <td>
@@ -87,7 +94,7 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
-                                onchange="verificarNome(this.value)" required>
+                                onchange="verificarNome(this.value)" required value="<%out.print(request.getAttribute("name"));%>">
 
                         </td>
                         <td>
@@ -99,7 +106,7 @@
                         <td>
 
                             <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="60" size='65' placeholder="E-mail">
+                                maxlength="60" size='65' placeholder="E-mail" value="<%out.print(request.getAttribute("email"));%>">
 
                         </td>
                         <td>
@@ -126,6 +133,11 @@
                                     OTHER
                                 </option>
 
+								<option value="<%out.print(request.getAttribute("gender"));%>" selected>
+								<%out.print(request.getAttribute("gender"));%>
+								</option>
+                            
+
                             </select>
 
                         </td>
@@ -138,7 +150,7 @@
                         <td>
 
                             <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required>
+                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required value="<%out.print(request.getAttribute("birthday"));%>">
 
                         </td>
                         <td>
@@ -150,7 +162,7 @@
                         <td>
 
                             <select id="nationality" name="nationality" onchange="verificarNacionalidade(this.value)"
-                                required>
+                                required >
 
                                 <option value="nationality" selected>...Nationality...</option>
                                 <option value="África do Sul">África do Sul</option>
@@ -325,8 +337,10 @@
                                 <option value="Vietnã">Vietnã</option>
                                 <option value="Zaire">Zaire</option>
                                 <option value="Zâmbia">Zâmbia</option>
-                                <option value="Zimbábue">Zimbábue</option>
-
+                                <option value="Zimbábue">Zimbábue</option>                                
+								<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
+								<%out.print(request.getAttribute("nationality"));%>
+								</option>
                             </select>
 
                         </td>
@@ -339,7 +353,7 @@
                         <td>
 
                             <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
-                                placeholder="CPF" required>
+                                placeholder="CPF" required value="<%out.print(request.getAttribute("cpf"));%>">
 
                         </td>
 
@@ -390,7 +404,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArtist')">
+                    <button type="submit" class="Buttons" onclick="validar('formRegisterArtist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 

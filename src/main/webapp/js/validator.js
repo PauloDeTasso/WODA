@@ -448,7 +448,7 @@ for (var i = 0; i < files.length; i++) {
 
 setTimeout(() =>
 {
-    if (nationality.value === "Brasil")
+    if (nationality.value == "Brasil")
     {
         cpf.style.visibility = "visible";
     } else 

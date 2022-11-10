@@ -1,3 +1,4 @@
+
 var botaoLogin = document.getElementById('body');
 
 var html = document.getElementsByTagName('html');
@@ -66,7 +67,7 @@ if (localStorage.getItem("statusSaveConfig") == "true")
 
 //
 
-function openPagina(link, target)
+function openPage(link, target)
 {
     window.open(link, target);
 };
@@ -168,8 +169,6 @@ function zoom(image, zoom)
     var estiloCabecalho = window.getComputedStyle(image);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(width);
 
-    alert(propriedadeCabecalho)
-
     if (zoom == "in")
     {
         for (let i = 0; i < image.length; i++)
@@ -207,3 +206,5 @@ function zoom(image, zoom)
 		window.location.href = "delete?idcon=" + idcon;
 	}
 }
+
+

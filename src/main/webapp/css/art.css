@@ -257,7 +257,7 @@ body {
     height: auto;
     border: 10px solid rgb(209, 209, 209);
     margin: 1%;
-    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
+    border-image: url(../images/texture/wood/wood01.jpg) 10% round;
     cursor: pointer;
 }
 
@@ -270,7 +270,7 @@ body {
     height: auto;
     border: 20px solid rgba(0, 0, 0, 0.1);
     margin: 1%;
-    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
+    border-image: url(../images/texture/wood/wood01.jpg) 10% round;
     cursor: pointer;
 }
 
@@ -638,7 +638,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     border: 20px solid rgba(0, 0, 0, 0.1);
-    border-image: url(/images/texture/wood/wood01.jpg) 10% round;
+    border-image: url(../images/texture/wood/wood01.jpg) 10% round;
     margin: 1%;
 }
 

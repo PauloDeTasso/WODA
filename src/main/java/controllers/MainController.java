@@ -15,7 +15,7 @@ import model.Artists;
 import model.ConnectionDB;
 
 @WebServlet(urlPatterns =
-{ "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report", "/regartist"
+{ "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report", "/regartist", "/artregister"
 })
 
 public class MainController extends HttpServlet
@@ -65,6 +65,10 @@ public class MainController extends HttpServlet
 		} else if (action.equals("/report"))
 		{
 			// gerarRelatorio(request, response);
+
+		} else if (action.equals("/artregister"))
+		{
+			response.sendRedirect("artregister.html");
 
 		} else
 		{
@@ -121,13 +125,17 @@ public class MainController extends HttpServlet
 	protected void adicionarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		/*
-		 * //Teste de recebimento dos dados do formulario.
-		 * 
-		 * System.out.println(request.getParameter("nome"));
-		 * System.out.println(request.getParameter("fone"));
-		 * System.out.println(request.getParameter("email"));
-		 */
+
+		// Teste de recebimento dos dados do formulario.
+
+		/*-
+		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("gender"));
+		System.out.println(request.getParameter("birthday"));
+		System.out.println(request.getParameter("nationality"));
+		System.out.println(request.getParameter("cpf"));
+		*/
 
 		// Setar as variaveis JavaBeans:
 		contato.setNome(request.getParameter("name"));
@@ -146,82 +154,116 @@ public class MainController extends HttpServlet
 
 	}
 
-	// Editar Contato:
+	// Editar Contato /select:
 
 	protected void listarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		/*-
-		//RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
-		
+
+		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
+
 		String idcon = request.getParameter("idcon");
-		
-		//SETAR A VARIAVEL JAVABEANS:
-		
-		contato.setIdcon(idcon);
-		
-		// EXECUTA O METODO selecionarContato()
-		
-		dao.selecionarContato(contato);
-		
-		/*
-		 * //TESTE DE RECEBIMENTO:
-		 * 
-		 * System.out.println(contato.getIdcon());
-		 * System.out.println(contato.getNome());
-		 * System.out.println(contato.getFone());
-		 * System.out.println(contato.getEmail());
-		 */
+
 		/*-
-				//SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
-				//DA PAGINA EDITAR.JSP:
-		
-				request.setAttribute("idcon", contato.getIdcon());
-				request.setAttribute("nome", contato.getNome());
-				request.setAttribute("fone", contato.getFone());
-				request.setAttribute("email", contato.getEmail());
-		
-				//ENCAMINHAR A REQUISIÇÃO PARA A PAGINA EDITAR.JSP:
-		
-				RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
-		
-				rd.forward(request, response);
-		
-				//
-		
-				//response.sendRedirect("editar.jsp");
-				*/
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String gender = request.getParameter("gender");
+		String birthday = request.getParameter("birthday");
+		String nationality = request.getParameter("nationality");
+		String cpf = request.getParameter("cpf");
+		*/
+
+		// SETAR A VARIAVEL JAVABEANS:
+
+		contato.setIdcon(idcon);
+		/*-
+		contato.setNome(name);
+		contato.setEmail(email);
+		contato.setSexo(gender);
+		contato.setDatadenascimento(birthday);
+		contato.setNacionalidade(nationality);
+		contato.setCpf(cpf);
+		*/
+		// EXECUTA O METODO selecionarContato()
+
+		dao.selecionarContato(contato);
+
+		// TESTE DE RECEBIMENTO:
+
+		System.out.println(contato.getIdcon());
+		System.out.println(contato.getNome());
+		System.out.println(contato.getEmail());
+		System.out.println(contato.getSexo());
+		System.out.println(contato.getDatadenascimento());
+		System.out.println(contato.getNacionalidade());
+		System.out.println(contato.getCpf());
+
+		/*-
+		contato.setIdcon(request.getParameter("idcon"));
+		contato.setNome(request.getParameter("name"));
+		contato.setEmail(request.getParameter("email"));
+		contato.setSexo(request.getParameter("gender"));
+		contato.setDatadenascimento(request.getParameter("birthday"));
+		contato.setNacionalidade(request.getParameter("nationality"));
+		contato.setCpf(request.getParameter("cpf"));
+		*/
+
+		// SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
+		// DA PAGINA EDITAR.JSP:
+
+		request.setAttribute("idcon", contato.getIdcon());
+		request.setAttribute("name", contato.getNome());
+		request.setAttribute("email", contato.getEmail());
+		request.setAttribute("gender", contato.getSexo());
+		request.setAttribute("birthday", contato.getDatadenascimento());
+		request.setAttribute("nationality", contato.getNacionalidade());
+		request.setAttribute("cpf", contato.getCpf());
+
+		// ENCAMINHAR A REQUISIÇÃO PARA A PAGINA EDITAR.JSP:
+
+		RequestDispatcher rd = request.getRequestDispatcher("artistedit.jsp");
+
+		rd.forward(request, response);
+
+		//
+
+		// response.sendRedirect("artistedit.jsp");
 	}
 
-	// EDITAR CONTATO:
+	// EDITAR CONTATO /update:
 
 	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		/*
-		 * //TESTE DE RECEBIMENTO: System.out.println(request.getParameter("idcon"));
-		 * System.out.println(request.getParameter("nome"));
-		 * System.out.println(request.getParameter("fone"));
-		 * System.out.println(request.getParameter("email"));
-		 */
-		/*-
-				
-				//SETAR AS VARIAVEIS NO JAVABEANS:
-		
-				contato.setIdcon(request.getParameter("idcon"));
-				contato.setNome(request.getParameter("nome"));
-				contato.setFone(request.getParameter("fone"));
-				contato.setEmail(request.getParameter("email"));
-		
-				//EXECUTAR O METODO ALTERAR CONTATO:
-		
-				dao.alterarContato(contato);
-		
-				//REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
-				//IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
-		
-				response.sendRedirect("main");
-				*/
+
+		// TESTE DE RECEBIMENTO:
+		System.out.println(request.getParameter("idartist"));
+		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("gender"));
+		System.out.println(request.getParameter("birthday"));
+		System.out.println(request.getParameter("nationality"));
+		System.out.println(request.getParameter("cpf"));
+
+		// SETAR AS VARIAVEIS NO JAVABEANS:
+
+		contato.setIdcon(request.getParameter("idartist"));
+		contato.setNome(request.getParameter("name"));
+		contato.setEmail(request.getParameter("email"));
+		contato.setSexo(request.getParameter("gender"));
+		contato.setDatadenascimento(request.getParameter("birthday"));
+		contato.setNacionalidade(request.getParameter("nationality"));
+		contato.setCpf(request.getParameter("cpf"));
+
+		// EXECUTAR O METODO ALTERAR CONTATO:
+
+		dao.alterarContato(contato);
+
+		// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
+		// IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
+
+		response.sendRedirect("main");
+
 	}
 
 	// REMOVER CONTATO:

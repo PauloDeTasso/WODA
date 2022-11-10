@@ -71,7 +71,7 @@
                 <button type="button" id="registerButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
-                        onclick="openPagina('artistregister.html', '_self')">
+                        onclick="openPage('artistregister.html', '_self')">
 
                 </button>
 
@@ -209,6 +209,7 @@
                     <tbody>
 
                         <%for (int i=0; i < lista.size(); i++) { %>
+                        
                             <tr>
                                 <td>
                                     <%=lista.get(i).getIdcon()%>
@@ -231,36 +232,31 @@
                                 <td>
                                     <%=lista.get(i).getCpf()%>
                                 </td>
+                                
                                 <td>
                                 
-                                <section id="buttonsAdminOptions"> 
+                                <section class="buttonsAdminOptions"> 
                                    
-                                	<button type="button" id="editButton" class="Buttons">
+                                	<button type="button" class="Buttons">
 
-                                    	<img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
-                                        alt="" onclick="openPagina('select?idcon=<%=lista.get(i).getIdcon() %>','_self')">
-
+                                    	<img class="ImagesButtons" src="images/icons/editar03.png" alt="">
+                                    	
+										<a href="select?idcon=<%=lista.get(i).getIdcon()%>&name=<%=lista.get(i).getNome()%>&email=<%=lista.get(i).getEmail()%>&gender=<%=lista.get(i).getSexo()%>&birthday=<%=lista.get(i).getDatadenascimento()%>&nationality=<%=lista.get(i).getNacionalidade()%>&cpf=<%=lista.get(i).getCpf()%>" class="Botao1">Editar</a>
+                                	
                                 	</button>
                                 	
-                                	<button type="button" id="editButton" class="Buttons">
+                                	<button type="button" class="Buttons">
 
-                                    	<img class="ImagesButtons" id="imageEditButton"
-                                        src="images/icons/deletar01Vazio.png" alt="" onclick="openPagina('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
+                                    	<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="" onclick="openPage('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
 
                                 	</button>
                                   
-                                  <!-- 
-                                
-                                  <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
-                                  
-                                  <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
-                                        class="Botao2">Excluir</a>
-                              	 -->                                     
-                                    
                               	</section>
                               	
                                 </td>
+                                
                             </tr>
+                            
                             <%} %>
 
                     </tbody>
@@ -280,179 +276,7 @@
                 <section class="SectionImageArts">
 
                     <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA2.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/01.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/02.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA2.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/01.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/02.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                        onclick="openPage('artist.html','_self')">
 
                 </section>
 

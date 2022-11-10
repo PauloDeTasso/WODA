@@ -810,7 +810,7 @@ body::-webkit-scrollbar-thumb {
 	background-color:rgb(211, 145, 69);
 }
 
-#buttonsAdminOptions
+.buttonsAdminOptions
 {
 	display: flex;
     flex-direction: row;

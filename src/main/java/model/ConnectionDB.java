@@ -56,8 +56,11 @@ public class ConnectionDB
 		if (contato.getNacionalidade().equals("Brasil"))
 		{
 
+			// FileInputStream file=null;
 			try
 			{
+				// imagem = contato.getImagem();
+
 				create = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade,cpf) values (?,?,?,?,?,?)";
 
 				// Abrir a conexao:
@@ -70,9 +73,14 @@ public class ConnectionDB
 				pst.setString(1, contato.getNome());
 				pst.setString(2, contato.getEmail());
 				pst.setString(3, contato.getSexo());
-				pst.setString(4, contato.getDatadenascimento());
+				pst.setString(4, contato.getDatadenascimento(""));
 				pst.setString(5, contato.getNacionalidade());
 				pst.setString(6, contato.getCpf());
+
+				// ADICIONA UM "INT" INTEIRO A QUERY '?' 3:
+				// ps.setInt(3, contato.getTelefone());
+
+				// pst.setBinaryStream(4,(InputStream)file,(int) (imagem.lenght))
 
 				// Executar a query
 				pst.executeUpdate();
@@ -102,7 +110,7 @@ public class ConnectionDB
 				pst.setString(1, contato.getNome());
 				pst.setString(2, contato.getEmail());
 				pst.setString(3, contato.getSexo());
-				pst.setString(4, contato.getDatadenascimento());
+				pst.setString(4, contato.getDatadenascimento(""));
 				pst.setString(5, contato.getNacionalidade());
 
 				// Executar a query
@@ -182,90 +190,93 @@ public class ConnectionDB
 
 	public void selecionarContato(Artists contato)
 	{
-		/*-
-		String read2 = "select * from contatos where idcon = ?";
-		
+		String read2 = "select * from artists where idartist = ?";
+
 		try
 		{
-			//Abrir a conexao:
-		
+			// Abrir a conexao:
+
 			Connection con = conectar();
-		
-			//Preparar a query para a execução no banco de dados:
-		
+
+			// Preparar a query para a execução no banco de dados:
+
 			PreparedStatement pst = con.prepareStatement(read2);
-		
-			//SUBSTITUIR A INTERROGAÇÃO (?) DA QUERY ACIMA - READ2 -
-			//PELO ID SETADO NA REQUISIÇÃO NA CLASSE CONTROLE:
-		
+
+			// SUBSTITUIR A INTERROGAÇÃO (?) DA QUERY ACIMA - READ2 -
+			// PELO ID SETADO NA REQUISIÇÃO NA CLASSE CONTROLE:
+
 			pst.setString(1, contato.getIdcon());
-		
-			//EXECUTA A QUERY:
-		
+
+			// EXECUTA A QUERY:
+
 			ResultSet rs = pst.executeQuery();
-		
-			//ENQUANTO TIVER DADOS
-		
+
+			// ENQUANTO TIVER DADOS
+
 			while (rs.next())
 			{
-				//SETAR AS VARIAVEIS JAVABEANS:
-		
+				// SETAR AS VARIAVEIS JAVABEANS:
+
 				contato.setIdcon(rs.getString(1));
 				contato.setNome(rs.getString(2));
-				contato.setFone(rs.getString(3));
-				contato.setEmail(rs.getString(4));
+				contato.setEmail(rs.getString(3));
+				contato.setSexo(rs.getString(4));
+				contato.setDatadenascimento(rs.getString(5));
+				contato.setNacionalidade(rs.getString(6));
+				contato.setCpf(rs.getString(7));
 			}
-		
-			//FEICHA A CONEXAO COM O BANCO:
-		
+			// FECHA A CONEXAO COM O BANCO:
+
 			con.close();
-		
+
 		} catch (Exception e)
 		{
 			System.out.println(e);
 		}
-		*/
+
 	}
 
 	// ALTERAR CONTATO:
 
 	public void alterarContato(Artists contato)
 	{
-		/*-
-		String update = "update contatos set nome=?, fone=?, email=? where idcon=?";
-		
+		String update = "update artists set nome=?, email=?, sexo=?, datadenascimento=?, nacionalidade=?, cpf=? where idartist=?";
+
 		try
 		{
-			//Abrir a conexao:
-		
+			// Abrir a conexao:
+
 			Connection con = conectar();
-		
-			//Preparar a query para a execução no banco de dados:
-		
+
+			// Preparar a query para a execução no banco de dados:
+
 			PreparedStatement pst = con.prepareStatement(update);
-		
-			//SUBSTITUIR AS INTERROGAÇÕES (?) DA QUERY - CREATE -
-			//PELAS VARIAVEIS DO OBJETO DE INSTACIA 'CONTATO' DA CLASE JAVABEANS
-			//PASSADA COMO ATRIBUTO DESSE METODO:
-		
+
+			// SUBSTITUIR AS INTERROGAÇÕES (?) DA QUERY - CREATE -
+			// PELAS VARIAVEIS DO OBJETO DE INSTACIA 'CONTATO' DA CLASE JAVABEANS
+			// PASSADA COMO ATRIBUTO DESSE METODO:
+
 			pst.setString(1, contato.getNome());
-			pst.setString(2, contato.getFone());
-			pst.setString(3, contato.getEmail());
-			pst.setString(4, contato.getIdcon());
-		
-			//EXECUTA A QUERY:
-		
+			pst.setString(2, contato.getEmail());
+			pst.setString(3, contato.getSexo());
+			pst.setString(4, contato.getDatadenascimento());
+			pst.setString(5, contato.getNacionalidade());
+			pst.setString(6, contato.getCpf());
+			pst.setString(7, contato.getIdcon());
+
+			// EXECUTA A QUERY:
+
 			pst.executeUpdate();
-		
-			//FEICHA A CONEXAO COM O BANCO:
-		
+
+			// FEICHA A CONEXAO COM O BANCO:
+
 			con.close();
-		
+
 		} catch (Exception e)
 		{
 			System.out.println(e);
 		}
-		*/
+
 	}
 
 	/* CRUD DELETE */
@@ -306,4 +317,70 @@ public class ConnectionDB
 		}
 	}
 
+	//
+	/*-
+	
+	public void gravarImagem( String urlImagem ) throws Exception 
+	{
+		System.out.println("urlImagemmmmm = " + urlImagem);
+		
+		File file = new File( urlImagem );
+	
+		if(file.exist())
+		{
+	    
+			BufferedImage img = ImageIO.read( file );
+	    
+			ByteArrayOutputStream b = new ByteArrayOutputStream();
+			
+			ImageIO.write( img, "jpg", b );
+	    
+			byte[] imgArray = b.toByteArray();
+	    
+			String sql = "INSERT INTO tb_imagens VALUES( NULL, ? )";  
+			
+			
+			//
+			
+			// Abrir a conexao:
+	
+						Connection con = conectar();
+	
+						// Preparar a query para a execução no banco de dados:
+	
+						PreparedStatement pst = con.prepareStatement(sql);
+	
+						// SUBSTITUIR A INTERROGAÇÃO (?) DA QUERY ACIMA - READ2 -
+						// PELO ID SETADO NA REQUISIÇÃO NA CLASSE CONTROLE:
+	
+						pst.setString(1, contato.getIdcon());
+	
+						// EXECUTA A QUERY:
+	
+						pst.executeUpdate();
+	
+						// FECHA A CONEXAO COM O BANCO:
+	
+						con.close();
+			
+			/*-
+			
+			PreparedStatement stm = ConnectionFactory.getConexao().prepareStatement(sql);          
+			
+			stm.setBytes( 1, imgArray );          
+			
+			stm.executeUpdate();          
+			
+			stm.close();
+	
+	
+	
+		}else
+		{
+	   
+			//lançar alguma mensagem para o usuário
+	
+		}
+	}
+	*/
 }
