@@ -31,8 +31,7 @@
 
                 <button type="button" id="seacherButton" class="ButtonsRegister">
 
-                    <img class="ImagesButtons" src="images/icons/voltar.png" alt=""
-                        onclick="openPage('main', '_self')">
+                    <img class="ImagesButtons" src="images/icons/voltar.png" alt="" onclick="openPage('main', '_self')">
 
                 </button>
 
@@ -66,8 +65,12 @@
 
             <fieldset>
 
-                <legend>
-                    REGISTER ARTISTS:
+                <legend class="LegendResgiter">
+
+                    <img class="Buttons" src="images/icons/ARTIST01.png" alt="">
+
+                    <img class="Buttons" src="images/icons/ARTIST02.png" alt="">
+
                 </legend>
 
                 <table>
@@ -79,7 +82,9 @@
 
                         </td>
                         <td>
-                            <div id="msgName" class="AlertMsgs"></div>
+                            <div id="msgName" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
@@ -91,7 +96,9 @@
 
                         </td>
                         <td>
-                            <div id="msgEmail" class="AlertMsgs"></div>
+                            <div id="msgEmail" class="AlertMsgs">
+
+                            </div>
                         </td>
                     </tr>
 
@@ -118,7 +125,9 @@
 
                         </td>
                         <td>
-                            <div id="msgGender" class="AlertMsgs"></div>
+                            <div id="msgGender" class="AlertMsgs">
+
+                            </div>
                         </td>
                     </tr>
 
@@ -130,7 +139,9 @@
 
                         </td>
                         <td>
-                            <div id="msgBirthday" class="AlertMsgs"></div>
+                            <div id="msgBirthday" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
@@ -319,21 +330,26 @@
 
                         </td>
                         <td>
-                            <div id="msgNationality" class="AlertMsgs"></div>
+                            <div id="msgNationality" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr id="sectionCpf">
                         <td>
-                        
+
                             <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
                                 placeholder="CPF" required>
 
                         </td>
 
                         <td>
-                            <div id="msgCpf" class="AlertMsgs"></div>
+                            <div id="msgCpf" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
+
                     </tr>
 
                     <tr>
@@ -341,10 +357,10 @@
                         <td>
 
                             <br>
-                            <input id="fileInputArtist" name="image" type="file" accept="image/*"/>
+                            <input id="fileInputArtist" name="inputfile" type="file" accept="image/*" />
                             <br>
 
-                            <output id="list">
+                            <output id="listArtist" class="lists">
 
                                 File:
 
@@ -421,7 +437,7 @@
         </section>
 
     </footer>
-    
+
     <script src="js/home.js">
 
     </script>
@@ -429,5 +445,5 @@
     <script src="js/validator.js">
 
     </script>
-    
+
 </html>

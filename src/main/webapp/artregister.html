@@ -67,8 +67,10 @@
 
             <fieldset>
 
-                <legend>
-                    REGISTER ART:
+                <legend class="LegendResgiter">
+
+                    <img class="Buttons" src="images/icons/images02.png" alt="">
+
                 </legend>
 
                 <table>
@@ -132,11 +134,10 @@
                         <td>
 
                             <br>
-                            <input id="filesInputArts" name="images[]" type="file" accept="image/*"
-                                onchange="imageValidate(this.value,filesInputArts)" multiple required />
+                            <input id="filesInputArts" name="imagesfiles[]" type="file" accept="image/*" required />
                             <br>
 
-                            <output id="list">
+                            <output id="listArts" class="lists">
 
                                 Files:
 

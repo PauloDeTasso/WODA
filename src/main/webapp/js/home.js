@@ -192,19 +192,19 @@ function zoom(image, zoom)
     }
 }
 
- function confirmar(idcon)
- {
-	var resposta = confirm("Delete this artist?");
-	
-	if(resposta === true)
-	{
-		//TESTE DE RECEBIMENTO:
-		//alert(idcon);
-		
-		//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-		 
-		window.location.href = "delete?idcon=" + idcon;
-	}
+function confirmar(idcon)
+{
+    var resposta = confirm("Delete this artist?");
+
+    if (resposta === true)
+    {
+        //TESTE DE RECEBIMENTO:
+        //alert(idcon);
+
+        //ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+        window.location.href = "delete?idcon=" + idcon;
+    }
 }
 
 

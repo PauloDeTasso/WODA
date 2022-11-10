@@ -88,7 +88,7 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 70px;
+    width: 100%;
     height: auto;
 }
 
@@ -98,12 +98,16 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
-.Buttons,
+.Buttons:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
 .ButtonsRegister:hover {
-    opacity: .7;
+    opacity: .8;
     cursor: pointer;
 }
 
@@ -472,7 +476,8 @@ body::-webkit-scrollbar-thumb {
 }
 */
 
-#cpf {
+#sectionCpf {
+
     visibility: hidden;
 }
 
@@ -554,7 +559,7 @@ input::placeholder {
     align-items: center;
     width: 100px;
     height: 50px;
-    border: 5px solid rgba(255, 0, 0, 0);
+    border: 0px solid rgba(255, 0, 0, 1);
     color: rgb(240, 30, 30);
     font-weight: 550;
 }
@@ -563,7 +568,7 @@ input::placeholder {
     color: rgb(0, 54, 155);
 }
 
-#list {
+.lists {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -575,6 +580,7 @@ input::placeholder {
     color: rgba(0, 0, 0, 0);
     font-size: 110%;
     border-radius: 10px;
+    border: 0px solid rgb(255, 0, 0);
 }
 
 fieldset {
@@ -602,4 +608,11 @@ input:invalid {
 
 input:valid {
     border: 2px solid black;
+}
+
+.LegendResgiter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
