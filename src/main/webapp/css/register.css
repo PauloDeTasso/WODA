@@ -7,12 +7,6 @@ html {
     height: auto;
     background-color: rgb(255, 192, 120);
     opacity: 1;
-    /*background-image: url("../images/logos/LogoWODA.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-attachment: fixed;
-    background-position: center;
-*/
     font-family: 'Open Sans', sans-serif;
     border-bottom: 10px solid rgb(252, 178, 100);
     border-radius: 100px;
@@ -37,8 +31,8 @@ header {
 #sectionMenu {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: auto;
     border: 10px solid rgba(255, 255, 255, .1);
@@ -54,6 +48,7 @@ header {
     width: 100%;
     height: auto;
     visibility: visible;
+    border: 0px solid rgb(255, 0, 0);
 }
 
 .SectionButtons {
@@ -82,10 +77,10 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
+    width: 70px;
+    height: auto;
     background-color: rgba(0, 0, 0, 0.0);
-    border: 0px solid rgb(255, 255, 255);
+    border: 0px solid rgba(0, 0, 0, 0);
 }
 
 .ImagesButtons {
@@ -93,8 +88,8 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: auto;
 }
 
 .ImagesButtonsRegister {
@@ -106,7 +101,8 @@ header {
     height: 100%;
 }
 
-.Buttons:hover {
+.Buttons,
+.ButtonsRegister:hover {
     opacity: .7;
     cursor: pointer;
 }
@@ -182,7 +178,7 @@ body {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(0, 22, 119);
+    border: 0px solid rgb(0, 22, 119);
     overflow: auto;
 }
 

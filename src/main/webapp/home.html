@@ -1,400 +1,304 @@
-<!DOCTYPE html>
-<html id="html5" lang="en-US">
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-    <head>
+    <%@ page import="model.Artists" %>
 
-        <meta charset="UTF-8">
+        <%@ page import="java.util.ArrayList" %>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <% ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");
 
-        <link rel="stylesheet" href="css/home.css"/>
 
-        <title>WODA</title>
+                    /*
+                    REMOVE A CHECAGEM DESNECESSARIA DO ARRAYLIST DO CODIGO NO ECLIPSE:
+                    */
 
-        <link rel="icon" href="images/logos/LogoWODA2.png" type="image/gif">
+                    /*
 
-    </head>
+                    //TESTE DE RECEBIMENTO:
 
-    <!-- 
+                    for (int i = 0; i < lista.size(); i++) { out.println(lista.get(i).getIdcon());
+                        out.println(lista.get(i).getNome()); out.println(lista.get(i).getFone());
+                        out.println(lista.get(i).getEmail()); } */ %>
+
+                        <!DOCTYPE html>
+                        <html id="html5" lang="en-US">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                                <link rel="stylesheet" href="css/home.css" />
+
+                                <title>WODA</title>
+
+                                <link rel="icon" href="images/logos/LogoWODA2.png" type="image/gif">
+
+                            </head>
+
+                            <!-- 
     <section id="statusSistema">
 
     </section>
      -->
 
-    <header>
+                            <header>
 
-        <section id="sectionMenu">
+                                <section id="sectionMenu">
 
-            <section id="sectionButtons">
+                                    <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                                        <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
-                        onclick="openClose(seacher,'display','menuSeacher')">
+                                            <img class="ImagesButtons" id="imageSeacherButton"
+                                                src="images/icons/pesquisar04.png" alt=""
+                                                onclick="openClose(seacher,'display','menuSeacher')">
 
-                </button>
+                                        </button>
 
-                <button type="button" id="registerButton" class="Buttons">
+                                        <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
-                        onclick="openPagina('artistregister.html', '_self')">
+                                            <img class="ImagesButtons" id="imageRegisterButton"
+                                                src="images/icons/cadastrar.png" alt=""
+                                                onclick="openPage('artistregister.html', '_self')">
 
-                </button>
+                                        </button>
 
-                <button type="button" id="configButton" class="Buttons">
+                                        <button type="button" id="configButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openClose(config,'display','menuConfig')">
+                                            <img class="ImagesButtons" id="imageConfigButton"
+                                                src="images/icons/configurações02.png" alt=""
+                                                onclick="openClose(config,'display','menuConfig')">
 
-                </button>
+                                        </button>
 
-                <button type="button" id="infoButton" class="Buttons">
+                                        <button type="button" id="infoButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
-                        onclick="openClose(info,'display','menuInfo')">
+                                            <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png"
+                                                alt="" onclick="openClose(info,'display','menuInfo')">
 
-                </button>
+                                        </button>
 
-            </section>
+                                    </section>
 
-            <section id="sectionMenuButton">
+                                    <section id="sectionMenuButton">
 
-                <button type="button" id="buttonMenu">
+                                        <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
-                        onclick="openClose(sectionButtons,'visibility','menuMain')">
+                                            <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
+                                                onclick="openClose(sectionButtons,'visibility','menuMain')">
 
-                </button>
+                                        </button>
 
-            </section>
+                                    </section>
 
-        </section>
+                                </section>
 
-    </header>
+                            </header>
 
-    <body>
+                            <body>
 
-        <section id="config">
+                                <section id="config">
 
-            <table>
+                                    <table>
 
-                <th>
+                                        <th>
 
-                    <h3>SAVE SYSTEM <br> ACTIONS</h3>
+                                            <h3>SAVE SYSTEM <br> ACTIONS</h3>
 
-                <td>
+                                        <td>
 
-                    <label for="saveStatus">ON
-                        <input type="radio" name="saveStatus" id="saveStatusOn"
-                            onchange="saveConfig('statusSaveConfig',true)"></label>
+                                            <label for="saveStatus">ON
+                                                <input type="radio" name="saveStatus" id="saveStatusOn"
+                                                    onchange="saveConfig('statusSaveConfig',true)"></label>
 
-                    <label for="saveStatus">OFF
-                        <input type="radio" name="saveStatus" id="saveStatusOff"
-                            onchange="saveConfig('statusSaveConfig',false)"></label>
+                                            <label for="saveStatus">OFF
+                                                <input type="radio" name="saveStatus" id="saveStatusOff"
+                                                    onchange="saveConfig('statusSaveConfig',false)"></label>
 
-                </td>
+                                        </td>
 
-                </th>
+                                        </th>
 
-            </table>
+                                    </table>
 
-        </section>
+                                </section>
 
-        <section id="seacher">
+                                <section id="seacher">
 
-            <section id="sectionSeacher">
+                                    <section id="sectionSeacher">
 
-                <button class="Buttons" type="submit" value="Seacher" autofocus>
+                                        <section id="subSectionSeacher">
 
-                    <img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
+                                            <button class="Buttons" type="submit" value="Seacher" autofocus>
 
-                </button>
+                                                <img class="ImagesButton" src="images/icons/pesquisar02.png" alt=""
+                                                    width="70px">
 
-                <form action="seacher">
+                                            </button>
 
-                    <input type="text" name="seacherText" placeholder="Seacher">
+                                            <form action="seacher">
 
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Authors" checked />
-                        Authors</label>
-                    <label>
-                        <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+                                                <input type="text" name="seacherText" placeholder="Seacher">
 
-                </form>
+                                                <label>
+                                                    <input type="radio" name="seacherCheckbox" value="Authors"
+                                                        checked />
+                                                    Authors</label>
+                                                <label>
+                                                    <input type="radio" name="seacherCheckbox" value="Arts">
+                                                    Arts</label>
 
-            </section>
+                                            </form>
 
-            <section id="tableSeacher">
+                                        </section>
 
+                                    </section>
 
-                <table id="tabela">
+                                    <section id="sectionTableSeacher">
 
-                    <thead>
+                                        <table id="tabela">
 
-                        <tr>
+                                            <thead>
 
-                            <th>
-                                Id
-                            </th>
+                                                <tr>
 
-                            <th>
-                                Nome
-                            </th>
+                                                    <th>
+                                                        ID
+                                                    </th>
 
-                            <th>
-                                Fone
-                            </th>
+                                                    <th>
+                                                        NAME
+                                                    </th>
 
-                            <th>
-                                E-mail
-                            </th>
+                                                    <th>
+                                                        E-MAIL
+                                                    </th>
 
-                            <th>
-                                Opções
-                            </th>
+                                                    <th>
+                                                        GENDER
+                                                    </th>
 
-                        </tr>
+                                                    <th>
+                                                        BIRTHDAY
+                                                    </th>
 
-                    </thead>
+                                                    <th>
+                                                        NATIONALITY
+                                                    </th>
 
-                    <tbody>
+                                                    <th>
+                                                        CPF
+                                                    </th>
 
-                        <%for (int i=0; i < lista.size(); i++) { %>
-                            <tr>
-                                <td>
-                                    <%=lista.get(i).getIdcon()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getNome()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getFone()%>
-                                </td>
-                                <td>
-                                    <%=lista.get(i).getEmail()%>
-                                </td>
-                                <td>
-                                    <a href="select?idcon=<%=lista.get(i).getIdcon() %>" class="Botao1">Editar</a>
-                                    <a href="javascript: confirmar(<%=lista.get(i).getIdcon() %>)"
-                                        class="Botao2">Excluir</a>
-                                </td>
-                            </tr>
-                            <%} %>
+                                                    <th>
+                                                        ADMIN OPTIONS
+                                                    </th>
 
-                    </tbody>
+                                                </tr>
 
-                </table>
+                                            </thead>
 
-            </section>
+                                            <tbody>
 
-        </section>
+                                                <%for (int i=0; i < lista.size(); i++) { %>
 
-        <section id="sectionGallery">
+                                                    <tr>
+                                                        <td>
+                                                            <%=lista.get(i).getIdcon()%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getNome()%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getEmail()%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getSexo()%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getDatadenascimento("br")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getNacionalidade()%>
+                                                        </td>
+                                                        <td>
+                                                            <%=lista.get(i).getCpf()%>
+                                                        </td>
 
-            <!-- ART -->
+                                                        <td>
 
-            <section class="SectionArts">
+                                                            <section class="buttonsAdminOptions">
 
-                <section class="SectionImageArts">
+                                                                <button type="button" class="Buttons">
 
-                    <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                                                                    <img class="ImagesButtons"
+                                                                        src="images/icons/editar03.png" alt="">
 
-                </section>
+                                                                    <a href="select?idcon=<%=lista.get(i).getIdcon()%>&name=<%=lista.get(i).getNome()%>&email=<%=lista.get(i).getEmail()%>&gender=<%=lista.get(i).getSexo()%>&birthday=<%=lista.get(i).getDatadenascimento()%>&nationality=<%=lista.get(i).getNacionalidade()%>&cpf=<%=lista.get(i).getCpf()%>"
+                                                                        class="Botao1">Editar</a>
 
-            </section>
+                                                                </button>
 
-            <!-- ART -->
+                                                                <button type="button" class="Buttons">
 
-            <section class="SectionArts">
+                                                                    <img class="ImagesButtons"
+                                                                        src="images/icons/deletar01Vazio.png" alt=""
+                                                                        onclick="openPage('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
 
-                <section class="SectionImageArts">
+                                                                </button>
 
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                                                            </section>
 
-                </section>
+                                                        </td>
 
-            </section>
+                                                    </tr>
 
-            <!-- ART -->
+                                                    <%} %>
 
-            <section class="SectionArts">
+                                            </tbody>
 
-                <section class="SectionImageArts">
+                                        </table>
 
-                    <img class="ImagesArts" src="images/logos/LogoWODA2.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                                    </section>
 
-                </section>
+                                </section>
 
-            </section>
+                                <section id="sectionGallery">
 
-            <!-- ART -->
+                                    <!-- ART -->
 
-            <section class="SectionArts">
+                                    <section class="SectionArts">
 
-                <section class="SectionImageArts">
+                                        <section class="SectionImageArts">
 
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                                            <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg"
+                                                alt="" onclick="openPage('artist.html','_self')">
 
-                </section>
+                                        </section>
 
-            </section>
+                                    </section>
 
-            <!-- ART -->
+                                    <!-- ART -->
 
+                                </section>
 
-            <section class="SectionArts">
+                                <section id="info">
 
-                <section class="SectionImageArts">
+                                    Dev - Paulo de Tasso <br>
+                                    Senior Full Stack Developer <br>
+                                    World of digital artists - WODA®
 
-                    <img class="ImagesArts" src="images/author/01.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
+                                    <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
-                </section>
+                                </section>
 
-            </section>
+                            </body>
 
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/02.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA2.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/monalisa.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/01.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/logos/LogoWODA.png" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/author/02.jpg" alt=""
-                        onclick="openPagina('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-
-        </section>
-
-        <section id="info">
-
-            Dev - Paulo de Tasso <br>
-            Senior Full Stack Developer <br>
-            World of digital artists - WODA®
-
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
-
-        </section>
-
-    </body>
-
-    <!--  
+                            <!--  
 
     <div class="load">
         <div class="dot"></div>
@@ -405,18 +309,18 @@
     </div>
 -->
 
-    <footer>
+                            <footer>
 
-        <section id="sectionFooter">
+                                <section id="sectionFooter">
 
-            World of digital artists - WODA®
+                                    World of digital artists - WODA®
 
-        </section>
+                                </section>
 
-    </footer>
+                            </footer>
 
-    <script src="js/home.js">
+                            <script src="js/home.js">
 
-    </script>
+                            </script>
 
-</html>
+                        </html>
