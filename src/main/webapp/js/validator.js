@@ -1,10 +1,8 @@
+
+
 var formRegisterArtist = document.getElementById("formRegisterArtist");
 var formRegisterArt = document.getElementById("formRegisterArt");
 
-
-
-if (formRegisterArtist)
-{
     var msgName = document.getElementById("msgName");
     var msgEmail = document.getElementById("msgEmail");
     var msgGender = document.getElementById("msgGender");
@@ -17,10 +15,7 @@ if (formRegisterArtist)
     var fileInputArtist = document.getElementById("fileInputArtist");
     var listArtist = document.getElementById("list");
     var cpfOriginal;
-}
 
-if (formRegisterArt)
-{
     var msgName = document.getElementById("msgName");
     var msgDescription = document.getElementById("msgDescription");
     var msgPublicationDate = document.getElementById("msgPublicationDate");
@@ -29,7 +24,7 @@ if (formRegisterArt)
     var msgStatus = document.getElementById("msgStatus");
     var filesInputArts = document.getElementById("filesInputArts");
     var listArt = document.getElementById("list");
-}
+
 
 //
 
@@ -187,8 +182,16 @@ function verificarNome(valor)
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
     }
 }
+
+
+ //onchange="imageValidate(this.value, fileInputArtist)" 
+
 function imageValidate(value, input)
 {
+	
+	
+	 alert(input == fileInputArtist)        
+	
     if (value == null || value == "" || value == undefined)
     {
 
@@ -206,18 +209,23 @@ function imageValidate(value, input)
 
     } else 
     {
-        var file;
-
+	        var file;     
+	 
         if (input == fileInputArtist)
         {
+			list.innerHTML = "";
+            msgImageArtist.innerHTML = "";
 
             file = input.files[ 0 ];
-            list.innerHTML += " <br><br>* " + file.name + "<br>";
+            list.innerHTML = " <br><br>* " + file.name + "<br>";
 
             msgImageArtist.innerHTML = "<font color= 'green'>Ok</font>";
 
         } else if (input == filesInputArts)
         {
+			list.innerHTML = "";
+            msgImageArtist.innerHTML = "";
+	
             for (var i = 0; i < input.files.length; i++)
             {
                 file = input.files[ i ];
@@ -291,7 +299,7 @@ if (formRegisterArtist)
     formRegisterArtist.onreset = function ()
     {
         clear()
-    };
+    	};
 }
 
 if (formRegisterArt)
@@ -300,7 +308,7 @@ if (formRegisterArt)
     {
         clear()
     };
-}
+		}
 
 function validar(form)
 {
@@ -456,3 +464,4 @@ setTimeout(() =>
         cpf.style.visibility = "hidden";
     }
 }, 2000);
+
