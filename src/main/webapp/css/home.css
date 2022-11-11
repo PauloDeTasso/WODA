@@ -849,3 +849,12 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 }
 
+table
+{
+	border-bottom: 10px solid rgb(252, 178, 100);
+	border-top: 10px solid rgb(252, 178, 100);
+    border-radius: 10px;
+    margin-bottom: 20px;
+	margin-top: 20px;	
+}
+

@@ -120,12 +120,11 @@ public class MainController extends HttpServlet
 		rd.forward(request, response);
 	}
 
-	// Novo Contato:
+	// Novo Contato - /insert:
 
 	protected void adicionarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-
 		// Teste de recebimento dos dados do formulario.
 
 		/*-
@@ -160,9 +159,9 @@ public class MainController extends HttpServlet
 			throws ServletException, IOException
 	{
 
-		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
-
 		String idcon = request.getParameter("idcon");
+
+		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
 
 		/*-
 		String name = request.getParameter("name");
@@ -197,6 +196,7 @@ public class MainController extends HttpServlet
 		System.out.println(contato.getDatadenascimento());
 		System.out.println(contato.getNacionalidade());
 		System.out.println(contato.getCpf());
+		System.out.println(contato.getImageartist());
 
 		/*-
 		contato.setIdcon(request.getParameter("idcon"));
@@ -227,7 +227,7 @@ public class MainController extends HttpServlet
 
 		//
 
-		// response.sendRedirect("artistedit.jsp");
+		// response.sendRedirect("artistedit.jsp"); }
 	}
 
 	// EDITAR CONTATO /update:

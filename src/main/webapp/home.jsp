@@ -257,6 +257,17 @@
                                 
                             </tr>
                             
+                              <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="<%=lista.get(i).getImageartist().getBinaryStream() %>" alt=""
+                       >
+
+                </section>
+
+            </section>
+                            
                             <%} %>
 
                     </tbody>
@@ -277,6 +288,19 @@
 
                     <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
                         onclick="openPage('artist.html','_self')">
+
+                </section>
+
+            </section>
+
+            <!-- ART -->
+            
+              <section class="SectionArts">
+
+                <section class="SectionImageArts">
+
+                    <img class="ImagesArts" src="" alt=""
+                       >
 
                 </section>
 

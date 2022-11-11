@@ -2,6 +2,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 public class Artists implements Serializable
 {
@@ -21,7 +22,19 @@ public class Artists implements Serializable
 
 	private String cpf;
 
+	private Blob imageArtist;
+
 	// CONTRUTORES:
+
+	public Blob getImageartist()
+	{
+		return imageArtist;
+	}
+
+	public void setImageartist(Blob imageartist)
+	{
+		this.imageArtist = imageartist;
+	}
 
 	public Artists()
 	{
@@ -29,7 +42,7 @@ public class Artists implements Serializable
 	}
 
 	public Artists(String idcon, String nome, String sexo, String email, String datadenascimento, String nacionalidade,
-			String cpf)
+			String cpf, Blob imageartist)
 	{
 		super();
 		this.idcon = idcon;
@@ -39,6 +52,7 @@ public class Artists implements Serializable
 		this.datadenascimento = datadenascimento;
 		this.nacionalidade = nacionalidade;
 		this.cpf = cpf;
+		this.imageArtist = imageartist;
 	}
 
 	// GETS E SETS:

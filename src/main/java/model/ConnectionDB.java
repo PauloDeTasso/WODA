@@ -1,11 +1,18 @@
 
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class ConnectionDB
 {
@@ -21,6 +28,8 @@ public class ConnectionDB
 	private String user = "root";
 
 	private String password = "root";
+
+	private int option;
 
 	// Metodo de conexão:
 
@@ -47,19 +56,24 @@ public class ConnectionDB
 	 * System.out.println(e); } }
 	 */
 
-	/* CRUD CREATE */
+	/* CRUD CREATE - /insert */
 
-	public void inserirContato(Artists contato)
+	public void inserirContato(Artists contato) throws FileNotFoundException
 	{
 		String create;
 
 		if (contato.getNacionalidade().equals("Brasil"))
 		{
 
-			// FileInputStream file=null;
 			try
 			{
-				// imagem = contato.getImagem();
+				/*-
+								Blob blob = contato.getImageartist();
+				
+								byte[] bin = blob.getBytes(1, (int) blob.length());
+				
+								ByteArrayInputStream stream = new ByteArrayInputStream(bin);
+				*/
 
 				create = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade,cpf) values (?,?,?,?,?,?)";
 
@@ -80,8 +94,6 @@ public class ConnectionDB
 				// ADICIONA UM "INT" INTEIRO A QUERY '?' 3:
 				// ps.setInt(3, contato.getTelefone());
 
-				// pst.setBinaryStream(4,(InputStream)file,(int) (imagem.lenght))
-
 				// Executar a query
 				pst.executeUpdate();
 
@@ -98,32 +110,77 @@ public class ConnectionDB
 
 			try
 			{
-				create = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade) values (?,?,?,?,?)";
 
-				// Abrir a conexao:
-				Connection con = conectar();
+				option = JOptionPane.showConfirmDialog(null, "REGISTER THE ARTIST'S PHOTO?");
 
-				// Preparar a query para a execução no banco de dados:
-				PreparedStatement pst = con.prepareStatement(create);
+				System.out.println(option);
 
-				// Substituir os paramentos (?) pelo conteudo da variaveis do Javabeans:
-				pst.setString(1, contato.getNome());
-				pst.setString(2, contato.getEmail());
-				pst.setString(3, contato.getSexo());
-				pst.setString(4, contato.getDatadenascimento(""));
-				pst.setString(5, contato.getNacionalidade());
+				if (option == 0)
+				{
 
-				// Executar a query
-				pst.executeUpdate();
+					System.out.println("Sim");
 
-				// Encerrar a conexao com o banco:
-				con.close();
+					JFileChooser jfc = new JFileChooser();
+					jfc.showOpenDialog(null);
+					File file = jfc.getSelectedFile();
+
+					FileInputStream fis = new FileInputStream(file);
+
+					create = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade,imageartist) values (?,?,?,?,?,?)";
+
+					// Abrir a conexao:
+					Connection con = conectar();
+
+					// Preparar a query para a execução no banco de dados:
+					PreparedStatement pst = con.prepareStatement(create);
+
+					// Substituir os paramentos (?) pelo conteudo da variaveis do Javabeans:
+					pst.setString(1, contato.getNome());
+					pst.setString(2, contato.getEmail());
+					pst.setString(3, contato.getSexo());
+					pst.setString(4, contato.getDatadenascimento(""));
+					pst.setString(5, contato.getNacionalidade());
+					pst.setBinaryStream(6, fis, fis.available());
+					// Executar a query
+					pst.executeUpdate();
+
+					// Encerrar a conexao com o banco:
+					con.close();
+
+				} else
+				{
+
+					System.out.println("Nao");
+
+					create = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade) values (?,?,?,?,?)";
+
+					// Abrir a conexao:
+					Connection con = conectar();
+
+					// Preparar a query para a execução no banco de dados:
+					PreparedStatement pst = con.prepareStatement(create);
+
+					// Substituir os paramentos (?) pelo conteudo da variaveis do Javabeans:
+					pst.setString(1, contato.getNome());
+					pst.setString(2, contato.getEmail());
+					pst.setString(3, contato.getSexo());
+					pst.setString(4, contato.getDatadenascimento(""));
+					pst.setString(5, contato.getNacionalidade());
+
+					// Executar a query
+					pst.executeUpdate();
+
+					// Encerrar a conexao com o banco:
+					con.close();
+				}
 
 			} catch (Exception e)
 			{
 				System.out.println(e);
 			}
+
 		}
+
 	}
 
 	// CRUD READ:
@@ -140,6 +197,7 @@ public class ConnectionDB
 
 		try
 		{
+
 			// Abrir a conexao:
 
 			Connection con = conectar();
@@ -165,10 +223,10 @@ public class ConnectionDB
 				String datadenascimento = rs.getString(5);
 				String nacionalidade = rs.getString(6);
 				String cpf = rs.getString(7);
-
+				Blob imageartist = rs.getBlob(8);
 				// ARMAZENAR NO ARRAYLIST
 
-				contatos.add(new Artists(idcon, nome, email, sexo, datadenascimento, nacionalidade, cpf));
+				contatos.add(new Artists(idcon, nome, email, sexo, datadenascimento, nacionalidade, cpf, imageartist));
 			}
 
 			// FECHA CONEXÃO DO BANCO:
