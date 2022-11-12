@@ -2,13 +2,12 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 public class Artists implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	private String idcon;
+	private String idArtist;
 
 	private String nome;
 
@@ -22,49 +21,36 @@ public class Artists implements Serializable
 
 	private String cpf;
 
-	private Blob imageArtist;
-
 	// CONTRUTORES:
-
-	public Blob getImageartist()
-	{
-		return imageArtist;
-	}
-
-	public void setImageartist(Blob imageartist)
-	{
-		this.imageArtist = imageartist;
-	}
 
 	public Artists()
 	{
 		super();
 	}
 
-	public Artists(String idcon, String nome, String sexo, String email, String datadenascimento, String nacionalidade,
-			String cpf, Blob imageartist)
+	public Artists(String idArtist, String nome, String sexo, String email, String datadenascimento,
+			String nacionalidade, String cpf)
 	{
 		super();
-		this.idcon = idcon;
+		this.idArtist = idArtist;
 		this.nome = nome;
 		this.email = email;
 		this.sexo = sexo;
 		this.datadenascimento = datadenascimento;
 		this.nacionalidade = nacionalidade;
 		this.cpf = cpf;
-		this.imageArtist = imageartist;
 	}
 
 	// GETS E SETS:
 
-	public String getIdcon()
+	public String getIdArtist()
 	{
-		return idcon;
+		return idArtist;
 	}
 
-	public void setIdcon(String idcon)
+	public void setIdArtist(String idArtist)
 	{
-		this.idcon = idcon;
+		this.idArtist = idArtist;
 	}
 
 	public String getNome()

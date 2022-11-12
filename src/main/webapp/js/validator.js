@@ -203,15 +203,7 @@ function verificarNacionalidade(valor)
         msgNationality.innerHTML = "<font color= 'green'>Ok</font>";
     }
 
-    if (valor == "Brasil")
-    {
-        sectionCpf.style.visibility = "visible";
-        cpf.style.visibility = "visible";
-    } else 
-    {
-        sectionCpf.style.visibility = "hidden";
-        cpf.style.visibility = "hidden";
-    }
+  statusCpf();
 }
 
 //
@@ -419,7 +411,7 @@ function validar(form)
     //alert(document.forms["form"].submit())
     if (formRegisterArtist)
     {
-        cpf.value = cpfOriginal;
+		cpf.value = cpfOriginal;
     }
     document.forms[ form ].submit();
 }
@@ -495,13 +487,24 @@ for (var i = 0; i < files.length; i++) {
 
 //
 
-setTimeout(() =>
+function statusCpf()
 {
-    if (nationality.value == "Brasil")
+if (nationality.value == "Brasil")
     {
-        cpf.style.visibility = "visible";
+        sectionCpf.style.visibility = "visible";
+    	cpf.type = "text";
     } else 
-    {
-        cpf.style.visibility = "hidden";
+    {			
+        sectionCpf.style.visibility = "hidden";      
+        cpf.type = "hidden";
+        cpfOriginal = "";
+        cpf.value = "";
     }
+}
+
+setTimeout(() =>
+{	
+    statusCpf();
 }, 2000);
+
+statusCpf();

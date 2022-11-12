@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8"  
+    import="model.*" 
+    import="java.sql.*" 
+    import="java.io.*"
+    import="java.*"
+    import="controllers.*"
+%>
     
     <%@ page import="model.Artists"%>
     
+     <%@ page import="model.*"%>
+     
+     <%@ page import="controllers.*"%>
+    
     <%@ page import="java.util.ArrayList"%>
     
-        
   <%
   
-  
-  ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");
-  
-  
+ ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");
+   
     /*
     REMOVE A CHECAGEM DESNECESSARIA DO ARRAYLIST DO CODIGO NO ECLIPSE:
     */
@@ -22,14 +29,15 @@
 	  
   for (int i = 0; i < lista.size(); i++)
   {
-		  out.println(lista.get(i).getIdcon());
+		  out.println(lista.get(i).getIdArtist());
 		  out.println(lista.get(i).getNome());
 		  out.println(lista.get(i).getFone());
 		  out.println(lista.get(i).getEmail());
 		 }
 */
   %>  
-
+ 
+  
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
 
@@ -138,23 +146,27 @@
 
             <section id="sectionSeacher">
 
-				<section id="subSectionSeacher">
-
-                	<button class="Buttons" type="submit" value="Seacher" autofocus>
-
-                    	<img class="ImagesButton" src="images/icons/pesquisar02.png" alt="" width="70px">
-
-                	</button>
+				<section id="subSectionSeacher">          
 
                 	<form action="seacher">
+                	
+                		<fieldset>
 
-                    	<input type="text" name="seacherText" placeholder="Seacher">
+                			<legend class="LegendResgiter">
+
+                   				<img class="Buttons" src="images/icons/pesquisar02.png" alt="">
+
+                			</legend>
+
+                    	<input type="search" name="seacherText" placeholder="Seacher">
 
                     	<label>
                         	<input type="radio" name="seacherCheckbox" value="Authors" checked />
                         	Authors</label>
                     	<label>
                     	    <input type="radio" name="seacherCheckbox" value="Arts"> Arts</label>
+						
+						</fieldset>
 
                 	</form>
 
@@ -208,14 +220,21 @@
 
                     <tbody>
 
-                        <%for (int i=0; i < lista.size(); i++) { %>
+					<%
+					Blob blob;
+                    Blob blobStream;
+                    %>
+
+                        <%for (int i=0; i < lista.size(); i++)
+                          
+                        { %>
                         
                             <tr>
                                 <td>
-                                    <%=lista.get(i).getIdcon()%>
+                                	<%=lista.get(i).getIdArtist()%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getNome()%>
+                                   <a href="artist?idArtist=<%=lista.get(i).getIdArtist()%>"><%=lista.get(i).getNome()%></a> 
                                 </td>
                                 <td>
                                     <%=lista.get(i).getEmail()%>
@@ -231,24 +250,26 @@
                                 </td>
                                 <td>
                                     <%=lista.get(i).getCpf()%>
-                                </td>
+                                </td>                                                             
                                 
                                 <td>
                                 
                                 <section class="buttonsAdminOptions"> 
                                    
                                 	<button type="button" class="Buttons">
-
-                                    	<img class="ImagesButtons" src="images/icons/editar03.png" alt="">
                                     	
-										<a href="select?idcon=<%=lista.get(i).getIdcon()%>&name=<%=lista.get(i).getNome()%>&email=<%=lista.get(i).getEmail()%>&gender=<%=lista.get(i).getSexo()%>&birthday=<%=lista.get(i).getDatadenascimento()%>&nationality=<%=lista.get(i).getNacionalidade()%>&cpf=<%=lista.get(i).getCpf()%>" class="Botao1">Editar</a>
+										<a href="select?idArtist=<%=lista.get(i).getIdArtist()%>&name=<%=lista.get(i).getNome()%>&email=<%=lista.get(i).getEmail()%>&gender=<%=lista.get(i).getSexo()%>&birthday=<%=lista.get(i).getDatadenascimento()%>&nationality=<%=lista.get(i).getNacionalidade()%>&cpf=<%=lista.get(i).getCpf()%>">
+										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
+										</a>
                                 	
                                 	</button>
                                 	
                                 	<button type="button" class="Buttons">
 
-                                    	<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="" onclick="openPage('javascript: confirmar(<%=lista.get(i).getIdcon() %>)','_self')">
-
+										<a href="javascript: confirmar(<%=lista.get(i).getIdArtist() %>)">
+											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+										</a>
+										
                                 	</button>
                                   
                               	</section>
@@ -256,60 +277,107 @@
                                 </td>
                                 
                             </tr>
-                            
-                              <section class="SectionArts">
+                                      
+                              <%                                                       
+                              
+                              /*
+                            	String fileName = "image.png";
+                               
+                                blob = lista.get(i).getImageartist();
+    							                                
+                                byte[] bin = blob.getBytes(1, (int) blob.length());
+						
+                                ByteArrayInputStream stream = new ByteArrayInputStream(bin);
+										
+                                ConnectionDB dao = new ConnectionDB();
+																				
+                                dao.imageArtistDB(stream);		                
+                                                   
+                                blob = lista.get(i).getImageartist();
+                                                     
+                                String fileName = "image.png";
+                                                     
+                                FileOutputStream fos = new FileOutputStream(fileName);
+                 	                                
+                                int len = (int) blob.length();
 
-                <section class="SectionImageArts">
+                                byte[] buf = blob.getBytes(1, len);
 
-                    <img class="ImagesArts" src="<%=lista.get(i).getImageartist().getBinaryStream() %>" alt=""
-                       >
+                                fos.write(buf, 0, len);
+                                                     
+                                InputStream is = blob.getBinaryStream();
+                               
+                                ObjectInputStream ois = new ObjectInputStream(is);
+        						
+                                //ois.readObject();
+                                
+                                
+                                int b;
+                                
+                                while ((b = is.read()) != - 1 )
+                                {                                   
+                                	out.write(b);
+                                }
+                                
+                                out.flush();
+                                
+                        		//fos.close();
+                                
+                        		ObjectInputStream is = new ObjectInputStream(blob.getBinaryStream());
+                        						
+                        		is.readObject();
+                        		
+                        		*/
+                        		
+                        		//
+          
+                        		
+               //blob = lista.get(i).getImageartist();
 
-                </section>
 
-            </section>
-                            
-                            <%} %>
+                        		
+				/*
+				byte byteArray[] = blob.getBytes(3,(int)blob.length());
+             
+               */
+               /*
+              try
+               {
+            	  
+            	 
+            	  /*-
+            	FileOutputStream fileOutStream = new FileOutputStream();
+               
+               //fos.write(byteArray);               
 
+      		   int tamanhoBlob = (int) blob.length();
+
+               byte[] bytesImage = blob.getBytes(1, tamanhoBlob);
+               
+               String ler = new FileInputStream(fileOutStream);              
+               
+               fos.write(bytesImage);
+               
+               fos.close();
+               
+               }catch (Exception e)
+               {
+            	   
+               }
+					
+               */
+					%>                                    
+                                                        
+                            <%} %>  
+          
                     </tbody>
 
                 </table>
-
-            </section>
-
-        </section>
-
-        <section id="sectionGallery">
-
-            <!-- ART -->
-
-            <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="images/artistsandarts/leonard-de-vinci.jpg" alt=""
-                        onclick="openPage('artist.html','_self')">
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
-            
-              <section class="SectionArts">
-
-                <section class="SectionImageArts">
-
-                    <img class="ImagesArts" src="" alt=""
-                       >
-
-                </section>
-
-            </section>
-
-            <!-- ART -->
+			
+			 </section>
 
         </section>
-
+       
         <section id="info">
 
             Dev - Paulo de Tasso <br>

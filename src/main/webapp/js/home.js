@@ -192,7 +192,7 @@ function zoom(image, zoom)
     }
 }
 
-function confirmar(idcon)
+function confirmar(id)
 {
     var resposta = confirm("Delete this artist?");
 
@@ -203,8 +203,77 @@ function confirmar(idcon)
 
         //ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
 
-        window.location.href = "delete?idcon=" + idcon;
+        window.location.href = "delete?idArtist=" + id;
     }
 }
 
+function InserirImagem(url)
+ {
+        let img = document.createElement("img");
+        img.src=url;
+        document.body.appendChild(img);
+    }
 
+/////CRIAR LINK PARA O BLOB:
+
+/*
+<a download="hello.txt" href='#' id="link">Download</a>
+
+let blob = new Blob(["Hello, world!"], {type: 'text/plain'});
+
+link.href = URL.createObjectURL(blob);
+*/
+
+/////////////////////////////////////////////////////
+////Aqui está o código semelhante que faz com que o usuário
+// baixe o arquivo dinamicamente criado Blob, sem nenhum HTML:
+
+/*
+let link = document.createElement('a');
+
+link.download = 'hello.txt';
+
+let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+
+link.href = URL.createObjectURL(blob);
+
+link.click();
+
+URL.revokeObjectURL(link.href);
+*/
+
+/////////////////////////////////
+////TRANSFORMAR BLOB EM BASE64:
+
+let link = document.createElement('a');
+
+link.download = 'hello.txt';
+
+let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+
+let reader = new FileReader();
+
+ // converts the blob to base64 and calls onload
+reader.readAsDataURL(blob);
+
+reader.onload = function() 
+{
+// data url
+  link.href = reader.result; 
+  link.click();
+};
+
+///////////////////
+//URL DE UMA DATA BASE64:
+//<img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
+
+
+////////////////////
+//USANDO BASE64 EM IMAGEM
+
+/*	
+	var image = document.createElement('image');
+    image.src = 'data:image/bmp;base64,'+Base64.encode(blob);
+    document.body.appendChild(image);
+    
+*/

@@ -15,8 +15,10 @@ import model.Artists;
 import model.ConnectionDB;
 
 @WebServlet(urlPatterns =
-{ "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report", "/regartist", "/artregister"
+{ "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report", "/regartist", "/artregister", "/artist"
 })
+
+//
 
 public class MainController extends HttpServlet
 {
@@ -70,6 +72,10 @@ public class MainController extends HttpServlet
 		{
 			response.sendRedirect("artregister.html");
 
+		} else if (action.equals("/artist"))
+		{
+			listarArtista(request, response);
+
 		} else
 		{
 			response.sendRedirect("index.html");
@@ -78,11 +84,19 @@ public class MainController extends HttpServlet
 		/* //Teste de conexão: dao.testeConexao(); */
 	}
 
-	// Listar Contatos:
+	// Listar Contatos - /main:
 
 	protected void contatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
+
+		/*-
+		ServletContext contexto = request.getServletContext();
+		String path = contexto.getRealPath("");
+		System.out.println(path);
+		*/
+
+		// String path = this.getServletContext().getRealPath("");
 
 		// response.sendRedirect("agenda.jsp");
 
@@ -95,7 +109,7 @@ public class MainController extends HttpServlet
 		 * 
 		for (int i = 0; i < lista.size(); i++)
 		{
-			System.out.println(lista.get(i).getIdcon());
+			System.out.println(lista.get(i).getIdArtist());
 			System.out.println(lista.get(i).getNome());
 			System.out.println(lista.get(i).getEmail());
 			System.out.println(lista.get(i).getSexo());
@@ -159,7 +173,7 @@ public class MainController extends HttpServlet
 			throws ServletException, IOException
 	{
 
-		String idcon = request.getParameter("idcon");
+		String idArtist = request.getParameter("idArtist");
 
 		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
 
@@ -174,7 +188,7 @@ public class MainController extends HttpServlet
 
 		// SETAR A VARIAVEL JAVABEANS:
 
-		contato.setIdcon(idcon);
+		contato.setIdArtist(idArtist);
 		/*-
 		contato.setNome(name);
 		contato.setEmail(email);
@@ -188,18 +202,18 @@ public class MainController extends HttpServlet
 		dao.selecionarContato(contato);
 
 		// TESTE DE RECEBIMENTO:
-
-		System.out.println(contato.getIdcon());
-		System.out.println(contato.getNome());
-		System.out.println(contato.getEmail());
-		System.out.println(contato.getSexo());
-		System.out.println(contato.getDatadenascimento());
-		System.out.println(contato.getNacionalidade());
-		System.out.println(contato.getCpf());
-		System.out.println(contato.getImageartist());
-
 		/*-
-		contato.setIdcon(request.getParameter("idcon"));
+				System.out.println("selecionarContato: ");
+				System.out.println(contato.getIdArtist());
+				System.out.println(contato.getNome());
+				System.out.println(contato.getEmail());
+				System.out.println(contato.getSexo());
+				System.out.println(contato.getDatadenascimento());
+				System.out.println(contato.getNacionalidade());
+				System.out.println(contato.getCpf());
+		*/
+		/*-
+		contato.setIdArtist(request.getParameter("idArtist"));
 		contato.setNome(request.getParameter("name"));
 		contato.setEmail(request.getParameter("email"));
 		contato.setSexo(request.getParameter("gender"));
@@ -211,7 +225,7 @@ public class MainController extends HttpServlet
 		// SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
 		// DA PAGINA EDITAR.JSP:
 
-		request.setAttribute("idcon", contato.getIdcon());
+		request.setAttribute("idArtist", contato.getIdArtist());
 		request.setAttribute("name", contato.getNome());
 		request.setAttribute("email", contato.getEmail());
 		request.setAttribute("gender", contato.getSexo());
@@ -224,10 +238,6 @@ public class MainController extends HttpServlet
 		RequestDispatcher rd = request.getRequestDispatcher("artistedit.jsp");
 
 		rd.forward(request, response);
-
-		//
-
-		// response.sendRedirect("artistedit.jsp"); }
 	}
 
 	// EDITAR CONTATO /update:
@@ -247,7 +257,7 @@ public class MainController extends HttpServlet
 
 		// SETAR AS VARIAVEIS NO JAVABEANS:
 
-		contato.setIdcon(request.getParameter("idartist"));
+		contato.setIdArtist(request.getParameter("idartist"));
 		contato.setNome(request.getParameter("name"));
 		contato.setEmail(request.getParameter("email"));
 		contato.setSexo(request.getParameter("gender"));
@@ -266,22 +276,61 @@ public class MainController extends HttpServlet
 
 	}
 
-	// REMOVER CONTATO:
+	//
+
+	// Artist Window - /select:
+
+	protected void listarArtista(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+
+		String idArtist = request.getParameter("idArtist");
+
+		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
+
+		// SETAR A VARIAVEL JAVABEANS:
+
+		contato.setIdArtist(idArtist);
+
+		// EXECUTA O METODO selecionarContato()
+
+		dao.selecionarContato(contato);
+
+		// TESTE DE RECEBIMENTO:
+
+		// SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
+		// DA PAGINA EDITAR.JSP:
+
+		request.setAttribute("idArtist", contato.getIdArtist());
+		request.setAttribute("name", contato.getNome());
+		request.setAttribute("email", contato.getEmail());
+		request.setAttribute("gender", contato.getSexo());
+		request.setAttribute("birthday", contato.getDatadenascimento("br"));
+		request.setAttribute("nationality", contato.getNacionalidade());
+		request.setAttribute("cpf", contato.getCpf());
+
+		// ENCAMINHAR A REQUISIÇÃO PARA A PAGINA EDITAR.JSP:
+
+		RequestDispatcher rd = request.getRequestDispatcher("artist.jsp");
+		rd.forward(request, response);
+	}
+
+	// REMOVER CONTATO - /delete:
 
 	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
 		// RECEBIMENTO DO ID DO CONTATO A SER EXCLUIDO:
 
-		String idcon = request.getParameter("idcon");
+		String idArtist = request.getParameter("idArtist");
 
 		/*
-		 * //TESTE DE RECEBIMENTO: System.out.println(idcon);
+		 * //TESTE DE RECEBIMENTO: System.out.println(idArtist);
 		 */
 
 		// SETAR A VARIAVEL 'IDCON' NO JAVABEANS:
 
-		contato.setIdcon(idcon);
+		contato.setIdArtist(idArtist);
 
 		// EXECUTAR O METDO deletarContato()
 

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
 
@@ -71,7 +74,7 @@
                 <section id="buttonsZoom">                   
 
                     <section class="TitlesAuthor">
-                        LEONARDO DA VINCI
+                       <%out.print(request.getAttribute("name"));%>
                     </section>
 
                 </section>
@@ -121,7 +124,7 @@
                                 </section>
 
                                 <section class="DataArtist" onclick="openPage('artist.html','_self')">
-                                    Leonardo da Vinci
+                                      <%out.print(request.getAttribute("name"));%>
                                 </section>
 
                             </section>
@@ -136,7 +139,7 @@
 
                                 <section class="DataArtist">
 
-                                    Male
+                                      <%out.print(request.getAttribute("gender"));%>
 
                                 </section>
 
@@ -152,7 +155,7 @@
 
                                 <section class="DataArtist">
 
-                                    davinci@hotmail.com
+                                     <%out.print(request.getAttribute("email"));%>
 
                                 </section>
 
@@ -168,7 +171,7 @@
 
                                 <section class="DataArtist">
 
-                                    01-01-01
+                                     <%out.print(request.getAttribute("birthday"));%>
 
                                 </section>
 
@@ -184,7 +187,7 @@
 
                                 <section class="DataArtist">
 
-                                    FRANCE
+                                      <%out.print(request.getAttribute("nationality"));%>
 
                                 </section>
 
@@ -200,7 +203,7 @@
 
                                 <section class="DataArtist">
 
-                                    111.111.111-01
+                                      <%out.print(request.getAttribute("cpf"));%>
 
                                 </section>
 
@@ -348,7 +351,7 @@
 
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
-            World of digital artists - WODAÂ®
+            World of digital artists - WODA®
 
             <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
@@ -370,7 +373,7 @@
 
         <section id="sectionFooter">
 
-            World of digital artists - WODAÂ®
+            World of digital artists - WODA®
 
         </section>
 

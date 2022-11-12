@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
+
 <html id="html5" lang="en-US">
 
     <head>
@@ -65,16 +66,16 @@
 
     <body>
 
-
-<% //O SERVLET TRATA AS REQUISIÇÕES RECEBIDAS POR MEIO DE 'NOMES', 'EVENTOS', 'AÇÕES' OU 'LINKS' 
-%>
-
         <form id="formRegisterArtist" name="formregisterartist" action="update" method="get" onreset="clear()">
 
             <fieldset>
 
-                <legend>
-                    EDIT ARTIST:
+                <legend class="LegendResgiter">
+
+                    <img class="Buttons" src="images/icons/ARTIST01.png" alt="">
+
+                    <img class="Buttons" src="images/icons/ARTIST02.png" alt="">
+
                 </legend>
 
                 <table>
@@ -82,7 +83,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="idartist" size='10' placeholder="ID" readonly value="<%out.print(request.getAttribute("idcon"));%>">
+                            <input type="text" name="idartist" size='10' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
 
                         </td>
                         <td>
@@ -94,11 +95,13 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
-                                onchange="verificarNome(this.value)" required value="<%out.print(request.getAttribute("name"));%>">
+                                onchange="verificarNome(this.value)" value="<%out.print(request.getAttribute("name"));%>" required>
 
                         </td>
                         <td>
-                            <div id="msgName" class="AlertMsgs"></div>
+                            <div id="msgName" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
@@ -110,7 +113,9 @@
 
                         </td>
                         <td>
-                            <div id="msgEmail" class="AlertMsgs"></div>
+                            <div id="msgEmail" class="AlertMsgs">
+
+                            </div>
                         </td>
                     </tr>
 
@@ -136,13 +141,14 @@
 								<option value="<%out.print(request.getAttribute("gender"));%>" selected>
 								<%out.print(request.getAttribute("gender"));%>
 								</option>
-                            
-
+								
                             </select>
 
                         </td>
                         <td>
-                            <div id="msgGender" class="AlertMsgs"></div>
+                            <div id="msgGender" class="AlertMsgs">
+
+                            </div>
                         </td>
                     </tr>
 
@@ -150,11 +156,13 @@
                         <td>
 
                             <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required value="<%out.print(request.getAttribute("birthday"));%>">
+                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" value="<%out.print(request.getAttribute("birthday"));%>" required>
 
                         </td>
                         <td>
-                            <div id="msgBirthday" class="AlertMsgs"></div>
+                            <div id="msgBirthday" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
@@ -162,7 +170,7 @@
                         <td>
 
                             <select id="nationality" name="nationality" onchange="verificarNacionalidade(this.value)"
-                                required >
+                                required>
 
                                 <option value="nationality" selected>...Nationality...</option>
                                 <option value="África do Sul">África do Sul</option>
@@ -337,56 +345,36 @@
                                 <option value="Vietnã">Vietnã</option>
                                 <option value="Zaire">Zaire</option>
                                 <option value="Zâmbia">Zâmbia</option>
-                                <option value="Zimbábue">Zimbábue</option>                                
-								<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
+                                <option value="Zimbábue">Zimbábue</option>
+                                <option value="<%out.print(request.getAttribute("nationality"));%>" selected>
 								<%out.print(request.getAttribute("nationality"));%>
 								</option>
+
                             </select>
 
                         </td>
                         <td>
-                            <div id="msgNationality" class="AlertMsgs"></div>
+                            <div id="msgNationality" class="AlertMsgs">
+                                *
+                            </div>
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr id="sectionCpf">
                         <td>
 
                             <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
-                                placeholder="CPF" required value="<%out.print(request.getAttribute("cpf"));%>">
+                                placeholder="CPF" value="<%out.print(request.getAttribute("cpf"));%>" required>
 
                         </td>
 
                         <td>
-                            <div id="msgCpf" class="AlertMsgs"></div>
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td>
-
-                            <br>
-                            <input id="fileInputArtist" name="image" type="file" accept="image/*"
-                                onchange="imageValidate(this.value, fileInputArtist)" />
-                            <br>
-
-                            <output id="list">
-
-                                File:
-
-                            </output>
-
-                        </td>
-
-                        <td>
-
-                            <div id="msgImageArtist" class="AlertMsgs">
-
+                            <div id="msgCpf" class="AlertMsgs">
+                                *
                             </div>
                         </td>
 
-                    </tr>
+                    </tr>                  
 
                 </table>
 
@@ -404,7 +392,7 @@
 
                     </button>
 
-                    <button type="submit" class="Buttons" onclick="validar('formRegisterArtist')">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArtist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
@@ -458,3 +446,4 @@
     </script>
 
 </html>
+

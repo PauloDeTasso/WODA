@@ -350,37 +350,7 @@
                             </div>
                         </td>
 
-                    </tr>
-
-                    <tr>
-
-                        <td>
-
-                            <br>
-                           
-                           <%  %>
-                           
-                           <!--  <input id="fileInputArtist" name="inputfile" type="file" accept="image/*" /> -->
-                           
-                           
-                            <br>
-
-                            <output id="listArtist" class="lists">
-
-                                File:
-
-                            </output>
-
-                        </td>
-
-                        <td>
-
-                            <div id="msgImageArtist" class="AlertMsgs">
-
-                            </div>
-                        </td>
-
-                    </tr>
+                    </tr>                   
 
                 </table>
 
