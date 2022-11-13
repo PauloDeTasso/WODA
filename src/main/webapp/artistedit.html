@@ -80,7 +80,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="idartist" size='10' placeholder="ID" readonly>
+                            <input id="idInput" type="text" name="idartist" size='5' placeholder="ID" value="2"
+                                readonly>
 
                         </td>
                         <td>
@@ -92,7 +93,7 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
-                                onchange="verificarNome(this.value)" required>
+                                onchange="verificarNome(this.value)" value="Tasso" required>
 
                         </td>
                         <td>
@@ -106,7 +107,7 @@
                         <td>
 
                             <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="60" size='65' placeholder="E-mail">
+                                maxlength="60" size='65' placeholder="E-mail" value="paulo@don.com">
 
                         </td>
                         <td>
@@ -135,6 +136,10 @@
                                     OTHER
                                 </option>
 
+                                <option value="MALE" selected>
+                                    Male
+                                </option>
+
                             </select>
 
                         </td>
@@ -149,7 +154,8 @@
                         <td>
 
                             <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required>
+                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)"
+                                value="30-11-1986" required>
 
                         </td>
                         <td>
@@ -339,6 +345,9 @@
                                 <option value="Zaire">Zaire</option>
                                 <option value="Zâmbia">Zâmbia</option>
                                 <option value="Zimbábue">Zimbábue</option>
+                                <option value="Brasil" selected>
+                                    Brasil
+                                </option>
 
                             </select>
 
@@ -354,7 +363,7 @@
                         <td>
 
                             <input type="text" id="cpf" name="cpf" onchange="formatarCpf()" maxlength="11" size='11'
-                                placeholder="CPF" required>
+                                placeholder="CPF" value="07147710401" required>
 
                         </td>
 
@@ -364,7 +373,7 @@
                             </div>
                         </td>
 
-                    </tr>                  
+                    </tr>
 
                 </table>
 

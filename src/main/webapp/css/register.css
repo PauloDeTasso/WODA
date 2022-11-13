@@ -489,6 +489,7 @@ input {
     font-size: 100%;
     background-color: rgb(252, 215, 166);
     color: rgb(0, 54, 155);
+    padding-left: 1%;
 }
 
 textarea {
@@ -523,6 +524,7 @@ select {
     background-color: rgb(252, 215, 166);
     color: rgb(0, 54, 155);
     font-size: 100%;
+    padding-left: 1%;
 }
 
 option:not(:first-of-type) {
@@ -539,6 +541,7 @@ input[type="date"]::-webkit-datetime-edit-day-field,
 input[type="date"]::-webkit-datetime-edit-year-field {
     color: rgb(0, 54, 155);
 }
+
 
 /* regular text style */
 input[type="date"].date-input--has-value::-webkit-datetime-edit-text,
@@ -564,6 +567,12 @@ input::placeholder {
     border: 0px solid rgba(255, 0, 0, 1);
     color: rgb(240, 30, 30);
     font-weight: 550;
+}
+
+#birthday {
+    color: rgb(0, 54, 155);
+    padding-left: 1%;
+    width: 21%;
 }
 
 #birthday::placeholder {
@@ -617,4 +626,12 @@ input:valid {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+#idInput {
+    text-align: center;
+    background-color: rgba(252, 215, 166, 0.123);
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+    width: 10%;
 }
