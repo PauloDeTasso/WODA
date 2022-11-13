@@ -17,24 +17,10 @@
     
   <%
   
- ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");
-   
-    /*
-    REMOVE A CHECAGEM DESNECESSARIA DO ARRAYLIST DO CODIGO NO ECLIPSE:
-    */
-    
-  /*
+ ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");  
   
-  //TESTE DE RECEBIMENTO:
-	  
-  for (int i = 0; i < lista.size(); i++)
-  {
-		  out.println(lista.get(i).getIdArtist());
-		  out.println(lista.get(i).getNome());
-		  out.println(lista.get(i).getFone());
-		  out.println(lista.get(i).getEmail());
-		 }
-*/
+ String search = (request.getAttribute("searcher") == null) ? "" : request.getAttribute("searcher").toString(); 
+  
   %>  
  
   
@@ -154,11 +140,15 @@
 
                 			<legend class="LegendResgiter">
 
-                   				<img class="Buttons" src="images/icons/pesquisar02.png" alt="">
-
+								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearch.value)">
+           							
+           							<img class="Buttons" src="images/icons/pesquisar02.png" alt="" >
+								
+								</button>
+        
                 			</legend>
 
-                    	<input type="search" name="seacherText" placeholder="Seacher">
+                    	<input id="mySearch" type="search" name="searchinput" placeholder="Seacher" onchange="submitSearcher(this.value)" onkeyup="changeButton(searchButton)" value="<%out.println(search);%>" autofocus>
 
                     	<label>
                         	<input type="radio" name="seacherCheckbox" value="Authors" checked />
@@ -276,97 +266,7 @@
                               	
                                 </td>
                                 
-                            </tr>
-                                      
-                              <%                                                       
-                              
-                              /*
-                            	String fileName = "image.png";
-                               
-                                blob = lista.get(i).getImageartist();
-    							                                
-                                byte[] bin = blob.getBytes(1, (int) blob.length());
-						
-                                ByteArrayInputStream stream = new ByteArrayInputStream(bin);
-										
-                                ConnectionDB dao = new ConnectionDB();
-																				
-                                dao.imageArtistDB(stream);		                
-                                                   
-                                blob = lista.get(i).getImageartist();
-                                                     
-                                String fileName = "image.png";
-                                                     
-                                FileOutputStream fos = new FileOutputStream(fileName);
-                 	                                
-                                int len = (int) blob.length();
-
-                                byte[] buf = blob.getBytes(1, len);
-
-                                fos.write(buf, 0, len);
-                                                     
-                                InputStream is = blob.getBinaryStream();
-                               
-                                ObjectInputStream ois = new ObjectInputStream(is);
-        						
-                                //ois.readObject();
-                                
-                                
-                                int b;
-                                
-                                while ((b = is.read()) != - 1 )
-                                {                                   
-                                	out.write(b);
-                                }
-                                
-                                out.flush();
-                                
-                        		//fos.close();
-                                
-                        		ObjectInputStream is = new ObjectInputStream(blob.getBinaryStream());
-                        						
-                        		is.readObject();
-                        		
-                        		*/
-                        		
-                        		//
-          
-                        		
-               //blob = lista.get(i).getImageartist();
-
-
-                        		
-				/*
-				byte byteArray[] = blob.getBytes(3,(int)blob.length());
-             
-               */
-               /*
-              try
-               {
-            	  
-            	 
-            	  /*-
-            	FileOutputStream fileOutStream = new FileOutputStream();
-               
-               //fos.write(byteArray);               
-
-      		   int tamanhoBlob = (int) blob.length();
-
-               byte[] bytesImage = blob.getBytes(1, tamanhoBlob);
-               
-               String ler = new FileInputStream(fileOutStream);              
-               
-               fos.write(bytesImage);
-               
-               fos.close();
-               
-               }catch (Exception e)
-               {
-            	   
-               }
-					
-               */
-					%>                                    
+                            </tr>          
                                                         
                             <%} %>  
           

@@ -94,11 +94,11 @@ function validateDate(campo, msgAlert)
 
     if (campo == "publicationDate")
     {
-        exposureDate.style.visibility = "hidden";
+        exposureDate.type = "hidden";
 
     } else if (campo == "exposureDate")
     {
-        publicationDate.style.visibility = "hidden";
+        publicationDate.type = "hidden";
     } else
     {
         //
@@ -314,8 +314,8 @@ function clear()
         msgExposureDate.innerHTML = "";
         msgImage.innerHTML = "";
         msgStatus.innerHTML = "";
-        exposureDate.style.visibility = "visible";
-        publicationDate.style.visibility = "visible";
+        exposureDate.type = "text"
+        publicationDate.type = "text"
 
         //
 

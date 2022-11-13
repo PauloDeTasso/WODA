@@ -219,11 +219,9 @@
 
                 <section id="sectionRegisterButtons">
 
-                    <section class="TitlesNames">
+                    <section class="TitlesNames">                        
 
-                        ADD ARTS:
-
-                        <button type="button" class="Buttons">
+                        <button type="button" class="Buttons" onclick="openPage('artregister.html','_self')">
 
                             <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png"
                                 alt="">

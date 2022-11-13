@@ -19,8 +19,6 @@ public class Arts implements Serializable
 
 	private String idartist;
 
-	private Object image;
-
 	// CONTRUTORES:
 
 	public Arts()
@@ -70,6 +68,25 @@ public class Arts implements Serializable
 		this.description = description;
 	}
 
+	public String getDataDePublicacao(String formato)
+	{
+
+		if (formato.equals("br"))
+		{
+			String dia = this.dataDePublicacao.substring(8);
+			String mes = this.dataDePublicacao.substring(5, 7);
+			String ano = this.dataDePublicacao.substring(0, 4);
+
+			String dataParaMysql = dia + "-" + mes + "-" + ano;
+
+			return dataParaMysql;
+
+		} else
+		{
+			return dataDePublicacao;
+		}
+	}
+
 	public String getDataDePublicacao()
 	{
 		return dataDePublicacao;
@@ -78,6 +95,25 @@ public class Arts implements Serializable
 	public void setDataDePublicacao(String dataDePublicacao)
 	{
 		this.dataDePublicacao = dataDePublicacao;
+	}
+
+	public String getDataDeExposicao(String formato)
+	{
+
+		if (formato.equals("br"))
+		{
+			String dia = this.dataDeExposicao.substring(8);
+			String mes = this.dataDeExposicao.substring(5, 7);
+			String ano = this.dataDeExposicao.substring(0, 4);
+
+			String dataParaMysql = dia + "-" + mes + "-" + ano;
+
+			return dataParaMysql;
+
+		} else
+		{
+			return dataDeExposicao;
+		}
 	}
 
 	public String getDataDeExposicao()

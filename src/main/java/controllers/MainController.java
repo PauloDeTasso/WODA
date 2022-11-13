@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Artists;
+import model.Arts;
 import model.ConnectionDB;
+import model.Searcher;
 
 @WebServlet(urlPatterns =
-{ "/Controller", "/main", "/insert", "/select", "/update", "/delete", "/report", "/regartist", "/artregister", "/artist"
+{ "/main", "/insert", "/select", "/update", "/delete", "/artregister", "/artist", "/searcher"
 })
 
 //
@@ -27,6 +29,10 @@ public class MainController extends HttpServlet
 	ConnectionDB dao = new ConnectionDB();
 
 	Artists contato = new Artists();
+
+	Arts art = new Arts();
+
+	Searcher searcherMain = new Searcher();
 
 	public MainController()
 	{
@@ -70,11 +76,15 @@ public class MainController extends HttpServlet
 
 		} else if (action.equals("/artregister"))
 		{
-			response.sendRedirect("artregister.html");
+			addArt(request, response);
 
 		} else if (action.equals("/artist"))
 		{
 			listarArtista(request, response);
+
+		} else if (action.equals("/searcher"))
+		{
+			searcher(request, response);
 
 		} else
 		{
@@ -343,6 +353,84 @@ public class MainController extends HttpServlet
 
 	}
 
+	//
+
+	// Search - /search:
+
+	protected void searcher(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		// RECEBIMENTO DO ID DO CONTATO A SER EXCLUIDO:
+
+		String searcher = request.getParameter("text");
+		// SETAR A VARIAVEL 'IDCON' NO JAVABEANS:
+
+		searcherMain.setSeacher(searcher);
+
+		// EXECUTAR O METDO deletarContato()
+
+		ArrayList<Artists> lista = dao.searcher(searcherMain);
+
+		// ENCAMINHAR A LISTA AO DOCUMENTO AGENDA.JSP:
+
+		// SETAR UM ATRIBUTO DO DOCUMENTO JSP COM A LISTA
+
+		request.setAttribute("contatos", lista);
+
+		request.setAttribute("searcher", searcher);
+
+		// DESPACHAR A LISTA AO DOCUMENTO AGENDA.JSP:
+
+		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+
+		// ENCAMINHA O OBJETO LISTA AO DOCUMENTO
+
+		rd.forward(request, response);
+
+		// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
+		// IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
+
+		// response.sendRedirect("main");
+	}
+
+	// ADD ART - /artregister:
+
+	protected void addArt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		art.setName(request.getParameter("name"));
+		art.setDescription(request.getParameter("description"));
+		art.setDataDePublicacao(request.getParameter("publicationdate"));
+
+		System.out.println("publicationdate: " + request.getParameter("publicationdate"));
+
+		art.setDataDeExposicao(request.getParameter("exposuredate"));
+
+		System.out.println("exposuredate: " + request.getParameter("exposuredate"));
+
+		art.setIdartist(request.getParameter("idartist"));
+
+		// Invocar o método inserirContato passando o objeto contato
+
+		dao.inserirArt(art);
+
+		request.setAttribute("name", art.getName());
+		request.setAttribute("description", art.getDescription());
+		request.setAttribute("publicationdate", art.getDataDePublicacao());
+
+		System.out.println("setAttribute art.getDataDePublicacao(): " + art.getDataDePublicacao());
+		System.out.println("setAttribute art.getDataDeExposicao(): " + art.getDataDeExposicao());
+
+		request.setAttribute("exposuredate", art.getDataDeExposicao());
+		request.setAttribute("idartist", art.getIdartist());
+
+		// DESPACHAR A LISTA AO DOCUMENTO AGENDA.JSP:
+
+		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
+
+		// ENCAMINHA O OBJETO LISTA AO DOCUMENTO
+
+		rd.forward(request, response);
+	}
 }
 
 //OBS.: PARA GERAR O JAVA DOC É SO CLICAR COM O BOTAO DIREITO MOUSE NA ULTIMA LINHA

@@ -83,7 +83,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="idartist" size='10' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
+                            <input type="text" name="idartist" size='5' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
 
                         </td>
                         <td>

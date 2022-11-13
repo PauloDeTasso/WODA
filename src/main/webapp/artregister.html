@@ -62,8 +62,8 @@
 
     <body>
 
-        <form id="formRegisterArt" name="formregisterart" enctype="multipart/form-data" action="artregister"
-            method="post" onreset="clear()">
+        <form id="formRegisterArt" name="formregisterart" action="artregister"
+            method="get" onreset="clear()">
 
             <fieldset>
 
@@ -105,7 +105,7 @@
 
                             <input type="text" name="publicationdate" id="publicationDate"
                                 placeholder="...PUBLICATION DATE..." onfocus="(this.type='date')"
-                                onchange="validateDate('publicationDate',msgPublicationDate)" required>
+                                onchange="validateDate('publicationDate',msgPublicationDate)" value="" required>
 
                         </td>
                         <td>
@@ -118,13 +118,27 @@
                         <td>
 
                             <input type="text" name="exposuredate" id="exposureDate" placeholder="...EXPOSURE DATE..."
-                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)"
+                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)" value=""
                                 required>
 
                         </td>
 
                         <td>
                             <div id="msgExposureDate" class="AlertMsgs"></div>
+                        </td>
+
+                    </tr>       
+                    
+                    <tr>
+
+                        <td>
+
+                            <input type="number" name="idartist" id="idArtist" placeholder="EXTRA ARTIST ID">
+
+                        </td>
+
+                        <td>
+                            <div id="msgExtraArtistId" class="AlertMsgs"></div>
                         </td>
 
                     </tr>                  
@@ -143,7 +157,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formregisterart')">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArt')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 

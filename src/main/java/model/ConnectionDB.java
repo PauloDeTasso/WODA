@@ -2,31 +2,14 @@
 package model;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ConnectionDB
 {
-
-	public static String UrlImagemArtistaAtual1;
-
-	public static String UrlImagemArtistaAtual2;
-
-	public static String UrlImagemArtistaAtual3;
-
-	public static String UrlImagemArtistaAtual4;
-
-	public static Path UrlImagemArtistaAtual5;
-
 	// MODELO DE CONEXÃO:
 
 	// PARAMETROS:
@@ -71,7 +54,7 @@ public class ConnectionDB
 
 	/* CRUD CREATE - /insert */
 
-	public void inserirContato(Artists contato) throws FileNotFoundException
+	public void inserirContato(Artists contato)
 	{
 		String create;
 
@@ -92,7 +75,7 @@ public class ConnectionDB
 				pst.setString(1, contato.getNome());
 				pst.setString(2, contato.getEmail());
 				pst.setString(3, contato.getSexo());
-				pst.setString(4, contato.getDatadenascimento(""));
+				pst.setString(4, contato.getDatadenascimento());
 				pst.setString(5, contato.getNacionalidade());
 				pst.setString(6, contato.getCpf());
 
@@ -127,7 +110,7 @@ public class ConnectionDB
 				pst.setString(1, contato.getNome());
 				pst.setString(2, contato.getEmail());
 				pst.setString(3, contato.getSexo());
-				pst.setString(4, contato.getDatadenascimento(""));
+				pst.setString(4, contato.getDatadenascimento());
 				pst.setString(5, contato.getNacionalidade());
 
 				// Executar a query
@@ -140,9 +123,7 @@ public class ConnectionDB
 			{
 				System.out.println(e);
 			}
-
 		}
-
 	}
 
 	// CRUD READ - /main:
@@ -389,6 +370,160 @@ public class ConnectionDB
 	}
 
 	//
+
+	public ArrayList<Artists> searcher(Searcher searcherMain)
+	{
+
+		// CRIANDO UM OBJETO PARA ACESSAR A CLASSE JAVABEANS:
+		ArrayList<Artists> contatos = new ArrayList<>();
+
+		//
+
+		String searcher = "select * from artists where nome like ? order by nome asc";
+
+		try
+		{
+			// Abrir a conexao:
+
+			Connection con = conectar();
+
+			// Preparar a query para a execução no banco de dados:
+
+			PreparedStatement pst = con.prepareStatement(searcher);
+
+			// SUBSTITUIR A INTERROGAÇÃO (?) DA QUERY ACIMA - READ2 -
+			// PELO ID SETADO NA REQUISIÇÃO NA CLASSE CONTROLE:
+
+			pst.setString(1, searcherMain.getSeacher() + "%");
+
+			// EXECUTA A QUERY:
+
+			ResultSet rs = pst.executeQuery();
+
+			// LAÇO SERA EXECUTADO ENQUANTO HOUVER CONTATOS:
+
+			while (rs.next())
+			{
+				// VARIAVEIS DE APOIO QUE RECEBEM OS DADOS DO BANCO:
+
+				String idArtist = rs.getString(1);
+				String nome = rs.getString(2);
+				String email = rs.getString(3);
+				String sexo = rs.getString(4);
+				String datadenascimento = rs.getString(5);
+				String nacionalidade = rs.getString(6);
+				String cpf;
+
+				if (nacionalidade.equals("Brasil"))
+				{
+					cpf = rs.getString(7);
+				} else
+				{
+					cpf = rs.getString(7);
+					cpf = "Don't have!";
+				}
+
+				// ARMAZENAR NO ARRAYLIST
+
+				contatos.add(new Artists(idArtist, nome, email, sexo, datadenascimento, nacionalidade, cpf));
+			}
+
+			pst.close();
+
+			// FECHA CONEXÃO DO BANCO:
+			con.close();
+
+			return contatos;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	///// INSERIR ART - /artregister:
+
+	public void inserirArt(Arts art)
+	{
+		String create;
+
+		System.out.println(art.getDataDePublicacao().equals(null));
+		System.out.println(art.getDataDeExposicao().equals(null));
+
+		if (art.getDataDePublicacao().equals(null))
+		{
+			create = "insert into arts (nome,descricao,datadeexposicao,idartist) values (?,?,?,?)";
+
+			try
+			{
+				Connection con = conectar();
+
+				PreparedStatement pst = con.prepareStatement(create);
+
+				pst.setString(1, art.getName());
+				pst.setString(2, art.getDescription());
+				pst.setString(3, art.getDataDeExposicao());
+				pst.setString(4, art.getIdartist());
+
+				pst.executeUpdate();
+
+				con.close();
+
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+
+		} else if (art.getDataDeExposicao().equals(null))
+		{
+			create = "insert into arts (nome,descricao,datadepublicacao,idartist) values (?,?,?,?)";
+
+			try
+			{
+				Connection con = conectar();
+
+				PreparedStatement pst = con.prepareStatement(create);
+
+				pst.setString(1, art.getName());
+				pst.setString(2, art.getDescription());
+				pst.setString(3, art.getDataDePublicacao());
+				pst.setString(4, art.getIdartist());
+
+				pst.executeUpdate();
+
+				con.close();
+
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+
+		} else
+		{
+			create = "insert into arts (nome,descricao,idartist) values (?,?,?)";
+
+			try
+			{
+				Connection con = conectar();
+
+				PreparedStatement pst = con.prepareStatement(create);
+
+				pst.setString(1, art.getName());
+				pst.setString(2, art.getDescription());
+				pst.setString(3, art.getIdartist());
+
+				pst.executeUpdate();
+
+				con.close();
+
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+		}
+	}
+
 	/*-
 	
 	public void gravarImagem( String urlImagem ) throws Exception 
@@ -399,15 +534,15 @@ public class ConnectionDB
 	
 		if(file.exist())
 		{
-	    
+	
 			BufferedImage img = ImageIO.read( file );
-	    
+	
 			ByteArrayOutputStream b = new ByteArrayOutputStream();
 			
 			ImageIO.write( img, "jpg", b );
-	    
+	
 			byte[] imgArray = b.toByteArray();
-	    
+	
 			String sql = "INSERT INTO tb_imagens VALUES( NULL, ? )";  
 			
 			
@@ -455,51 +590,52 @@ public class ConnectionDB
 	}
 	*/
 
-	///////////////
+///////////////
 
+	/*-
 	public void criarTxt()
 	{
-
+	
 		try
 		{
 			File myObj = new File("filename.txt");
-
+	
 			if (myObj.createNewFile())
 			{
 				System.out.println("File created: " + myObj.getName());
-
+	
 			} else
 			{
 				System.out.println("File already exists.");
 			}
-
+	
 		} catch (IOException e)
 		{
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 	}
-
+	
 	//
-
+	
 	public File criarImagem(String nome)
 	{
 		File imagemArtist = new File(nome);
-
+	
 		try
 		{
-
+	
 			if (imagemArtist.createNewFile())
 			{
 				System.out.println("Arquivo criado: " + imagemArtist.getName());
-
+	
 			} else
 			{
 				System.out.println("O arquivo não foi criado!");
 			}
-
+	
 			return imagemArtist;
-
+	
 		} catch (IOException e)
 		{
 			System.out.println("Erro!");
@@ -507,61 +643,61 @@ public class ConnectionDB
 		}
 		return imagemArtist;
 	}
-
+	
 	//
-
+	
 	public void salvarTxt()
 	{
-
+	
 		try
 		{
 			FileWriter myWriter = new FileWriter("filename.txt");
-
+	
 			myWriter.write("Files in Java might be tricky, but it is fun enough!");
-
+	
 			myWriter.close();
-
+	
 			System.out.println("Successfully wrote to the file.");
-
+	
 		} catch (IOException e)
 		{
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 	}
-
+	
 	//
-
+	
 	public void lerTxt()
 	{
-
+	
 		try
 		{
 			File myObj = new File("filename.txt");
-
+	
 			Scanner myReader = new Scanner(myObj);
-
+	
 			while (myReader.hasNextLine())
 			{
 				String data = myReader.nextLine();
 				System.out.println(data);
 			}
-
+	
 			myReader.close();
-
+	
 		} catch (FileNotFoundException e)
 		{
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 	}
-
+	
 	//
-
+	
 	public void infoTxt(File myObj)
 	{
 		// File myObj = new File("filename.txt");
-
+	
 		if (myObj.exists())
 		{
 			System.out.println("File name: " + myObj.getName());
@@ -574,29 +710,29 @@ public class ConnectionDB
 			System.out.println("The file does not exist.");
 		}
 	}
-
+	
 	//
-
+	
 	public void deleteTxt()
 	{
 		File myObj = new File("filename.txt");
-
+	
 		if (myObj.delete())
 		{
 			System.out.println("Deleted the file: " + myObj.getName());
-
+	
 		} else
 		{
 			System.out.println("Failed to delete the file.");
 		}
 	}
-
+	
 	//
-
+	
 	public void deletePasta()
 	{
 		File myObj = new File("C:\\Users\\MyName\\Test");
-
+	
 		if (myObj.delete())
 		{
 			System.out.println("Deleted the folder: " + myObj.getName());
@@ -605,9 +741,9 @@ public class ConnectionDB
 			System.out.println("Failed to delete the folder.");
 		}
 	}
-
+	
 	//
-
+	
 	//
 	/*-
 		public Icon loadIcon(long id) throws SQLException, IOException, ClassNotFoundException
@@ -639,7 +775,6 @@ public class ConnectionDB
 				}
 			}
 		}
+	
 	*/
-	//
-
 }

@@ -15,6 +15,10 @@ var saveStatusOn = document.getElementById('saveStatusOn');
 
 var saveStatusOff = document.getElementById('saveStatusOff');
 
+var mySearch = document.getElementById('mySearch');
+
+var searchButton = document.getElementById('searchButton');
+
 var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 /////////
@@ -245,6 +249,8 @@ URL.revokeObjectURL(link.href);
 /////////////////////////////////
 ////TRANSFORMAR BLOB EM BASE64:
 
+/*
+
 let link = document.createElement('a');
 
 link.download = 'hello.txt';
@@ -252,16 +258,18 @@ link.download = 'hello.txt';
 let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
 
 let reader = new FileReader();
+*/
 
  // converts the blob to base64 and calls onload
-reader.readAsDataURL(blob);
-
+//reader.readAsDataURL(blob);
+/*
 reader.onload = function() 
 {
-// data url
-  link.href = reader.result; 
-  link.click();
+ data url
+  //link.href = reader.result; 
+  //link.click();
 };
+*/
 
 ///////////////////
 //URL DE UMA DATA BASE64:
@@ -277,3 +285,28 @@ reader.onload = function()
     document.body.appendChild(image);
     
 */
+
+mySearch.addEventListener("search",()=>
+{
+	submitSearcher(mySearch.value);
+},false);
+
+function submitSearcher(value)
+{	
+	 window.location.href = "searcher?text=" + value;
+};
+
+function changeButton(button)
+{
+	var estiloCabecalho = window.getComputedStyle(button);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue('opacity');
+    
+    
+	if(propriedadeCabecalho == 1)
+	{
+		button.style.opacity = "0.8";
+	}else
+	{
+		button.style.opacity = "1";
+	}
+}
