@@ -17,10 +17,9 @@ import model.ConnectionDB;
 import model.Searcher;
 
 @WebServlet(urlPatterns =
-{ "/main", "/insert", "/select", "/update", "/delete", "/artregister", "/artist", "/searcher"
+{ "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteArtist", "/artregister", "/artist",
+		"/searcher"
 })
-
-//
 
 public class MainController extends HttpServlet
 {
@@ -28,7 +27,7 @@ public class MainController extends HttpServlet
 
 	ConnectionDB dao = new ConnectionDB();
 
-	Artists contato = new Artists();
+	Artists artist = new Artists();
 
 	Arts art = new Arts();
 
@@ -42,37 +41,30 @@ public class MainController extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-
 		String action = request.getServletPath();
 		System.out.println(action);
 
 		if (action.equals("/main"))
 		{
-			contatos(request, response);
+			selectAllArtist(request, response);
 
 			// response.sendRedirect("home.html");
 
-		} else if (action.equals("/insert"))
+		} else if (action.equals("/artistregister"))
 		{
-			adicionarContato(request, response);
+			addArtist(request, response);
 
-		} else if (action.equals("/select"))
+		} else if (action.equals("/selectartistedit"))
 		{
-			listarContato(request, response);
+			selectArtistEdit(request, response);
 
-		} else if (action.equals("/update"))
+		} else if (action.equals("/editartist"))
 		{
-			editarContato(request, response);
+			editArtist(request, response);
 
-		} else if (action.equals("/delete"))
+		} else if (action.equals("/deleteArtist"))
 		{
-			removerContato(request, response);
-
-		} else if (action.equals("/report"))
-		{
-			// gerarRelatorio(request, response);
+			deleteArtist(request, response);
 
 		} else if (action.equals("/artregister"))
 		{
@@ -80,7 +72,7 @@ public class MainController extends HttpServlet
 
 		} else if (action.equals("/artist"))
 		{
-			listarArtista(request, response);
+			selectArtist(request, response);
 
 		} else if (action.equals("/searcher"))
 		{
@@ -90,267 +82,131 @@ public class MainController extends HttpServlet
 		{
 			response.sendRedirect("index.html");
 		}
-
-		/* //Teste de conexão: dao.testeConexao(); */
 	}
 
-	// Listar Contatos - /main:
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String action = request.getServletPath();
+		System.out.println(action);
+		System.out.println("doPost");
+	}
 
-	protected void contatos(HttpServletRequest request, HttpServletResponse response)
+	//
+	// selectAllArtist - /main:
+
+	protected void selectAllArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
+		ArrayList<Artists> listAllArtist = dao.selectAllArtistDb();
 
-		/*-
-		ServletContext contexto = request.getServletContext();
-		String path = contexto.getRealPath("");
-		System.out.println(path);
-		*/
-
-		// String path = this.getServletContext().getRealPath("");
-
-		// response.sendRedirect("agenda.jsp");
-
-		// Criando um objeto para receber os dados JavaBeans
-
-		ArrayList<Artists> lista = dao.listarContatos();
-
-		// TESTE DE RECEBIMENTO DA LISTA:
-		/*-
-		 * 
-		for (int i = 0; i < lista.size(); i++)
-		{
-			System.out.println(lista.get(i).getIdArtist());
-			System.out.println(lista.get(i).getNome());
-			System.out.println(lista.get(i).getEmail());
-			System.out.println(lista.get(i).getSexo());
-			System.out.println(lista.get(i).getDatadenascimento());
-			System.out.println(lista.get(i).getNacionalidade());
-			System.out.println(lista.get(i).getCpf());
-		}
-		*/
-
-		// ENCAMINHAR A LISTA AO DOCUMENTO AGENDA.JSP:
-
-		// SETAR UM ATRIBUTO DO DOCUMENTO JSP COM A LISTA
-
-		request.setAttribute("contatos", lista);
-
-		// DESPACHAR A LISTA AO DOCUMENTO AGENDA.JSP:
+		request.setAttribute("listAllArtists", listAllArtist);
 
 		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-
-		// ENCAMINHA O OBJETO LISTA AO DOCUMENTO
 
 		rd.forward(request, response);
 	}
 
-	// Novo Contato - /insert:
+	// Novo Contato - /artistregister:
 
-	protected void adicionarContato(HttpServletRequest request, HttpServletResponse response)
+	protected void addArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		// Teste de recebimento dos dados do formulario.
+		artist.setNome(request.getParameter("name"));
+		artist.setEmail(request.getParameter("email"));
+		artist.setSexo(request.getParameter("gender"));
+		artist.setDatadenascimento(request.getParameter("birthday"));
+		artist.setNacionalidade(request.getParameter("nationality"));
+		artist.setCpf(request.getParameter("cpf"));
 
-		/*-
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("gender"));
-		System.out.println(request.getParameter("birthday"));
-		System.out.println(request.getParameter("nationality"));
-		System.out.println(request.getParameter("cpf"));
-		*/
+		dao.addArtistDb(artist);
 
-		// Setar as variaveis JavaBeans:
-		contato.setNome(request.getParameter("name"));
-		contato.setEmail(request.getParameter("email"));
-		contato.setSexo(request.getParameter("gender"));
-		contato.setDatadenascimento(request.getParameter("birthday"));
-		contato.setNacionalidade(request.getParameter("nationality"));
-		contato.setCpf(request.getParameter("cpf"));
-
-		// Invocar o método inserirContato passando o objeto contato
-
-		dao.inserirContato(contato);
-
-		// Redirecionar para o documento agenda.jsp
 		response.sendRedirect("main");
-
 	}
+
+	//
 
 	// Editar Contato /select:
 
-	protected void listarContato(HttpServletRequest request, HttpServletResponse response)
+	protected void selectArtistEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-
 		String idArtist = request.getParameter("idArtist");
 
-		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
+		artist.setIdArtist(idArtist);
 
-		/*-
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String gender = request.getParameter("gender");
-		String birthday = request.getParameter("birthday");
-		String nationality = request.getParameter("nationality");
-		String cpf = request.getParameter("cpf");
-		*/
+		dao.selectArtistDb(artist);
 
-		// SETAR A VARIAVEL JAVABEANS:
-
-		contato.setIdArtist(idArtist);
-		/*-
-		contato.setNome(name);
-		contato.setEmail(email);
-		contato.setSexo(gender);
-		contato.setDatadenascimento(birthday);
-		contato.setNacionalidade(nationality);
-		contato.setCpf(cpf);
-		*/
-		// EXECUTA O METODO selecionarContato()
-
-		dao.selecionarContato(contato);
-
-		// TESTE DE RECEBIMENTO:
-		/*-
-				System.out.println("selecionarContato: ");
-				System.out.println(contato.getIdArtist());
-				System.out.println(contato.getNome());
-				System.out.println(contato.getEmail());
-				System.out.println(contato.getSexo());
-				System.out.println(contato.getDatadenascimento());
-				System.out.println(contato.getNacionalidade());
-				System.out.println(contato.getCpf());
-		*/
-		/*-
-		contato.setIdArtist(request.getParameter("idArtist"));
-		contato.setNome(request.getParameter("name"));
-		contato.setEmail(request.getParameter("email"));
-		contato.setSexo(request.getParameter("gender"));
-		contato.setDatadenascimento(request.getParameter("birthday"));
-		contato.setNacionalidade(request.getParameter("nationality"));
-		contato.setCpf(request.getParameter("cpf"));
-		*/
-
-		// SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
-		// DA PAGINA EDITAR.JSP:
-
-		request.setAttribute("idArtist", contato.getIdArtist());
-		request.setAttribute("name", contato.getNome());
-		request.setAttribute("email", contato.getEmail());
-		request.setAttribute("gender", contato.getSexo());
-		request.setAttribute("birthday", contato.getDatadenascimento());
-		request.setAttribute("nationality", contato.getNacionalidade());
-		request.setAttribute("cpf", contato.getCpf());
-
-		// ENCAMINHAR A REQUISIÇÃO PARA A PAGINA EDITAR.JSP:
+		request.setAttribute("idArtist", artist.getIdArtist());
+		request.setAttribute("name", artist.getNome());
+		request.setAttribute("email", artist.getEmail());
+		request.setAttribute("gender", artist.getSexo());
+		request.setAttribute("birthday", artist.getDatadenascimento("br"));
+		request.setAttribute("nationality", artist.getNacionalidade());
+		request.setAttribute("cpf", artist.getCpf());
 
 		RequestDispatcher rd = request.getRequestDispatcher("artistedit.jsp");
 
 		rd.forward(request, response);
 	}
 
-	// EDITAR CONTATO /update:
+	// EDITAR CONTATO /editartist:
 
-	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
+	protected void editArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
+		artist.setIdArtist(request.getParameter("idartist"));
+		artist.setNome(request.getParameter("name"));
+		artist.setEmail(request.getParameter("email"));
+		artist.setSexo(request.getParameter("gender"));
+		artist.setDatadenascimento(request.getParameter("birthday"));
+		artist.setNacionalidade(request.getParameter("nationality"));
+		artist.setCpf(request.getParameter("cpf"));
 
-		// TESTE DE RECEBIMENTO:
-		System.out.println(request.getParameter("idartist"));
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("gender"));
-		System.out.println(request.getParameter("birthday"));
-		System.out.println(request.getParameter("nationality"));
-		System.out.println(request.getParameter("cpf"));
-
-		// SETAR AS VARIAVEIS NO JAVABEANS:
-
-		contato.setIdArtist(request.getParameter("idartist"));
-		contato.setNome(request.getParameter("name"));
-		contato.setEmail(request.getParameter("email"));
-		contato.setSexo(request.getParameter("gender"));
-		contato.setDatadenascimento(request.getParameter("birthday"));
-		contato.setNacionalidade(request.getParameter("nationality"));
-		contato.setCpf(request.getParameter("cpf"));
-
-		// EXECUTAR O METODO ALTERAR CONTATO:
-
-		dao.alterarContato(contato);
-
-		// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
-		// IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
+		dao.editArtistDb(artist);
 
 		response.sendRedirect("main");
-
 	}
 
 	//
 
-	// Artist Window - /select:
+	// selectArtist - /artist:
 
-	protected void listarArtista(HttpServletRequest request, HttpServletResponse response)
+	protected void selectArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
 
 		String idArtist = request.getParameter("idArtist");
 
-		// RECEBER UM PARAMETRO (?) NA REQUISIÇÃO (ID DO CONTATO A SER EDITADO):
+		artist.setIdArtist(idArtist);
 
-		// SETAR A VARIAVEL JAVABEANS:
+		dao.selectArtistDb(artist);
 
-		contato.setIdArtist(idArtist);
-
-		// EXECUTA O METODO selecionarContato()
-
-		dao.selecionarContato(contato);
-
-		// TESTE DE RECEBIMENTO:
-
-		// SETA OS VALORES NO FORMULARIO EDITAR - USANTO O ATRIBUTO "NAME HTML"
-		// DA PAGINA EDITAR.JSP:
-
-		request.setAttribute("idArtist", contato.getIdArtist());
-		request.setAttribute("name", contato.getNome());
-		request.setAttribute("email", contato.getEmail());
-		request.setAttribute("gender", contato.getSexo());
-		request.setAttribute("birthday", contato.getDatadenascimento("br"));
-		request.setAttribute("nationality", contato.getNacionalidade());
-		request.setAttribute("cpf", contato.getCpf());
-
-		// ENCAMINHAR A REQUISIÇÃO PARA A PAGINA EDITAR.JSP:
+		request.setAttribute("idArtist", artist.getIdArtist());
+		request.setAttribute("name", artist.getNome());
+		request.setAttribute("email", artist.getEmail());
+		request.setAttribute("gender", artist.getSexo());
+		request.setAttribute("birthday", artist.getDatadenascimento("br"));
+		request.setAttribute("nationality", artist.getNacionalidade());
+		request.setAttribute("cpf", (artist.getCpf() == null ? "Don't have!" : artist.getCpf()));
 
 		RequestDispatcher rd = request.getRequestDispatcher("artist.jsp");
+
 		rd.forward(request, response);
 	}
 
-	// REMOVER CONTATO - /delete:
+	// REMOVER CONTATO - /deleteArtist:
 
-	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
+	protected void deleteArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		// RECEBIMENTO DO ID DO CONTATO A SER EXCLUIDO:
-
 		String idArtist = request.getParameter("idArtist");
 
-		/*
-		 * //TESTE DE RECEBIMENTO: System.out.println(idArtist);
-		 */
+		artist.setIdArtist(idArtist);
 
-		// SETAR A VARIAVEL 'IDCON' NO JAVABEANS:
-
-		contato.setIdArtist(idArtist);
-
-		// EXECUTAR O METDO deletarContato()
-
-		dao.deletarContato(contato);
-
-		// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
-		// IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
+		dao.deleteArtistDb(artist);
 
 		response.sendRedirect("main");
-
 	}
 
 	//
@@ -360,38 +216,24 @@ public class MainController extends HttpServlet
 	protected void searcher(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		// RECEBIMENTO DO ID DO CONTATO A SER EXCLUIDO:
-
 		String searcher = request.getParameter("text");
-		// SETAR A VARIAVEL 'IDCON' NO JAVABEANS:
+		System.out.println(request.getParameter("text"));
 
 		searcherMain.setSeacher(searcher);
 
-		// EXECUTAR O METDO deletarContato()
+		ArrayList<Artists> listAllArtist = dao.searcher(searcherMain);
 
-		ArrayList<Artists> lista = dao.searcher(searcherMain);
-
-		// ENCAMINHAR A LISTA AO DOCUMENTO AGENDA.JSP:
-
-		// SETAR UM ATRIBUTO DO DOCUMENTO JSP COM A LISTA
-
-		request.setAttribute("contatos", lista);
+		request.setAttribute("listAllArtists", listAllArtist);
 
 		request.setAttribute("searcher", searcher);
 
-		// DESPACHAR A LISTA AO DOCUMENTO AGENDA.JSP:
-
 		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-
-		// ENCAMINHA O OBJETO LISTA AO DOCUMENTO
 
 		rd.forward(request, response);
 
-		// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP - UTILIZANDO A REQUISIÇÃO 'MAIN'
-		// IRAR ABRIR AGENDA.JSP JÁ ATUALIZADO COM O BANCO:
-
-		// response.sendRedirect("main");
 	}
+
+	//
 
 	// ADD ART - /artregister:
 
@@ -400,34 +242,18 @@ public class MainController extends HttpServlet
 		art.setName(request.getParameter("name"));
 		art.setDescription(request.getParameter("description"));
 		art.setDataDePublicacao(request.getParameter("publicationdate"));
-
-		System.out.println("publicationdate: " + request.getParameter("publicationdate"));
-
 		art.setDataDeExposicao(request.getParameter("exposuredate"));
-
-		System.out.println("exposuredate: " + request.getParameter("exposuredate"));
-
 		art.setIdartist(request.getParameter("idartist"));
-
-		// Invocar o método inserirContato passando o objeto contato
 
 		dao.inserirArt(art);
 
 		request.setAttribute("name", art.getName());
 		request.setAttribute("description", art.getDescription());
-		request.setAttribute("publicationdate", art.getDataDePublicacao());
-
-		System.out.println("setAttribute art.getDataDePublicacao(): " + art.getDataDePublicacao());
-		System.out.println("setAttribute art.getDataDeExposicao(): " + art.getDataDeExposicao());
-
-		request.setAttribute("exposuredate", art.getDataDeExposicao());
+		request.setAttribute("publicationdate", art.getDataDePublicacao("br"));
+		request.setAttribute("exposuredate", art.getDataDeExposicao("br"));
 		request.setAttribute("idartist", art.getIdartist());
 
-		// DESPACHAR A LISTA AO DOCUMENTO AGENDA.JSP:
-
 		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
-
-		// ENCAMINHA O OBJETO LISTA AO DOCUMENTO
 
 		rd.forward(request, response);
 	}

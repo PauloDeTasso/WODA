@@ -124,21 +124,23 @@ public class Artists implements Serializable
 
 	public String getCpf()
 	{
-		return cpf == null ? "Don't have!" : cpf;
+		// return cpf == null ? null : cpf;
+		return cpf;
 	}
 
 	public void setCpf(String cpf)
 	{
-
-		if (cpf.equals("undefined"))
-		{
-			this.cpf = "Don't have!";
-
-		} else
-		{
-			this.cpf = cpf;
-		}
-
+		/*-
+				if (cpf.equals("undefined") || cpf.equals(null))
+				{
+					this.cpf = null;
+		
+				} else
+				{
+					this.cpf = cpf;
+				}
+			*/
+		this.cpf = cpf;
 	}
 
 	//

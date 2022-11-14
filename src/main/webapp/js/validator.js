@@ -160,7 +160,7 @@ function TestaCPF(strCPF)
     var Soma;
     var Resto;
     Soma = 0;
-    if (strCPF == "00000000000") return false;
+    if (strCPF == null) return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
@@ -230,48 +230,6 @@ function verificarNome(valor)
     {
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
     }
-}
-
-//onchange="imageValidate(this.value, fileInputArtist)" 
-
-function imageValidate(value, input)
-{
-    var file;
-
-    if (input == fileInputArtist)
-    {
-        listArtist.innerHTML = "";
-        msgImageArtist.innerHTML = "";
-
-        file = input.files[ 0 ];
-
-        listArtist.style.color = "rgba(0, 0, 0, 1)";
-        listArtist.style.backgroundColor = "rgb(255, 192, 100)";
-
-        listArtist.innerHTML = " <br><br>* " + file.name + "<br>";
-        msgImageArtist.innerHTML = "<font color= 'green'>Ok</font>";
-
-    } else if (input == filesInputArts)
-    {
-        listArts.innerHTML = "";
-        msgImageArts.innerHTML = "";
-
-        for (var i = 0; i < input.files.length; i++)
-        {
-            file = input.files[ i ];
-
-            listArts.innerHTML += " <br><br>* " + file.name + "<br>";
-        }
-
-        msgImageArt.innerHTML = "<font color= 'green'>Ok</font>";
-
-    } else
-    {
-        msgStatus.innerHTML = "Erro";
-    }
-
-    listArts.style.backgroundColor = "rgba(255, 159, 70, 0.7)";
-    listArts.style.color = "rgb(0, 55, 173)";
 }
 
 function descriptionValidate(value)
@@ -411,7 +369,7 @@ function validar(form)
     //alert(document.forms["form"].submit())
     if (formRegisterArtist)
     {
-		cpf.value = cpfOriginal;
+		//cpf.value = cpfOriginal;
     }
     document.forms[ form ].submit();
 }
@@ -421,29 +379,6 @@ function validar(form)
 <input type="file" id="files" name="files[]" multiple />
 <output id="list"></output>
 */
-
-function handleFileSelect(evt)
-{
-    var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-
-    var output = [];
-
-    for (var i = 0, f; f = files[ i ]; i++)
-    {
-
-        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ',
-
-            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-            '</li>');
-    }
-
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-
-}
-
-
 
 /*
 
@@ -492,13 +427,11 @@ function statusCpf()
 if (nationality.value == "Brasil")
     {
         sectionCpf.style.visibility = "visible";
-    	cpf.type = "text";
+    	cpf.style.visibility = "visible";
     } else 
     {			
         sectionCpf.style.visibility = "hidden";      
-        cpf.type = "hidden";
-        cpfOriginal = "";
-        cpf.value = "";
+        cpf.style.visibility = "hidden";  
     }
 }
 

@@ -73,13 +73,20 @@ public class Arts implements Serializable
 
 		if (formato.equals("br"))
 		{
-			String dia = this.dataDePublicacao.substring(8);
-			String mes = this.dataDePublicacao.substring(5, 7);
-			String ano = this.dataDePublicacao.substring(0, 4);
 
-			String dataParaMysql = dia + "-" + mes + "-" + ano;
+			if (this.dataDePublicacao.equals("") || this.dataDePublicacao.equals(null))
+			{
+				return dataDePublicacao;
+			} else
+			{
+				String dia = this.dataDePublicacao.substring(8);
+				String mes = this.dataDePublicacao.substring(5, 7);
+				String ano = this.dataDePublicacao.substring(0, 4);
 
-			return dataParaMysql;
+				String dataParaMysql = dia + "-" + mes + "-" + ano;
+
+				return dataParaMysql;
+			}
 
 		} else
 		{
@@ -102,13 +109,20 @@ public class Arts implements Serializable
 
 		if (formato.equals("br"))
 		{
-			String dia = this.dataDeExposicao.substring(8);
-			String mes = this.dataDeExposicao.substring(5, 7);
-			String ano = this.dataDeExposicao.substring(0, 4);
 
-			String dataParaMysql = dia + "-" + mes + "-" + ano;
+			if (this.dataDeExposicao.equals("") || this.dataDeExposicao.equals(null))
+			{
+				return dataDeExposicao;
+			} else
+			{
+				String dia = this.dataDeExposicao.substring(8);
+				String mes = this.dataDeExposicao.substring(5, 7);
+				String ano = this.dataDeExposicao.substring(0, 4);
 
-			return dataParaMysql;
+				String dataParaMysql = dia + "-" + mes + "-" + ano;
+
+				return dataParaMysql;
+			}
 
 		} else
 		{

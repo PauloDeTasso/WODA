@@ -635,3 +635,22 @@ input:valid {
     font-weight: 700;
     width: 10%;
 }
+
+.idArtist{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+    background-color: rgba(255, 159, 70, 0.5);
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+    width: 100%;
+    border: 2px solid rgba(255, 159, 70, 1);
+}
+
+.TitlesH3
+{
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+}

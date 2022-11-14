@@ -87,7 +87,7 @@
 
                             <section id="sectionButtonsArtist">
 
-                                <button type="button" id="editButton" class="Buttons">
+                                <button type="button" id="editButton" class="Buttons" onclick="openPage('selectartistedit?idArtist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
 
                                     <img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
                                         alt="">
@@ -98,7 +98,7 @@
 
                             <section id="sectionButtonsArtist">
 
-                                <button type="button" id="editButton" class="Buttons">
+                                <button type="button" id="editButton" class="Buttons" onclick="openPage('javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>)','_self')">
 
                                     <img class="ImagesButtons" id="imageEditButton"
                                         src="images/icons/deletar01Vazio.png" alt="">
@@ -280,7 +280,7 @@
 
                             <section class="TitlesNames">ART:
 
-                                <section class="Names" id="artName" onclick="openPage('art.html','_self')">
+                                <section class="Names" id="artName" onclick="openPage('art.jsp','_self')">
 
                                     Mona Lisa
 
@@ -323,7 +323,7 @@
                                 PARTICIPATING ARTIST:
 
 
-                                <section class="Names" onclick="openPage('art.html','_self')">
+                                <section class="Names" onclick="openPage('art.jsp','_self')">
 
                                     None
 
@@ -385,4 +385,7 @@
 
     </script>
 
+ 	<script src="js/home.js">
+
+    </script>
 </html>

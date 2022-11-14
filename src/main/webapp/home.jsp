@@ -17,10 +17,12 @@
     
   <%
   
- ArrayList<Artists> lista = (ArrayList<Artists>) request.getAttribute("contatos");  
+ ArrayList<Artists> listAllArtist = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
   
  String search = (request.getAttribute("searcher") == null) ? "" : request.getAttribute("searcher").toString(); 
   
+ 
+ 
   %>  
  
   
@@ -210,36 +212,31 @@
 
                     <tbody>
 
-					<%
-					Blob blob;
-                    Blob blobStream;
-                    %>
-
-                        <%for (int i=0; i < lista.size(); i++)
+                        <%for (int i=0; i < listAllArtist.size(); i++)
                           
                         { %>
                         
                             <tr>
                                 <td>
-                                	<%=lista.get(i).getIdArtist()%>
+                                	<%=listAllArtist.get(i).getIdArtist()%>
                                 </td>
                                 <td>
-                                   <a href="artist?idArtist=<%=lista.get(i).getIdArtist()%>"><%=lista.get(i).getNome()%></a> 
+                                   <a href="artist?idArtist=<%=listAllArtist.get(i).getIdArtist()%>"><%=listAllArtist.get(i).getNome()%></a> 
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getEmail()%>
+                                    <%=listAllArtist.get(i).getEmail()%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getSexo()%>
+                                    <%=listAllArtist.get(i).getSexo()%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getDatadenascimento("br")%>
+                                    <%=listAllArtist.get(i).getDatadenascimento("br")%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getNacionalidade()%>
+                                    <%=listAllArtist.get(i).getNacionalidade()%>
                                 </td>
                                 <td>
-                                    <%=lista.get(i).getCpf()%>
+                                    <%=(listAllArtist.get(i).getCpf() == null) ? "Don't have!" : listAllArtist.get(i).getCpf()%>
                                 </td>                                                             
                                 
                                 <td>
@@ -248,7 +245,7 @@
                                    
                                 	<button type="button" class="Buttons">
                                     	
-										<a href="select?idArtist=<%=lista.get(i).getIdArtist()%>&name=<%=lista.get(i).getNome()%>&email=<%=lista.get(i).getEmail()%>&gender=<%=lista.get(i).getSexo()%>&birthday=<%=lista.get(i).getDatadenascimento()%>&nationality=<%=lista.get(i).getNacionalidade()%>&cpf=<%=lista.get(i).getCpf()%>">
+										<a href="selectartistedit?idArtist=<%=listAllArtist.get(i).getIdArtist()%>&name=<%=listAllArtist.get(i).getNome()%>&email=<%=listAllArtist.get(i).getEmail()%>&gender=<%=listAllArtist.get(i).getSexo()%>&birthday=<%=listAllArtist.get(i).getDatadenascimento()%>&nationality=<%=listAllArtist.get(i).getNacionalidade()%>&cpf=<%=listAllArtist.get(i).getCpf()%>">
 										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
 										</a>
                                 	
@@ -256,7 +253,7 @@
                                 	
                                 	<button type="button" class="Buttons">
 
-										<a href="javascript: confirmar(<%=lista.get(i).getIdArtist() %>)">
+										<a href="javascript: confirmar(<%=listAllArtist.get(i).getIdArtist() %>)">
 											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
 										</a>
 										

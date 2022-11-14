@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<%
+
+
+
+%>
 
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
@@ -36,7 +41,7 @@
                 <button type="button" id="seacherButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/voltar.png" alt=""
-                        onclick="openPage('home.html', '_self')">
+                        onclick="openPage('main', '_self')">
 
                 </button>
 
@@ -75,7 +80,7 @@
                 <section id="buttonsZoom">
 
                     <section class="TitlesAuthor">
-                        MONA LISA
+                     <%out.print(request.getAttribute("name"));%>
                     </section>
 
                 </section>
@@ -114,9 +119,9 @@
 
                     <section class="TitlesNames">ART:
 
-                        <section class="Names" id="artName" onclick="openPage('art.html','_self')">
+                        <section class="Names" id="artName" onclick="openPage('art.jsp','_self')">
 
-                            Mona Lisa
+                               <%out.print(request.getAttribute("name"));%>
 
                         </section>
 
@@ -127,10 +132,7 @@
 
 
                         <p class="TextDescription">
-                            The painting represents a woman with an introspective and somewhat shy expression.
-                            Her
-                            narrow smile is very seductive, if a little conservative. Her body represents the
-                            standard of beauty for women in Leonardo's time.
+                               <%out.print(request.getAttribute("description"));%>
                         </p>
 
                     </section>
@@ -139,7 +141,7 @@
                         EXHIBITION DATE:
 
                         <section class="Data">
-                            01/01/2001
+                           <%out.print(request.getAttribute("exposuredate"));%>
                         </section>
 
                     </section>
@@ -148,7 +150,7 @@
                         PUBLICATION DATE:
 
                         <section class="Data">
-                            01/01/2001
+                            <%out.print(request.getAttribute("publicationdate"));%>
                         </section>
 
                     </section>
@@ -157,10 +159,12 @@
 
                         ARTIST'S:
 
-                        <section class="Names" onclick="openPage('art.html','_self')">
+                        <section class="Names">
 
-                            None
-
+							<a href="artist?idArtist=<%out.print(request.getAttribute("idartist"));%>">
+                        		<%out.print(request.getAttribute("idartist"));%>
+							</a>
+   
                         </section>
 
                     </section>

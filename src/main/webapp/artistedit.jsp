@@ -66,7 +66,7 @@
 
     <body>
 
-        <form id="formRegisterArtist" name="formregisterartist" action="update" method="get" onreset="clear()">
+        <form id="formRegisterArtist" name="formregisterartist" action="editartist" method="get" onreset="clear()">
 
             <fieldset>
 
@@ -83,7 +83,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="idartist" size='5' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
+                            <input id="idInput" type="text" name="idartist" size='5' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
 
                         </td>
                         <td>
