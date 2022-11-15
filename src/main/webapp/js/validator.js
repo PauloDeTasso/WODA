@@ -2,7 +2,7 @@
 
 var formRegisterArtist = document.getElementById("formRegisterArtist");
 var formRegisterArt = document.getElementById("formRegisterArt");
-
+var dateType;
 
 if (formRegisterArtist)
 {
@@ -31,6 +31,11 @@ if (formRegisterArt)
     var msgStatus = document.getElementById("msgStatus");
     var filesInputArts = document.getElementById("filesInputArts");
     var listArts = document.getElementById("listArts");
+    var publicationDate = document.getElementById("publicationDate");
+    var exposureDate = document.getElementById("exposureDate");
+    var associatesOn = document.getElementById("associatesOn");
+    var associatesOff = document.getElementById("associatesOff");    
+    var dateTypeInput = document.getElementById("dateTypeInput");
 }
 
 //
@@ -94,15 +99,39 @@ function validateDate(campo, msgAlert)
 
     if (campo == "publicationDate")
     {
-        exposureDate.type = "hidden";
+		if (publicationDate.value)
+    	{  	  			
+ 			 exposureDate.style.visibility = "hidden";
+ 			 dateType = "publicationDate";
+ 	  		 dateTypeInput.value = dateType;
+ 	  		 
+  		} else
+  		{   
+    		exposureDate.style.visibility = "visible";
+    		dateType = "null";
+    		dateTypeInput.value = dateType;
+    	}    
 
     } else if (campo == "exposureDate")
     {
-        publicationDate.type = "hidden";
+                
+        if (exposureDate.value)
+    	{  			
+  			publicationDate.style.visibility = "hidden";
+  			dateType = "exposureDate";
+  			dateTypeInput.value = dateType;
+  	
+  		} else
+  		{ 
+ 			publicationDate.style.visibility = "visible";
+ 			dateType = "null";
+ 			dateTypeInput.value = dateType;
+ 		} 
+ 		
     } else
     {
         //
-    }
+    }   
 }
 
 /*
@@ -272,9 +301,10 @@ function clear()
         msgExposureDate.innerHTML = "";
         msgImage.innerHTML = "";
         msgStatus.innerHTML = "";
-        exposureDate.type = "text"
-        publicationDate.type = "text"
-
+        exposureDate.type = "text";
+        publicationDate.type = "text";
+        exposureDate.style.visibility = "visible";
+        publicationDate.style.visibility = "visible";
         //
 
         listArts.innerHTML = "";
@@ -422,6 +452,46 @@ for (var i = 0; i < files.length; i++) {
 
 //
 
+function checked()
+{
+  var todosChecados = document.querySelectorAll('[name=checkall]:checked');
+  //var todosChecados = document.querySelectorAll('[name=checkall]');
+ 											   
+  var allChecks = [];
+  
+  for (var i = 0; i < todosChecados.length; i++)
+  {
+    // utilize o valor aqui, adicionei ao array para exemplo
+    allChecks.push(todosChecados[i].value);
+  }
+    
+  for (var i = 0; i < todosChecados.length; i++)
+  {
+	 alert(allChecks[i]);
+  }  
+}
+
+
+function checked2()
+{
+  var todasAsOpcoes = document.getElementById('formRegisterArt')['checkall'];
+ 											   
+  var checados = [];
+  
+  for (var i = 0; i < todasAsOpcoes.length; i++)
+  {    
+    if(todasAsOpcoes[i].checked)
+    {
+		checados.push(todasAsOpcoes[i].value);
+	}	
+  }
+    
+  for (var i = 0; i < checados.length; i++)
+  {
+	 alert(checados[i]);
+  }  
+}
+
 function statusCpf()
 {
 if (nationality.value == "Brasil")
@@ -441,3 +511,5 @@ setTimeout(() =>
 }, 2000);
 
 statusCpf();
+
+//

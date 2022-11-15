@@ -17,8 +17,6 @@ public class Arts implements Serializable
 
 	private String dataDeExposicao;
 
-	private String idartist;
-
 	// CONTRUTORES:
 
 	public Arts()
@@ -26,8 +24,7 @@ public class Arts implements Serializable
 		super();
 	}
 
-	public Arts(long idart, String name, String description, String dataDePublicacao, String dataDeExposicao,
-			String idartist)
+	public Arts(long idart, String name, String description, String dataDePublicacao, String dataDeExposicao)
 	{
 		super();
 		this.idart = idart;
@@ -35,7 +32,6 @@ public class Arts implements Serializable
 		this.description = description;
 		this.dataDePublicacao = dataDePublicacao;
 		this.dataDeExposicao = dataDeExposicao;
-		this.idartist = idartist;
 	}
 
 	public long getIdart()
@@ -74,9 +70,10 @@ public class Arts implements Serializable
 		if (formato.equals("br"))
 		{
 
-			if (this.dataDePublicacao.equals("") || this.dataDePublicacao.equals(null))
+			if (this.dataDePublicacao.equals("") || this.dataDePublicacao.equals(null)
+					|| this.dataDePublicacao.equals("null"))
 			{
-				return dataDePublicacao;
+				return "";
 			} else
 			{
 				String dia = this.dataDePublicacao.substring(8);
@@ -110,9 +107,11 @@ public class Arts implements Serializable
 		if (formato.equals("br"))
 		{
 
-			if (this.dataDeExposicao.equals("") || this.dataDeExposicao.equals(null))
+			if (this.dataDeExposicao.equals("") || this.dataDeExposicao.equals(null)
+					|| this.dataDePublicacao.equals("null"))
 			{
-				return dataDeExposicao;
+				return "";
+
 			} else
 			{
 				String dia = this.dataDeExposicao.substring(8);
@@ -140,13 +139,8 @@ public class Arts implements Serializable
 		this.dataDeExposicao = dataDeExposicao;
 	}
 
-	public String getIdartist()
+	public static long getSerialversionuid()
 	{
-		return idartist;
-	}
-
-	public void setIdartist(String idartist)
-	{
-		this.idartist = idartist;
+		return serialVersionUID;
 	}
 }

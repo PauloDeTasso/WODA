@@ -13,10 +13,14 @@
   
 <% 
 
-ArrayList<Artists> listAllArtists = (ArrayList<Artists>) request.getAttribute("listAllArtists");    
-  
-String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : request.getAttribute("searchArtist").toString(); 
-    
+ArrayList<Arts> listAllArts = (ArrayList<Arts>) request.getAttribute("listAllArts");  
+ 
+String dataDeExposicao;
+
+String dataDePublicacao;
+
+String searchArt = (request.getAttribute("searchArt") == null) ? "" : request.getAttribute("searchArt").toString(); 
+
 %>   
   
 <!DOCTYPE html>
@@ -129,13 +133,13 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
 				<section id="subSectionSeacher">          
 
-                	<form action="seacher">
+                	<form action="searcharts">
                 	
                 		<fieldset>
 
                 			<legend class="LegendResgiter">
 
-								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearch.value,'artists')">
+								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearch.value,'arts')">
            							
            							<img class="Buttons" src="images/icons/pesquisar02.png" alt="" >
 								
@@ -143,11 +147,11 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
         
                 			</legend>
 
-                    	<input id="mySearchArtists" type="search" name="searchinput" placeholder="Seacher" onchange="submitSearcher(this.value,'artists')" onkeyup="changeButton(searchButton)" value="<%out.println(searchArtist);%>" autofocus>
+                    	<input id="mySearchArts" type="search" name="searchinput" placeholder="Seacher" onchange="submitSearcher(this.value,'arts')" onkeyup="changeButton(searchButton)" value="<%out.println(searchArt);%>" autofocus>
 						
-						<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+						<button type="button" Class="Buttons" onclick="openPage('main','_self')">
            							
-           					<img class="Buttons" src="images/icons/PESQUISAR01.png" alt="" >
+           					<img class="Buttons" src="images/icons/voltar.png" alt="" >
 								
 						</button>
 						
@@ -161,7 +165,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
             <section id="sectionTableSeacher">
 
-                <table id="tableArtists" class="tabela">
+                 <table id="tableArts" class="tabela">
 
                     <thead>
 
@@ -176,26 +180,22 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                             </th>
 
                             <th>
-                                E-MAIL
+                                DESCRIPTION
                             </th>
 
                             <th>
-                               GENDER
+                             	EXPOSURE DATE
                             </th>
 
                             <th>
-                                BIRTHDAY
+                                PUBLICATION DATE
                             </th>
                             
-                              <th>
-                                NATIONALITY
+                            <th>
+                                ARTIST'S
                             </th>
-                            
-                              <th>
-                                CPF
-                            </th>      
-                            
-                              <th>
+                                                          
+                            <th>
                                ADMIN OPTIONS
                             </th>                         
 
@@ -205,32 +205,37 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
                     <tbody>
 
-                        <%for (int i=0; i < listAllArtists.size(); i++)
+                        <%for (int i=0; i < listAllArts.size(); i++)
                           
                         { %>
                         
                             <tr>
                                 <td>
-                                	<%=listAllArtists.get(i).getIdArtist()%>
+                                	<%=listAllArts.get(i).getIdart()%>
                                 </td>
                                 <td>
-                                   <a href="artist?idArtist=<%=listAllArtists.get(i).getIdArtist()%>"><%=listAllArtists.get(i).getNome()%></a> 
+                                   <a href="art?idArt=<%=listAllArts.get(i).getIdart()%>"><%=listAllArts.get(i).getName()%></a> 
                                 </td>
                                 <td>
-                                    <%=listAllArtists.get(i).getEmail()%>
+                                    <%=listAllArts.get(i).getDescription()%>
                                 </td>
                                 <td>
-                                    <%=listAllArtists.get(i).getSexo()%>
+                                     <%
+                           		    dataDeExposicao = (listAllArts.get(i).getDataDeExposicao() == null) ? "" : listAllArts.get(i).getDataDeExposicao(); 
+                           		 	
+                           			out.print(dataDeExposicao);
+                           		 	%>
                                 </td>
                                 <td>
-                                    <%=listAllArtists.get(i).getDatadenascimento("br")%>
+                                   <%
+                           			dataDePublicacao = (listAllArts.get(i).getDataDePublicacao() == null) ? "" : listAllArts.get(i).getDataDePublicacao(); 
+                           		 	
+                       				out.print(dataDePublicacao);
+                       		 		%>
                                 </td>
                                 <td>
-                                    <%=listAllArtists.get(i).getNacionalidade()%>
-                                </td>
-                                <td>
-                                    <%=(listAllArtists.get(i).getCpf() == null) ? "Don't have!" : listAllArtists.get(i).getCpf()%>
-                                </td>                                                             
+                                    
+                                </td>                                                                                        
                                 
                                 <td>
                                 
@@ -238,7 +243,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                                    
                                 	<button type="button" class="Buttons">
                                     	
-										<a href="selectartistedit?idArtist=<%=listAllArtists.get(i).getIdArtist()%>&name=<%=listAllArtists.get(i).getNome()%>&email=<%=listAllArtists.get(i).getEmail()%>&gender=<%=listAllArtists.get(i).getSexo()%>&birthday=<%=listAllArtists.get(i).getDatadenascimento()%>&nationality=<%=listAllArtists.get(i).getNacionalidade()%>&cpf=<%=listAllArtists.get(i).getCpf()%>">
+										<a href="selectartedit?idArt=<%=listAllArts.get(i).getIdart()%>&name=<%=listAllArts.get(i).getName()%>&description=<%=listAllArts.get(i).getDescription()%>&exposuredate=<%=listAllArts.get(i).getDataDeExposicao()%>&publicationdate=<%=listAllArts.get(i).getDataDePublicacao()%>&artistsextra">
 										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
 										</a>
                                 	
@@ -246,7 +251,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                                 	
                                 	<button type="button" class="Buttons">
 
-										<a href="javascript: confirmar(<%=listAllArtists.get(i).getIdArtist() %>,,'artist'))">
+										<a href="javascript: confirmar(<%=listAllArts.get(i).getIdart()%>,'art')">
 											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
 										</a>
 										
@@ -264,9 +269,9 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
                 </table>
 
-			</section>					
-
-        </section>
+			</section>	
+			
+		</section>
        
         <section id="info">
 

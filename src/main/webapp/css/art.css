@@ -655,8 +655,6 @@ body::-webkit-scrollbar-thumb {
 .SectionArtsArtist {
     display: flex;
     flex-direction: column;
-    column-gap: 1%;
-    row-gap: 1%;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -670,7 +668,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 100%;
     height: auto;
     border: 10px solid rgb(172, 116, 53);
     background-color: rgb(211, 145, 69);
@@ -765,4 +763,16 @@ body::-webkit-scrollbar-thumb {
     border-top: 10px solid rgb(252, 178, 100);
     border-radius: 100px;
     margin-top: 10px;
+}
+
+.ArtistsExtras
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    background-color: rgb(211, 145, 69);
+    margin-top: 5px;
+    padding: 5px;
 }

@@ -419,8 +419,9 @@ footer {
 .Names {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
     width: auto;
     height: auto;
     border: 20px solid rgba(255, 174, 0, 0);
@@ -754,7 +755,7 @@ body::-webkit-scrollbar-thumb {
     text-align: justify;
 }
 
-#buttonsZoom {
+.buttonsZoom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

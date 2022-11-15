@@ -106,9 +106,9 @@ public class ConnectionDB
 
 	//
 
-	// CRUD READ - /main:
+	// SELECT ALL ARTISTS - /main:
 
-	public ArrayList<Artists> selectAllArtistDb()
+	public ArrayList<Artists> selectAllArtistsDb()
 	{
 		ArrayList<Artists> listAllArtists = new ArrayList<>();
 
@@ -150,6 +150,48 @@ public class ConnectionDB
 			con.close();
 
 			return listAllArtists;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	//
+
+	// SELECT ALL ARTS - /main:
+
+	public ArrayList<Arts> selectAllArtsDb()
+	{
+		ArrayList<Arts> listAllArts = new ArrayList<>();
+
+		String query = "select * from arts order by nome";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArt = rs.getLong(1);
+				String nome = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(5);
+
+				listAllArts.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listAllArts;
 
 		} catch (Exception e)
 		{
@@ -284,9 +326,9 @@ public class ConnectionDB
 
 	//
 
-	// SEARCHER - /searcher:
+	// SEARCHER ARTIST - /searcher:
 
-	public ArrayList<Artists> searcher(Searcher searcherMain)
+	public ArrayList<Artists> setSeacherArtistDb(Searcher searcherMain)
 	{
 		ArrayList<Artists> contatos = new ArrayList<>();
 
@@ -337,18 +379,59 @@ public class ConnectionDB
 		}
 	}
 
+	//
+
+	// SEARCHER ARTIST - /searcher:
+
+	public ArrayList<Arts> setSeacherArtDb(Searcher searcherMain)
+	{
+		ArrayList<Arts> listAllArts = new ArrayList<>();
+
+		String query = "select * from arts where nome like ? order by nome asc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, searcherMain.getSeacher() + "%");
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArt = rs.getLong(1);
+				String nome = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(5);
+
+				listAllArts.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listAllArts;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+
 	///// INSERIR ART - /artregister:
 
-	public void inserirArt(Arts art)
+	public void addArtDb(Arts art, String dateType)
 	{
 		String query;
 
-		System.out.println(art.getDataDePublicacao().equals(null));
-		System.out.println(art.getDataDeExposicao().equals(null));
-
-		if (art.getDataDePublicacao().equals(null))
+		if (dateType.equals("exposureDate"))
 		{
-			query = "insert into arts (nome,descricao,datadeexposicao,idartist) values (?,?,?,?)";
+			query = "insert into arts (nome,descricao,datadeexposicao) values (?,?,?)";
 
 			try
 			{
@@ -359,7 +442,6 @@ public class ConnectionDB
 				pst.setString(1, art.getName());
 				pst.setString(2, art.getDescription());
 				pst.setString(3, art.getDataDeExposicao());
-				pst.setString(4, art.getIdartist());
 
 				pst.executeUpdate();
 
@@ -370,9 +452,9 @@ public class ConnectionDB
 				System.out.println(e);
 			}
 
-		} else if (art.getDataDeExposicao().equals(null))
+		} else if (dateType.equals("publicationDate"))
 		{
-			query = "insert into arts (nome,descricao,datadepublicacao,idartist) values (?,?,?,?)";
+			query = "insert into arts (nome,descricao,datadepublicacao) values (?,?,?)";
 
 			try
 			{
@@ -383,7 +465,6 @@ public class ConnectionDB
 				pst.setString(1, art.getName());
 				pst.setString(2, art.getDescription());
 				pst.setString(3, art.getDataDePublicacao());
-				pst.setString(4, art.getIdartist());
 
 				pst.executeUpdate();
 
@@ -396,26 +477,322 @@ public class ConnectionDB
 
 		} else
 		{
-			query = "insert into arts (nome,descricao,idartist) values (?,?,?)";
+			System.out.println("A NOVA ARTE NÃO FOI CADASTRADA NO BANCO!");
+		}
+	}
 
+	//
+
+///// INSERIR ART - /artregister:
+
+	public void addAssociates(Associates associated)
+	{
+		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, associated.getIdArtist());
+			pst.setLong(2, associated.getIdArt());
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// INSERIR ART - /artregister:
+
+	public ArrayList<Arts> listAllArtsDb()
+	{
+		ArrayList<Arts> listAllArts = new ArrayList<>();
+
+		String query = "select * from arts order by idart desc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+
+				Long idArt = rs.getLong(1);
+				String name = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(4);
+
+				listAllArts.add(new Arts(idArt, name, description, dataDePublicacao, dataDeExposicao));
+
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listAllArts;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+
+	}
+
+	//
+
+	///// SELECT ALL ARTS ID ARTIST - /artist:
+
+	public ArrayList<IdsArtsArtist> listIdsArtsArtistDb(String idArtist)
+	{
+		ArrayList<IdsArtsArtist> listIdsArtsArtist = new ArrayList<>();
+
+		String query = "select idartfk from properties where idartistfk = ? order by idartfk desc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, idArtist);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArtFk = rs.getLong(1);
+
+				listIdsArtsArtist.add(new IdsArtsArtist(idArtFk));
+			}
+
+			pst.close();
+
+			con.close();
+
+			for (int i = 0; i < listIdsArtsArtist.size(); i++)
+			{
+				System.out.println("get(i) IDs:");
+				System.out.println(listIdsArtsArtist.get(i).getIdArt());
+				System.out.println(" *--* ");
+			}
+
+			return listIdsArtsArtist;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	//
+
+	///// SELECT ALL ARTS ID ARTIST - /artist:
+	/*-
+		public ArrayList<Arts> listAllArtsArtistDb(ArrayList<IdsArtsArtist> listIdsArtsArtist)
+		{
+			ArrayList<Arts> listAllArtsArtist = new ArrayList<>();
+	
+			String query = "select * from arts where idart = ? order by idart desc";
+	
 			try
 			{
 				Connection con = conectar();
-
+	
 				PreparedStatement pst = con.prepareStatement(query);
-
-				pst.setString(1, art.getName());
-				pst.setString(2, art.getDescription());
-				pst.setString(3, art.getIdartist());
-
-				pst.executeUpdate();
-
+	
+				pst.setLong(1, idArtArtist);
+	
+				ResultSet rs = pst.executeQuery();
+	
+				while (rs.next())
+				{
+					Long idArt = rs.getLong(1);
+					String nome = rs.getString(2);
+					String description = rs.getString(3);
+					String dataDePublicacao = rs.getString(4);
+					String dataDeExposicao = rs.getString(5);
+	
+					listAllArtsArtist.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+				}
+	
+				pst.close();
+	
 				con.close();
-
+	
+				return listAllArtsArtist;
+	
 			} catch (Exception e)
 			{
 				System.out.println(e);
+				return null;
 			}
 		}
+	*/
+	//
+
+	///// SELECT ALL ARTS ID ARTIST - /artist:
+
+	public void addAllArtsArtist(Long idArtArtist, ArrayList<Arts> listAllArtsArtist)
+	{
+		String query = "select * from arts where idart = ? order by idart desc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, idArtArtist);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArt = rs.getLong(1);
+				String nome = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(5);
+
+				listAllArtsArtist.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+			}
+
+			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// SELECT ALL NAMES ARTS - /artist:
+
+	public ArrayList<NamesArtsArtist> listNamesArtsArtistDb(ArrayList<IdsArtsArtist> listIdsArtsArtist)
+	{
+		ArrayList<NamesArtsArtist> listNamesArtsArtist = new ArrayList<>();
+
+		String query = "select idartfk from properties where idartistfk = ? order by idartfk desc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, "");
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				String nameArt = rs.getString(1);
+
+				listNamesArtsArtist.add(new NamesArtsArtist(nameArt));
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listNamesArtsArtist;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+
+	}
+
+	//
+
+	///// INSERIR ASSOCIATES EXTRAS - /artRegister:
+
+	public void addAssociatesExtras(Associates associated, int checked)
+	{
+		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, checked);
+			pst.setLong(2, associated.getIdArt());
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+///// SELECT ART - /art:
+
+	public ArrayList<Arts> selectArtDb(Arts art)
+	{
+		ArrayList<Arts> listArt = new ArrayList<>();
+
+		String query = "select * from arts where idart=?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, art.getIdart());
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArt = rs.getLong(1);
+				String nome = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(5);
+
+				listArt.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listArt;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+
 	}
 }

@@ -143,34 +143,9 @@ public class Artists implements Serializable
 		this.cpf = cpf;
 	}
 
-	//
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
+	}
 
-	/*-
-	 public String dataParaMysql(String data)
-	    {
-	        String dia = txtAniversario.getText().substring(0,2);
-	        String mes = txtAniversario.getText().substring(3,5);
-	        String ano = txtAniversario.getText().substring(6);   
-	        String dataParaMysql = ano+"-"+mes+"-"+dia;    
-	        
-	        return dataParaMysql;
-	        
-	    }
-	    
-	    //Exemplo Contagem (substring):
-	    //(83) 9.9845-4848
-	    //(##) #.####-####
-	    //0123456789012345
-	    public String foneParaMysql(String fone)
-	    {
-	        String ddd = txtFone.getText().substring(1,3);
-	        String nove = txtFone.getText().substring(5,6);
-	        String numero1 = txtFone.getText().substring(7,11);   
-	        String numero2 = txtFone.getText().substring(12);   
-	        String foneParaMysql = ddd+nove+numero1+numero2;    
-	        
-	        return foneParaMysql;
-	        
-	    }
-	*/
 }

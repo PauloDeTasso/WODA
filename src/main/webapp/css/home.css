@@ -772,7 +772,7 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(211, 145, 69);
 }
 
-#tabela
+.tabela
 {
 	/*margin-top: 30px;*/
 	/*border-collapse: collapse;*/
@@ -786,7 +786,7 @@ body::-webkit-scrollbar-thumb {
 	text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
 }
 
-#tabela th
+.tabela th
 {
     justify-content: center;
     align-items: center;
@@ -799,7 +799,7 @@ body::-webkit-scrollbar-thumb {
 	padding: 4px 4px 4px 4px;
 }
 
-#tabela td
+.tabela td
 {
     justify-content: center;
     align-items: center;
@@ -868,4 +868,22 @@ input:valid ~ span::after {
   content: "✓";
   padding-left: 5px;
   position: absolute;
+}
+
+#sectionTableArtists
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#sectionTableArts
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

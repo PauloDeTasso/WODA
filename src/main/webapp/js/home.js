@@ -15,7 +15,9 @@ var saveStatusOn = document.getElementById('saveStatusOn');
 
 var saveStatusOff = document.getElementById('saveStatusOff');
 
-var mySearch = document.getElementById('mySearch');
+var mySearchArtists = document.getElementById('mySearchArtists');
+
+var mySearchArts = document.getElementById('mySearchArts');
 
 var searchButton = document.getElementById('searchButton');
 
@@ -96,6 +98,41 @@ function detectar_mobile()
 };
 
 ////
+
+function openCloseSection(elemento, propriedade, action)
+{
+    switch (propriedade)
+    {
+        case "display":
+
+		if(action)
+		{
+        	elemento.style.display = "flex";
+		
+		}else
+		{
+			elemento.style.display = "none";
+		}
+        
+        case "visibility":
+
+		if(action)
+		{
+            elemento.style.visibility = "visible";
+            
+		}else
+		{
+	 
+	 		elemento.style.visibility = "hidden";
+		}
+            break;
+
+        default:
+    }
+}
+
+////
+
 function openClose(elemento, propriedade, conteiner)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
@@ -196,19 +233,35 @@ function zoom(image, zoom)
     }
 }
 
-function confirmar(id)
+function confirmar(id,type)
 {
-    var resposta = confirm("Delete this artist?");
+	if(type == "artist")
+	{		
+    	var resposta = confirm("Delete this artist?");
 
-    if (resposta === true)
+	    if (resposta === true)
+    	{
+        	//TESTE DE RECEBIMENTO:
+        	//alert(idcon);
+
+        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+        	window.location.href = "deleteArtist?idArtist=" + id;
+    	}
+    }else
     {
-        //TESTE DE RECEBIMENTO:
-        //alert(idcon);
+		var resposta = confirm("Delete this art?");
 
-        //ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+	    if (resposta === true)
+    	{
+        	//TESTE DE RECEBIMENTO:
+        	//alert(idcon);
 
-        window.location.href = "deleteArtist?idArtist=" + id;
-    }
+        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+        	window.location.href = "deleteart?idart=" + id;
+		}
+	}
 }
 
 function InserirImagem(url)
@@ -286,14 +339,53 @@ reader.onload = function()
     
 */
 
-mySearch.addEventListener("search",()=>
+//
+
+mySearchArtists.addEventListener("search",()=>
 {
-	submitSearcher(mySearch.value);
+	submitSearcher(mySearchArtists.value,"artists");
 },false);
 
-function submitSearcher(value)
-{	
-	 window.location.href = "searcher?text=" + value;
+//
+
+mySearchArts.addEventListener("search",()=>
+{
+	submitSearcher(mySearchArts.value,"arts");
+},false);
+
+//
+
+function submitSearcher(value,type)
+{		
+	switch(type)
+	{
+		case 'artists':
+		/*
+		if(value == null || value == undefined ||value == "" || value == " ")
+		{
+		
+		}else
+		{
+			*/
+	 	window.location.href = "searchartist?text=" + value;
+		//}
+		
+		break;
+		
+		case 'arts':
+		/*
+		if(value == null || value == undefined ||value == "" || value == " ")
+		{
+		
+		}else
+		{*/
+	 	window.location.href = "searcharts?text=" + value;
+		//}
+		
+		break;
+		
+		default:		
+	}	
 };
 
 function changeButton(button)

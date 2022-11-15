@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Artists;
 import model.Arts;
+import model.Associates;
 import model.ConnectionDB;
+import model.IdsArtsArtist;
 import model.Searcher;
 
 @WebServlet(urlPatterns =
 { "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteArtist", "/artregister", "/artist",
-		"/searcher"
+		"/searchartist", "/addart", "/artedit", "/art", "/searcharts"
 })
 
 public class MainController extends HttpServlet
@@ -30,6 +32,8 @@ public class MainController extends HttpServlet
 	Artists artist = new Artists();
 
 	Arts art = new Arts();
+
+	Associates associated = new Associates();
 
 	Searcher searcherMain = new Searcher();
 
@@ -46,7 +50,7 @@ public class MainController extends HttpServlet
 
 		if (action.equals("/main"))
 		{
-			selectAllArtist(request, response);
+			selectAll(request, response);
 
 			// response.sendRedirect("home.html");
 
@@ -74,9 +78,25 @@ public class MainController extends HttpServlet
 		{
 			selectArtist(request, response);
 
-		} else if (action.equals("/searcher"))
+		} else if (action.equals("/searchartist"))
 		{
-			searcher(request, response);
+			searchArtist(request, response);
+
+		} else if (action.equals("/addart"))
+		{
+			artRegister(request, response);
+
+		} else if (action.equals("/art"))
+		{
+			art(request, response);
+
+		} else if (action.equals("/art"))
+		{
+			art(request, response);
+
+		} else if (action.equals("/searcharts"))
+		{
+			searchArts(request, response);
 
 		} else
 		{
@@ -90,17 +110,26 @@ public class MainController extends HttpServlet
 		String action = request.getServletPath();
 		System.out.println(action);
 		System.out.println("doPost");
+		/*-
+				if (action.equals("/artregister"))
+				{
+					addArt(request, response);
+		
+				} else
+				{
+					response.sendRedirect("index.html");
+				}
+			*/
 	}
 
 	//
 	// selectAllArtist - /main:
 
-	protected void selectAllArtist(HttpServletRequest request, HttpServletResponse response)
+	protected void selectAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		ArrayList<Artists> listAllArtist = dao.selectAllArtistDb();
-
-		request.setAttribute("listAllArtists", listAllArtist);
+		ArrayList<Artists> listAllArtists = dao.selectAllArtistsDb();
+		request.setAttribute("listAllArtists", listAllArtists);
 
 		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 
@@ -176,6 +205,7 @@ public class MainController extends HttpServlet
 			throws ServletException, IOException
 	{
 
+		// SELECIONAR TODOS OS ARTISTAS:
 		String idArtist = request.getParameter("idArtist");
 
 		artist.setIdArtist(idArtist);
@@ -190,10 +220,52 @@ public class MainController extends HttpServlet
 		request.setAttribute("nationality", artist.getNacionalidade());
 		request.setAttribute("cpf", (artist.getCpf() == null ? "Don't have!" : artist.getCpf()));
 
+		// SELECIONAR TODAS AS ARTS:
+		ArrayList<Arts> listAllArts = dao.listAllArtsDb();
+
+		request.setAttribute("listAllArts", listAllArts);
+
+		// SELECIONA TODAS AS ARTES PELO ID DO ARTISTA:
+		ArrayList<IdsArtsArtist> listIdsArtsArtist = dao.listIdsArtsArtistDb(idArtist);
+
+		//
+
+		// ArrayList<Arts> listAllArtsArtist =
+		// dao.listAllArtsArtistDb(listIdsArtsArtist);;
+
+		ArrayList<Arts> listAllArtsArtist = new ArrayList<>();
+
+		for (int i = 0; i < listIdsArtsArtist.size(); i++)
+		{
+			dao.addAllArtsArtist(listIdsArtsArtist.get(i).getIdArt(), listAllArtsArtist);
+			/*-
+						for (int i2 = 0; i2 < listIdsArtsArtist.size(); i++)
+						{
+							System.out.println("get(i) ALL:");
+							System.out.println(listAllArtsArtist.get(i2).getIdart());
+							System.out.println(listAllArtsArtist.get(i2).getName());
+							System.out.println(listAllArtsArtist.get(i2).getDescription());
+							System.out.println(listAllArtsArtist.get(i2).getDataDePublicacao());
+							System.out.println(listAllArtsArtist.get(i2).getDataDeExposicao());
+							System.out.println(" *--* ");
+						}
+			*/
+		}
+
+		request.setAttribute("listAllArtsArtist", listAllArtsArtist);
+
+		// SELECIONA TODAS AS ARTES PELO NOME:
+		// ArrayList<NamesArtsArtist> listNamesArtsArtist =
+		// dao.listNamesArtsArtistDb(listIdsArtsArtist);
+
+		//
+
 		RequestDispatcher rd = request.getRequestDispatcher("artist.jsp");
 
 		rd.forward(request, response);
 	}
+
+	//
 
 	// REMOVER CONTATO - /deleteArtist:
 
@@ -213,19 +285,22 @@ public class MainController extends HttpServlet
 
 	// Search - /search:
 
-	protected void searcher(HttpServletRequest request, HttpServletResponse response)
+	protected void searchArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		String searcher = request.getParameter("text");
-		System.out.println(request.getParameter("text"));
+		String searchArtist = (request.getParameter("text") == null) ? "" : request.getParameter("text");
 
-		searcherMain.setSeacher(searcher);
+		searcherMain.setSeacher(searchArtist);
 
-		ArrayList<Artists> listAllArtist = dao.searcher(searcherMain);
+		ArrayList<Artists> listAllArtist = dao.setSeacherArtistDb(searcherMain);
+
+		ArrayList<Arts> listAllArts = dao.listAllArtsDb();
 
 		request.setAttribute("listAllArtists", listAllArtist);
 
-		request.setAttribute("searcher", searcher);
+		request.setAttribute("listAllArts", listAllArtist);
+
+		request.setAttribute("searchArtist", searchArtist);
 
 		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 
@@ -239,21 +314,174 @@ public class MainController extends HttpServlet
 
 	protected void addArt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		// SETAR DADOS DA ART:
 		art.setName(request.getParameter("name"));
 		art.setDescription(request.getParameter("description"));
 		art.setDataDePublicacao(request.getParameter("publicationdate"));
 		art.setDataDeExposicao(request.getParameter("exposuredate"));
-		art.setIdartist(request.getParameter("idartist"));
 
-		dao.inserirArt(art);
+		// CADASTRAR NA TABELA ART DO BANCO
 
-		request.setAttribute("name", art.getName());
+		String dateType = request.getParameter("datetype");
+
+		dao.addArtDb(art, dateType);
+
+		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
+		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
+
+		// SETAR ID DO ARTISTA DA NOVA ARTE NA TABELA PROPRIEDADE:
+		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
+
+		// FORMA OBJETO COM TODAS AS ARTES CADASTRADAS
+		ArrayList<Arts> listAllArts = dao.listAllArtsDb();
+
+		// PEGA A ULTIMA ID DA ARTE CADASTRADA NO BANCO E SETA NA CLASSE DE PROPRIEDADE
+		associated.setIdArt(listAllArts.get(0).getIdart());
+
+		/*-
+		for (int i = 0; i < listAllArts.size(); i++)
+		{
+			System.out.println(listAllArts.get(i).getIdart());
+		}
+		*/
+
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTA PRINCIPAL
+		dao.addAssociates(associated);
+
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS
+
+		String associatesOn = request.getParameter("associates");
+
+		String checkedIds[] = request.getParameterValues("checkallids");
+
+		String checkedNames[] = request.getParameterValues("checkallnames");
+
+		if (associatesOn.equals("YES"))
+		{
+
+			for (int i = 0; i < checkedIds.length; i++)
+			{
+				dao.addAssociatesExtras(associated, Integer.parseInt(checkedIds[i]));
+			}
+
+		}
+
+		request.setAttribute("idArt", art.getIdart());
+		request.setAttribute("nameArt", art.getName());
 		request.setAttribute("description", art.getDescription());
 		request.setAttribute("publicationdate", art.getDataDePublicacao("br"));
 		request.setAttribute("exposuredate", art.getDataDeExposicao("br"));
-		request.setAttribute("idartist", art.getIdartist());
+
+		request.setAttribute("idArtist", artist.getIdArtist());
+		request.setAttribute("nameArtist", artist.getNome());
+
+		request.setAttribute("associatesOn", associatesOn);
+
+		request.setAttribute("checkedIds", checkedIds);
+		request.setAttribute("checkedNames", checkedNames);
 
 		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
+
+		rd.forward(request, response);
+
+		// rd.include(request, response);
+		// USAR DENTRO DO JSP PARA O SERVLET
+		// o método include passa para o servlet a solicitação e a resposta,
+		// processa seu servlet e retorna para processar seu jsp após esse ponto
+		// rd.include(request, response);
+
+	}
+
+	//
+
+	// ART REGISTER - /addart:
+
+	protected void artRegister(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		/*-
+		System.out.println(artist.getIdArtist());
+		System.out.println(artist.getNome());
+		System.out.println(artist.getEmail());
+		System.out.println(artist.getSexo());
+		System.out.println(artist.getDatadenascimento("br"));
+		System.out.println(artist.getNacionalidade());
+		System.out.println(artist.getCpf());
+		*/
+		// art.setName(request.getParameter("name"));
+
+		// ArrayList<Associates> listAllArtist;
+
+		// associated.setIdArtist(Long.parseLong(request.getParameter("id")));
+
+		ArrayList<Artists> listAllArtist = dao.selectAllArtistsDb();
+
+		request.setAttribute("listAllArtists", listAllArtist);
+
+		request.setAttribute("artistName", artist.getNome());
+
+		RequestDispatcher rd = request.getRequestDispatcher("artregister.jsp");
+
+		rd.forward(request, response);
+	}
+
+	//
+
+	//
+
+	protected void artEdit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		ArrayList<Artists> listAllArtist = dao.selectAllArtistsDb();
+
+		request.setAttribute("listAllArtists", listAllArtist);
+
+		request.setAttribute("artistName", artist.getNome());
+
+		RequestDispatcher rd = request.getRequestDispatcher("artedit.jsp");
+
+		rd.forward(request, response);
+	}
+
+	//
+
+	//
+
+	protected void art(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String idArt = request.getParameter("idart");
+
+		art.setIdart(Long.parseLong(idArt));
+
+		ArrayList<Arts> listArt = dao.selectArtDb(art);
+
+		request.setAttribute("Art", listArt);
+
+		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
+
+		rd.forward(request, response);
+	}
+
+	//
+
+	// SEARCH ART : /searcharts
+
+	protected void searchArts(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		String searchArt = (request.getParameter("text") == null) ? "" : request.getParameter("text");
+
+		System.out.println("searchArt: " + searchArt);
+
+		searcherMain.setSeacher(searchArt);
+
+		ArrayList<Arts> listAllArts = dao.setSeacherArtDb(searcherMain);
+
+		request.setAttribute("listAllArts", listAllArts);
+
+		request.setAttribute("searchArt", searchArt);
+
+		RequestDispatcher rd = request.getRequestDispatcher("artsearch.jsp");
 
 		rd.forward(request, response);
 	}

@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"
+    
+       import="model.*"
+    import="java.util.ArrayList"     
+%>
+    
+<%
+ ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
+
+String dataDeExposicao;
+
+String dataDePublicacao;
+
+%>
     
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
@@ -71,7 +84,7 @@
 
             <section class="SectionArtistArts">
 
-                <section id="buttonsZoom">                   
+                <section class="buttonsZoom">                   
 
                     <section class="TitlesAuthor">
                        <%out.print(request.getAttribute("name"));%>
@@ -79,28 +92,28 @@
 
                 </section>
 
-                <section id="sectionImageArtist" class="SectionImageArtist">
+                <section class="SectionImageArtist">
 
-                    <section id="buttonsZoom">
+                    <section class="buttonsZoom">
 
                         <section class="EditButtonsSection">
 
-                            <section id="sectionButtonsArtist">
+                            <section>
 
-                                <button type="button" id="editButton" class="Buttons" onclick="openPage('selectartistedit?idArtist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
+                                <button type="button" class="Buttons" onclick="openPage('selectartistedit?idArtist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
 
-                                    <img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
+                                    <img class="ImagesButtons" src="images/icons/editar03.png"
                                         alt="">
 
                                 </button>
 
                             </section>
 
-                            <section id="sectionButtonsArtist">
+                            <section>
 
-                                <button type="button" id="editButton" class="Buttons" onclick="openPage('javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>)','_self')">
+                                <button type="button" class="Buttons" onclick="openPage('javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>)','_self')">
 
-                                    <img class="ImagesButtons" id="imageEditButton"
+                                    <img class="ImagesButtons"
                                         src="images/icons/deletar01Vazio.png" alt="">
 
                                 </button>
@@ -215,13 +228,13 @@
 
                 </section>
 
-                <!-- ARTS -->
+                <!-- ADD ARTS -->
 
                 <section id="sectionRegisterButtons">
 
                     <section class="TitlesNames">                        
 
-                        <button type="button" class="Buttons" onclick="openPage('artregister.html','_self')">
+                        <button type="button" class="Buttons" onclick="openPage('addart?idArtist=<%out.print(request.getAttribute("idArtist")); %>','_self')">
 
                             <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png"
                                 alt="">
@@ -232,40 +245,44 @@
 
                 </section>
 
-                <section class="SectionArtsArtist">
+                <section class="SectionArtsArtist">       		      			
+       			
+ 					<!-- ART -->
 
-                    <!-- ARTS 1 -->
+ 					<%for (int i=0; i < listAllArtsArtist.size(); i++)
+                	{    
+               		%>
+ 				
+                    <section class="ArtsArtist">
 
-                    <section id="artArtist" class="ArtsArtist">
-
-                        <section id="buttonsZoom">
+                        <section class="buttonsZoom">
 
                             <section class="TitlesAuthor">
-                                MONA LISA
+                               <%=listAllArtsArtist.get(i).getName()%>
                             </section>
 
                         </section>
 
-                        <section id="buttonsZoom">
+                        <section class="buttonsZoom">
 
                             <section class="EditButtonsSection">
 
-                                <section id="sectionButtonsArtist">
+                                <section>
 
-                                    <button type="button" id="editButton" class="Buttons">
+                                    <button type="button" class="Buttons">
 
-                                        <img class="ImagesButtons" id="imageEditButton"
+                                        <img class="ImagesButtons" 
                                             src="images/icons/editar03.png" alt="">
 
                                     </button>
 
                                 </section>
 
-                                <section id="sectionButtonsArtist">
+                                <section>
 
-                                    <button type="button" id="editButton" class="Buttons">
+                                    <button type="button" class="Buttons">
 
-                                        <img class="ImagesButtons" id="imageEditButton"
+                                        <img class="ImagesButtons"
                                             src="images/icons/deletar01Vazio.png" alt="">
 
                                     </button>
@@ -278,54 +295,67 @@
 
                         <section class="TitlesArts">
 
-                            <section class="TitlesNames">ART:
+                            <section class="TitlesNames">
+                            
+                            	ART:
 
-                                <section class="Names" id="artName" onclick="openPage('art.jsp','_self')">
+                                <section class="Names">
 
-                                    Mona Lisa
-
+									<a href="art?idart=<%=listAllArtsArtist.get(i).getIdart()%>">
+                               			<%=listAllArtsArtist.get(i).getName()%>
+									</a>
+   
                                 </section>
 
                             </section>
 
                             <section class="TitlesNames">
+                            
                                 <h3>Description:</h3>
 
-
                                 <p class="TextDescription">
-                                    The painting represents a woman with an introspective and somewhat shy expression.
-                                    Her
-                                    narrow smile is very seductive, if a little conservative. Her body represents the
-                                    standard of beauty for women in Leonardo's time.
+                                    <%=listAllArtsArtist.get(i).getDescription()%>
                                 </p>
 
                             </section>
 
                             <section class="TitlesNames">
+                            
                                 EXHIBITION DATE:
 
                                 <section class="Data">
-                                    01/01/2001
+                           		    <%
+                           		    dataDeExposicao = (listAllArtsArtist.get(i).getDataDeExposicao() == null) ? "" : listAllArtsArtist.get(i).getDataDeExposicao(); 
+                           		 	
+                           			out.print(dataDeExposicao);
+                           		 	%>
                                 </section>
 
                             </section>
 
                             <section class="TitlesNames">
+                            
                                 PUBLICATION DATE:
 
                                 <section class="Data">
-                                    01/01/2001
+                               		<%
+                           			dataDePublicacao = (listAllArtsArtist.get(i).getDataDePublicacao() == null) ? "" : listAllArtsArtist.get(i).getDataDePublicacao(); 
+                           		 	
+                       				out.print(dataDePublicacao);
+                       		 		%>
                                 </section>
 
                             </section>
 
                             <section class="TitlesNames">
+                            
                                 PARTICIPATING ARTIST:
 
+                                <section class="Names">
 
-                                <section class="Names" onclick="openPage('art.jsp','_self')">
-
-                                    None
+                                    <a href="artist?idartist=">
+                               			Artist 01
+									</a>
 
                                 </section>
 
@@ -334,14 +364,14 @@
                         </section>
 
                     </section>
-
-                    <!-- ARTS 2 -->
-
+					
+					<%} %>	
+					
+					<!-- ART -->
+ 										
                 </section>
 
             </section>
-
-            <!-- ART -->
 
         </section>
 
