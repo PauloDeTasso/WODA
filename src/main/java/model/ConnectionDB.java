@@ -79,7 +79,6 @@ public class ConnectionDB
 
 			try
 			{
-				System.out.println("Não Brasil");
 
 				query = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade) values (?,?,?,?,?)";
 
@@ -270,6 +269,7 @@ public class ConnectionDB
 			{
 				System.out.println(e);
 			}
+
 		} else
 		{
 			String query = "update artists set nome=?, email=?, sexo=?, datadenascimento=?, nacionalidade=? where idartist=?";
@@ -289,6 +289,18 @@ public class ConnectionDB
 
 				pst.executeUpdate();
 
+				//
+
+				String query2 = "update artists set cpf = null where idartist = ?";
+
+				PreparedStatement pst2 = con.prepareStatement(query2);
+
+				pst2.setString(1, artist.getIdArtist());
+
+				pst2.executeUpdate();
+
+				//
+
 				con.close();
 
 			} catch (Exception e)
@@ -300,7 +312,7 @@ public class ConnectionDB
 
 	/* CRUD DELETE */
 
-	// REMOVER CONTATO - /delete:
+	// DELETE ARTIST - /deleteartist:
 
 	public void deleteArtistDb(Artists contato)
 	{
@@ -315,6 +327,46 @@ public class ConnectionDB
 			pst.setString(1, contato.getIdArtist());
 
 			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	/* CRUD DELETE */
+
+	// DELETE ART - /deleteart:
+
+	public void deleteArtDb(Arts art)
+	{
+		String query = "delete from properties where idartfk = ?";
+
+		String query2 = "delete from arts where idart = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			//
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, art.getIdart());
+
+			pst.executeUpdate();
+
+			//
+
+			PreparedStatement pst2 = con.prepareStatement(query2);
+
+			pst2.setLong(1, art.getIdart());
+
+			pst2.executeUpdate();
+
+			//
 
 			con.close();
 

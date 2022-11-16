@@ -66,7 +66,7 @@
 
     <body>
 
-        <form id="formRegisterArtist" name="formregisterartist" action="editartist" method="get" onreset="clear()">
+        <form id="formRegisterArtist" name="formregisterartist" action="editartist" method="post" onreset="clear()">
 
             <fieldset>
 

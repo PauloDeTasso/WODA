@@ -19,8 +19,8 @@ import model.IdsArtsArtist;
 import model.Searcher;
 
 @WebServlet(urlPatterns =
-{ "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteArtist", "/artregister", "/artist",
-		"/searchartist", "/addart", "/artedit", "/art", "/searcharts"
+{ "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteartist", "/deleteart", "/artregister",
+		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts"
 })
 
 public class MainController extends HttpServlet
@@ -47,6 +47,7 @@ public class MainController extends HttpServlet
 	{
 		String action = request.getServletPath();
 		System.out.println(action);
+		System.out.println("doGet");
 
 		if (action.equals("/main"))
 		{
@@ -62,13 +63,13 @@ public class MainController extends HttpServlet
 		{
 			selectArtistEdit(request, response);
 
-		} else if (action.equals("/editartist"))
-		{
-			editArtist(request, response);
-
-		} else if (action.equals("/deleteArtist"))
+		} else if (action.equals("/deleteartist"))
 		{
 			deleteArtist(request, response);
+
+		} else if (action.equals("/deleteart"))
+		{
+			deleteArt(request, response);
 
 		} else if (action.equals("/artregister"))
 		{
@@ -110,16 +111,19 @@ public class MainController extends HttpServlet
 		String action = request.getServletPath();
 		System.out.println(action);
 		System.out.println("doPost");
-		/*-
-				if (action.equals("/artregister"))
-				{
-					addArt(request, response);
-		
-				} else
-				{
-					response.sendRedirect("index.html");
-				}
-			*/
+
+		if (action.equals(""))
+		{
+
+		} else if (action.equals("/editartist"))
+		{
+			editArtist(request, response);
+
+		} else
+		{
+			response.sendRedirect("index.html");
+		}
+
 	}
 
 	//
@@ -155,12 +159,12 @@ public class MainController extends HttpServlet
 
 	//
 
-	// Editar Contato /select:
+	// Editar Contato /selectartistedit:
 
 	protected void selectArtistEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		String idArtist = request.getParameter("idArtist");
+		String idArtist = request.getParameter("idartist");
 
 		artist.setIdArtist(idArtist);
 
@@ -170,7 +174,7 @@ public class MainController extends HttpServlet
 		request.setAttribute("name", artist.getNome());
 		request.setAttribute("email", artist.getEmail());
 		request.setAttribute("gender", artist.getSexo());
-		request.setAttribute("birthday", artist.getDatadenascimento("br"));
+		request.setAttribute("birthday", artist.getDatadenascimento());
 		request.setAttribute("nationality", artist.getNacionalidade());
 		request.setAttribute("cpf", artist.getCpf());
 
@@ -267,16 +271,32 @@ public class MainController extends HttpServlet
 
 	//
 
-	// REMOVER CONTATO - /deleteArtist:
+	// DELETE ARTIST - /deleteArtist:
 
 	protected void deleteArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		String idArtist = request.getParameter("idArtist");
+		String idArtist = request.getParameter("idartist");
 
 		artist.setIdArtist(idArtist);
 
 		dao.deleteArtistDb(artist);
+
+		response.sendRedirect("main");
+	}
+
+	//
+
+	// DELETE ART - /deleteArt:
+
+	protected void deleteArt(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		Long idArt = Long.parseLong(request.getParameter("idart"));
+
+		art.setIdart(idArt);
+
+		dao.deleteArtDb(art);
 
 		response.sendRedirect("main");
 	}
@@ -294,11 +314,7 @@ public class MainController extends HttpServlet
 
 		ArrayList<Artists> listAllArtist = dao.setSeacherArtistDb(searcherMain);
 
-		ArrayList<Arts> listAllArts = dao.listAllArtsDb();
-
 		request.setAttribute("listAllArtists", listAllArtist);
-
-		request.setAttribute("listAllArts", listAllArtist);
 
 		request.setAttribute("searchArtist", searchArtist);
 
@@ -485,6 +501,34 @@ public class MainController extends HttpServlet
 
 		rd.forward(request, response);
 	}
+
+	//
+
+	public void teste()
+	{
+		String frase = null;
+		String novaFrase = null;
+
+		try
+		{
+			novaFrase = frase.toUpperCase();
+		}
+
+		catch (NullPointerException e)
+		{
+			System.out.println(
+					"O frase inicial está nula, para solucional tal o problema, foi lhe atribuito um valor default.");
+			frase = "Frase vazia";
+		}
+
+		finally
+		{
+			novaFrase = frase.toUpperCase();
+		}
+		System.out.println("Frase antiga: " + frase);
+		System.out.println("Frase nova: " + novaFrase);
+	};
+
 }
 
 //OBS.: PARA GERAR O JAVA DOC É SO CLICAR COM O BOTAO DIREITO MOUSE NA ULTIMA LINHA

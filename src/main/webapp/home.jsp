@@ -238,7 +238,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                                    
                                 	<button type="button" class="Buttons">
                                     	
-										<a href="selectartistedit?idArtist=<%=listAllArtists.get(i).getIdArtist()%>&name=<%=listAllArtists.get(i).getNome()%>&email=<%=listAllArtists.get(i).getEmail()%>&gender=<%=listAllArtists.get(i).getSexo()%>&birthday=<%=listAllArtists.get(i).getDatadenascimento()%>&nationality=<%=listAllArtists.get(i).getNacionalidade()%>&cpf=<%=listAllArtists.get(i).getCpf()%>">
+										<a href="selectartistedit?idartist=<%=listAllArtists.get(i).getIdArtist()%>">
 										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
 										</a>
                                 	
@@ -246,7 +246,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                                 	
                                 	<button type="button" class="Buttons">
 
-										<a href="javascript: confirmar(<%=listAllArtists.get(i).getIdArtist() %>,,'artist'))">
+										<a href="javascript: confirmar(<%=listAllArtists.get(i).getIdArtist() %>,'artist')">
 											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
 										</a>
 										

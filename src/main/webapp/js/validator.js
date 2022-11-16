@@ -210,14 +210,20 @@ function TestaCPF(strCPF)
 
 function formatarCpf()
 {
-    cpfOriginal = cpf.value;
-
-    if (cpf.value)
-    {
-        cpf.value = cpf.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");
-    }
-
+	if(cpf.value == "null" || cpf.value == null || cpf.value == undefined || cpf.value == "")
+	{
+		cpf.value = "";
+	}else
+	{
+		if(TestaCPF(cpf.value))
+		{
+   			cpfOriginal = cpf.value;
+    
+    		cpf.value = cpf.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+		}
+	}
     msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "<font color= 'green'>Ok</font>" : "Invalid CPF";
+
 }
 
 ////
@@ -397,10 +403,15 @@ function validar(form)
     //document.forms["form"].submit();
 
     //alert(document.forms["form"].submit())
+    
     if (formRegisterArtist)
-    {
-		//cpf.value = cpfOriginal;
+    {		
+   	   if(TestaCPF(cpfOriginal))
+		{
+			cpf.value = cpfOriginal;    
+    	}
     }
+    
     document.forms[ form ].submit();
 }
 
@@ -494,14 +505,15 @@ function checked2()
 
 function statusCpf()
 {
-if (nationality.value == "Brasil")
+	if (nationality.value == "Brasil")
     {
-        sectionCpf.style.visibility = "visible";
-    	cpf.style.visibility = "visible";
+       sectionCpf.style.visibility = "visible";
+   	   cpf.style.visibility = "visible";   	   
+   	   formatarCpf();
     } else 
-    {			
-        sectionCpf.style.visibility = "hidden";      
-        cpf.style.visibility = "hidden";  
+    {		   
+       cpf.style.visibility = "hidden";  
+       sectionCpf.style.visibility = "hidden";  
     }
 }
 

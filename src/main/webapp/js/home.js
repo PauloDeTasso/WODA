@@ -246,7 +246,7 @@ function confirmar(id,type)
 
         	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
 
-        	window.location.href = "deleteArtist?idArtist=" + id;
+        	window.location.href = "deleteartist?idartist=" + id;
     	}
     }else
     {
