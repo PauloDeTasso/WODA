@@ -1,0 +1,618 @@
+html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 192, 120);
+    opacity: 1;
+    font-family: 'Open Sans', sans-serif;
+    border-bottom: 10px solid rgb(252, 178, 100);
+    border-radius: 100px;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+/*////////////////////////////*/
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    border: 2px solid rgba(189, 118, 53, 0.2);
+}
+
+#sectionMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(255, 255, 255, .1);
+    background-color: rgba(255, 159, 70, 0.7);
+    /*background-color: rgb(255, 205, 159);*/
+}
+
+#sectionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    visibility: visible;
+    border: 0px solid rgb(255, 0, 0);
+}
+
+.SectionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(255, 0, 0);
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 0px solid rgb(255, 255, 255);
+}
+
+.ButtonsRegister {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 0px solid rgba(0, 0, 0, 0);
+}
+
+.ImagesButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.ImagesButtonsRegister {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.Buttons:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.ButtonsRegister:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+#sectionMenuButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+}
+
+#buttonMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(85, 85, 85);
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+#imagemButtonMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgba(85, 85, 85, .1);
+    background-color: rgba(0, 0, 0, 0.0);
+    margin: 2%;
+    opacity: .8;
+}
+
+#imagemButtonMenu:hover {
+    opacity: .7;
+    cursor: pointer;
+    animation: escala .5s alternate infinite;
+}
+
+/**/
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(0, 22, 119);
+    margin-top: 120px;
+    margin-bottom: 20px;
+    border-top: 10px solid rgb(252, 178, 100);
+    border-radius: 100px;
+}
+
+#seacher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+#tableSeacher {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(0, 22, 119);
+    overflow: auto;
+}
+
+#sectionGallery {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    /*display: flex;
+    flex-direction: row;
+   */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgba(255, 0, 0, 1);
+}
+
+#sectionAdmin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#sectionAdminButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
+.SectionArts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgba(255, 255, 255, 0.555);
+}
+
+.SectionImageArts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border: 0px solid rgb(148, 148, 148);
+    background-color: rgb(0, 0, 0);
+}
+
+.ImagesArts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(209, 209, 209);
+    cursor: pointer;
+}
+
+.SectionAuthorArts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    border: 2px solid rgb(209, 209, 209);
+    background-color: rgb(255, 184, 104);
+    overflow: auto;
+}
+
+.TitlesAuthor {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgba(82, 82, 82, .5);
+    background-color: rgba(151, 126, 96, 0);
+    font-size: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(44, 41, 0);
+    margin: 2%;
+    overflow: auto;
+    font-weight: 700;
+}
+
+.sectionImageAuthorArts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100px;
+    height: 100px;
+    border: 0px solid rgb(0, 183, 255);
+}
+
+.ImageAuthorsArts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: auto;
+    height: auto;
+    border: 0px solid rgb(255, 0, 0);
+}
+
+/**/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    position: fixed;
+    bottom: 0px;
+    border: 2px solid rgba(189, 118, 53, 0.5);
+}
+
+#sectionFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(255, 102, 0);
+    background-color: rgba(255, 159, 70, 0.5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, .5);
+    font-size: 87%;
+}
+
+#info {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    /* posição absoluta ao elemento pai, neste caso o BODY */
+    /* Posiciona no meio, tanto em relação a esquerda como ao topo */
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    /* Largura da DIV */
+    height: 70px;
+    /* Altura da DIV */
+    /* A margem a esquerda deve ser menos a metade da largura */
+    /* A margem ao topo deve ser menos a metade da altura */
+    /* Fazendo isso, centralizará a DIV */
+    margin-left: -100px;
+    margin-top: -100px;
+    color: rgb(209, 209, 209);
+    background-color: rgba(0, 0, 0, 0.959);
+    text-align: center;
+    /* Centraliza o texto */
+    z-index: 1000;
+    /* Faz com que fique sobre todos os elementos da página */
+    border: 5px solid rgba(255, 255, 255, 0.363);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70%;
+}
+
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
+/***/
+
+body::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.0);
+    /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.0);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 2px solid rgb(209, 160, 69);
+    /* creates padding around scroll thumb */
+}
+
+/*
+  .load
+  {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 10px solid rgb(60, 255, 0);
+  }
+*/
+
+.load {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 1%;
+    padding: 3%;
+}
+
+.load .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 255, 255);
+    transform: scale(0.2);
+    animation: animacao 1.2s infinite;
+    /*border: 10px solid rgb(107, 31, 247);*/
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.dot:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+@keyframes animacao {
+
+    0%,
+    100% {
+        transform: scale(0.2);
+    }
+
+    50% {
+        background-color: rgb(107, 31, 247);
+        transform: scale(1);
+    }
+}
+
+@keyframes escala {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.7);
+    }
+}
+
+/*
+#statusSistema {
+    display: none;
+    flex-direction: row;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+#sectionCpf {
+
+    visibility: visible;
+}
+
+input {
+    height: 50px;
+    border-radius: 7px;
+    font-size: 100%;
+    background-color: rgb(252, 215, 166);
+    color: rgb(0, 54, 155);
+}
+
+textarea {
+    height: 50px;
+    border-radius: 7px;
+    background-color: rgb(252, 215, 166);
+    color: rgb(0, 54, 155);
+    font: 100% 'Open Sans', sans-serif;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 89, 255, 0.3);
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(0, 89, 255, 0.3);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(0, 89, 255, 0.3);
+}
+
+select {
+    border-radius: 7px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 50px;
+    background-color: rgb(252, 215, 166);
+    color: rgb(0, 54, 155);
+    font-size: 100%;
+}
+
+option:not(:first-of-type) {
+    color: rgb(0, 54, 155);
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: rgb(0, 54, 155);
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: rgb(0, 54, 155);
+}
+
+/* regular text style */
+input[type="date"].date-input--has-value::-webkit-datetime-edit-text,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-month-field,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-day-field,
+input[type="date"].date-input--has-value::-webkit-datetime-edit-year-field {
+    color: rgb(0, 54, 155);
+}
+
+input,
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+}
+
+.AlertMsgs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    border: 0px solid rgba(255, 0, 0, 1);
+    color: rgb(240, 30, 30);
+    font-weight: 550;
+}
+
+#birthday::placeholder {
+    color: rgb(0, 54, 155);
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+    height: auto;
+    background-color: rgb(255, 192, 120);
+    padding: 2%;
+    color: rgba(0, 0, 0, 0);
+    font-size: 110%;
+    border-radius: 10px;
+    border: 0px solid rgb(255, 0, 0);
+}
+
+fieldset {
+    border-radius: 10px;
+    border-color: rgba(255, 159, 70, 0.7);
+    border-width: 5px;
+}
+
+#filesInputArts {
+    background-color: rgb(255, 192, 120);
+}
+
+#fileInputArtist {
+    background-color: rgb(255, 192, 120);
+}
+
+#description {
+    width: 100%;
+    height: 100px;
+}
+
+input:invalid {
+    border: 2px dashed red;
+}
+
+input:valid {
+    border: 2px solid black;
+}
+
+.LegendResgiter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}

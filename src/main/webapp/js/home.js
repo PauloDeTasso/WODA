@@ -248,7 +248,7 @@ function confirmar(id,type)
 
         	window.location.href = "deleteartist?idartist=" + id;
     	}
-    }else
+    }else if(type == "art")
     {
 		var resposta = confirm("Delete this art?");
 
@@ -261,6 +261,9 @@ function confirmar(id,type)
 
         	window.location.href = "deleteart?idart=" + id;
 		}
+	}else
+	{
+		alert("Error! Could not delete!");
 	}
 }
 

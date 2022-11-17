@@ -1,0 +1,37 @@
+
+package model;
+
+import java.io.Serializable;
+
+public class ListArtsArtist implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+	
+	private Long idArt;
+
+	public ListArtsArtist()
+	{
+		super();
+	}
+
+	public ListArtsArtist(Long idArt)
+	{
+		super();
+		this.idArt = idArt;
+	}
+
+	public Long getIdArt()
+	{
+		return idArt;
+	}
+
+	public void setIdArt(Long idArt)
+	{
+		this.idArt = idArt;
+	}
+
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
+	}	
+}

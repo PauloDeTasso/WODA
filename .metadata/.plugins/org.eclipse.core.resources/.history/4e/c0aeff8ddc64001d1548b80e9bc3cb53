@@ -1,0 +1,6 @@
+package model;
+
+public class ListArtsArtist
+{
+private Long idArt;
+}

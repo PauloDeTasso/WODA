@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"
     
     import="model.*"
     import="java.util.ArrayList"     
@@ -7,11 +7,11 @@
 
 <%
 
-String associatesOn = (String) request.getAttribute("associatesOn");
+//String associatesOn = (String) request.getAttribute("associatesOn");
 
-String checkedIds[] = (String[]) request.getAttribute("checkedIds");
-	 
-String checkedNames[] = (String[]) request.getAttribute("checkedNames");
+//String checkedIds[] = (String[]) request.getAttribute("checkedIds");
+	
+//String checkedNames[] = (String[]) request.getAttribute("checkedNames");
 
 ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
@@ -90,7 +90,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
                 <section id="buttonsZoom">
 
                     <section class="TitlesAuthor">
-                     <%out.print(request.getAttribute("nameArt"));%>
+                     <%=listArt.get(0).getName()%>
                     </section>
 
                 </section>
@@ -131,7 +131,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
                         <section class="Data">
 						
-						       <%out.print(request.getAttribute("nameArt"));%>
+						       <%=listArt.get(0).getName()%>
 
                         </section>
 
@@ -142,7 +142,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
 
                         <p class="TextDescription">
-                               <%out.print(request.getAttribute("description"));%>
+                               <%=listArt.get(0).getDescription()%>
                         </p>
 
                     </section>
@@ -151,7 +151,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
                         EXHIBITION DATE:
 
                         <section class="Data">
-                           <%out.print(request.getAttribute("exposuredate"));%>
+                           <%=(listArt.get(0).getDataDeExposicao() == null) ? "" : listArt.get(0).getDataDeExposicao("br")%>
                         </section>
 
                     </section>
@@ -160,7 +160,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
                         PUBLICATION DATE:
 
                         <section class="Data">
-                            <%out.print(request.getAttribute("publicationdate"));%>
+                            <%=(listArt.get(0).getDataDePublicacao() == null) ? "" : listArt.get(0).getDataDePublicacao("br")%>
                         </section>
 
                     </section>
@@ -173,34 +173,20 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
 							<section class="ArtistsExtras">   
 							
-								<a href="artist?idArtist=<%out.print(request.getAttribute("idArtist"));%>">
-                        			<%out.print(request.getAttribute("nameArtist"));%>
+								<a href="artist?idartist=">
+                        			NAME ARTIST 01
 								</a>                               				                   				        
                         	
                         	</section>	
-
-						<%if(associatesOn.equals("YES"))
-  						{
-
-   							for (int i = 0; i < checkedIds.length; i++)   
-                        	{                       	
-                        	%> 
+						
 								<section class="ArtistsExtras">   
 							
-									<a href="artist?idArtist=
-									<% if(associatesOn.equals("YES"))
-  										 {%>
-											<%=checkedIds[i]%>">
-  										 
-                        					<%=checkedNames[i]%>
-									<%   }%>
+									<a href="artist?idArtist=">
+									
 									</a>                               				                   				        
                         	
                        		 	</section>	            
-                        	<%	
-                         	}
-  						}
-                   			%>                 
+                                      
    
                         </section>
 
@@ -216,7 +202,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
             <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
@@ -224,21 +210,11 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
     </body>
 
-    <!--  
-    <div class="load">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    -->
-
     <footer>
 
         <section id="sectionFooter">
 
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
         </section>
 

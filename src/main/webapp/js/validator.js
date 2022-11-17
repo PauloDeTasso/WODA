@@ -11,7 +11,7 @@ if (formRegisterArtist)
     var msgGender = document.getElementById("msgGender");
     var msgBirthday = document.getElementById("msgBirthday");
     var msgNationality = document.getElementById("msgNationality");
-    var nationality = document.getElementById("nationality");
+    var selectNationality = document.getElementById("selectNationality");
     var cpf = document.getElementById("cpf");
     var msgCpf = document.getElementById("msgCpf");
     var msgStatus = document.getElementById("msgStatus");
@@ -19,6 +19,8 @@ if (formRegisterArtist)
     var listArtist = document.getElementById("listArtist");
     var sectionCpf = document.getElementById("sectionCpf");
     var cpfOriginal;
+    var valueGenderJs = document.getElementById("valueGenderJs");
+    var valueNationalityJs = document.getElementById("valueNationalityJs");    
 }
 
 if (formRegisterArt)
@@ -465,7 +467,8 @@ for (var i = 0; i < files.length; i++) {
 
 function checked()
 {
-  var todosChecados = document.querySelectorAll('[name=checkall]:checked');
+	alert("INICIO - checked 01 - checkallids");
+  var todosChecados = document.querySelectorAll('[name=checkallids]:checked');
   //var todosChecados = document.querySelectorAll('[name=checkall]');
  											   
   var allChecks = [];
@@ -480,12 +483,34 @@ function checked()
   {
 	 alert(allChecks[i]);
   }  
+  alert("FIM - checked 01");
 }
-
 
 function checked2()
 {
-  var todasAsOpcoes = document.getElementById('formRegisterArt')['checkall'];
+	alert("INICIO - checked 02 - checkallnames");
+  var todosChecados = document.querySelectorAll('[name=checkallnames]:checked');
+  //var todosChecados = document.querySelectorAll('[name=checkall]');
+ 											   
+  var allChecks = [];
+  
+  for (var i = 0; i < todosChecados.length; i++)
+  {
+    // utilize o valor aqui, adicionei ao array para exemplo
+    allChecks.push(todosChecados[i].value);
+  }
+    
+  for (var i = 0; i < todosChecados.length; i++)
+  {
+	 alert(allChecks[i]);
+  }  
+  alert("FIM - checked 02");
+}
+
+function checked3()
+{
+	alert("INICIO - checked 03 - checkallids");
+  var todasAsOpcoes = document.getElementById('formRegisterArt')['checkallids'];
  											   
   var checados = [];
   
@@ -501,11 +526,35 @@ function checked2()
   {
 	 alert(checados[i]);
   }  
+  	alert("FIM - checked 03");
+}
+
+
+function checked4()
+{
+	alert("INICIO - checked 02 - checkallnames");
+  var todasAsOpcoes = document.getElementById('formRegisterArt')['checkallnames'];
+ 											   
+  var checados = [];
+  
+  for (var i = 0; i < todasAsOpcoes.length; i++)
+  {    
+    if(todasAsOpcoes[i].checked)
+    {
+		checados.push(todasAsOpcoes[i].value);
+	}	
+  }
+    
+  for (var i = 0; i < checados.length; i++)
+  {
+	 alert(checados[i]);
+  }  
+  	alert("FIM - checked 04");
 }
 
 function statusCpf()
 {
-	if (nationality.value == "Brasil")
+	if (selectNationality.value == "Brasil")
     {
        sectionCpf.style.visibility = "visible";
    	   cpf.style.visibility = "visible";   	   
@@ -517,11 +566,57 @@ function statusCpf()
     }
 }
 
+//
+
+var selectGender = document.querySelector("#selectGender");
+
+var optionsGender = [...selectGender.options];
+
+var selectNationality = document.querySelector("#selectNationality");
+
+var optionsNationality = [...selectNationality.options];
+
+//
+
+/*
+
+<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
+								<%out.print(request.getAttribute("nationality"));%>
+								</option>
+
+*/
+
+function selectSelects()
+{
+	for (var i = 0; i < optionsGender.length; i++)
+	{
+		if(valueGenderJs.value == optionsGender[i].value)
+		{
+			optionsGender[i].selected = true;
+		}
+	}
+	
+	for (var i = 0; i < optionsNationality.length; i++)
+	{
+		if(valueNationalityJs.value == optionsNationality[i].value)
+		{
+			optionsNationality[i].selected = true;
+		}
+	}
+}
+
+setTimeout(() =>
+{	
+    selectSelects();
+    
+}, 5000);
+
+ selectSelects();
+
 setTimeout(() =>
 {	
     statusCpf();
 }, 2000);
 
 statusCpf();
-
 //

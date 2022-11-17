@@ -50,8 +50,6 @@ public class ConnectionDB
 
 			try
 			{
-				System.out.println("Brasil");
-
 				query = "insert into artists (nome,email,sexo,datadenascimento,nacionalidade,cpf) values (?,?,?,?,?,?)";
 
 				Connection con = conectar();
@@ -529,7 +527,7 @@ public class ConnectionDB
 
 		} else
 		{
-			System.out.println("A NOVA ARTE NÃO FOI CADASTRADA NO BANCO!");
+			System.out.println("ART NO ADD!");
 		}
 	}
 
@@ -636,13 +634,6 @@ public class ConnectionDB
 
 			con.close();
 
-			for (int i = 0; i < listIdsArtsArtist.size(); i++)
-			{
-				System.out.println("get(i) IDs:");
-				System.out.println(listIdsArtsArtist.get(i).getIdArt());
-				System.out.println(" *--* ");
-			}
-
 			return listIdsArtsArtist;
 
 		} catch (Exception e)
@@ -739,7 +730,7 @@ public class ConnectionDB
 
 	///// SELECT ALL NAMES ARTS - /artist:
 
-	public ArrayList<NamesArtsArtist> listNamesArtsArtistDb(ArrayList<IdsArtsArtist> listIdsArtsArtist)
+	public ArrayList<NamesArtsArtist> listNamesArtsArtistDb(String checkedIds[])
 	{
 		ArrayList<NamesArtsArtist> listNamesArtsArtist = new ArrayList<>();
 
@@ -774,6 +765,39 @@ public class ConnectionDB
 			return null;
 		}
 
+	}
+
+	//
+
+	///// SELECT ALL NAMES ARTS - /artist:
+
+	public void checkNamesArtistDb(ArrayList<NamesArtsArtist> checkNamesArtist, int checked)
+	{
+		String query = "select nome from artists where idartist = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, checked);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				String nome = rs.getString(1);
+
+				checkNamesArtist.add(new NamesArtsArtist(nome));
+			}
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 
 	//

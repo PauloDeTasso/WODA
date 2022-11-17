@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html id="html5" lang="en-US">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/index.css" />
+
+        <title>WODA</title>
+
+        <link rel="icon" href="images/logos/LogoWODA2.png" type="image/gif">
+
+    </head>
+
+    <!-- 
+    
+    <section id="statusSistema">
+
+    </section>
+    
+    -->
+
+    <header id="header">
+
+        <section id="sectionNorte">
+
+            <button type="button" id="botaoMenu" class="Buttons">
+
+               <!--  <img id="imagemBotaoMenu" src="images/icons/menu01.png" alt=""
+                    onclick="abrirPagina('home.html','_self')">
+ -->
+ 
+  				<a href="main">Acessar</a>
+  
+            </button>
+
+        </section>
+
+    </header>
+
+    <body id="body">
+
+        <section id="sectionLogin">
+
+            <form id="formLogin" action="login" method="post">
+
+                <input type="text" placeholder="Login" name="login" class="Inputs">
+
+                <input type="password" placeholder="Password" name="password" class="Inputs">
+
+                <section id="sectionButtonLogin">
+
+                    <button type="submit" id="botaoLogin" formmethod="post" formnovalidate>
+
+                        <img id="imageButtonLogin" src="images/icons/login01.png" alt="">
+
+                    </button>
+
+                </section>
+
+            </form>
+
+        </section>
+
+    </body>
+
+    <!--  
+
+    <div class="load">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+-->
+
+    <footer id="footer">
+
+        <section id="sectionSul">
+
+            World of digital artists - WODA®
+
+        </section>
+
+        <section id="redesSociais">
+
+            <button class="logosRedesSocias" type="button">
+                <img id="imagemInstagram" src="images/icons/REDES SOCIAIS/instagram 3d.png" alt="" width="35px"
+                    onclick="abrirPagina('https://www.instagram.com/lookalike3d/', '_blank')"
+                    onmouseenter="iconeOpacidade(imagemInstagram)" onmouseleave="iconeOpacidadeMenor(imagemInstagram)">
+            </button>
+
+            <button class="logosRedesSocias" type="button">
+
+                <img id="imagemSkype" src="images/icons/REDES SOCIAIS/SKYPE.png" alt="" width="35px"
+                    onmouseenter="iconeOpacidade(imagemSkype)" onmouseleave="iconeOpacidadeMenor(imagemSkype)"
+                    onclick="abrirPagina('http://join.skype.com/invite/Kyv9IeTTecgD','_self')">
+
+            </button>
+
+            <button class="logosRedesSocias" type="button">
+
+                <img id="imagemTwitter" src="images/icons/REDES SOCIAIS/twitter 3d.png" alt="" width="35px"
+                    onmouseenter="iconeOpacidade(imagemTwitter)" onmouseleave="iconeOpacidadeMenor(imagemTwitter)" onclick="abrirPagina('artregister','_self')">
+
+            </button>
+
+        </section>
+
+    </footer>
+
+    <script src="js/index.js">
+
+    </script>
+
+</html>

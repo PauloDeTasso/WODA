@@ -214,7 +214,13 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                                 	<%=listAllArtists.get(i).getIdArtist()%>
                                 </td>
                                 <td>
-                                   <a href="artist?idArtist=<%=listAllArtists.get(i).getIdArtist()%>"><%=listAllArtists.get(i).getNome()%></a> 
+                                
+                                   <a href="artist?idartist=<%=listAllArtists.get(i).getIdArtist()%>">
+                                   
+                                   <%=listAllArtists.get(i).getNome()%>
+                                   
+                                   </a> 
+                                   
                                 </td>
                                 <td>
                                     <%=listAllArtists.get(i).getEmail()%>

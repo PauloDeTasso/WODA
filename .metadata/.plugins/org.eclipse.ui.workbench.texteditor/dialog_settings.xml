@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="sectionSeacher"/>
+		<item key="wrap" value="false"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="true"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="sectionSeacher"/>
+			<item value="subSectionSeacher"/>
+			<item value="editArtistDb"/>
+			<item value="editartist"/>
+			<item value="formatarCpf"/>
+			<item value="formatarCpf()"/>
+			<item value="selectArtistEdit"/>
+			<item value="selectartistedit"/>
+			<item value="addArtistDb"/>
+			<item value="artistregister"/>
+			<item value="cpfOriginal"/>
+			<item value="verificarNacionalidade"/>
+			<item value="TestaCPF"/>
+			<item value="cpf"/>
+			<item value="statusCpf"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="listAllArts"/>
+			<item value="listAllArtists"/>
+			<item value="listAllArtist"/>
+			<item value="listAll"/>
+			<item value="artists"/>
+			<item value="artist"/>
+			<item value="artist."/>
+			<item value="selectArtistEdit"/>
+			<item value="selectArtist"/>
+			<item value="editArtistDb"/>
+			<item value="deleteArtist"/>
+			<item value="editArtist"/>
+			<item value="selectArtists"/>
+			<item value="addArtistDb"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1495"/>
+		<item key="DIALOG_Y_ORIGIN" value="282"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"
     
     import="model.*"
     import="java.util.ArrayList"     
 %>
     
 <%
- ArrayList<Artists> listAllArtist = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
+ ArrayList<Artists> listAllArtists = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
 %>
 
 
@@ -176,8 +176,8 @@
 							<section id="sectionAssociate">
 							
 								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
-  								<label for="associates">YES</label>
-  						
+Â  								<label for="associates">YES</label>
+Â  						
 								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
 								<label for="associates">NO</label>
                        			
@@ -187,9 +187,9 @@
                                                     
                     	   		<table>
                    			 	 
-                   			 	   <%for (int i=0; i < listAllArtist.size(); i++)
+                   			 	   <%for (int i=0; i < listAllArtists.size(); i++)
                           		   {    
-                         				 if(listAllArtist.get(i).getNome().equals(request.getAttribute("artistName")))
+                         				 if(listAllArtists.get(i).getNome().equals(request.getAttribute("artistName")))
                          				 {
                          					 
                          				 }else
@@ -200,11 +200,9 @@
                         				
                         				<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="checkallids" value="<%=listAllArtist.get(i).getIdArtist()%>">
+                          				 <input type="checkbox" name="checkallids" value="<%=listAllArtists.get(i).getIdArtist()%>">
                        					 
-                       					 <input type="hidden" name="checkallnames" value="<%=listAllArtist.get(i).getNome()%>">
-                       					
-                         				         <%=listAllArtist.get(i).getNome()%>          
+                         				         <%=listAllArtists.get(i).getNome()%>          
                        					</td>
                        					
                         			</tr>           
@@ -267,10 +265,16 @@
 
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="" onclick="checked2()">
+            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="" onclick="checked()">
 
+    		<img class="ImagesButtons" src="images/icons/LOGIN01.png" alt="" onclick="checked2()">
+     		
+     		<img class="ImagesButtons" src="images/icons/SUPORTE02.png" alt="" onclick="checked3()">
+
+    		<img class="ImagesButtons" src="images/icons/LOGIN02.png" alt="" onclick="checked4()">
+     
         </section>
 
     </body>
@@ -279,7 +283,7 @@
 
         <section id="sectionFooter">
 
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
         </section>
 

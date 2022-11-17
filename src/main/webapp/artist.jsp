@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"
     
        import="model.*"
     import="java.util.ArrayList"     
@@ -100,7 +100,7 @@ String dataDePublicacao;
 
                             <section>
 
-                                <button type="button" class="Buttons" onclick="openPage('selectartistedit?idArtist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
+                                <button type="button" class="Buttons" onclick="openPage('selectartistedit?idartist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
 
                                     <img class="ImagesButtons" src="images/icons/editar03.png"
                                         alt="">
@@ -111,10 +111,11 @@ String dataDePublicacao;
 
                             <section>
 
-                                <button type="button" class="Buttons" onclick="openPage('javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>)','_self')">
-
-                                    <img class="ImagesButtons"
-                                        src="images/icons/deletar01Vazio.png" alt="">
+                                <button type="button" class="Buttons">
+									
+									<a href="javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>,'artist')">
+										<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+									</a>
 
                                 </button>
 
@@ -136,7 +137,7 @@ String dataDePublicacao;
 
                                 </section>
 
-                                <section class="DataArtist" onclick="openPage('artist.html','_self')">
+                                <section class="DataArtist">
                                       <%out.print(request.getAttribute("name"));%>
                                 </section>
 
@@ -234,7 +235,7 @@ String dataDePublicacao;
 
                     <section class="TitlesNames">                        
 
-                        <button type="button" class="Buttons" onclick="openPage('addart?idArtist=<%out.print(request.getAttribute("idArtist")); %>','_self')">
+                        <button type="button" class="Buttons" onclick="openPage('addart','_self')">
 
                             <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png"
                                 alt="">
@@ -379,7 +380,7 @@ String dataDePublicacao;
 
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
             <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
@@ -401,7 +402,7 @@ String dataDePublicacao;
 
         <section id="sectionFooter">
 
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
         </section>
 

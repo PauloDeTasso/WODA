@@ -16,6 +16,7 @@ import model.Arts;
 import model.Associates;
 import model.ConnectionDB;
 import model.IdsArtsArtist;
+import model.NamesArtsArtist;
 import model.Searcher;
 
 @WebServlet(urlPatterns =
@@ -36,6 +37,8 @@ public class MainController extends HttpServlet
 	Associates associated = new Associates();
 
 	Searcher searcherMain = new Searcher();
+
+	NamesArtsArtist nameArtsArtist = new NamesArtsArtist();
 
 	public MainController()
 	{
@@ -86,10 +89,6 @@ public class MainController extends HttpServlet
 		} else if (action.equals("/addart"))
 		{
 			artRegister(request, response);
-
-		} else if (action.equals("/art"))
-		{
-			art(request, response);
 
 		} else if (action.equals("/art"))
 		{
@@ -210,7 +209,7 @@ public class MainController extends HttpServlet
 	{
 
 		// SELECIONAR TODOS OS ARTISTAS:
-		String idArtist = request.getParameter("idArtist");
+		String idArtist = request.getParameter("idartist");
 
 		artist.setIdArtist(idArtist);
 
@@ -298,7 +297,7 @@ public class MainController extends HttpServlet
 
 		dao.deleteArtDb(art);
 
-		response.sendRedirect("main");
+		response.sendRedirect("searcharts");
 	}
 
 	//
@@ -330,6 +329,12 @@ public class MainController extends HttpServlet
 
 	protected void addArt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+
+		String associatesOn = request.getParameter("associates");
+
+		String checkedIds[] = (request.getParameterValues("checkallids") == null) ? new String[] {}
+				: request.getParameterValues("checkallids");
+
 		// SETAR DADOS DA ART:
 		art.setName(request.getParameter("name"));
 		art.setDescription(request.getParameter("description"));
@@ -345,41 +350,24 @@ public class MainController extends HttpServlet
 		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
 		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
 
-		// SETAR ID DO ARTISTA DA NOVA ARTE NA TABELA PROPRIEDADE:
-		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
-
-		// FORMA OBJETO COM TODAS AS ARTES CADASTRADAS
+		// FORMA UM OBJETO COM TODAS AS ARTES CADASTRADAS
 		ArrayList<Arts> listAllArts = dao.listAllArtsDb();
 
 		// PEGA A ULTIMA ID DA ARTE CADASTRADA NO BANCO E SETA NA CLASSE DE PROPRIEDADE
 		associated.setIdArt(listAllArts.get(0).getIdart());
-
-		/*-
-		for (int i = 0; i < listAllArts.size(); i++)
-		{
-			System.out.println(listAllArts.get(i).getIdart());
-		}
-		*/
+		art.setIdart(listAllArts.get(0).getIdart());
 
 		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTA PRINCIPAL
 		dao.addAssociates(associated);
 
-		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS
+		// SELECIONA TODAS AS ARTES PELO NOME:
+		ArrayList<NamesArtsArtist> checkNamesArtist = new ArrayList<>();
 
-		String associatesOn = request.getParameter("associates");
-
-		String checkedIds[] = request.getParameterValues("checkallids");
-
-		String checkedNames[] = request.getParameterValues("checkallnames");
-
-		if (associatesOn.equals("YES"))
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
+		for (int i = 0; i < checkedIds.length; i++)
 		{
-
-			for (int i = 0; i < checkedIds.length; i++)
-			{
-				dao.addAssociatesExtras(associated, Integer.parseInt(checkedIds[i]));
-			}
-
+			dao.addAssociatesExtras(associated, Integer.parseInt(checkedIds[i]));
+			dao.checkNamesArtistDb(checkNamesArtist, Integer.parseInt(checkedIds[i]));
 		}
 
 		request.setAttribute("idArt", art.getIdart());
@@ -394,9 +382,10 @@ public class MainController extends HttpServlet
 		request.setAttribute("associatesOn", associatesOn);
 
 		request.setAttribute("checkedIds", checkedIds);
-		request.setAttribute("checkedNames", checkedNames);
 
-		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
+		request.setAttribute("checkedNames", checkNamesArtist);
+
+		RequestDispatcher rd = request.getRequestDispatcher("artregistered.jsp");
 
 		rd.forward(request, response);
 
@@ -405,7 +394,6 @@ public class MainController extends HttpServlet
 		// o método include passa para o servlet a solicitação e a resposta,
 		// processa seu servlet e retorna para processar seu jsp após esse ponto
 		// rd.include(request, response);
-
 	}
 
 	//
@@ -415,24 +403,9 @@ public class MainController extends HttpServlet
 	protected void artRegister(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		/*-
-		System.out.println(artist.getIdArtist());
-		System.out.println(artist.getNome());
-		System.out.println(artist.getEmail());
-		System.out.println(artist.getSexo());
-		System.out.println(artist.getDatadenascimento("br"));
-		System.out.println(artist.getNacionalidade());
-		System.out.println(artist.getCpf());
-		*/
-		// art.setName(request.getParameter("name"));
+		ArrayList<Artists> listAllArtists = dao.selectAllArtistsDb();
 
-		// ArrayList<Associates> listAllArtist;
-
-		// associated.setIdArtist(Long.parseLong(request.getParameter("id")));
-
-		ArrayList<Artists> listAllArtist = dao.selectAllArtistsDb();
-
-		request.setAttribute("listAllArtists", listAllArtist);
+		request.setAttribute("listAllArtists", listAllArtists);
 
 		request.setAttribute("artistName", artist.getNome());
 
@@ -466,7 +439,7 @@ public class MainController extends HttpServlet
 	protected void art(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String idArt = request.getParameter("idart");
-
+		System.out.println("idArt: " + idArt);
 		art.setIdart(Long.parseLong(idArt));
 
 		ArrayList<Arts> listArt = dao.selectArtDb(art);
@@ -486,8 +459,6 @@ public class MainController extends HttpServlet
 			throws ServletException, IOException
 	{
 		String searchArt = (request.getParameter("text") == null) ? "" : request.getParameter("text");
-
-		System.out.println("searchArt: " + searchArt);
 
 		searcherMain.setSeacher(searchArt);
 

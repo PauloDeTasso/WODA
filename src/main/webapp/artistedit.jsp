@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8"
+    
+    %>
 
 <!DOCTYPE html>
 
@@ -122,7 +124,7 @@
                     <tr>
                         <td>
 
-                            <select name="gender" onchange="verificarGenero(this.value)">
+                            <select id="selectGender" name="gender" onchange="verificarGenero(this.value)">
 
                                 <option value="gender" selected>...Gender...</option>
 
@@ -136,13 +138,11 @@
 
                                 <option value="OTHER">
                                     OTHER
-                                </option>
-
-								<option value="<%out.print(request.getAttribute("gender"));%>" selected>
-								<%out.print(request.getAttribute("gender"));%>
-								</option>
+                                </option>							
 								
                             </select>
+
+							<input id="valueGenderJs" type="hidden" value="<%out.print(request.getAttribute("gender"));%>">
 
                         </td>
                         <td>
@@ -169,7 +169,7 @@
                     <tr>
                         <td>
 
-                            <select id="nationality" name="nationality" onchange="verificarNacionalidade(this.value)"
+                            <select id="selectNationality" name="nationality" onchange="verificarNacionalidade(this.value)"
                                 required>
 
                                 <option value="nationality" selected>...Nationality...</option>
@@ -345,12 +345,11 @@
                                 <option value="Vietnã">Vietnã</option>
                                 <option value="Zaire">Zaire</option>
                                 <option value="Zâmbia">Zâmbia</option>
-                                <option value="Zimbábue">Zimbábue</option>
-                                <option value="<%out.print(request.getAttribute("nationality"));%>" selected>
-								<%out.print(request.getAttribute("nationality"));%>
-								</option>
+                                <option value="Zimbábue">Zimbábue</option>                                
 
                             </select>
+
+							<input id="valueNationalityJs" type="hidden" value="<%out.print(request.getAttribute("nationality"));%>">
 
                         </td>
                         <td>

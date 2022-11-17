@@ -214,7 +214,11 @@ String searchArt = (request.getAttribute("searchArt") == null) ? "" : request.ge
                                 	<%=listAllArts.get(i).getIdart()%>
                                 </td>
                                 <td>
-                                   <a href="art?idArt=<%=listAllArts.get(i).getIdart()%>"><%=listAllArts.get(i).getName()%></a> 
+                                
+                                   <a href="art?idart=<%=listAllArts.get(i).getIdart()%>">
+                                   <%=listAllArts.get(i).getName()%>
+                                   </a> 
+                                   
                                 </td>
                                 <td>
                                     <%=listAllArts.get(i).getDescription()%>

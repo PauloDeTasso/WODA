@@ -1,0 +1,67 @@
+
+package model;
+
+import java.io.Serializable;
+
+public class Associates implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+
+	private long idassociated;
+
+	private long idArtist;
+
+	private long idArt;
+
+	//
+
+	public Associates()
+	{
+		super();
+	}
+
+	public Associates(long idassociated, long idArtist, long idArt)
+	{
+		super();
+		this.idassociated = idassociated;
+		this.idArtist = idArtist;
+		this.idArt = idArt;
+	}
+
+	//
+
+	public long getIdassociated()
+	{
+		return idassociated;
+	}
+
+	public void setIdassociated(long idassociated)
+	{
+		this.idassociated = idassociated;
+	}
+
+	public long getIdArtist()
+	{
+		return idArtist;
+	}
+
+	public void setIdArtist(long idArtist)
+	{
+		this.idArtist = idArtist;
+	}
+
+	public long getIdArt()
+	{
+		return idArt;
+	}
+
+	public void setIdArt(long idArt)
+	{
+		this.idArt = idArt;
+	}
+
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
+	}
+}

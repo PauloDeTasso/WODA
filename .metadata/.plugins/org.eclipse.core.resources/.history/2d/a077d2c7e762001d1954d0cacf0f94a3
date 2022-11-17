@@ -1,0 +1,34 @@
+
+package model;
+
+import java.io.Serializable;
+
+public class Seacher implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+
+	private String seacher;
+
+	public Seacher()
+	{
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Seacher(String seacher)
+	{
+		super();
+		this.seacher = seacher;
+	}
+
+	public String getSeacher()
+	{
+		return seacher;
+	}
+
+	public void setSeacher(String seacher)
+	{
+		this.seacher = seacher;
+	}
+
+}

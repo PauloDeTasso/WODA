@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"
     
     import="model.*"
     import="java.util.ArrayList"     
@@ -185,8 +185,8 @@
 							<section id="sectionAssociate">
 							
 								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
-  								<label for="associates">YES</label>
-  						
+Â  								<label for="associates">YES</label>
+Â  						
 								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
 								<label for="associates">NO</label>
                        			
@@ -275,7 +275,7 @@
 
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
             <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
@@ -297,7 +297,7 @@
 
         <section id="sectionFooter">
 
-            World of digital artists - WODA®
+            World of digital artists - WODAÂ®
 
         </section>
 
