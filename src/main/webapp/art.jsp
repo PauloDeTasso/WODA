@@ -181,7 +181,7 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 						
 								<section class="ArtistsExtras">   
 							
-									<a href="artist?idArtist=">
+									<a href="artist?idartist=">
 									
 									</a>                               				                   				        
                         	

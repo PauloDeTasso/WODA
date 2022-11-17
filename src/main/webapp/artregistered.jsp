@@ -174,7 +174,7 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
 							<section class="ArtistsExtras">   
 							
-								<a href="artist?idArtist=<%out.print(request.getAttribute("idArtist"));%>">
+								<a href="artist?idartist=<%out.print(request.getAttribute("idArtist"));%>">
                         			<%out.print(request.getAttribute("nameArtist"));%>
 								</a>                               				                   				        
                         	
@@ -188,7 +188,7 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
                         	%> 
 								<section class="ArtistsExtras">   
 							
-									<a href="artist?idArtist=
+									<a href="artist?idartist=
 									<% if(associatesOn.equals("YES"))
   										 {%>
 											<%=checkedIds[i]%>">
@@ -223,16 +223,6 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
         </section>
 
     </body>
-
-    <!--  
-    <div class="load">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    -->
 
     <footer>
 

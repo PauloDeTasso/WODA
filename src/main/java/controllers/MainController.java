@@ -21,7 +21,7 @@ import model.Searcher;
 
 @WebServlet(urlPatterns =
 { "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteartist", "/deleteart", "/artregister",
-		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts"
+		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts", "/addartist"
 })
 
 public class MainController extends HttpServlet
@@ -98,6 +98,10 @@ public class MainController extends HttpServlet
 		{
 			searchArts(request, response);
 
+		} else if (action.equals("/addartist"))
+		{
+			selectArtsArtist(request, response);
+
 		} else
 		{
 			response.sendRedirect("index.html");
@@ -131,7 +135,7 @@ public class MainController extends HttpServlet
 	protected void selectAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		ArrayList<Artists> listAllArtists = dao.selectAllArtistsDb();
+		ArrayList<Artists> listAllArtists = dao.selectAllArtistsNameDb();
 		request.setAttribute("listAllArtists", listAllArtists);
 
 		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
@@ -139,7 +143,7 @@ public class MainController extends HttpServlet
 		rd.forward(request, response);
 	}
 
-	// Novo Contato - /artistregister:
+	// ADD ARTIST - /artistregister:
 
 	protected void addArtist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
@@ -152,6 +156,44 @@ public class MainController extends HttpServlet
 		artist.setCpf(request.getParameter("cpf"));
 
 		dao.addArtistDb(artist);
+
+		//
+		String associatesOn = request.getParameter("associates");
+
+		String checkedArtsIds[] = (request.getParameterValues("checkallidsarts") == null) ? new String[] {}
+				: request.getParameterValues("checkallidsarts");
+
+		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
+		// associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
+
+		// FORMA UM OBJETO COM TODAS AS ARTES CADASTRADAS
+		ArrayList<Artists> listAllArtistsId = dao.listAllArtistsIdDb();
+
+		// PEGA A ULTIMA ID DO ARTISTA CADASTRADO NO BANCO E SETA NA CLASSE DE
+		// PROPRIEDADES:
+		associated.setIdArtist(Long.parseLong(listAllArtistsId.get(0).getIdArtist()));
+		artist.setIdArtist(listAllArtistsId.get(0).getIdArtist());
+
+		// SELECIONA TODAS AS ARTES PELO NOME:
+		ArrayList<NamesArtsArtist> checkNamesArts = new ArrayList<>();
+
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
+		for (int i = 0; i < checkedArtsIds.length; i++)
+		{
+			dao.addAssociatesArtistExtrasDb(associated, Integer.parseInt(checkedArtsIds[i]));
+			dao.checkNamesArtsDb(checkNamesArts, Integer.parseInt(checkedArtsIds[i]));
+		}
+
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTA PRINCIPAL
+		// dao.addAssociates(associated);
+
+		request.setAttribute("associatesOn", associatesOn);
+
+		request.setAttribute("checkedIds", checkedArtsIds);
+
+		request.setAttribute("checkedNames", checkNamesArts);
+
+		//
 
 		response.sendRedirect("main");
 	}
@@ -168,6 +210,14 @@ public class MainController extends HttpServlet
 		artist.setIdArtist(idArtist);
 
 		dao.selectArtistDb(artist);
+
+		//
+
+		ArrayList<Arts> listAllArtsNamesForId = dao.listAllArtsNamesForIdDb(idArtist);
+
+		request.setAttribute("listAllArtsNamesForId", listAllArtsNamesForId);
+
+		//
 
 		request.setAttribute("idArtist", artist.getIdArtist());
 		request.setAttribute("name", artist.getNome());
@@ -366,7 +416,7 @@ public class MainController extends HttpServlet
 		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
 		for (int i = 0; i < checkedIds.length; i++)
 		{
-			dao.addAssociatesExtras(associated, Integer.parseInt(checkedIds[i]));
+			dao.addAssociatesArtsExtrasDb(associated, Integer.parseInt(checkedIds[i]));
 			dao.checkNamesArtistDb(checkNamesArtist, Integer.parseInt(checkedIds[i]));
 		}
 
@@ -403,7 +453,7 @@ public class MainController extends HttpServlet
 	protected void artRegister(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		ArrayList<Artists> listAllArtists = dao.selectAllArtistsDb();
+		ArrayList<Artists> listAllArtists = dao.selectAllArtistsNameDb();
 
 		request.setAttribute("listAllArtists", listAllArtists);
 
@@ -421,7 +471,7 @@ public class MainController extends HttpServlet
 	protected void artEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		ArrayList<Artists> listAllArtist = dao.selectAllArtistsDb();
+		ArrayList<Artists> listAllArtist = dao.selectAllArtistsNameDb();
 
 		request.setAttribute("listAllArtists", listAllArtist);
 
@@ -475,23 +525,41 @@ public class MainController extends HttpServlet
 
 	//
 
+	// ADD ARTIST FORM : /addartist
+
+	protected void selectArtsArtist(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+
+		ArrayList<Arts> listAllArtsNames = dao.listAllArtsNamesDb();
+
+		request.setAttribute("listAllArtsNames", listAllArtsNames);
+
+		RequestDispatcher rd = request.getRequestDispatcher("artistregister.jsp");
+
+		rd.forward(request, response);
+	}
+
+	/*-
+	//
+	// throw
 	public void teste()
 	{
 		String frase = null;
 		String novaFrase = null;
-
+	
 		try
 		{
 			novaFrase = frase.toUpperCase();
 		}
-
+	
 		catch (NullPointerException e)
 		{
 			System.out.println(
 					"O frase inicial está nula, para solucional tal o problema, foi lhe atribuito um valor default.");
 			frase = "Frase vazia";
 		}
-
+	
 		finally
 		{
 			novaFrase = frase.toUpperCase();
@@ -499,7 +567,7 @@ public class MainController extends HttpServlet
 		System.out.println("Frase antiga: " + frase);
 		System.out.println("Frase nova: " + novaFrase);
 	};
-
+	 */
 }
 
 //OBS.: PARA GERAR O JAVA DOC É SO CLICAR COM O BOTAO DIREITO MOUSE NA ULTIMA LINHA

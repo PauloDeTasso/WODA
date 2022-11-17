@@ -283,8 +283,9 @@ String dataDePublicacao;
 
                                     <button type="button" class="Buttons">
 
-                                        <img class="ImagesButtons"
-                                            src="images/icons/deletar01Vazio.png" alt="">
+                                       <a href="javascript: confirmar(<%=listAllArtsArtist.get(i).getIdart()%>,'art')">
+											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+										</a>
 
                                     </button>
 
@@ -326,7 +327,7 @@ String dataDePublicacao;
 
                                 <section class="Data">
                            		    <%
-                           		    dataDeExposicao = (listAllArtsArtist.get(i).getDataDeExposicao() == null) ? "" : listAllArtsArtist.get(i).getDataDeExposicao(); 
+                           		    dataDeExposicao = (listAllArtsArtist.get(i).getDataDeExposicao() == null) ? "" : listAllArtsArtist.get(i).getDataDeExposicao("br"); 
                            		 	
                            			out.print(dataDeExposicao);
                            		 	%>
@@ -340,7 +341,7 @@ String dataDePublicacao;
 
                                 <section class="Data">
                                		<%
-                           			dataDePublicacao = (listAllArtsArtist.get(i).getDataDePublicacao() == null) ? "" : listAllArtsArtist.get(i).getDataDePublicacao(); 
+                           			dataDePublicacao = (listAllArtsArtist.get(i).getDataDePublicacao() == null) ? "" : listAllArtsArtist.get(i).getDataDePublicacao("br"); 
                            		 	
                        				out.print(dataDePublicacao);
                        		 		%>

@@ -568,50 +568,7 @@ function statusCpf()
 
 //
 
-var selectGender = document.querySelector("#selectGender");
 
-var optionsGender = [...selectGender.options];
-
-var selectNationality = document.querySelector("#selectNationality");
-
-var optionsNationality = [...selectNationality.options];
-
-//
-
-/*
-
-<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
-								<%out.print(request.getAttribute("nationality"));%>
-								</option>
-
-*/
-
-function selectSelects()
-{
-	for (var i = 0; i < optionsGender.length; i++)
-	{
-		if(valueGenderJs.value == optionsGender[i].value)
-		{
-			optionsGender[i].selected = true;
-		}
-	}
-	
-	for (var i = 0; i < optionsNationality.length; i++)
-	{
-		if(valueNationalityJs.value == optionsNationality[i].value)
-		{
-			optionsNationality[i].selected = true;
-		}
-	}
-}
-
-setTimeout(() =>
-{	
-    selectSelects();
-    
-}, 5000);
-
- selectSelects();
 
 setTimeout(() =>
 {	
@@ -619,4 +576,3 @@ setTimeout(() =>
 }, 2000);
 
 statusCpf();
-//

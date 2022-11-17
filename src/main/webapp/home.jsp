@@ -60,7 +60,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                 <button type="button" id="registerButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
-                        onclick="openPage('artistregister.html', '_self')">
+                        onclick="openPage('addartist', '_self')">
 
                 </button>
 
@@ -285,17 +285,6 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
         </section>
 
     </body>
-
-    <!--  
-
-    <div class="load">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
--->
 
     <footer>
 

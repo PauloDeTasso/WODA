@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"
     
+    import="model.*"
+    import="java.util.ArrayList"
+    %>
+    
+    <%
+    
+    ArrayList<Arts> listAllArtsNamesForId = (ArrayList<Arts>) request.getAttribute("listAllArtsNamesForId");    
+        
     %>
 
 <!DOCTYPE html>
@@ -375,6 +383,59 @@
 
                     </tr>                  
 
+<tr>
+
+                        <td>
+                                          
+							<h3 class="TitlesH3">
+								ASSOCIATES ARTS: 
+							</h3>		
+							
+							<section id="sectionAssociate">
+							
+								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
+  								<label for="associates">YES</label>
+  						
+								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
+								<label for="associates">NO</label>
+                       			
+                       		</section>														
+                            	
+                            <section id="sectionAssociateList">
+                                                    
+                    	   		<table>
+                   			 	 
+                   			 	   <%for (int i=0; i < listAllArtsNamesForId.size(); i++)
+                          		   {	 
+                         		   %>     
+                   			
+                   			 		<tr>
+                        				
+                        				<td class="idArtist">                               				
+                         				     
+                          				 <input type="checkbox" name="checkallidsarts" value="<%=listAllArtsNamesForId.get(i).getIdart()%>">
+                       					
+                       					<%=listAllArtsNamesForId.get(i).getName()%>  
+                         				               
+                       					</td>
+                       					
+                        			</tr>           
+                        		   <%
+                        		   }
+                   			 	   %>
+                         
+                        		</table>                        
+                                 
+                            </section>
+
+                        </td>
+
+                        <td>
+                            <div id="msgExtraArtistId" class="AlertMsgs"></div>
+                        </td>
+
+                    </tr>    
+
                 </table>
 
 
@@ -414,17 +475,6 @@
         </section>
 
     </body>
-
-    <!--  
-
-    <div class="load">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    -->
 
     <footer>
 

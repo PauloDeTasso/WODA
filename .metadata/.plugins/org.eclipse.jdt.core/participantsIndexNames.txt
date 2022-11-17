@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-D:\PROGRAMAÇÃO\JAVA\ECLIPSE\WORKSPACE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3135797568.index
-\woda\src\main\java
-D:\PROGRAMAÇÃO\JAVA\ECLIPSE\WORKSPACE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2814562770.index
-\agenda\src\main\java

@@ -225,20 +225,20 @@ String searchArt = (request.getAttribute("searchArt") == null) ? "" : request.ge
                                 </td>
                                 <td>
                                      <%
-                           		    dataDeExposicao = (listAllArts.get(i).getDataDeExposicao() == null) ? "" : listAllArts.get(i).getDataDeExposicao(); 
+                           		    dataDeExposicao = (listAllArts.get(i).getDataDeExposicao() == null) ? "" : listAllArts.get(i).getDataDeExposicao("br"); 
                            		 	
                            			out.print(dataDeExposicao);
                            		 	%>
                                 </td>
                                 <td>
                                    <%
-                           			dataDePublicacao = (listAllArts.get(i).getDataDePublicacao() == null) ? "" : listAllArts.get(i).getDataDePublicacao(); 
+                           			dataDePublicacao = (listAllArts.get(i).getDataDePublicacao() == null) ? "" : listAllArts.get(i).getDataDePublicacao("br"); 
                            		 	
                        				out.print(dataDePublicacao);
                        		 		%>
                                 </td>
                                 <td>
-                                    
+                                    NAMES ARTIST
                                 </td>                                                                                        
                                 
                                 <td>
