@@ -330,11 +330,38 @@ public class MainController extends HttpServlet
 		String checkallidsedit[] = (request.getParameterValues("checkallidsedit") == null) ? new String[] {}
 				: request.getParameterValues("checkallidsedit");
 
-		for (int i = 0; i < checkallidsedit.length; i++)
+		String nameDaVez;
+
+		ArrayList<IdsArtsArtist> listIdsArtsForIdArtist = dao.listIdsArtsArtistDb(artist.getIdArtist());
+
+		if (associatesedit.equals("YES"))
 		{
-			System.out.println("checkallidsedit: " + i);
-			System.out.println(checkallidsedit[i]);
-			System.out.println("----------");
+
+			for (int i = 0; i < checkallidsedit.length; i++)
+			{
+				nameDaVez = checkallidsedit[i];
+
+				for (int x = 0; x < listIdsArtsForIdArtist.size(); x++)
+				{
+					System.out.println(listIdsArtsForIdArtist.get(x).getIdArt().toString());
+
+					System.out.println(nameDaVez);
+
+					System.out.println(listIdsArtsForIdArtist.get(x).getIdArt().toString().equals(nameDaVez));
+
+					if (listIdsArtsForIdArtist.get(x).getIdArt().toString().equals(nameDaVez))
+					{
+						listIdsArtsForIdArtist.remove(x);
+					}
+				}
+			}
+		}
+
+		for (int y = 0; y < listIdsArtsForIdArtist.size(); y++)
+		{
+			System.out.println("LISTA ID FILTRADA: " + y);
+			System.out.println(listIdsArtsForIdArtist.get(y).getIdArt());
+			System.out.println("-------------");
 		}
 
 		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
@@ -356,17 +383,6 @@ public class MainController extends HttpServlet
 		{
 			dao.addAssociatesArtistExtrasDb(associated, Integer.parseInt(checkedArtsIds[i]));
 			// dao.checkNamesArtsDb(checkNamesArts, Integer.parseInt(checkedArtsIds[i]));
-		}
-
-		if (associatesedit.equals("YES"))
-		{
-			System.out.println("YES");
-		} else if (associatesedit.equals("NO"))
-		{
-			System.out.println("NO");
-		} else
-		{
-			System.out.println("NENHUM");
 		}
 
 		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTA PRINCIPAL
