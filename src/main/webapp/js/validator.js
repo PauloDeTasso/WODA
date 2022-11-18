@@ -1,4 +1,30 @@
 
+ 
+var botaoLogin = document.getElementById('body');
+
+var html = document.getElementsByTagName('html');
+
+var header = document.getElementsByTagName('header');
+
+var sectionMenu = document.getElementById('sectionMenu');
+
+var sectionButtons = document.getElementById('sectionButtons');
+
+var seacher = document.getElementById('seacher');
+
+var saveStatusOn = document.getElementById('saveStatusOn');
+
+var saveStatusOff = document.getElementById('saveStatusOff');
+
+var mySearchArtists = document.getElementById('mySearchArtists');
+
+var mySearchArts = document.getElementById('mySearchArts');
+
+var searchButton = document.getElementById('searchButton');
+
+var ImagesArtist = document.getElementsByClassName('ImagesArtist');
+
+//////////////
 
 var formRegisterArtist = document.getElementById("formRegisterArtist");
 var formRegisterArt = document.getElementById("formRegisterArt");
@@ -417,51 +443,307 @@ function validar(form)
     document.forms[ form ].submit();
 }
 
-////
-/*
-<input type="file" id="files" name="files[]" multiple />
-<output id="list"></output>
-*/
-
-/*
-
-var fileSelector = document.getElementById('file-selector');
-
-fileSelector.onchange = function ()
+function statusCpf()
 {
-    var fileList = event.target.files;
+	if (selectNationality.value == "Brasil")
+    {
+       sectionCpf.style.visibility = "visible";
+   	   cpf.style.visibility = "visible";   	   
+   	   formatarCpf();
+    } else 
+    {		   
+       cpf.style.visibility = "hidden";  
+       sectionCpf.style.visibility = "hidden";  
+    }
+}
 
-    output.innerHTML = fileList;
+//
+
+function openPage(link, target)
+{
+    window.open(link, target);
 };
 
-fileSelector.addEventListener('change', (event) =>
+////
+
+function openCloseSection(elemento, propriedade, action)
 {
-    var fileList = event.target.files;
+    switch (propriedade)
+    {
+        case "display":
 
-    output.innerHTML = fileList;
-});
+		if(action)
+		{
+        	elemento.style.display = "flex";
+		
+		}else
+		{
+			elemento.style.display = "none";
+		}
+        
+        case "visibility":
 
-*/
+		if(action)
+		{
+            elemento.style.visibility = "visible";
+            
+		}else
+		{	 
+	 		elemento.style.visibility = "hidden";
+		}
+            break;
+
+        default:
+    }
+}
+
+////
+
+function openClose(elemento, propriedade, conteiner)
+{
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
+
+    switch (propriedade)
+    {
+        case "display":
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "flex";
+
+                localStorage.setItem(conteiner, true);
+
+            } else 
+            {
+                elemento.style.display = "none";
+
+                localStorage.setItem(conteiner, false);
+            }
+
+            break;
+
+        case "visibility":
+
+            if (propriedadeCabecalho == "hidden")
+            {
+                elemento.style.visibility = "visible";
+
+                localStorage.setItem(conteiner, true);
+
+            } else 
+            {
+                elemento.style.visibility = "hidden";
+
+                localStorage.setItem(conteiner, false);
+            }
+
+            break;
+
+        default:
+
+    }
+}
+
+var selectGender = document.querySelector("#selectGender");
+
+var optionsGender = [...selectGender.options];
+
+var selectNationality = document.querySelector("#selectNationality");
+
+var optionsNationality = [...selectNationality.options];
+
+//
 
 /*
-// fileInput é um elemento HTML input: <input type="file" id="myfileinput" multiple>
-var fileInput = document.getElementById("myfileinput");
 
-// files é um objeto FileList (similar ao NodeList)
-var files = fileInput.files;
-var file;
+<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
+								<%out.print(request.getAttribute("nationality"));%>
+								</option>
 
-// percorre os arquivos
-for (var i = 0; i < files.length; i++) {
-
-    // obtém o item
-    file = files.item(i);
-    // ou
-    file = files[i];
-
-    alert(file.name);
-}
 */
+
+function selectSelects()
+{
+	for (var i = 0; i < optionsGender.length; i++)
+	{
+		if(valueGenderJs.value == optionsGender[i].value)
+		{
+			optionsGender[i].selected = true;
+		}
+	}
+	
+	for (var i = 0; i < optionsNationality.length; i++)
+	{
+		if(valueNationalityJs.value == optionsNationality[i].value)
+		{
+			optionsNationality[i].selected = true;
+		}
+	}
+}
+
+/////////
+
+function openPage(link, target)
+{
+    window.open(link, target);
+};
+
+////
+
+function openCloseSection(elemento, propriedade, action)
+{
+    switch (propriedade)
+    {
+        case "display":
+
+		if(action)
+		{
+        	elemento.style.display = "flex";
+		
+		}else
+		{
+			elemento.style.display = "none";
+		}
+        
+        case "visibility":
+
+		if(action)
+		{
+            elemento.style.visibility = "visible";
+            
+		}else
+		{
+	 
+	 		elemento.style.visibility = "hidden";
+		}
+            break;
+
+        default:
+    }
+}
+
+////
+
+function openClose(elemento, propriedade, conteiner)
+{
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
+
+    switch (propriedade)
+    {
+        case "display":
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "flex";
+
+                localStorage.setItem(conteiner, true);
+
+            } else 
+            {
+                elemento.style.display = "none";
+
+                localStorage.setItem(conteiner, false);
+            }
+
+            break;
+
+        case "visibility":
+
+            if (propriedadeCabecalho == "hidden")
+            {
+                elemento.style.visibility = "visible";
+
+                localStorage.setItem(conteiner, true);
+
+            } else 
+            {
+                elemento.style.visibility = "hidden";
+
+                localStorage.setItem(conteiner, false);
+            }
+
+            break;
+
+        default:
+
+    }
+}
+ 
+//
+
+function submitSearcher(value,type)
+{		
+	switch(type)
+	{
+		case 'artists':
+		/*
+		if(value == null || value == undefined ||value == "" || value == " ")
+		{
+		
+		}else
+		{
+			*/
+	 	window.location.href = "searchartist?text=" + value;
+		//}
+		
+		break;
+		
+		case 'arts':
+		/*
+		if(value == null || value == undefined ||value == "" || value == " ")
+		{
+		
+		}else
+		{*/
+	 	window.location.href = "searcharts?text=" + value;
+		//}
+		
+		break;
+		
+		default:		
+	}	
+};
+ 
+var selectGender = document.querySelector("#selectGender");
+
+var optionsGender = [...selectGender.options];
+
+var selectNationality = document.querySelector("#selectNationality");
+
+var optionsNationality = [...selectNationality.options];
+
+//
+
+/*
+
+<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
+								<%out.print(request.getAttribute("nationality"));%>
+								</option>
+
+*/
+
+function selectSelects()
+{
+	for (var i = 0; i < optionsGender.length; i++)
+	{
+		if(valueGenderJs.value == optionsGender[i].value)
+		{
+			optionsGender[i].selected = true;
+		}
+	}
+	
+	for (var i = 0; i < optionsNationality.length; i++)
+	{
+		if(valueNationalityJs.value == optionsNationality[i].value)
+		{
+			optionsNationality[i].selected = true;
+		}
+	}
+}
+ 
+//
 
 //
 
@@ -552,22 +834,15 @@ function checked4()
   	alert("FIM - checked 04");
 }
 
-function statusCpf()
-{
-	if (selectNationality.value == "Brasil")
-    {
-       sectionCpf.style.visibility = "visible";
-   	   cpf.style.visibility = "visible";   	   
-   	   formatarCpf();
-    } else 
-    {		   
-       cpf.style.visibility = "hidden";  
-       sectionCpf.style.visibility = "hidden";  
-    }
-}
+// 
+ 
+setTimeout(() =>
+{	
+    selectSelects();
+    
+}, 5000);
 
-//
-
+ selectSelects();
 
 
 setTimeout(() =>

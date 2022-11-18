@@ -555,7 +555,7 @@ input::placeholder {
 .AlertMsgs {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 100px;
     height: 50px;
@@ -635,7 +635,22 @@ input:valid {
 #sectionAssociate {
   	display: flex;
     flex-direction: row;
- 	 justify-content: flex-start;
+ 	justify-content: flex-start;
+    align-items: center;
+	text-align: left;
+    background-color: rgba(255, 159, 70, 0.5);
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+    width: 23%;
+    border: 2px solid rgba(255, 159, 70, 1);
+    border-radius: 10px;
+	margin-bottom: 3px;
+}
+
+#sectionAssociateEdit {
+  	display: flex;
+    flex-direction: row;
+ 	justify-content: flex-start;
     align-items: center;
 	text-align: left;
     background-color: rgba(255, 159, 70, 0.5);
@@ -649,7 +664,7 @@ input:valid {
 
 
 #sectionAssociateList {
-   	display: flex;
+   	display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -657,7 +672,23 @@ input:valid {
     background-color: rgba(255, 159, 70, 0.5);
     color: rgb(0, 54, 155);
     font-weight: 700;
-    width: 100%;
+    width: auto;
+    border: 2px solid rgba(255, 159, 70, 1);
+    border-radius: 10px;
+	margin-bottom: 3px;
+	visibility: hidden;
+}
+
+#sectionAssociateListEdit {
+   	display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+	text-align: left;
+    background-color: rgba(255, 159, 70, 0.5);
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+    width: auto;
     border: 2px solid rgba(255, 159, 70, 1);
     border-radius: 10px;
 	margin-bottom: 3px;
@@ -683,4 +714,22 @@ input:valid {
 {
     color: rgb(0, 54, 155);
     font-weight: 700;
+}
+
+.tableForm
+{	 
+	
+    justify-content: center;
+    
+    background-color: rgba(255, 159, 70, 0.5);
+    
+    width: 100%; 
+    border: 2px solid rgba(255, 159, 70, 1);
+    border-radius: 10px;
+	margin-bottom: 3px;  
+}
+
+form
+{	 
+	
 }

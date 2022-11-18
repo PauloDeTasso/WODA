@@ -108,7 +108,7 @@ public class Arts implements Serializable
 		{
 
 			if (this.dataDeExposicao.equals("") || this.dataDeExposicao.equals(null)
-					|| this.dataDePublicacao.equals("null"))
+					|| this.dataDeExposicao.equals("null"))
 			{
 				return "";
 

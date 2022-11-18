@@ -1,6 +1,4 @@
 
-
-
 var botaoLogin = document.getElementById('body');
 
 var html = document.getElementsByTagName('html');
@@ -132,7 +130,6 @@ function openCloseSection(elemento, propriedade, action)
         default:
     }
 }
-
 ////
 
 function openClose(elemento, propriedade, conteiner)
@@ -346,7 +343,6 @@ reader.onload = function()
 
 //
 
-
 mySearchArtists.addEventListener("search",()=>
 {
 	submitSearcher(mySearchArtists.value,"artists");
@@ -447,6 +443,7 @@ function selectSelects()
 	}
 }
 
+ 
 setTimeout(() =>
 {	
     selectSelects();
@@ -454,3 +451,4 @@ setTimeout(() =>
 }, 5000);
 
  selectSelects();
+

@@ -159,7 +159,7 @@ public class ConnectionDB
 
 	// SELECT ALL ARTS - /main:
 
-	public ArrayList<Arts> selectAllArtsDb()
+	public ArrayList<Arts> listAllArtsForName()
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
 
@@ -1033,11 +1033,11 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAME FOR ID - /selectartistedit:
+	///// SELECT ARTS IDS FOR ID ARTIST - /selectartistedit:
 
-	public ArrayList<Arts> listAllArtsNamesForIdDb(String idArtist)
+	public ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtistDb(String idArtist)
 	{
-		ArrayList<Arts> listAllArtsNamesForId = new ArrayList<>();
+		ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtist = new ArrayList<>();
 
 		String query = "select idartfk from properties where idartistfk = ?";
 
@@ -1054,19 +1054,15 @@ public class ConnectionDB
 			while (rs.next())
 			{
 				Long idArt = rs.getLong(1);
-				String name = rs.getString(2);
-				String description = rs.getString(3);
-				String dataDePublicacao = rs.getString(4);
-				String dataDeExposicao = rs.getString(4);
 
-				listAllArtsNamesForId.add(new Arts(idArt, name, description, dataDePublicacao, dataDeExposicao));
+				listAllIdsArtsForIdArtist.add(new IdsArtsArtist(idArt));
 			}
 
 			pst.close();
 
 			con.close();
 
-			return listAllArtsNamesForId;
+			return listAllIdsArtsForIdArtist;
 
 		} catch (Exception e)
 		{
@@ -1074,6 +1070,43 @@ public class ConnectionDB
 			return null;
 		}
 	}
+
+	//
+
+	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
+
+	public void listAllArtsNamesForIdArtistDb(ArrayList<NamesArtsArtist> listAllArtsNamesForIdArtist, Long idArtist)
+	{
+
+		String query = "select nome from arts where idart = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, idArtist);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				String name = rs.getString(1);
+
+				listAllArtsNamesForIdArtist.add(new NamesArtsArtist(name));
+			}
+
+			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 }
 
 //

@@ -7,8 +7,12 @@
     
     <%
     
-    ArrayList<Arts> listAllArtsNamesForId = (ArrayList<Arts>) request.getAttribute("listAllArtsNamesForId");    
-        
+    ArrayList<Arts> listAllArts = (ArrayList<Arts>) request.getAttribute("listAllArts");  
+    
+    ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtist = (ArrayList<IdsArtsArtist>) request.getAttribute("listAllIdsArtsForIdArtist");  
+    
+    ArrayList<NamesArtsArtist> listAllArtsNamesForIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listAllArtsNamesForIdArtist");  
+    
     %>
 
 <!DOCTYPE html>
@@ -88,7 +92,7 @@
 
                 </legend>
 
-                <table>
+                <table class="tableForm">
 
                     <tr>
                         <td>
@@ -104,7 +108,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
+                            <input type="text" name="name" maxlength="57" size='57' placeholder="Name"
                                 onchange="verificarNome(this.value)" value="<%out.print(request.getAttribute("name"));%>" required>
 
                         </td>
@@ -119,7 +123,7 @@
                         <td>
 
                             <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="60" size='65' placeholder="E-mail" value="<%out.print(request.getAttribute("email"));%>">
+                                maxlength="57" size='57' placeholder="E-mail" value="<%out.print(request.getAttribute("email"));%>">
 
                         </td>
                         <td>
@@ -383,55 +387,110 @@
 
                     </tr>                  
 
-<tr>
+					<tr>
 
                         <td>
                                           
 							<h3 class="TitlesH3">
-								ASSOCIATES ARTS: 
+								ADD ASSOCIATES ARTS:
 							</h3>		
 							
 							<section id="sectionAssociate">
 							
-								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
+								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
+								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
                             	
-                            <section id="sectionAssociateList">
-                                                    
+                            <section id="sectionAssociateList">                                                   
+                    	   		             
                     	   		<table>
-                   			 	 
-                   			 	   <%for (int i=0; i < listAllArtsNamesForId.size(); i++)
-                          		   {	 
-                         		   %>     
-                   			
-                   			 		<tr>
+                   			 	
+                   			 	<% 
+                   			 		
+								for (int i = 0; i < listAllArts.size(); i++)
+								{
+									
+								%>													
+									<tr>
                         				
-                        				<td class="idArtist">                               				
+  										<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="checkallidsarts" value="<%=listAllArtsNamesForId.get(i).getIdart()%>">
-                       					
-                       					<%=listAllArtsNamesForId.get(i).getName()%>  
-                         				               
+                          					<input type="checkbox" name="checkallids" value="<%=listAllArts.get(i).getIdart()%>">
+                       					 
+                         				    	<%=listAllArts.get(i).getName()%>          
+                       							
                        					</td>
                        					
-                        			</tr>           
-                        		   <%
-                        		   }
-                   			 	   %>
+                        			</tr>  
+                        		<%
+								}
+								%>      
                          
                         		</table>                        
                                  
                             </section>
-
                         </td>
 
                         <td>
                             <div id="msgExtraArtistId" class="AlertMsgs"></div>
+                        </td>
+
+                    </tr>    
+
+					<tr>
+
+                        <td>
+                                          
+							<h3 class="TitlesH3">
+								EDIT YOUR ASSOCIATED ARTS: 
+							</h3>		
+							
+							<section id="sectionAssociateEdit">
+							
+								<input type="radio" id="associatesOnEdit" name="associatesedit" value="YES" onchange="openCloseSection(sectionAssociateListEdit,'display',true)">
+  								<label for="associates">YES</label>
+  						
+								<input type="radio" id="associatesOffEdit" name="associatesedit" value="NO" onchange="openCloseSection(sectionAssociateListEdit,'display',false)" checked>
+								<label for="associates">NO</label>
+                       			
+                       		</section>														
+                            	
+                            <section id="sectionAssociateListEdit">                                                   
+                    	   		             
+                    	   		<table>
+                   			 	
+                   			 	<% 
+                   			 		
+								for (int i = 0; i < listAllArtsNamesForIdArtist.size(); i++)
+								{
+									
+								%>													
+									<tr>
+                        				
+  										<td class="idArtist">                               				
+                         				     
+                          					<input type="checkbox" name="checkallidsedit" value="<%=listAllIdsArtsForIdArtist.get(i).getIdArt()%>" checked>
+                       					 
+                       					 		<%=listAllArtsNamesForIdArtist.get(i).getNameArt()%>          
+                       							
+                       					</td>
+                       					
+                        			</tr>  
+                        		<%
+								}
+								%>  
+                         
+                        		</table>                        
+                                 
+                            </section>
+                        </td>
+
+                        <td>
+                            <div id="msgExtraArtistId2" class="AlertMsgs"></div>
                         </td>
 
                     </tr>    
@@ -485,10 +544,6 @@
         </section>
 
     </footer>
-
-    <script src="js/home.js">
-
-    </script>
 
     <script src="js/validator.js">
 
