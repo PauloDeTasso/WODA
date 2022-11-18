@@ -98,7 +98,7 @@ function detectar_mobile()
 };
 
 ////
-
+/*
 function openCloseSection(elemento, propriedade, action)
 {
     switch (propriedade)
@@ -130,6 +130,7 @@ function openCloseSection(elemento, propriedade, action)
         default:
     }
 }
+*/
 ////
 
 function openClose(elemento, propriedade, conteiner)

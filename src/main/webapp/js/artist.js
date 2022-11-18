@@ -51,6 +51,7 @@ function detectar_mobile()
 };
 
 ////
+
 function openClose(elemento, propriedade, conteiner)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
@@ -63,14 +64,10 @@ function openClose(elemento, propriedade, conteiner)
             if (propriedadeCabecalho == "none")
             {
                 elemento.style.display = "flex";
-
-                localStorage.setItem(conteiner, true);
-
+                
             } else 
             {
                 elemento.style.display = "none";
-
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -81,90 +78,27 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.visibility = "visible";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.visibility = "hidden";
 
-                localStorage.setItem(conteiner, false);
             }
 
             break;
 
         default:
 
-    }
-}
+    }}
 
-function zoom(image, section, zoom)
-{
-    var imageWidth = image.clientWidth;
-    var sectionWidth = section.clientWidth;
+function removeConfirm(idArtist,idArt,nameArtist,nameArt)
+{	
+		var resposta = confirm("Disassociating art (" + nameArt + ") from (" + nameArtist + ") ?");
 
-    /*
-    var sectionImageWidth2 = section.offsetWidth;
-    var positionInfo = section.getBoundingClientRect();
-    var sectionWidth = positionInfo.width;
-    */
+	    if (resposta === true)
+    	{
+      		alert("removeassociate?idartist=" + idArtist + "&idart=" + idArt);	
+      	  
+        	window.location.href = "removeassociate?idartist=" + idArtist + "&idart=" + idArt;
+		}
 
-    switch (image)
-    {
-        case imageArt:
-
-            if (zoom == "in")
-            {
-                if (imageWidth >= sectionWidth - 50)
-                {
-                    image.style.width = (sectionWidth - 100) + "px";
-                } else
-                {
-                    image.style.width = (imageWidth + 50) + "px";
-                }
-
-            } else if (zoom == "out")
-            {
-                if (imageWidth <= 100)
-                {
-                    image.style.width = "100px";
-                } else
-                {
-                    image.style.width = (imageWidth - 50) + "px";
-                }
-
-            } else
-            {
-
-            }
-
-            break;
-
-        case imageArtist:
-
-            if (zoom == "in")
-            {
-                if (imageWidth >= sectionWidth - 50)
-                {
-                    image.style.width = (sectionWidth - 100) + "px";
-                } else
-                {
-                    image.style.width = (imageWidth + 50) + "px";
-                }
-
-            } else if (zoom == "out")
-            {
-                if (imageWidth <= 100)
-                {
-                    image.style.width = "100px";
-                } else
-                {
-                    image.style.width = (imageWidth - 50) + "px";
-                }
-            }
-
-            break;
-
-        default:
-
-    }
 }

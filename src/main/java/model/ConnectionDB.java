@@ -944,6 +944,33 @@ public class ConnectionDB
 
 	//
 
+	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
+
+	public void removeAssociatesArtistExtrasDb(Associates associated, Long checked)
+	{
+		String query = "delete from properties where idartistfk = ? and idartfk like ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, associated.getIdArtist());
+			pst.setLong(2, checked);
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
 	///// SELECT ART - /art:
 
 	public ArrayList<Arts> selectArtDb(Arts art)
@@ -1098,6 +1125,71 @@ public class ConnectionDB
 			}
 
 			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
+
+	public void removeAssociateDb(String idArtist, String idArt)
+	{
+
+		String query = "delete from properties where idartistfk = ? and idartfk like ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, idArtist);
+			pst.setString(2, idArt);
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
+
+	public void listAssociateDb(ArrayList<NamesArtsArtist> listNamesArtistsAssociates, String idArt)
+	{
+		ArrayList<IdsArtsArtist> listIdsArtistsAssociates = new ArrayList<>();
+
+		String query = "select idartistfk from properties where idartfk = 15";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, idArt);
+
+			pst.executeUpdate();
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArtist = rs.getLong(1);
+
+				listIdsArtistsAssociates.add(new IdsArtsArtist(idArtist));
+			}
 
 			con.close();
 

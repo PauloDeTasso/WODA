@@ -6,7 +6,8 @@
 %>
     
 <%
- ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
+
+ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
 
 String dataDeExposicao;
 
@@ -283,9 +284,9 @@ String dataDePublicacao;
 
                                     <button type="button" class="Buttons">
 
-                                       <a href="javascript: confirmar(<%=listAllArtsArtist.get(i).getIdart()%>,'art')">
+                                       <a href="javascript: removeConfirm('<%out.print(request.getAttribute("idArtist"));%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%out.print(request.getAttribute("name"));%>','<%=listAllArtsArtist.get(i).getName()%>')">
 											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
-										</a>
+									   </a>
 
                                     </button>
 
@@ -388,16 +389,6 @@ String dataDePublicacao;
         </section>
 
     </body>
-
-    <!--  
-    <div class="load">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    -->
 
     <footer>
 

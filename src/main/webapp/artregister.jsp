@@ -7,6 +7,7 @@
     
 <%
  ArrayList<Artists> listAllArtists = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
+
 %>
 
 
@@ -75,7 +76,7 @@
     <body>
 
         <form id="formRegisterArt" name="formregisterart" action="artregister"
-            method="get" onreset="clear()">
+            method="post" onreset="clear()">
 
             <fieldset>
 
@@ -175,10 +176,10 @@
 							
 							<section id="sectionAssociate">
 							
-								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
+								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
+								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
@@ -266,14 +267,6 @@
             Dev - Paulo de Tasso <br>
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
-
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="" onclick="checked()">
-
-    		<img class="ImagesButtons" src="images/icons/LOGIN01.png" alt="" onclick="checked2()">
-     		
-     		<img class="ImagesButtons" src="images/icons/SUPORTE02.png" alt="" onclick="checked3()">
-
-    		<img class="ImagesButtons" src="images/icons/LOGIN02.png" alt="" onclick="checked4()">
      
         </section>
 
@@ -289,11 +282,7 @@
 
     </footer>
 
-    <script src="js/home.js">
-
-    </script>
-
-    <script src="js/validator.js">
+    <script src="js/artregister.js">
 
     </script>
 

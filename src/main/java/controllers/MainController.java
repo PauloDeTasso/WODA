@@ -21,7 +21,7 @@ import model.Searcher;
 
 @WebServlet(urlPatterns =
 { "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteartist", "/deleteart", "/artregister",
-		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts", "/addartist"
+		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts", "/addartist", "/removeassociate"
 })
 
 public class MainController extends HttpServlet
@@ -74,10 +74,6 @@ public class MainController extends HttpServlet
 		{
 			deleteArt(request, response);
 
-		} else if (action.equals("/artregister"))
-		{
-			addArt(request, response);
-
 		} else if (action.equals("/artist"))
 		{
 			selectArtist(request, response);
@@ -97,6 +93,10 @@ public class MainController extends HttpServlet
 		} else if (action.equals("/searcharts"))
 		{
 			searchArts(request, response);
+
+		} else if (action.equals("/removeassociate"))
+		{
+			removeAssociate(request, response);
 
 		} else if (action.equals("/addartist"))
 		{
@@ -121,6 +121,10 @@ public class MainController extends HttpServlet
 		} else if (action.equals("/editartist"))
 		{
 			editArtist(request, response);
+
+		} else if (action.equals("/artregister"))
+		{
+			addArt(request, response);
 
 		} else
 		{
@@ -320,6 +324,9 @@ public class MainController extends HttpServlet
 
 		// EDITA ASSOCIADOS:
 
+		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
+		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
+
 		String associatesOn = request.getParameter("associates");
 
 		String associatesedit = request.getParameter("associatesedit");
@@ -343,11 +350,6 @@ public class MainController extends HttpServlet
 
 				for (int x = 0; x < listIdsArtsForIdArtist.size(); x++)
 				{
-					System.out.println(listIdsArtsForIdArtist.get(x).getIdArt().toString());
-
-					System.out.println(nameDaVez);
-
-					System.out.println(listIdsArtsForIdArtist.get(x).getIdArt().toString().equals(nameDaVez));
 
 					if (listIdsArtsForIdArtist.get(x).getIdArt().toString().equals(nameDaVez))
 					{
@@ -357,15 +359,11 @@ public class MainController extends HttpServlet
 			}
 		}
 
-		for (int y = 0; y < listIdsArtsForIdArtist.size(); y++)
+		// REMOVE A PROPRIEDADE DAS ARTES NÃO SELECIONADAS:
+		for (int i = 0; i < listIdsArtsForIdArtist.size(); i++)
 		{
-			System.out.println("LISTA ID FILTRADA: " + y);
-			System.out.println(listIdsArtsForIdArtist.get(y).getIdArt());
-			System.out.println("-------------");
+			dao.removeAssociatesArtistExtrasDb(associated, listIdsArtsForIdArtist.get(i).getIdArt());
 		}
-
-		// SETAR ID DO ARTISTA DA NOVA ARTE NA CLASSE PROPRIEDADE:
-		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
 
 		// FORMA UM OBJETO COM TODAS AS ARTES CADASTRADAS
 		// ArrayList<Artists> listAllArtistsId = dao.listAllArtistsIdDb();
@@ -686,6 +684,39 @@ public class MainController extends HttpServlet
 		RequestDispatcher rd = request.getRequestDispatcher("artistregister.jsp");
 
 		rd.forward(request, response);
+	}
+
+	//
+
+	// ADD ARTIST FORM : /addartist
+
+	protected void removeAssociate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		String idArtist = request.getParameter("idartist");
+		String idArt = request.getParameter("idart");
+
+		ArrayList<NamesArtsArtist> listNamesArtistsAssociates = new ArrayList<>();
+
+		String autores;
+
+		dao.listAssociateDb(listNamesArtistsAssociates, idArt);
+
+		for (int x = 0; x < listNamesArtistsAssociates.size(); x++)
+		{
+
+			if (listNamesArtistsAssociates.get(x).getNameArt().equals(null))
+			{
+				System.out.println("Null x: " + listNamesArtistsAssociates.get(x).getNameArt());
+			} else
+			{
+				System.out.println("True x: " + listNamesArtistsAssociates.get(x).getNameArt());
+			}
+		}
+
+		// dao.removeAssociateDb(idArtist, idArt);
+
+		response.sendRedirect("artist?idartist=" + idArtist);
 	}
 
 	/*-

@@ -676,7 +676,6 @@ input:valid {
     border: 2px solid rgba(255, 159, 70, 1);
     border-radius: 10px;
 	margin-bottom: 3px;
-	visibility: hidden;
 }
 
 #sectionAssociateListEdit {
@@ -692,7 +691,6 @@ input:valid {
     border: 2px solid rgba(255, 159, 70, 1);
     border-radius: 10px;
 	margin-bottom: 3px;
-	visibility: hidden;
 }
 
 .idArtist{
