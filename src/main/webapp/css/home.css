@@ -196,15 +196,14 @@ body {
     border-radius: 100px;
 }
 
-#subSectionSeacher
-{
-	display: flex;
+#subSectionSeacher {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
-    border-top: 10px solid rgba(252, 178, 100,0);
+    border-top: 10px solid rgba(252, 178, 100, 0);
     padding: 1%
 }
 
@@ -772,47 +771,44 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(211, 145, 69);
 }
 
-.tabela
-{
-	/*margin-top: 30px;*/
-	/*border-collapse: collapse;*/
+.tabela {
+    /*margin-top: 30px;*/
+    /*border-collapse: collapse;*/
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;    
-	font-weight: 700;
-	border-radius: 10px;
-	padding: 4px 4px 4px 4px;	
-	text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
+    height: 100%;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 4px 4px 4px 4px;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
 }
 
-.tabela th
-{
+.tabela th {
     justify-content: center;
     align-items: center;
-  	width: auto;
-    height: 100%;    
-	border: 1px solid rgb(252, 178, 100);
-	text-align: center;
-	background-color: #66bbff;
-	color: #fff;
-	padding: 4px 4px 4px 4px;
+    width: auto;
+    height: 100%;
+    border: 1px solid rgb(252, 178, 100);
+    text-align: center;
+    background-color: #66bbff;
+    color: #fff;
+    padding: 4px 4px 4px 4px;
 }
 
-.tabela td
-{
+.tabela td {
     justify-content: center;
     align-items: center;
-   	width: auto;
-    height: 100%; ;    
-	border: 1px solid rgb(252, 178, 100);
-	padding: 4px 4px 4px 4px;
-	background-color:rgb(211, 145, 69);
+    width: auto;
+    height: 100%;
+    ;
+    border: 1px solid rgb(252, 178, 100);
+    padding: 4px 4px 4px 4px;
+    background-color: rgb(211, 145, 69);
 }
 
-.buttonsAdminOptions
-{
-	display: flex;
+.buttonsAdminOptions {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -821,57 +817,53 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(252, 178, 100);
 }
 
-.Botao1
-{
-	width: 70px;
-    height: auto; 
-	text-decoration: none;
-	background-color: #66bbff;
-	padding: 4px 4px 4px 4px;
-	color: #fff;
-	font-size:100%;
-	font-weight: 700;
-	border-radius: 5px;
-	cursor: pointer;
+.Botao1 {
+    width: 70px;
+    height: auto;
+    text-decoration: none;
+    background-color: #66bbff;
+    padding: 4px 4px 4px 4px;
+    color: #fff;
+    font-size: 100%;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.Botao2
-{	
-	width: 70px;
-    height: auto; 
-	text-decoration: none;
-	background-color: #d51213;
-	padding: 4px 4px 4px 4px;
-	color: #fff;
-	font-size:100%;
-	font-weight: 700;
-	border-radius: 5px;
-	cursor: pointer;
+.Botao2 {
+    width: 70px;
+    height: auto;
+    text-decoration: none;
+    background-color: #d51213;
+    padding: 4px 4px 4px 4px;
+    color: #fff;
+    font-size: 100%;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-table
-{
-	border-bottom: 10px solid rgb(252, 178, 100);
-	border-top: 10px solid rgb(252, 178, 100);
+table {
+    border-bottom: 10px solid rgb(252, 178, 100);
+    border-top: 10px solid rgb(252, 178, 100);
     border-radius: 10px;
     margin-bottom: 20px;
-	margin-top: 20px;	
+    margin-top: 20px;
 }
 
-input:invalid ~ span::after {
-  content: "✖";
-  padding-left: 5px;
-  position: absolute;
+input:invalid~span::after {
+    content: "✖";
+    padding-left: 5px;
+    position: absolute;
 }
 
-input:valid ~ span::after {
-  content: "✓";
-  padding-left: 5px;
-  position: absolute;
+input:valid~span::after {
+    content: "✓";
+    padding-left: 5px;
+    position: absolute;
 }
 
-#sectionTableArtists
-{
+#sectionTableArtists {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -879,8 +871,7 @@ input:valid ~ span::after {
     width: 100%;
 }
 
-#sectionTableArts
-{
+#sectionTableArts {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -888,12 +879,27 @@ input:valid ~ span::after {
     width: 100%;
 }
 
-fieldset
-{
-	display: flex;
+fieldset {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
     border-radius: 10px;
+}
+
+#sectionAssociate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    background-color: rgb(211, 145, 69);
+    color: rgb(0, 54, 155);
+    font-weight: 700;
+    width: 100%;
+    border: 1px solid rgba(255, 159, 70, 1);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
 }
