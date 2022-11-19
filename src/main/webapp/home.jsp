@@ -282,6 +282,10 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
             <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
 
+				<a href="tests?id=117">
+					<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+				</a>
+										
         </section>
 
     </body>

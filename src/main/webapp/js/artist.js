@@ -92,13 +92,22 @@ function openClose(elemento, propriedade, conteiner)
 
 function removeConfirm(idArtist,idArt,nameArtist,nameArt)
 {	
-		var resposta = confirm("Disassociating art (" + nameArt + ") from (" + nameArtist + ") ?");
+		var resposta = confirm("Disassociating art " + "(" + nameArt + ") from (" + nameArtist + ") ?");
 
 	    if (resposta === true)
-    	{
-      		alert("removeassociate?idartist=" + idArtist + "&idart=" + idArt);	
-      	  
+    	{      		
         	window.location.href = "removeassociate?idartist=" + idArtist + "&idart=" + idArt;
+		}
+
+}
+
+function removeArtConfirm(idArt,nameArt)
+{	
+		var resposta = confirm("Delete art " + "(" + nameArt + ") from all artists?");
+
+	    if (resposta === true)
+    	{      		
+        	window.location.href = "deleteart?idart=" + idArt;
 		}
 
 }

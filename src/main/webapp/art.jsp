@@ -15,6 +15,9 @@
 
 ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
+ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAttribute("listAllArtistForIdArtist");
+ 
+
 %>
 
 <!DOCTYPE html>
@@ -101,23 +104,27 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
                         <section id="sectionButtonsArtist">
 
-                            <button type="button" id="editButton" class="Buttons" onclick="openPage('artedit','_self')">
-
-                                <img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
-                                    alt="">
-
-                            </button>
+                           <button type="button" class="Buttons">
+                                    	
+										<a href="selectartedit?idArt=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposuredate=<%=listArt.get(0).getDataDeExposicao()%>&publicationdate=<%=listArt.get(0).getDataDePublicacao()%>&artistsextra">
+										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
+										</a>
+                                	
+                                	</button>
+                                	
 
                         </section>
 
                         <section id="sectionButtonsArtist">
 
-                            <button type="button" id="editButton" class="Buttons" onclick="openPage('deleteArt?idArt=','_self')">
+                         
+                                	<button type="button" class="Buttons">
 
-                                <img class="ImagesButtons" id="imageEditButton" src="images/icons/deletar01Vazio.png"
-                                    alt="">
-
-                            </button>
+										<a href="javascript: removeArtConfirm('<%=listArt.get(0).getIdart()%>','<%=listArt.get(0).getName()%>')">
+											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+										</a>
+										
+                                	</button>
 
                         </section>
 
@@ -173,10 +180,21 @@ ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
 							<section class="ArtistsExtras">   
 							
-								<a href="artist?idartist=">
-                        			NAME ARTIST 01
-								</a>                               				                   				        
-                        	
+							<%
+							for (int i = 0; i < listAllArtistForIdArtist.size(); i++)
+							{
+								
+							%>	
+								<a href="artist?idartist=<%=listAllArtistForIdArtist.get(i).getIdArtist()%>">
+                        			
+                        			<%=listAllArtistForIdArtist.get(i).getNome()%>                        			
+                          
+								</a>   
+								                            				                   				        
+                        	<%								
+							}
+							%>
+							
                         	</section>	
 						
 								<section class="ArtistsExtras">   

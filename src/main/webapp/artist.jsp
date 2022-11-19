@@ -7,7 +7,19 @@
     
 <%
 
+ArrayList<Artists> listArtistAllByIdArtist = (ArrayList<Artists>) request.getAttribute("listArtistAllByIdArtist");  
+
 ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
+ 
+
+System.out.println("idArtist JSP: " + request.getAttribute("name"));
+
+for (int i = 0; i < listArtistAllByIdArtist.size(); i++)
+{
+	System.out.println("listArtistAllByIdArtist:");
+	System.out.println(listArtistAllByIdArtist.get(i).getNome());
+	System.out.println(" *--* ");
+}
 
 String dataDeExposicao;
 
@@ -260,7 +272,11 @@ String dataDePublicacao;
                         <section class="buttonsZoom">
 
                             <section class="TitlesAuthor">
-                               <%=listAllArtsArtist.get(i).getName()%>
+                            
+                            	<a href="art?idart=<%=listAllArtsArtist.get(i).getIdart()%>">
+                               		<%=listAllArtsArtist.get(i).getName()%>
+								</a>
+                            
                             </section>
 
                         </section>
@@ -348,27 +364,15 @@ String dataDePublicacao;
                        		 		%>
                                 </section>
 
-                            </section>
-
-                            <section class="TitlesNames">
-                            
-                                PARTICIPATING ARTIST:
-
-                                <section class="Names">
-
-                                    <a href="artist?idartist=">
-                               			Artist 01
-									</a>
-
-                                </section>
-
-                            </section>
+                            </section>                            
 
                         </section>
 
                     </section>
 					
-					<%} %>	
+					<%								
+					}
+ 					%>	
 					
 					<!-- ART -->
  										

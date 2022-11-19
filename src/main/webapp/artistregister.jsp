@@ -6,7 +6,9 @@
 %>
     
 <%
- ArrayList<Arts> listAllArtsNames = (ArrayList<Arts>) request.getAttribute("listAllArtsNames");  
+
+ ArrayList<Arts> listAllArtsOrderName = (ArrayList<Arts>) request.getAttribute("listAllArtsOrderName");  
+
 %>
 
 <!DOCTYPE html>
@@ -373,10 +375,10 @@
 							
 							<section id="sectionAssociate">
 							
-								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
+								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
+								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
@@ -385,7 +387,7 @@
                                                     
                     	   		<table>
                    			 	 
-                   			 	   <%for (int i=0; i < listAllArtsNames.size(); i++)
+                   			 	   <%for (int i=0; i < listAllArtsOrderName.size(); i++)
                           		   {	 
                          		   %>     
                    			
@@ -393,9 +395,9 @@
                         				
                         				<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="checkallidsarts" value="<%=listAllArtsNames.get(i).getIdart()%>">
+                          				 <input type="checkbox" name="checkallidsarts" value="<%=listAllArtsOrderName.get(i).getIdart()%>">
                        					
-                       					<%=listAllArtsNames.get(i).getName()%>  
+                       					<%=listAllArtsOrderName.get(i).getName()%>  
                          				               
                        					</td>
                        					
@@ -466,12 +468,8 @@
 
     </footer>
 
-    <script src="js/validator.js">
+    <script src="js/artistregister.js">
 
-    </script>
-    
-    <script src="js/home.js">
-
-    </script>
+    </script>    
 
 </html>

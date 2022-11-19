@@ -157,6 +157,68 @@ public class ConnectionDB
 
 	//
 
+	// SELECT ALL ARTISTS - /main:
+
+	public void listArtistAllByIdArtistDb(ArrayList<Artists> listAllArtistForIdArtist, String IdArtistString,
+			Long IdArtistLong)
+	{
+		String query = "select * from artists where idartist = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			if (IdArtistString != "")
+			{
+				pst.setString(1, IdArtistString);
+
+			} else if (IdArtistLong != -1)
+			{
+				pst.setLong(1, IdArtistLong);
+
+			} else
+			{
+				pst.setInt(1, 0);
+			}
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				String idArtist = rs.getString(1);
+				String nome = rs.getString(2);
+				String email = rs.getString(3);
+				String sexo = rs.getString(4);
+				String datadenascimento = rs.getString(5);
+				String nacionalidade = rs.getString(6);
+
+				String cpf;
+
+				if (nacionalidade.equals("Brasil"))
+				{
+					cpf = rs.getString(7);
+				} else
+				{
+					cpf = rs.getString(7);
+					cpf = null;
+				}
+
+				listAllArtistForIdArtist
+						.add(new Artists(idArtist, nome, email, sexo, datadenascimento, nacionalidade, cpf));
+			}
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
 	// SELECT ALL ARTS - /main:
 
 	public ArrayList<Arts> listAllArtsForName()
@@ -374,6 +436,36 @@ public class ConnectionDB
 		}
 	}
 
+	/* CRUD DELETE */
+
+	// DELETE ART - /deleteart:
+
+	public void deleteArtForIdDb(String idArt)
+	{
+		String query = "delete from arts where idart = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			//
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, idArt);
+
+			pst.executeUpdate();
+
+			//
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 	//
 
 	// SEARCHER ARTIST - /searcher:
@@ -439,6 +531,8 @@ public class ConnectionDB
 
 		String query = "select * from arts where nome like ? order by nome asc";
 
+		// String query2 = "select idartistfk from properties where idartfk = ?";
+
 		try
 		{
 			Connection con = conectar();
@@ -458,6 +552,7 @@ public class ConnectionDB
 				String dataDeExposicao = rs.getString(5);
 
 				listAllArts.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+
 			}
 
 			pst.close();
@@ -562,7 +657,7 @@ public class ConnectionDB
 
 	///// INSERIR ART - /artregister:
 
-	public ArrayList<Arts> listAllArtsDb()
+	public ArrayList<Arts> listAllArtsOrderIdDb()
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
 
@@ -662,7 +757,7 @@ public class ConnectionDB
 
 	///// SELECT ALL ARTS ID ARTIST - /artist:
 
-	public ArrayList<IdsArtsArtist> listIdsArtsArtistDb(String idArtist)
+	public ArrayList<IdsArtsArtist> listIdsArtsByIdArtistOrderIdDescDb(String idArtist)
 	{
 		ArrayList<IdsArtsArtist> listIdsArtsArtist = new ArrayList<>();
 
@@ -746,7 +841,7 @@ public class ConnectionDB
 
 	///// SELECT ALL ARTS ID ARTIST - /artist:
 
-	public void addAllArtsArtist(Long idArtArtist, ArrayList<Arts> listAllArtsArtist)
+	public void listArtAllByIdArtOrderIdDescDb(ArrayList<Arts> listAllArtsArtist, Long idArtArtist)
 	{
 		String query = "select * from arts where idart = ? order by idart desc";
 
@@ -826,7 +921,7 @@ public class ConnectionDB
 
 	///// SELECT ALL NAMES ARTS - /artist:
 
-	public void checkNamesArtistDb(ArrayList<NamesArtsArtist> checkNamesArtist, int checked)
+	public void listNamesArtistByIdArtistDb(ArrayList<NamesArtsArtist> namesArtistsByIdArtists, String idArt)
 	{
 		String query = "select nome from artists where idartist = ?";
 
@@ -836,7 +931,7 @@ public class ConnectionDB
 
 			PreparedStatement pst = con.prepareStatement(query);
 
-			pst.setInt(1, checked);
+			pst.setString(1, idArt);
 
 			ResultSet rs = pst.executeQuery();
 
@@ -844,7 +939,7 @@ public class ConnectionDB
 			{
 				String nome = rs.getString(1);
 
-				checkNamesArtist.add(new NamesArtsArtist(nome));
+				namesArtistsByIdArtists.add(new NamesArtsArtist(nome));
 			}
 
 			con.close();
@@ -1018,7 +1113,7 @@ public class ConnectionDB
 
 	///// SELECT ARTS NAME - /addartist:
 
-	public ArrayList<Arts> listAllArtsNamesDb()
+	public ArrayList<Arts> listArtsAllOrderNameDb()
 	{
 		ArrayList<Arts> listAllArtsNames = new ArrayList<>();
 
@@ -1166,11 +1261,13 @@ public class ConnectionDB
 
 	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
 
-	public void listAssociateDb(ArrayList<NamesArtsArtist> listNamesArtistsAssociates, String idArt)
+	public boolean listAssociateDb(String idArt)
 	{
-		ArrayList<IdsArtsArtist> listIdsArtistsAssociates = new ArrayList<>();
 
-		String query = "select idartistfk from properties where idartfk = 15";
+		String idString;
+		boolean delete = true;
+
+		String query = "select idartistfk from properties where idartfk = ?";
 
 		try
 		{
@@ -1180,22 +1277,120 @@ public class ConnectionDB
 
 			pst.setString(1, idArt);
 
-			pst.executeUpdate();
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				idString = rs.getString(1);
+
+				delete = false;
+
+			}
+
+			con.close();
+
+			return delete;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return false;
+		}
+	}
+
+	//
+
+	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
+
+	public void listIdsArtistByIdArtDb(ArrayList<IdsArtsArtist> listIdsArtistByIdArt, String idArtString,
+			Long idArtLong)
+	{
+		String query = "select idartistfk from properties where idartfk = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			if (idArtString != "")
+			{
+				pst.setString(1, idArtString);
+
+			} else if (idArtLong != -1)
+			{
+				pst.setLong(1, idArtLong);
+
+			} else
+			{
+				pst.setInt(1, 0);
+			}
 
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next())
 			{
-				Long idArtist = rs.getLong(1);
+				Long idArtists = rs.getLong(1);
 
-				listIdsArtistsAssociates.add(new IdsArtsArtist(idArtist));
+				listIdsArtistByIdArt.add(new IdsArtsArtist(idArtists));
 			}
+
+			pst.close();
 
 			con.close();
 
 		} catch (Exception e)
 		{
 			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
+
+	public boolean tests(String idArt)
+	{
+		int idint;
+		String idString;
+		boolean idBoolean;
+		boolean delete = true;
+
+		String query = "select idartistfk from properties where idartfk = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, idArt);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				idint = rs.getInt(1);
+				idString = rs.getString(1);
+				idBoolean = rs.getBoolean(1);
+
+				delete = false;
+
+				System.out.println("while delete: " + delete);
+				System.out.println("while idint: " + idint);
+				System.out.println("while idString: " + idString);
+				System.out.println("while idBoolean: " + idBoolean);
+
+			}
+
+			con.close();
+
+			return delete;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return false;
 		}
 	}
 
