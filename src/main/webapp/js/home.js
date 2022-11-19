@@ -23,6 +23,7 @@ var searchButton = document.getElementById('searchButton');
 
 var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
+var searchOption = document.getElementsByName('searchoption');
 /////////
 
 //SE SALVE ESTADO FOR TRUE ENTAO:
@@ -105,26 +106,26 @@ function openCloseSection(elemento, propriedade, action)
     {
         case "display":
 
-		if(action)
-		{
-        	elemento.style.display = "flex";
-		
-		}else
-		{
-			elemento.style.display = "none";
-		}
+        if(action)
+        {
+            elemento.style.display = "flex";
+    	
+        }else
+        {
+            elemento.style.display = "none";
+        }
         
         case "visibility":
 
-		if(action)
-		{
+        if(action)
+        {
             elemento.style.visibility = "visible";
             
-		}else
-		{
-	 
-	 		elemento.style.visibility = "hidden";
-		}
+        }else
+        {
+     
+                elemento.style.visibility = "hidden";
+        }
             break;
 
         default:
@@ -233,46 +234,46 @@ function zoom(image, zoom)
     }
 }
 
-function confirmar(id,type)
+function confirmar(id, type)
 {
-	if(type == "artist")
-	{		
-    	var resposta = confirm("Delete this artist?");
-
-	    if (resposta === true)
-    	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
-        	window.location.href = "deleteartist?idartist=" + id;
-    	}
-    }else if(type == "art")
+    if (type == "artist")
     {
-		var resposta = confirm("Delete this art?");
+        var resposta = confirm("Delete this artist?");
 
-	    if (resposta === true)
-    	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
+        if (resposta === true)
+        {
+            //TESTE DE RECEBIMENTO:
+            //alert(idcon);
 
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+            //ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
 
-        	window.location.href = "deleteart?idart=" + id;
-		}
-	}else
-	{
-		alert("Error! Could not delete!");
-	}
+            window.location.href = "deleteartist?idartist=" + id;
+        }
+    } else if (type == "art")
+    {
+        var resposta = confirm("Delete this art?");
+
+        if (resposta === true)
+        {
+            //TESTE DE RECEBIMENTO:
+            //alert(idcon);
+
+            //ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+            window.location.href = "deleteart?idart=" + id;
+        }
+    } else
+    {
+        alert("Error! Could not delete!");
+    }
 }
 
 function InserirImagem(url)
- {
-        let img = document.createElement("img");
-        img.src=url;
-        document.body.appendChild(img);
-    }
+{
+    let img = document.createElement("img");
+    img.src = url;
+    document.body.appendChild(img);
+}
 
 /////CRIAR LINK PARA O BLOB:
 
@@ -316,7 +317,7 @@ let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
 let reader = new FileReader();
 */
 
- // converts the blob to base64 and calls onload
+// converts the blob to base64 and calls onload
 //reader.readAsDataURL(blob);
 /*
 reader.onload = function() 
@@ -336,7 +337,7 @@ reader.onload = function()
 //USANDO BASE64 EM IMAGEM
 
 /*	
-	var image = document.createElement('image');
+    var image = document.createElement('image');
     image.src = 'data:image/bmp;base64,'+Base64.encode(blob);
     document.body.appendChild(image);
     
@@ -344,112 +345,118 @@ reader.onload = function()
 
 //
 
-mySearchArtists.addEventListener("search",()=>
+mySearchArtists.addEventListener("search", () =>
 {
-	submitSearcher(mySearchArtists.value,"artists");
-},false);
+    submitSearcher(mySearchArtists.value, "artists");
+}, false);
 
 //
 
-mySearchArts.addEventListener("search",()=>
+mySearchArts.addEventListener("search", () =>
 {
-	submitSearcher(mySearchArts.value,"arts");
-},false);
+    submitSearcher(mySearchArts.value, "arts");
+}, false);
 
 //
 
-function submitSearcher(value,type)
-{		
-	switch(type)
-	{
-		case 'artists':
-		/*
-		if(value == null || value == undefined ||value == "" || value == " ")
-		{
-		
-		}else
-		{
-			*/
-	 	window.location.href = "searchartist?text=" + value;
-		//}
-		
-		break;
-		
-		case 'arts':
-		/*
-		if(value == null || value == undefined ||value == "" || value == " ")
-		{
-		
-		}else
-		{*/
-	 	window.location.href = "searcharts?text=" + value;
-		//}
-		
-		break;
-		
-		default:		
-	}	
+function submitSearcher(value, type)
+{
+    switch (type)
+    {
+        case 'artists':
+            /*
+            if(value == null || value == undefined ||value == "" || value == " ")
+            {
+        	
+            }else
+            {
+                */
+            window.location.href = "searchartist?text=" + value;
+            //}
+
+            break;
+
+        case 'arts':
+            /*
+            if(value == null || value == undefined ||value == "" || value == " ")
+            {
+        	
+            }else
+            {*/
+            for (let i = 0; i < searchOption.length; i++)
+            {
+                if (searchOption[ i ].checked)
+                {
+                    window.location.href = "searcharts?text=" + value + "&option=" + searchOption[ i ].value;
+                }
+            }
+
+            //}
+
+            break;
+
+        default:
+    }
 };
 
 function changeButton(button)
 {
-	var estiloCabecalho = window.getComputedStyle(button);
+    var estiloCabecalho = window.getComputedStyle(button);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue('opacity');
-    
-    
-	if(propriedadeCabecalho == 1)
-	{
-		button.style.opacity = "0.8";
-	}else
-	{
-		button.style.opacity = "1";
-	}
+
+    if (propriedadeCabecalho == 1)
+    {
+        button.style.opacity = "0.8";
+    } else
+    {
+        button.style.opacity = "1";
+    }
 }
 
 
 var selectGender = document.querySelector("#selectGender");
 
-var optionsGender = [...selectGender.options];
+var optionsGender = [ ...selectGender.options ];
 
 var selectNationality = document.querySelector("#selectNationality");
 
-var optionsNationality = [...selectNationality.options];
+var optionsNationality = [ ...selectNationality.options ];
 
 //
 
 /*
 
 <option value="<%out.print(request.getAttribute("nationality"));%>" selected>
-								<%out.print(request.getAttribute("nationality"));%>
-								</option>
+                                <%out.print(request.getAttribute("nationality"));%>
+                                </option>
 
 */
 
 function selectSelects()
 {
-	for (var i = 0; i < optionsGender.length; i++)
-	{
-		if(valueGenderJs.value == optionsGender[i].value)
-		{
-			optionsGender[i].selected = true;
-		}
-	}
-	
-	for (var i = 0; i < optionsNationality.length; i++)
-	{
-		if(valueNationalityJs.value == optionsNationality[i].value)
-		{
-			optionsNationality[i].selected = true;
-		}
-	}
+    for (var i = 0; i < optionsGender.length; i++)
+    {
+        if (valueGenderJs.value == optionsGender[ i ].value)
+        {
+            optionsGender[ i ].selected = true;
+        }
+    }
+
+    for (var i = 0; i < optionsNationality.length; i++)
+    {
+        if (valueNationalityJs.value == optionsNationality[ i ].value)
+        {
+            optionsNationality[ i ].selected = true;
+        }
+    }
 }
 
- 
+
 setTimeout(() =>
-{	
+{
     selectSelects();
-    
+
 }, 5000);
 
- selectSelects();
+selectSelects();
 
