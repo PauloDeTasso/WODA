@@ -23,6 +23,8 @@ var searchButton = document.getElementById('searchButton');
 
 var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
+var nameValidate, emailValidate, genderValidate, birthdayValidate, nationalityValidate, cpfValidate;
+
 /////////
 
 function openPage(link, target)
@@ -112,13 +114,11 @@ function openClose(elemento, propriedade, conteiner)
             if (propriedadeCabecalho == "hidden")
             {
                 elemento.style.visibility = "visible";
-
                 localStorage.setItem(conteiner, true);
 
             } else 
             {
                 elemento.style.visibility = "hidden";
-
                 localStorage.setItem(conteiner, false);
             }
 
@@ -219,6 +219,7 @@ function validacaoEmail(campo, email)
         (dominio.lastIndexOf(".") < dominio.length - 1))
     {
 		msgEmail.innerHTML = "<font color= 'green'>Ok</font>";
+		emailValidate = true;
 	
 		for(i=0; i<listEmailArtists.length; i++)
 		{
@@ -226,12 +227,14 @@ function validacaoEmail(campo, email)
 			{
 				alert("Email existing in the database!");
 				msgEmail.innerHTML = "Email existing in the database!";
+				emailValidate = false;
 			}
 		}
 				
 	}else
     {    	
         msgEmail.innerHTML = "Invalid email!";
+        emailValidate = false;
     }
 }
 
@@ -240,6 +243,7 @@ function validacaoEmail(campo, email)
 
 function validateDate(campo, msgAlert)
 {
+	/*
     var data = document.getElementById(campo).value;
 
     data = data.replace(/\//g, "-");
@@ -268,93 +272,143 @@ function validateDate(campo, msgAlert)
     {
         msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
     }
-
-
-    if (campo == "publicationDate")
-    {
-		
-		if (publicationDate.value)
-    	{  	  			
- 			 exposureDate.style.visibility = "hidden";
- 			 dateType = "publicationDate";
- 	  		 dateTypeInput.value = dateType;
- 	  		 
-  		} else
-  		{   
-    		exposureDate.style.visibility = "visible";
-    		dateType = "null";
-    		dateTypeInput.value = dateType;
-    	}    
-
-    } else if (campo == "exposureDate")
-    {
-        
-        if (exposureDate.value)
-    	{  			
-  			publicationDate.style.visibility = "hidden";
-  			dateType = "exposureDate";
-  			dateTypeInput.value = dateType;
-  	
-  		} else
-  		{ 
- 			publicationDate.style.visibility = "visible";
- 			dateType = "null";
- 			dateTypeInput.value = dateType;
- 		} 
- 		
-    } else
-    {
-        //
-    }   
-}
-
-/*
-
-function validateDate(campo, msgAlert)
-{
-    var data = document.getElementById(campo).value;
-
-    data = data.replace(/\//g, "-");
-
-    var data_array = data.split("-");
-
-    if (data_array[ 0 ].length != 4)
-    {
-        data = data_array[ 2 ] + "-" + data_array[ 1 ] + "-" + data_array[ 0 ];
-    }
-
-    var hoje = new Date();
-
-    var nasc = new Date(data);
-
-    var idade = hoje.getFullYear() - nasc.getFullYear();
-
-    var m = hoje.getMonth() - nasc.getMonth();
-
-    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
-
-    if (idade < 18)
-    {
-        msgAlert.innerHTML = "Invalid date!";
-    } else
-    {
-        msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
-    }
-
-    if (campo == "publicationDate")
-    {
-        exposureDate.style.visibility = "hidden";
-
-    } else if (campo == "exposureDate")
-    {
-        publicationDate.style.visibility = "hidden";
-    } else
-    {
-        //
-    }
-}
-
 */
+
+	var data = document.getElementById(campo).value;
+
+	var ano = parseInt(data.slice(0, 4));
+
+	var mes = data.slice(5, 7);
+
+	var dia = parseInt(data.slice(8, 10));
+
+	var diaValidate;
+
+	var mesValidate;
+
+	var anoValidate;
+	
+	alert(dia);
+	
+	alert(mes);
+	
+	alert(ano);
+	
+	switch(mes)
+	{
+    	case "01": case "03": case "05": case "07": case "08": case "10": case "12":
+     
+     		if(dia <= 31 && dia > 0)
+     		{
+     			msgAlert.innerHTML = "Valid day!";
+     			diaValidate = true;
+     		}else
+     		{ 
+	 			msgAlert.innerHTML = "Invalid day!";
+	 			diaValidate = false;
+     		}
+      
+     	 	mesValidate = true;
+     	
+     	alert("01 - diaValidate" + diaValidate);
+     	alert("01 - mesValidate" + mesValidate);
+     	
+    		break ;
+     
+     	case "04": case "06": case "09": case "11":
+     
+     		if(dia <= 30 && dia > 0)
+       		{
+       			msgAlert.innerHTML = "Valid day!";
+       			diaValidate = true;
+       	
+      		}else
+       		{
+       			msgAlert.innerHTML = "Invalid day!";
+       			diaValidate = false;
+      		}
+      	
+      		mesValidate = true;
+      		
+      	alert("02 - diaValidate" + diaValidate);
+     	alert("02 - mesValidate" + mesValidate);
+      	
+     	break ;
+     
+     	case "02":
+      
+      		if((ano%400 == 0) || (ano%4==0 && ano%100!=0))
+       		{
+       			if( dia <= 29 && dia > 0)
+        		{
+        			msgAlert.innerHTML = "Valid day!";        			
+        		
+       			}else
+        		{
+        			msgAlert.innerHTML = "Invalid day!";        			
+      			}
+      
+      		}else       
+			{      
+	 			if( dia <= 28 && dia > 0)
+     			{
+	   				msgAlert.innerHTML = "Valid day!";
+	   				diaValidate = true;
+      		
+      			}else
+      			{
+        			msgAlert.innerHTML = "Invalid day!";
+        			diaValidate = false;        		
+    			}   			
+    		}
+    
+   	 		mesValidate = true;	
+    	
+    	alert("03 - diaValidate" + diaValidate);
+     	alert("03 - mesValidate" + mesValidate);
+    	
+    	break;
+    
+    	default:
+        
+        	mesValidate = false;
+        	anoValidate = false;
+        	msgAlert.innerHTML = "Invalid year or month!";
+        	
+       	alert("04 - diaValidate" + diaValidate);
+     	alert("04 - mesValidate" + mesValidate);
+        alert("04 - anoValidate" + anoValidate);
+        	
+    	break;
+    
+	} 
+	
+	var date = new Date();
+	var year = date.getFullYear();
+	
+	if(ano <= year)
+	{
+		anoValidate = true;
+	}else
+	{
+		anoValidate = false;
+	}
+		
+		alert("05 - diaValidate" + diaValidate);
+     	alert("05 - mesValidate" + mesValidate);
+        alert("05 - anoValidate" + anoValidate);
+		
+	if(diaValidate && mesValidate && anoValidate)
+	{
+		birthdayValidate = true;
+		msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
+	}else
+	{
+		birthdayValidate = false;
+		msgAlert.innerHTML = "Invalid date!";
+	}
+	alert("birthdayValidate" + birthdayValidate);
+}
 
 /////
 
@@ -364,30 +418,6 @@ function TestaCPF(strCPF)
     var Resto;
     Soma = 0;
     if (strCPF == null) return false;
-
-    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
-    Resto = (Soma * 10) % 11;
-
-    if ((Resto == 10) || (Resto == 11)) Resto = 0;
-    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
-
-    Soma = 0;
-    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
-    Resto = (Soma * 10) % 11;
-
-    if ((Resto == 10) || (Resto == 11)) Resto = 0;
-    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
-    return true;
-}
-
-//
-
-function TestaCPF(strCPF)
-{
-    var Soma;
-    var Resto;
-    Soma = 0;
-    if (strCPF == "00000000000") return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
@@ -427,14 +457,23 @@ function formatarCpf(cpf)
 		}
 	}
 
-	msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "<font color= 'green'>Ok</font>" : "Invalid CPF";
+	if(TestaCPF(cpfOriginal))
+	{
+		msgCpf.innerHTML = "<font color= 'green'>Ok</font>" 
+		cpfValidate	= true;	
+	}else
+	{
+		msgCpf.innerHTML = "Invalid CPF";
+		cpfValidate	= false;	
+	}
 				
 	for(i=0; i<listCpfArtists.length; i++)
 	{
 		if(listCpfArtists[i].value == cpfOriginal)
 		{
 			alert("Cpf existing in the database!");
-			msgCpf.innerHTML = "Cpf existing in the database!";				
+			msgCpf.innerHTML = "Cpf existing in the database!";		
+			cpfValidate	= false;	
 		}
 	}	
 }
@@ -446,9 +485,11 @@ function verificarNacionalidade(valor)
     if (valor == "nationality" || valor == "" || valor == null)
     {
         msgNationality.innerHTML = "Inform your nationality!";
+        nationalityValidate = false;
     } else
     {
         msgNationality.innerHTML = "<font color= 'green'>Ok</font>";
+        nationalityValidate = true;
     }
 
   statusCpf();
@@ -461,9 +502,11 @@ function verificarGenero(valor)
     if (valor == "gender" || valor == null)
     {
         msgGender.innerHTML = "Inform your gender!";
+         genderValidate = false;
     } else
     {
         msgGender.innerHTML = "<font color= 'green'>Ok</font>";
+        genderValidate = true;
     }
 }
 
@@ -474,9 +517,11 @@ function verificarNome(valor)
     if (valor == "" || valor == null)
     {
         msgName.innerHTML = "Inform your name!";
+        nameValidate = false;
     } else
     {
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
+        nameValidate = true;
     }
 }
 
@@ -511,7 +556,6 @@ function clear()
 }
 
 //
-
    
 formRegisterArtist.onreset = function ()
 {
