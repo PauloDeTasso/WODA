@@ -68,6 +68,13 @@
 
                 </button>
 
+    			<button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                        onclick="openPage('index.html', '_self')">
+
+                </button>
+
             </section>
 
             <section id="sectionMenuButton">

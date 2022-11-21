@@ -243,21 +243,32 @@ function validacaoEmail(campo, email)
 
 function validateDate(campo, msgAlert)
 {
-	/*
-    var data = document.getElementById(campo).value;
+	var date = document.getElementById(campo).value;
 
-    data = data.replace(/\//g, "-");
+	var ano = parseInt(date.slice(0, 4));
 
-    var data_array = data.split("-");
+	var mes = date.slice(5, 7);
 
-    if (data_array[ 0 ].length != 4)
+	var dia = parseInt(date.slice(8, 10));
+
+	var diaValidate;
+
+	var mesValidate;
+
+	var anoValidate;
+		
+	date = date.replace(/\//g, "-");
+
+    var date_array = date.split("-");
+
+    if (date_array[ 0 ].length != 4)
     {
-        data = data_array[ 2 ] + "-" + data_array[ 1 ] + "-" + data_array[ 0 ];
+        date = date_array[ 2 ] + "-" + date_array[ 1 ] + "-" + date_array[ 0 ];
     }
 
     var hoje = new Date();
 
-    var nasc = new Date(data);
+    var nasc = new Date(date);
 
     var idade = hoje.getFullYear() - nasc.getFullYear();
 
@@ -265,35 +276,16 @@ function validateDate(campo, msgAlert)
 
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
-    if (idade < 18)
+    if (idade < 0)
     {
         msgAlert.innerHTML = "Invalid date!";
+        ageValidate = false;
     } else
     {
         msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
+        ageValidate = true;
     }
-*/
-
-	var data = document.getElementById(campo).value;
-
-	var ano = parseInt(data.slice(0, 4));
-
-	var mes = data.slice(5, 7);
-
-	var dia = parseInt(data.slice(8, 10));
-
-	var diaValidate;
-
-	var mesValidate;
-
-	var anoValidate;
-	
-	alert(dia);
-	
-	alert(mes);
-	
-	alert(ano);
-	
+		
 	switch(mes)
 	{
     	case "01": case "03": case "05": case "07": case "08": case "10": case "12":
@@ -309,10 +301,7 @@ function validateDate(campo, msgAlert)
      		}
       
      	 	mesValidate = true;
-     	
-     	alert("01 - diaValidate" + diaValidate);
-     	alert("01 - mesValidate" + mesValidate);
-     	
+     	     	
     		break ;
      
      	case "04": case "06": case "09": case "11":
@@ -329,10 +318,7 @@ function validateDate(campo, msgAlert)
       		}
       	
       		mesValidate = true;
-      		
-      	alert("02 - diaValidate" + diaValidate);
-     	alert("02 - mesValidate" + mesValidate);
-      	
+      		      	
      	break ;
      
      	case "02":
@@ -363,28 +349,18 @@ function validateDate(campo, msgAlert)
     		}
     
    	 		mesValidate = true;	
-    	
-    	alert("03 - diaValidate" + diaValidate);
-     	alert("03 - mesValidate" + mesValidate);
-    	
+    	    	
     	break;
     
     	default:
         
         	mesValidate = false;
         	anoValidate = false;
-        	msgAlert.innerHTML = "Invalid year or month!";
-        	
-       	alert("04 - diaValidate" + diaValidate);
-     	alert("04 - mesValidate" + mesValidate);
-        alert("04 - anoValidate" + anoValidate);
-        	
-    	break;
-    
+        	msgAlert.innerHTML = "Invalid date!";       
 	} 
-	
-	var date = new Date();
-	var year = date.getFullYear();
+			
+	var date2 = new Date();
+	var year = date2.getFullYear();
 	
 	if(ano <= year)
 	{
@@ -393,12 +369,8 @@ function validateDate(campo, msgAlert)
 	{
 		anoValidate = false;
 	}
-		
-		alert("05 - diaValidate" + diaValidate);
-     	alert("05 - mesValidate" + mesValidate);
-        alert("05 - anoValidate" + anoValidate);
-		
-	if(diaValidate && mesValidate && anoValidate)
+				
+	if(diaValidate && mesValidate && anoValidate && ageValidate)
 	{
 		birthdayValidate = true;
 		msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
@@ -407,7 +379,6 @@ function validateDate(campo, msgAlert)
 		birthdayValidate = false;
 		msgAlert.innerHTML = "Invalid date!";
 	}
-	alert("birthdayValidate" + birthdayValidate);
 }
 
 /////
@@ -417,6 +388,9 @@ function TestaCPF(strCPF)
     var Soma;
     var Resto;
     Soma = 0;
+    
+    if (strCPF == 00000000000) return false;
+    
     if (strCPF == null) return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
@@ -442,8 +416,9 @@ function formatarCpf(cpf)
 	
 	if(cpf == "null" || cpf == null || cpf == undefined || cpf == "")
 	{
-		cpf = "";
-		cpfOriginal = "00000000000";
+		cpf = "00000000000";
+		cpfOriginal = cpf;
+		
 	}else
 	{
 		if(TestaCPF(cpf))
@@ -451,38 +426,40 @@ function formatarCpf(cpf)
    			cpfOriginal = cpf;
     
     		cpfInput.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+				
+			if(TestaCPF(cpfOriginal))
+			{
+				msgCpf.innerHTML = "<font color= 'green'>Ok</font>" 
+				cpfValidate	= true;	
+			}else
+			{
+				msgCpf.innerHTML = "Invalid CPF";
+				cpfValidate	= false;	
+			}			
+				
+			for(i=0; i<listCpfArtists.length; i++)
+			{
+				if(listCpfArtists[i].value == cpfOriginal)
+				{
+					alert("Cpf existing in the database!");
+					msgCpf.innerHTML = "Cpf existing in the database!";		
+					cpfValidate	= false;	
+				}
+			}
+				
 		}else
 		{
-			cpfOriginal = "00000000000";
-		}
-	}
-
-	if(TestaCPF(cpfOriginal))
-	{
-		msgCpf.innerHTML = "<font color= 'green'>Ok</font>" 
-		cpfValidate	= true;	
-	}else
-	{
 		msgCpf.innerHTML = "Invalid CPF";
-		cpfValidate	= false;	
-	}
-				
-	for(i=0; i<listCpfArtists.length; i++)
-	{
-		if(listCpfArtists[i].value == cpfOriginal)
-		{
-			alert("Cpf existing in the database!");
-			msgCpf.innerHTML = "Cpf existing in the database!";		
-			cpfValidate	= false;	
+		cpfValidate	= false;
 		}
-	}	
+	}
 }
 
 ////
 
 function verificarNacionalidade(valor)
 {
-    if (valor == "nationality" || valor == "" || valor == null)
+    if (valor == "nationality" || valor == "" || valor == null || valor == "null")
     {
         msgNationality.innerHTML = "Inform your nationality!";
         nationalityValidate = false;
@@ -646,7 +623,6 @@ function statusCpf()
     {
        sectionCpf.style.visibility = "visible";
    	   cpf.style.visibility = "visible";   	   
-   	   formatarCpf();
     } else 
     {		   
        cpf.style.visibility = "hidden";  

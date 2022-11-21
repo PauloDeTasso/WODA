@@ -942,6 +942,8 @@ public class MainController extends HttpServlet
 
 		request.setAttribute("listAllArtistForIdArtist", listAllArtistForIdArtist);
 
+		request.setAttribute("name", artist.getNome());
+		System.out.println("name: " + artist.getNome());
 		RequestDispatcher rd = request.getRequestDispatcher("art.jsp");
 
 		rd.forward(request, response);

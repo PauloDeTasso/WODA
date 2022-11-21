@@ -86,7 +86,7 @@
 
                 </legend>
 
-                <table>
+                <table class="tableForm">
                     <tr>
                         <td>
 

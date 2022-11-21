@@ -104,10 +104,10 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
                         <section id="sectionButtonsArtist">
 
-                           <button type="button" class="Buttons">
-                                    	
-										<a href="selectartedit?idArt=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposuredate=<%=listArt.get(0).getDataDeExposicao()%>&publicationdate=<%=listArt.get(0).getDataDePublicacao()%>&artistsextra">
-										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
+                           <button type="button" class="Buttons">                                    	
+                                      
+                                        <a href="arteditselect?idart=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposureDate=<%=listArt.get(0).getDataDeExposicao()%>&publicationDate=<%=listArt.get(0).getDataDePublicacao()%>&artistname=<%out.print(request.getAttribute("name"));%>">										
+        								 <img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
 										</a>
                                 	
                                 	</button>

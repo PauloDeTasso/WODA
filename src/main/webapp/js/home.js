@@ -77,6 +77,21 @@ if (localStorage.getItem("statusSaveConfig") == "true")
 
 function openPage(link, target)
 {
+	/*
+	if(link == "index.html")
+	{
+		var confirmarSair = confirm("CONFIRM QUIT?");
+		
+		if(confirmarSair)
+		{
+			window.open(link, target);
+		}
+					
+	}esle
+	{
+    	this.open(link, target);
+    }*/
+    
     window.open(link, target);
 };
 

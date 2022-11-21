@@ -98,7 +98,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
 
                 </legend>
 
-                <table>
+                <table class="tableForm">
                     <tr>
                         <td>
 

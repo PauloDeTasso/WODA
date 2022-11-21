@@ -143,7 +143,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
 								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearchArtists.value,'artists')">
            							
-           							<img class="Buttons" src="images/icons/pesquisar02.png" alt="" >
+           							<img class="Buttons" src="images/icons/pesquisar04.png" alt="" >
 								
 								</button>
         

@@ -166,7 +166,7 @@ if(request.getAttribute("searchOption").equals("name"))
                                 <button id="searchButton" type="button" Class="Buttons"
                                     onclick="submitSearcher(mySearchArts.value,'arts')">
 
-                                    <img class="Buttons" src="images/icons/pesquisar02.png" alt="">
+                                    <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
 
                                 </button>
 

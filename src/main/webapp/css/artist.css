@@ -10,19 +10,17 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgb(211, 145, 69);
-    opacity: 1;
-    /*
-    background-image: url("../images/logos/LogoWODA.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-attachment: fixed;
-    background-position: center;
-    */
+    background-color: rgba(211, 145, 69,0);
+    opacity: 1;    
     font-family: 'Open Sans', sans-serif;
     border-bottom: 10px solid rgb(252, 178, 100);
     border-radius: 100px;
     margin-bottom: 100px;
+    background-image: url("../images/logos/LogoWODA4.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /*////////////////////////////*/
@@ -282,7 +280,7 @@ body {
     width: 100%;
     height: 20%;
     border: 0px solid rgb(255, 255, 255);
-    background-color: rgb(255, 184, 104);
+    background-color: rgba(255, 184, 104,0);
 }
 
 .TitlesAuthor {
@@ -292,15 +290,14 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 20px solid rgb(252, 178, 100);
-    background-color: rgba(151, 126, 96, 0);
+    border: 10px solid rgb(252, 178, 100);
+    background-color: rgba(255, 184, 104,.7);
     font-size: 200%;
     /*
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     */
     color: rgb(44, 41, 0);
     font-weight: 700;
-    background-color: rgb(252, 178, 100);
     margin: 1%;
     border-radius: 100px;
 }
@@ -313,7 +310,7 @@ body {
     width: 100%;
     height: 100%;
     border: 0px solid rgb(255, 0, 0);
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(211, 145, 69,0);
     font-size: 100%;
     /*
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -623,7 +620,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(211, 145, 69);
+    border: 10px solid rgba(211, 145, 69,0);
 }
 
 .SectionImageArtist {
@@ -633,7 +630,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(211, 145, 69);
+    border: 10px solid rgba(211, 145, 69,0);
 }
 
 #imageArtist {
@@ -664,7 +661,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: auto;
     border: 0px solid rgb(0, 0, 0);
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(211, 145, 69,0);
 }
 
 .ArtsArtist {
@@ -675,7 +672,7 @@ body::-webkit-scrollbar-thumb {
     width: auto;
     height: auto;
     border: 10px solid rgb(172, 116, 53);
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(211, 145, 69,0);
 }
 
 #artArtist {}
@@ -714,7 +711,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
-    background-color: rgb(252, 178, 100);
+    background-color: rgba(252, 178, 100,0);
     border-radius: 100px;
 }
 
@@ -730,7 +727,7 @@ body::-webkit-scrollbar-thumb {
     */
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
-    border: 0px solid rgb(0, 0, 0);
+    border: 0px solid rgb(0, 0, 0);	
     font-weight: 500;
     color: rgb(68, 0, 255);
 }
@@ -762,7 +759,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(211, 145, 69,0);
     border-top: 10px solid rgb(252, 178, 100);
     border-radius: 100px;
     margin: 1%;
