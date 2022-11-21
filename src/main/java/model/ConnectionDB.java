@@ -105,7 +105,7 @@ public class ConnectionDB
 
 	// SELECT ALL ARTISTS - /main:
 
-	public ArrayList<Artists> selectAllArtistsNameDb()
+	public ArrayList<Artists> listArtistsAllOrderNameDb()
 	{
 		ArrayList<Artists> listAllArtists = new ArrayList<>();
 
@@ -370,6 +370,51 @@ public class ConnectionDB
 		}
 	}
 
+	//
+
+	// ALTERAR CONTATO - /editartist:
+
+	public void editArtDb(Arts art)
+	{
+		String query = "update arts set nome=?, descricao=?, datadepublicacao=?, datadeexposicao=? where idart=?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, art.getName());
+			pst.setString(2, art.getDescription());
+
+			if (art.getDataDeExposicao().equals(""))
+			{
+				pst.setString(4, null);
+			} else
+			{
+				pst.setString(4, art.getDataDeExposicao());
+			}
+
+			if (art.getDataDePublicacao().equals(""))
+			{
+				pst.setString(3, null);
+			} else
+			{
+				pst.setString(3, art.getDataDePublicacao());
+			}
+
+			pst.setLong(5, art.getIdart());
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 	/* CRUD DELETE */
 
 	// DELETE ARTIST - /deleteartist:
@@ -482,7 +527,7 @@ public class ConnectionDB
 
 			PreparedStatement pst = con.prepareStatement(query);
 
-			pst.setString(1, searcherMain.getSeacher() + "%");
+			pst.setString(1, "%" + searcherMain.getSeacher() + "%");
 
 			ResultSet rs = pst.executeQuery();
 
@@ -525,13 +570,11 @@ public class ConnectionDB
 
 	// SEARCHER ARTIST - /searcher:
 
-	public ArrayList<Arts> setSeacherArtDb(Searcher searcherMain)
+	public ArrayList<Arts> setSeacherArtNameDb(Searcher searcherMain)
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
 
 		String query = "select * from arts where nome like ? order by nome asc";
-
-		// String query2 = "select idartistfk from properties where idartfk = ?";
 
 		try
 		{
@@ -539,7 +582,7 @@ public class ConnectionDB
 
 			PreparedStatement pst = con.prepareStatement(query);
 
-			pst.setString(1, searcherMain.getSeacher() + "%");
+			pst.setString(1, "%" + searcherMain.getSeacher() + "%");
 
 			ResultSet rs = pst.executeQuery();
 
@@ -551,7 +594,52 @@ public class ConnectionDB
 				String dataDePublicacao = rs.getString(4);
 				String dataDeExposicao = rs.getString(5);
 
-				listAllArts.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+				listAllArts.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
+
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listAllArts;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	//
+
+	// SEARCHER ARTIST - /searcher:
+
+	public ArrayList<Arts> setSeacherArtDescriptionDb(Searcher searcherMain)
+	{
+		ArrayList<Arts> listAllArts = new ArrayList<>();
+
+		String query = "select * from arts where descricao like ? order by descricao asc";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, "%" + searcherMain.getSeacher() + "%");
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				Long idArt = rs.getLong(1);
+				String nome = rs.getString(2);
+				String description = rs.getString(3);
+				String dataDePublicacao = rs.getString(4);
+				String dataDeExposicao = rs.getString(5);
+
+				listAllArts.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
 
 			}
 
@@ -626,6 +714,75 @@ public class ConnectionDB
 		}
 	}
 
+///// EDITAR ART - /artedit:
+
+	public void editArtDb(Arts art, String dateType)
+	{
+		String query;
+		System.out.println("DB ENTROU DB");
+
+		if (dateType.equals("exposureDate"))
+		{
+			System.out.println("exposureDate");
+			query = "update arts set nome=?, descricao=?, datadepublicacao=?, datadeexposicao=? where idart=?";
+
+			try
+			{
+				Connection con = conectar();
+
+				PreparedStatement pst = con.prepareStatement(query);
+
+				pst.setString(1, art.getName());
+				pst.setString(2, art.getDescription());
+				pst.setString(3, null);
+				pst.setString(4, art.getDataDeExposicao());
+				pst.setLong(5, art.getIdart());
+
+				pst.executeUpdate();
+
+				con.close();
+
+				System.out.println("exposureDate EDITOU");
+
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+
+		} else if (dateType.equals("publicationDate"))
+		{
+			query = "update arts set nome=?, descricao=?, datadepublicacao=?, datadeexposicao=? where idart=?";
+			System.out.println("exposureDate");
+
+			try
+			{
+				Connection con = conectar();
+
+				PreparedStatement pst = con.prepareStatement(query);
+
+				pst.setString(1, art.getName());
+				pst.setString(2, art.getDescription());
+				pst.setString(3, art.getDataDePublicacao());
+				pst.setString(4, null);
+				pst.setLong(5, art.getIdart());
+
+				pst.executeUpdate();
+
+				con.close();
+				System.out.println("publicationDate EDITOU");
+
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+
+		} else
+		{
+			System.out.println("ART NO ADD!");
+		}
+		System.out.println("DB TERMINOU DB");
+	}
+
 	//
 
 ///// INSERIR ART - /artregister:
@@ -657,7 +814,7 @@ public class ConnectionDB
 
 	///// INSERIR ART - /artregister:
 
-	public ArrayList<Arts> listAllArtsOrderIdDb()
+	public ArrayList<Arts> listArtsAllOrderIdDescDb()
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
 
@@ -680,7 +837,7 @@ public class ConnectionDB
 				String dataDePublicacao = rs.getString(4);
 				String dataDeExposicao = rs.getString(4);
 
-				listAllArts.add(new Arts(idArt, name, description, dataDePublicacao, dataDeExposicao));
+				listAllArts.add(new Arts(idArt, name, description, dataDeExposicao, dataDePublicacao));
 
 			}
 
@@ -702,7 +859,7 @@ public class ConnectionDB
 
 	///// ADD ARTIST - /artistregister:
 
-	public ArrayList<Artists> listAllArtistsIdDb()
+	public ArrayList<Artists> listAllArtistsOrderIdDescDb()
 	{
 		ArrayList<Artists> listAllArtists = new ArrayList<>();
 
@@ -821,7 +978,7 @@ public class ConnectionDB
 					String dataDePublicacao = rs.getString(4);
 					String dataDeExposicao = rs.getString(5);
 	
-					listAllArtsArtist.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+					listAllArtsArtist.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
 				}
 	
 				pst.close();
@@ -863,7 +1020,7 @@ public class ConnectionDB
 				String dataDePublicacao = rs.getString(4);
 				String dataDeExposicao = rs.getString(5);
 
-				listAllArtsArtist.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+				listAllArtsArtist.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
 			}
 
 			pst.close();
@@ -919,9 +1076,9 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ALL NAMES ARTS - /artist:
+	///// SELECT ALL NAMES ARTISTS - /art:
 
-	public void listNamesArtistByIdArtistDb(ArrayList<NamesArtsArtist> namesArtistsByIdArtists, String idArt)
+	public void listNamesArtistByIdArtistDb(ArrayList<NamesArtsArtist> listNamesArtistByIdArtist, String idArtist)
 	{
 		String query = "select nome from artists where idartist = ?";
 
@@ -931,7 +1088,7 @@ public class ConnectionDB
 
 			PreparedStatement pst = con.prepareStatement(query);
 
-			pst.setString(1, idArt);
+			pst.setString(1, idArtist);
 
 			ResultSet rs = pst.executeQuery();
 
@@ -939,7 +1096,7 @@ public class ConnectionDB
 			{
 				String nome = rs.getString(1);
 
-				namesArtistsByIdArtists.add(new NamesArtsArtist(nome));
+				listNamesArtistByIdArtist.add(new NamesArtsArtist(nome));
 			}
 
 			con.close();
@@ -1014,7 +1171,7 @@ public class ConnectionDB
 
 	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
 
-	public void addAssociatesArtistExtrasDb(Associates associated, int checked)
+	public void AddArtsExtrasAssociatesForArtistDb(Associates associated, int checked)
 	{
 		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
 
@@ -1026,6 +1183,33 @@ public class ConnectionDB
 
 			pst.setLong(1, associated.getIdArtist());
 			pst.setLong(2, checked);
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
+
+	public void AddArtistsExtrasAssociatesForArtDb(Associates associated, int checked)
+	{
+		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, checked);
+			pst.setLong(2, associated.getIdArt());
 
 			pst.executeUpdate();
 
@@ -1092,7 +1276,7 @@ public class ConnectionDB
 				String dataDePublicacao = rs.getString(4);
 				String dataDeExposicao = rs.getString(5);
 
-				listArt.add(new Arts(idArt, nome, description, dataDePublicacao, dataDeExposicao));
+				listArt.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
 			}
 
 			pst.close();
@@ -1136,7 +1320,7 @@ public class ConnectionDB
 				String dataDePublicacao = rs.getString(4);
 				String dataDeExposicao = rs.getString(4);
 
-				listAllArtsNames.add(new Arts(idArt, name, description, dataDePublicacao, dataDeExposicao));
+				listAllArtsNames.add(new Arts(idArt, name, description, dataDeExposicao, dataDePublicacao));
 
 			}
 
@@ -1375,12 +1559,6 @@ public class ConnectionDB
 				idBoolean = rs.getBoolean(1);
 
 				delete = false;
-
-				System.out.println("while delete: " + delete);
-				System.out.println("while idint: " + idint);
-				System.out.println("while idString: " + idString);
-				System.out.println("while idBoolean: " + idBoolean);
-
 			}
 
 			con.close();

@@ -6,7 +6,7 @@
 %>
     
 <%
- ArrayList<Artists> listAllArtists = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
+ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAttribute("listArtistsAllOrderName");  
 
 %>
 
@@ -117,9 +117,8 @@
                         <td>
 
                             <input type="text" name="publicationdate" id="publicationDate"
-                                placeholder="PUBLICATION DATE" onfocus="(this.type='date')"
-                                onblur="validateDate('publicationDate',msgPublicationDate)" 
-                                onchange="validateDate('publicationDate',msgPublicationDate)"value="" required>
+                                placeholder="PUBLICATION DATE" onfocus="(this.type='date')"                                 
+                                onchange="validateDate('publicationDate',msgPublicationDate)" value="" required>
 
                         </td>
                         <td>
@@ -132,8 +131,7 @@
                         <td>
 
                             <input type="text" name="exposuredate" id="exposureDate" placeholder="EXPOSURE DATE"
-                                onfocus="(this.type='date')" onblur="validateDate('exposureDate',msgExposureDate)"
-                                onchange="validateDate('exposureDate',msgExposureDate)" value=""
+                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)" value=""
                                 required>
 
                         </td>
@@ -188,9 +186,9 @@
                                                     
                     	   		<table>
                    			 	 
-                   			 	   <%for (int i=0; i < listAllArtists.size(); i++)
+                   			 	   <%for (int i=0; i < listArtistsAllOrderName.size(); i++)
                           		   {    
-                         				 if(listAllArtists.get(i).getNome().equals(request.getAttribute("artistName")))
+                         				 if(listArtistsAllOrderName.get(i).getNome().equals(request.getAttribute("artistName")))
                          				 {
                          					 
                          				 }else
@@ -201,9 +199,9 @@
                         				
                         				<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="checkallids" value="<%=listAllArtists.get(i).getIdArtist()%>">
+                          				 <input type="checkbox" name="checkallids" value="<%=listArtistsAllOrderName.get(i).getIdArtist()%>">
                        					 
-                         				         <%=listAllArtists.get(i).getNome()%>          
+                         				         <%=listArtistsAllOrderName.get(i).getNome()%>          
                        					</td>
                        					
                         			</tr>           
@@ -268,6 +266,8 @@
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
      
+            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
+            
         </section>
 
     </body>

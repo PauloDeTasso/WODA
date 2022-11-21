@@ -13,32 +13,10 @@
   
 <% 
 
-ArrayList<Arts> listAllArts = (ArrayList<Arts>) request.getAttribute("listAllArts");  
- 
-String dataDeExposicao;
-
-String dataDePublicacao;
-
-String searchArt = (request.getAttribute("searchArt") == null) ? "" : request.getAttribute("searchArt").toString(); 
-
-String optionName;
-String optionDescription;
-
-if(request.getAttribute("searchOption").equals("name"))
-{
-	optionName = "checked";
-	optionDescription = "";
-	
-}else if(request.getAttribute("searchOption").equals("description"))
-{
-	optionName = "";
-	optionDescription = "checked";
-}else
-{
-	optionName = "checked";
-	optionDescription = "";
-}
-
+ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAttribute("listArtistsAllOrderName");    
+  
+String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : request.getAttribute("searchArtist").toString(); 
+    
 %>   
   
 <!DOCTYPE html>
@@ -72,18 +50,18 @@ if(request.getAttribute("searchOption").equals("name"))
 
             <section id="sectionButtons">
 
-  				<button type="button" Class="Buttons" onclick="openPage('main','_self')">
-
-                	<img class="Buttons" src="images/icons/voltar.png" alt="">
-
-            	</button>
-
                 <button type="button" id="seacherButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
-                        onclick="openPage('artistsearch','_self')">
+                        onclick="openClose(seacher,'display')">
 
-                </button>
+                </button>                
+                
+        		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+
+                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+
+	            </button>
 
                 <button type="button" id="registerButton" class="Buttons">
 
@@ -151,57 +129,45 @@ if(request.getAttribute("searchOption").equals("name"))
 
         </section>
 
-        <section id="seacher">         
-
+        <section id="seacher">
+        
             <section id="sectionSeacher">
 
-                <section id="subSectionSeacher">
+				<section id="subSectionSeacher">          
 
-                    <form action="searcharts">
+                	<form action="seacher">
+                	
+                		<fieldset>
 
-                        <fieldset>
+                			<legend class="LegendResgiter">
 
-                            <legend class="LegendResgiter">
+								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearchArtists.value,'artists')">
+           							
+           							<img class="Buttons" src="images/icons/pesquisar02.png" alt="" >
+								
+								</button>
+        
+                			</legend>
 
-                                <button id="searchButton" type="button" Class="Buttons"
-                                    onclick="submitSearcher(mySearchArts.value,'arts')">
+                    	<input id="mySearchArtists" type="search" name="searchinput" placeholder="Seacher" onchange="submitSearcher(mySearchArtists.value,'artists')" onkeyup="changeButton(searchButton)" value="<%out.println(searchArtist);%>" autofocus>
+						
+						<button type="button" Class="Buttons" onclick="submitSearcher(mySearchArtists.value,'artists')">
+           							
+           					<img class="Buttons" src="images/icons/PESQUISAR01.png" alt="" >
+								
+						</button>
+						
+						</fieldset>
 
-                                    <img class="Buttons" src="images/icons/pesquisar02.png" alt="">
+                	</form>
 
-                                </button>
-
-                            </legend>
-
-                            <input id="mySearchArts" type="search" name="searchinput" placeholder="Seacher"
-                                onkeyup="changeButton(searchButton)" value="<%out.println(searchArt);%>" autofocus>
-
-                            <button type="button" Class="Buttons" onclick="submitSearcher(mySearchArts.value,'arts')">
-
-                                <img class="Buttons" src="images/icons/PESQUISAR01.png" alt="">
-
-                            </button>
-
-                            <section id="sectionAssociate">
-
-                                <input type="radio" id="associatesOn" name="searchoption" value="name" <%=optionName%>>
-                                  <label for="searchoption">NAME</label>
-                                 
-                                <input type="radio" id="associatesOff" name="searchoption" value="description" <%=optionDescription%>>
-                                <label for="searchoption">DESCRIPTION</label>
-
-                            </section>
-
-                        </fieldset>
-
-                    </form>
-
-                </section>
+				</section>
 
             </section>
 
             <section id="sectionTableSeacher">
 
-                 <table id="tableArts" class="tabela">
+                <table id="tableArtists" class="tabela">
 
                     <thead>
 
@@ -216,16 +182,24 @@ if(request.getAttribute("searchOption").equals("name"))
                             </th>
 
                             <th>
-                                DESCRIPTION
+                                E-MAIL
                             </th>
 
                             <th>
-                             	EXPOSURE DATE
+                               GENDER
                             </th>
 
                             <th>
-                                PUBLICATION DATE
-                            </th>                                                 
+                                BIRTHDAY
+                            </th>
+                            
+                              <th>
+                                NATIONALITY
+                            </th>
+                            
+                              <th>
+                                CPF
+                            </th>                                                      
 
                         </tr>
 
@@ -233,51 +207,50 @@ if(request.getAttribute("searchOption").equals("name"))
 
                     <tbody>
 
-                        <%for (int i=0; i < listAllArts.size(); i++)                          
-                        { 
-                        %>
+                        <%for (int i=0; i < listArtistsAllOrderName.size(); i++)
+                          
+                        { %>
+                        
                             <tr>
                                 <td>
-                                	<%=listAllArts.get(i).getIdart()%>
+                                	<%=listArtistsAllOrderName.get(i).getIdArtist()%>
                                 </td>
                                 <td>
                                 
-                                   <a href="art?idart=<%=listAllArts.get(i).getIdart()%>">
-                                   <%=listAllArts.get(i).getName()%>
+                                   <a href="artist?idartist=<%=listArtistsAllOrderName.get(i).getIdArtist()%>">
+                                   
+                                   <%=listArtistsAllOrderName.get(i).getNome()%>
+                                   
                                    </a> 
                                    
                                 </td>
                                 <td>
-                                    <%=listAllArts.get(i).getDescription()%>
+                                    <%=listArtistsAllOrderName.get(i).getEmail()%>
                                 </td>
                                 <td>
-                                     <%
-                           		    dataDeExposicao = (listAllArts.get(i).getDataDeExposicao() == null) ? "" : listAllArts.get(i).getDataDeExposicao("br"); 
-                           		 	
-                           			out.print(dataDeExposicao);
-                           		 	%>
+                                    <%=listArtistsAllOrderName.get(i).getSexo()%>
                                 </td>
                                 <td>
-                                   <%
-                           			dataDePublicacao = (listAllArts.get(i).getDataDePublicacao() == null) ? "" : listAllArts.get(i).getDataDePublicacao("br"); 
-                           		 	
-                       				out.print(dataDePublicacao);
-                       		 		%>
-                                </td>                                                                                                                  
-                                                               
+                                    <%=listArtistsAllOrderName.get(i).getDatadenascimento("br")%>
+                                </td>
+                                <td>
+                                    <%=listArtistsAllOrderName.get(i).getNacionalidade()%>
+                                </td>
+                                <td>
+                                    <%=(listArtistsAllOrderName.get(i).getCpf() == null) ? "Don't have!" : listArtistsAllOrderName.get(i).getCpf()%>
+                                </td>                                                             
+                                                              
                             </tr>          
                                                         
-                            <%
-                            }
-                        	%>  
+                            <%} %>  
           
                     </tbody>
 
                 </table>
 
-			</section>	
-			
-		</section>
+			</section>					
+
+        </section>
        
         <section id="info">
 
@@ -285,8 +258,8 @@ if(request.getAttribute("searchOption").equals("name"))
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
 
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
-
+            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">				
+										
         </section>
 
     </body>
@@ -301,7 +274,7 @@ if(request.getAttribute("searchOption").equals("name"))
 
     </footer>
 
-    <script src="js/artsearch.js">
+    <script src="js/artistsearch.js">
 
     </script>
 

@@ -1,24 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"  
-    import="model.*" 
-    import="java.sql.*" 
-    import="java.io.*"
-    import="java.*"
-    import="controllers.*"
-    import="model.Artists"
-    import="model.Arts"
-    import="java.util.ArrayList"
+    pageEncoding="utf-8" 
 %>
 
-  
-<% 
-
-ArrayList<Artists> listAllArtists = (ArrayList<Artists>) request.getAttribute("listAllArtists");    
-  
-String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : request.getAttribute("searchArtist").toString(); 
-    
-%>   
-  
 <!DOCTYPE html>
 <html id="html5" lang="en-US">
 
@@ -53,9 +36,15 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                 <button type="button" id="seacherButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
-                        onclick="openClose(seacher,'display','menuSeacher')">
+                        onclick="openPage('artistsearch','_self')">
 
-                </button>
+                </button>                
+                
+        		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+
+                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+
+	            </button>
 
                 <button type="button" id="registerButton" class="Buttons">
 
@@ -121,158 +110,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
             </table>
 
-        </section>
-
-        <section id="seacher">
-
-            <section id="sectionSeacher">
-
-				<section id="subSectionSeacher">          
-
-                	<form action="seacher">
-                	
-                		<fieldset>
-
-                			<legend class="LegendResgiter">
-
-								<button id="searchButton" type="button" Class="Buttons" onclick="submitSearcher(mySearch.value,'artists')">
-           							
-           							<img class="Buttons" src="images/icons/pesquisar02.png" alt="" >
-								
-								</button>
-        
-                			</legend>
-
-                    	<input id="mySearchArtists" type="search" name="searchinput" placeholder="Seacher" onchange="submitSearcher(this.value,'artists')" onkeyup="changeButton(searchButton)" value="<%out.println(searchArtist);%>" autofocus>
-						
-						<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
-           							
-           					<img class="Buttons" src="images/icons/PESQUISAR01.png" alt="" >
-								
-						</button>
-						
-						</fieldset>
-
-                	</form>
-
-				</section>
-
-            </section>
-
-            <section id="sectionTableSeacher">
-
-                <table id="tableArtists" class="tabela">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                ID
-                            </th>
-
-                            <th>
-                                NAME
-                            </th>
-
-                            <th>
-                                E-MAIL
-                            </th>
-
-                            <th>
-                               GENDER
-                            </th>
-
-                            <th>
-                                BIRTHDAY
-                            </th>
-                            
-                              <th>
-                                NATIONALITY
-                            </th>
-                            
-                              <th>
-                                CPF
-                            </th>      
-                            
-                              <th>
-                               ADMIN OPTIONS
-                            </th>                         
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <%for (int i=0; i < listAllArtists.size(); i++)
-                          
-                        { %>
-                        
-                            <tr>
-                                <td>
-                                	<%=listAllArtists.get(i).getIdArtist()%>
-                                </td>
-                                <td>
-                                
-                                   <a href="artist?idartist=<%=listAllArtists.get(i).getIdArtist()%>">
-                                   
-                                   <%=listAllArtists.get(i).getNome()%>
-                                   
-                                   </a> 
-                                   
-                                </td>
-                                <td>
-                                    <%=listAllArtists.get(i).getEmail()%>
-                                </td>
-                                <td>
-                                    <%=listAllArtists.get(i).getSexo()%>
-                                </td>
-                                <td>
-                                    <%=listAllArtists.get(i).getDatadenascimento("br")%>
-                                </td>
-                                <td>
-                                    <%=listAllArtists.get(i).getNacionalidade()%>
-                                </td>
-                                <td>
-                                    <%=(listAllArtists.get(i).getCpf() == null) ? "Don't have!" : listAllArtists.get(i).getCpf()%>
-                                </td>                                                             
-                                
-                                <td>
-                                
-                                <section class="buttonsAdminOptions"> 
-                                   
-                                	<button type="button" class="Buttons">
-                                    	
-										<a href="selectartistedit?idartist=<%=listAllArtists.get(i).getIdArtist()%>">
-										<img class="ImagesButtons" src="images/icons/editar03.png" alt="">                                    	
-										</a>
-                                	
-                                	</button>
-                                	
-                                	<button type="button" class="Buttons">
-
-										<a href="javascript: confirmar(<%=listAllArtists.get(i).getIdArtist() %>,'artist')">
-											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
-										</a>
-										
-                                	</button>
-                                  
-                              	</section>
-                              	
-                                </td>
-                                
-                            </tr>          
-                                                        
-                            <%} %>  
-          
-                    </tbody>
-
-                </table>
-
-			</section>					
-
-        </section>
+        </section>        
        
         <section id="info">
 
@@ -280,11 +118,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
             Senior Full Stack Developer <br>
             World of digital artists - WODA®
 
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
-
-				<a href="tests?id=117">
-					<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
-				</a>
+            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">				
 										
         </section>
 

@@ -3,10 +3,22 @@
     
     import="model.*"
     import="java.util.ArrayList"     
+	import="java.util.concurrent.CompletableFuture"
+	import="java.util.concurrent.TimeUnit"
 %>
     
 <%
- ArrayList<Artists> listAllArtist = (ArrayList<Artists>) request.getAttribute("listAllArtists");  
+
+	ArrayList<Arts> artEdit = (ArrayList<Arts>) request.getAttribute("artEdit");  
+
+    ArrayList<Artists> listAllArtistsOrderIdDesc = (ArrayList<Artists>) request.getAttribute("listAllArtistsOrderIdDesc");  
+
+    ArrayList<IdsArtsArtist> listIdsArtistByIdArt = (ArrayList<IdsArtsArtist>) request.getAttribute("listIdsArtistByIdArt");  
+      
+    ArrayList<NamesArtsArtist> listNamesArtistByIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listNamesArtistByIdArtist");  
+        
+    String dateType = (String) request.getAttribute("dateType");
+    System.out.println("JSP - dateType: " + dateType);
 %>
 
     <!DOCTYPE html>
@@ -73,7 +85,7 @@
 
     <body>
 
-        <form id="formRegisterArt" name="formregisterart" enctype="multipart/form-data" action="artregister"
+        <form id="formRegisterArt" name="formregisterart" action="artedit"
             method="post" onreset="clear()">
 
             <fieldset>
@@ -84,12 +96,12 @@
 
                 </legend>
 
-                <table>
+                <table class="tableForm">
 
                     <tr>
                         <td>
 
-                            <input type="text" name="idArt" size='10' placeholder="ID" readonly>
+                            <input id="idInput" type="text" name="idArt" size='10' placeholder="ID" value="<%=artEdit.get(0).getIdart()%>" readonly>
 
                         </td>
                         <td>
@@ -101,7 +113,7 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
-                                onchange="verificarNome(this.value)" required>
+                                onchange="verificarNome(this.value)" value="<%=artEdit.get(0).getName()%>" required>
 
                         </td>
                         <td>
@@ -113,7 +125,7 @@
                         <td>
 
                             <input type="text" id="description" name="description"
-                                onchange="descriptionValidate(this.value)" maxlength="240" placeholder="ART DESCRIPTION"
+                                onchange="descriptionValidate(this.value)" maxlength="240" placeholder="ART DESCRIPTION" value="<%=artEdit.get(0).getDescription()%>"
                                 required>
 
                         </td>
@@ -127,8 +139,8 @@
                         <td>
 
                             <input type="text" name="publicationdate" id="publicationDate"
-                                placeholder="...PUBLICATION DATE..." onfocus="(this.type='date')"
-                                onchange="validateDate('publicationDate',msgPublicationDate)" required>
+                            placeholder="...PUBLICATION DATE..." value="<%=(artEdit.get(0).getDataDePublicacao() == null) ? "" : artEdit.get(0).getDataDePublicacao()%>"
+                            onfocus="(this.type='date')" onchange="validateDate('publicationDate',msgPublicationDate)"  required>
 
                         </td>
                         <td>
@@ -140,9 +152,9 @@
 
                         <td>
 
-                            <input type="text" name="exposuredate" id="exposureDate" placeholder="...EXPOSURE DATE..."
-                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)"
-                                required>
+                            <input type="text" name="exposuredate" id="exposureDate"
+                            placeholder="...EXPOSURE DATE..." value="<%=(artEdit.get(0).getDataDeExposicao() == null) ? "" : artEdit.get(0).getDataDeExposicao()%>" 
+                            onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)" required>
 
                         </td>
 
@@ -152,94 +164,67 @@
 
                     </tr>                    
 
- <tr>
-                    						
-                        <td>
-
-
-                    	<h3 class="TitlesH3">
-							ARTIST:
-						</h3>
-
-                            <input class="idInput" type="text" name="artist" maxlength="60" size='65'
-                                value="<%out.print(request.getAttribute("artistName"));%>" readonly>
-
-                        </td>
-                        
-                        <td>
-                    
-                            <div id="msgIdArtist" class="AlertMsgs"></div>
-                    
-                        </td>
-                    
-                    </tr>
-                    
-                    <tr>
+ 					<tr>
 
                         <td>
                                           
 							<h3 class="TitlesH3">
-								ASSOCIATES ARTISTS: 
+								ADD ASSOCIATES ARTISTS:
 							</h3>		
 							
 							<section id="sectionAssociate">
 							
-								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'visibility',true)">
+								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'visibility',false)" checked>
+								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
                             	
-                            <section id="sectionAssociateList">
-                                                    
+                            <section id="sectionAssociateList">                                                   
+                    	   		             
                     	   		<table>
-                   			 	 
-                   			 	   <%for (int i=0; i < listAllArtist.size(); i++)
-                          		   {    
-                         				 if(listAllArtist.get(i).getNome().equals(request.getAttribute("artistName")))
-                         				 {
-                         					 
-                         				 }else
-                         				 {
-                         					%>     
-                   			
-                   			 		<tr>
+                   			 	
+                   			 	<% 
+                   			 		
+								for (int i = 0; i < listAllArtistsOrderIdDesc.size(); i++)
+								{
+									
+								%>													
+									<tr>
                         				
-                        				<td class="idArtist">                               				
+  										<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="<%=listAllArtist.get(i).getIdArtist()%>">
-                       					
-                         				         <%=listAllArtist.get(i).getNome()%>         					  
-                                              
+                          					<input type="checkbox" name="newidartistchecked" value="<%=listAllArtistsOrderIdDesc.get(i).getIdArtist()%>">
+                       					 
+                         				    	<%=listAllArtistsOrderIdDesc.get(i).getNome()%>          
+                       							
                        					</td>
                        					
-                        			</tr>           
-                        			            
-                        	 	  <%
-                        	 	  		} 
-                        	 	
-                         		  }
-                   			 	   %> 
+                        			</tr>  
+                        		<%
+								}
+								%>      
                          
                         		</table>                        
                                  
                             </section>
-
                         </td>
 
                         <td>
                             <div id="msgExtraArtistId" class="AlertMsgs"></div>
                         </td>
 
-                    </tr>                  
+                    </tr>    				
 
 					<tr>
 					
 						<td>
 
-							<input type="hidden" id="dateTypeInput" name="datetype">
+							<input type="hidden" id="dateTypeInput" name="datetype" value="">
+
+							<input type="hidden" id=dateTypeInput2 name="datetype2" value="<%=dateType%>">
 
 						</td>
 					
@@ -303,11 +288,7 @@
 
     </footer>
 
-    <script src="js/home.js">
-
-    </script>
-
-    <script src="js/validator.js">
+    <script src="js/artregister.js">
 
     </script>
 

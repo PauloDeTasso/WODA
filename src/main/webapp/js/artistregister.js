@@ -25,7 +25,6 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 /////////
 
-
 function openPage(link, target)
 {
     window.open(link, target);
@@ -158,7 +157,7 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 //////////////
 
 var formRegisterArtist = document.getElementById("formRegisterArtist");
-var formRegisterArt = document.getElementById("formRegisterArt");
+
 var dateType;
 
     var msgName = document.getElementById("msgName");
@@ -178,8 +177,34 @@ var dateType;
     var valueNationalityJs = document.getElementById("valueNationalityJs");    
 
 
-function validacaoEmail(campo)
-{
+    var msgName = document.getElementById("msgName");
+    var msgEmail = document.getElementById("msgEmail");
+    var msgGender = document.getElementById("msgGender");
+    var msgBirthday = document.getElementById("msgBirthday");
+    var msgNationality = document.getElementById("msgNationality");
+    var selectNationality = document.getElementById("selectNationality");
+    var cpfInput = document.getElementById("cpf");
+    var msgCpf = document.getElementById("msgCpf");
+    var msgStatus = document.getElementById("msgStatus");
+    var fileInputArtist = document.getElementById("fileInputArtist");
+    var listArtist = document.getElementById("listArtist");
+   
+    var sectionCpf = document.getElementById("sectionCpf");
+    var cpfOriginal;
+    var valueGenderJs = document.getElementById("valueGenderJs");
+    var valueNationalityJs = document.getElementById("valueNationalityJs");    
+
+ 
+    var publicationDate = document.getElementById("publicationDate");
+    var exposureDate = document.getElementById("exposureDate");
+    var associatesOn = document.getElementById("associatesOn");
+    var associatesOff = document.getElementById("associatesOff");    
+    var dateTypeInput = document.getElementById("dateTypeInput");
+
+function validacaoEmail(campo, email)
+{	
+	var listEmailArtists = document.getElementsByName('listEmailArtists');
+	
     usuario = campo.value.substring(0, campo.value.indexOf("@"));
     dominio = campo.value.substring(campo.value.indexOf("@") + 1, campo.value.length);
 
@@ -193,10 +218,19 @@ function validacaoEmail(campo)
         (dominio.indexOf(".") >= 1) &&
         (dominio.lastIndexOf(".") < dominio.length - 1))
     {
-        msgEmail.innerHTML = "<font color= 'green'>Ok</font>";
-    }
-    else
-    {
+		msgEmail.innerHTML = "<font color= 'green'>Ok</font>";
+	
+		for(i=0; i<listEmailArtists.length; i++)
+		{
+			if(listEmailArtists[i].value == email)
+			{
+				alert("Email existing in the database!");
+				msgEmail.innerHTML = "Email existing in the database!";
+			}
+		}
+				
+	}else
+    {    	
         msgEmail.innerHTML = "Invalid email!";
     }
 }
@@ -235,8 +269,10 @@ function validateDate(campo, msgAlert)
         msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
     }
 
+
     if (campo == "publicationDate")
     {
+		
 		if (publicationDate.value)
     	{  	  			
  			 exposureDate.style.visibility = "hidden";
@@ -252,7 +288,7 @@ function validateDate(campo, msgAlert)
 
     } else if (campo == "exposureDate")
     {
-                
+        
         if (exposureDate.value)
     	{  			
   			publicationDate.style.visibility = "hidden";
@@ -346,22 +382,61 @@ function TestaCPF(strCPF)
 
 //
 
-function formatarCpf()
+function TestaCPF(strCPF)
 {
-	if(cpf.value == "null" || cpf.value == null || cpf.value == undefined || cpf.value == "")
+    var Soma;
+    var Resto;
+    Soma = 0;
+    if (strCPF == "00000000000") return false;
+
+    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
+}
+
+//
+
+function formatarCpf(cpf)
+{		
+	var listCpfArtists = document.getElementsByName('listCpfArtists');
+	
+	if(cpf == "null" || cpf == null || cpf == undefined || cpf == "")
 	{
-		cpf.value = "";
+		cpf = "";
+		cpfOriginal = "00000000000";
 	}else
 	{
-		if(TestaCPF(cpf.value))
+		if(TestaCPF(cpf))
 		{
-   			cpfOriginal = cpf.value;
+   			cpfOriginal = cpf;
     
-    		cpf.value = cpf.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+    		cpfInput.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+		}else
+		{
+			cpfOriginal = "00000000000";
 		}
 	}
-    msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "<font color= 'green'>Ok</font>" : "Invalid CPF";
 
+	msgCpf.innerHTML = TestaCPF(cpfOriginal) ? "<font color= 'green'>Ok</font>" : "Invalid CPF";
+				
+	for(i=0; i<listCpfArtists.length; i++)
+	{
+		if(listCpfArtists[i].value == cpfOriginal)
+		{
+			alert("Cpf existing in the database!");
+			msgCpf.innerHTML = "Cpf existing in the database!";				
+		}
+	}	
 }
 
 ////
@@ -432,7 +507,7 @@ function clear()
 
         listArtist.innerHTML = "";
         listArtist.style.backgroundColor = "rgba(0, 0, 0, 0)";
-        listArtist.style.backgroundColor = "rgb(255, 192, 120)";   
+        listArtist.style.backgroundColor = "rgb(255, 192, 120)";  
 }
 
 //
@@ -442,8 +517,6 @@ formRegisterArtist.onreset = function ()
 {
 	clear()
 };
-
-
 
 function validar(form)
 {
@@ -512,10 +585,13 @@ function validar(form)
 
     //alert(document.forms["form"].submit())
     	
+    if (selectNationality.value == "Brasil")
+    {
    	   if(TestaCPF(cpfOriginal))
 		{
 			cpf.value = cpfOriginal;    
     	}    
+    }
     
     document.forms[ form ].submit();
 }
@@ -542,3 +618,4 @@ setTimeout(() =>
 }, 2000);
 
 statusCpf();
+

@@ -9,7 +9,7 @@
 
 String associatesOn = (String) request.getAttribute("associatesOn");
 
-String checkedIds[] = (String[]) request.getAttribute("checkedIds");
+String newidartistchecked[] = (String[]) request.getAttribute("newidartistchecked");
 		 
 ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
@@ -183,7 +183,7 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 						<%if(associatesOn.equals("YES"))
   						{							
 
-   							for (int i = 0; i < checkedIds.length; i++)   
+   							for (int i = 0; i < newidartistchecked.length; i++)   
                         	{                       	
                         	%> 
 								<section class="ArtistsExtras">   
@@ -191,7 +191,7 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 									<a href="artist?idartist=
 									<% if(associatesOn.equals("YES"))
   										 {%>
-											<%=checkedIds[i]%>">
+											<%=newidartistchecked[i]%>">
 											<%=checkNamesArtist.get(i).getNameArt()%>
 									<%   }%>
 									</a>                               				                   				        

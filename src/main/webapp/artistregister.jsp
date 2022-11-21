@@ -7,7 +7,9 @@
     
 <%
 
- ArrayList<Arts> listAllArtsOrderName = (ArrayList<Arts>) request.getAttribute("listAllArtsOrderName");  
+ArrayList<Arts> listArtsAllOrderName = (ArrayList<Arts>) request.getAttribute("listArtsAllOrderName");  
+
+ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAttribute("listArtistsAllOrderName");  
 
 %>
 
@@ -72,6 +74,16 @@
 
     </header>
 
+ 		 <%
+         for (int i=0; i < listArtistsAllOrderName.size(); i++)
+         {	 
+         %>                              				
+         	<input type="hidden" name="listEmailArtists" value="<%=listArtistsAllOrderName.get(i).getEmail()%>" checked>
+         	<input type="hidden" name="listCpfArtists" value="<%=listArtistsAllOrderName.get(i).getCpf()%>" checked> 
+         <%
+         }
+         %>
+        
     <body>
 
         <form id="formRegisterArtist" name="formregisterartist" action="artistregister" method="get" onreset="clear()">
@@ -90,7 +102,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="60" size='65' placeholder="Name"
+                            <input type="text" name="name" maxlength="57" size='57' placeholder="Name"
                                 onchange="verificarNome(this.value)" required>
 
                         </td>
@@ -104,8 +116,7 @@
                     <tr>
                         <td>
 
-                            <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="60" size='65' placeholder="E-mail">
+                            <input type="email" name="email" onchange="validacaoEmail(formRegisterArtist.email, this.value)" maxlength="57" size='57' placeholder="E-mail">
 
                         </td>
                         <td>
@@ -353,7 +364,7 @@
                         <td>
 
                             <input type="text" id="cpf" name="cpf" maxlength="11" size='11'
-                                placeholder="CPF" onchange="formatarCpf()" required>
+                                placeholder="CPF" onchange="formatarCpf(this.value)" required>
 
                         </td>
 
@@ -387,7 +398,7 @@
                                                     
                     	   		<table>
                    			 	 
-                   			 	   <%for (int i=0; i < listAllArtsOrderName.size(); i++)
+                   			 	   <%for (int i=0; i < listArtsAllOrderName.size(); i++)
                           		   {	 
                          		   %>     
                    			
@@ -395,9 +406,9 @@
                         				
                         				<td class="idArtist">                               				
                          				     
-                          				 <input type="checkbox" name="checkallidsarts" value="<%=listAllArtsOrderName.get(i).getIdart()%>">
+                          				 <input type="checkbox" name="checkallidsarts" value="<%=listArtsAllOrderName.get(i).getIdart()%>">
                        					
-                       					<%=listAllArtsOrderName.get(i).getName()%>  
+                       					<%=listArtsAllOrderName.get(i).getName()%>  
                          				               
                        					</td>
                        					
@@ -434,7 +445,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArtist')">
+                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formregisterartist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
@@ -464,7 +475,7 @@
 
             World of digital artists - WODA®
 
-        </section>
+        </section>      
 
     </footer>
 

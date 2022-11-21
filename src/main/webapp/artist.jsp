@@ -10,16 +10,6 @@
 ArrayList<Artists> listArtistAllByIdArtist = (ArrayList<Artists>) request.getAttribute("listArtistAllByIdArtist");  
 
 ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
- 
-
-System.out.println("idArtist JSP: " + request.getAttribute("name"));
-
-for (int i = 0; i < listArtistAllByIdArtist.size(); i++)
-{
-	System.out.println("listArtistAllByIdArtist:");
-	System.out.println(listArtistAllByIdArtist.get(i).getNome());
-	System.out.println(" *--* ");
-}
 
 String dataDeExposicao;
 
@@ -288,10 +278,12 @@ String dataDePublicacao;
                                 <section>
 
                                     <button type="button" class="Buttons">
-
+ 									
+ 									<a href="arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%out.print(request.getAttribute("name"));%>">										
                                         <img class="ImagesButtons" 
                                             src="images/icons/editar03.png" alt="">
-
+									</a>
+ 
                                     </button>
 
                                 </section>

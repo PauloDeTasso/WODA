@@ -750,6 +750,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     text-align: justify;
+    background-color: rgb(211, 145, 69);
 }
 
 #buttonsZoom {

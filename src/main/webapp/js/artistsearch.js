@@ -80,25 +80,6 @@ function openPage(link, target)
     window.open(link, target);
 };
 
-function detectar_mobile()
-{
-    if (navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-    )
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-};
-
 ////
 
 function openCloseSection(elemento, propriedade, action)
@@ -207,34 +188,6 @@ function saveConfig(option, status)
     }
 }
 
-function zoom(image, zoom)
-{
-    var estiloCabecalho = window.getComputedStyle(image);
-    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(width);
-
-    if (zoom == "in")
-    {
-        for (let i = 0; i < image.length; i++)
-        {
-            image[ i ].style.width = '100%';
-        }
-
-    } else if (zoom == "out")
-    {
-        for (let i = 0; i < image.length; i++)
-        {
-            image[ i ].style.width = '10%';
-        }
-
-    } else
-    {
-        for (let i = 0; i < image.length; i++)
-        {
-            image[ i ].style.width = propriedadeCabecalho;
-        }
-    }
-}
-
 function confirmar(id,type)
 {
 	if(type == "artist")
@@ -269,98 +222,11 @@ function confirmar(id,type)
 	}
 }
 
-function InserirImagem(url)
- {
-        let img = document.createElement("img");
-        img.src=url;
-        document.body.appendChild(img);
-    }
-
-/////CRIAR LINK PARA O BLOB:
-
-/*
-<a download="hello.txt" href='#' id="link">Download</a>
-
-let blob = new Blob(["Hello, world!"], {type: 'text/plain'});
-
-link.href = URL.createObjectURL(blob);
-*/
-
-/////////////////////////////////////////////////////
-////Aqui está o código semelhante que faz com que o usuário
-// baixe o arquivo dinamicamente criado Blob, sem nenhum HTML:
-
-/*
-let link = document.createElement('a');
-
-link.download = 'hello.txt';
-
-let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
-
-link.href = URL.createObjectURL(blob);
-
-link.click();
-
-URL.revokeObjectURL(link.href);
-*/
-
-/////////////////////////////////
-////TRANSFORMAR BLOB EM BASE64:
-
-/*
-
-let link = document.createElement('a');
-
-link.download = 'hello.txt';
-
-let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
-
-let reader = new FileReader();
-*/
-
- // converts the blob to base64 and calls onload
-//reader.readAsDataURL(blob);
-/*
-reader.onload = function() 
-{
- data url
-  //link.href = reader.result; 
-  //link.click();
-};
-*/
-
-///////////////////
-//URL DE UMA DATA BASE64:
-//<img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
-
-
-////////////////////
-//USANDO BASE64 EM IMAGEM
-
-/*	
-	var image = document.createElement('image');
-    image.src = 'data:image/bmp;base64,'+Base64.encode(blob);
-    document.body.appendChild(image);
-    
-*/
-
-//
-
-
-mySearchArts.addEventListener("search",()=>
-{
-	submitSearcher(mySearchArts.value,"arts");
-},false);
-
-//
 
 mySearchArtists.addEventListener("search",()=>
 {
 	submitSearcher(mySearchArtists.value,"artists");
 },false);
-
-//
-
 
 //
 
@@ -417,51 +283,4 @@ function changeButton(button)
 		button.style.opacity = "1";
 	}
 }
-
-
-var selectGender = document.querySelector("#selectGender");
-
-var optionsGender = [...selectGender.options];
-
-var selectNationality = document.querySelector("#selectNationality");
-
-var optionsNationality = [...selectNationality.options];
-
-//
-
-/*
-
-<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
-								<%out.print(request.getAttribute("nationality"));%>
-								</option>
-
-*/
-
-function selectSelects()
-{
-	for (var i = 0; i < optionsGender.length; i++)
-	{
-		if(valueGenderJs.value == optionsGender[i].value)
-		{
-			optionsGender[i].selected = true;
-		}
-	}
-	
-	for (var i = 0; i < optionsNationality.length; i++)
-	{
-		if(valueNationalityJs.value == optionsNationality[i].value)
-		{
-			optionsNationality[i].selected = true;
-		}
-	}
-}
-
- 
-setTimeout(() =>
-{	
-    selectSelects();
-    
-}, 5000);
-
- selectSelects();
 

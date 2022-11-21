@@ -13,9 +13,9 @@ public class Arts implements Serializable
 
 	private String description;
 
-	private String dataDePublicacao;
-
 	private String dataDeExposicao;
+
+	private String dataDePublicacao;
 
 	// CONTRUTORES:
 
@@ -24,14 +24,14 @@ public class Arts implements Serializable
 		super();
 	}
 
-	public Arts(long idart, String name, String description, String dataDePublicacao, String dataDeExposicao)
+	public Arts(long idart, String name, String description, String dataDeExposicao, String dataDePublicacao)
 	{
 		super();
 		this.idart = idart;
 		this.name = name;
 		this.description = description;
-		this.dataDePublicacao = dataDePublicacao;
 		this.dataDeExposicao = dataDeExposicao;
+		this.dataDePublicacao = dataDePublicacao;
 	}
 
 	public long getIdart()

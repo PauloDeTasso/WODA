@@ -11,9 +11,9 @@ public class Artists implements Serializable
 
 	private String nome;
 
-	private String sexo;
-
 	private String email;
+
+	private String sexo;
 
 	private String datadenascimento;
 
@@ -28,7 +28,7 @@ public class Artists implements Serializable
 		super();
 	}
 
-	public Artists(String idArtist, String nome, String sexo, String email, String datadenascimento,
+	public Artists(String idArtist, String nome, String email, String sexo, String datadenascimento,
 			String nacionalidade, String cpf)
 	{
 		super();
