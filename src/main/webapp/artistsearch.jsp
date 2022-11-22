@@ -48,14 +48,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
         <section id="sectionMenu">
 
-            <section id="sectionButtons">
-
-                <button type="button" id="seacherButton" class="Buttons">
-
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
-                        onclick="openClose(seacher,'display')">
-
-                </button>                
+            <section id="sectionButtons">                          
                 
         		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
 

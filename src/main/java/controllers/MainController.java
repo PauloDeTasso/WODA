@@ -217,7 +217,7 @@ public class MainController extends HttpServlet
 
 		//
 
-		response.sendRedirect("artistsearch.jsp");
+		response.sendRedirect("artistsearch");
 	}
 
 	//
@@ -510,6 +510,24 @@ public class MainController extends HttpServlet
 
 		// request.setAttribute("checkedNames", checkNamesArts);
 
+		//
+		/*-	imaculada
+				String idArtist = request.getParameter("idartist");
+				String idArt = request.getParameter("idart");
+		
+				dao.removeAssociateDb(idArtist, idArt);
+		
+				boolean delete = true;
+		
+				delete = dao.listAssociateDb(idArt);
+		
+				if (delete == true)
+				{
+					dao.deleteArtForIdDb(idArt);
+				}
+		
+				response.sendRedirect("artist?idartist=" + idArtist);
+		*/
 		//
 
 		response.sendRedirect("artistsearch");

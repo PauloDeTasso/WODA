@@ -47,17 +47,44 @@
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="ButtonsRegister">
+          <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/voltar.png" alt=""
-                        onclick="openPage('main', '_self')">
+                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
+                        onclick="openPage('artistsearch','_self')">
+
+                </button>                
+                
+        		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+
+                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+
+	            </button>
+
+                <button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                        onclick="openPage('addartist', '_self')">
 
                 </button>
 
-                <button type="button" id="infoButton" class="ButtonsRegister">
+                <button type="button" id="configButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
+                        onclick="openClose(config,'display','menuConfig')">
+
+                </button>
+
+                <button type="button" id="infoButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
                         onclick="openClose(info,'display','menuInfo')">
+
+                </button>
+
+    			<button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                        onclick="openPage('index.html', '_self')">
 
                 </button>
 
@@ -545,7 +572,7 @@
 
     </footer>
 
-    <script src="js/validator.js">
+    <script src="js/artistregister.js">
 
     </script>
 

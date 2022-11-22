@@ -48,10 +48,30 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                 <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/voltar.png" alt=""
-                        onclick="openPage('main', '_self')">
+                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
+                        onclick="openPage('artistsearch','_self')">
+
+                </button>                
+                
+        		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+
+                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+
+	            </button>
+
+                <button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                        onclick="openPage('addartist', '_self')">
+
+                </button>
+
+                <button type="button" id="configButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
+                        onclick="openClose(config,'display','menuConfig')">
 
                 </button>
 
@@ -59,6 +79,13 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
                     <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
                         onclick="openClose(info,'display','menuInfo')">
+
+                </button>
+
+    			<button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                        onclick="openPage('index.html', '_self')">
 
                 </button>
 
@@ -101,12 +128,10 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
                         <section id="sectionButtonsArtist">
 
-                            <button type="button" id="editButton" class="Buttons" onclick="openPage('artedit','_self')">
-
-                                <img class="ImagesButtons" id="imageEditButton" src="images/icons/editar03.png"
-                                    alt="">
-
-                            </button>
+                            <a href="arteditselect?idart=<%out.print(request.getAttribute("idArt"));%>&name=<%out.print(request.getAttribute("nameArt"));%>&description=<%out.print(request.getAttribute("description"));%>&exposureDate=<%out.print(request.getAttribute("exposuredate"));%>&publicationDate=<%out.print(request.getAttribute("publicationdate"));%>&artistname=<%out.print(request.getAttribute("nameArtist"));%>">										
+                                        <img class="ImagesButtons" 
+                                            src="images/icons/editar03.png" alt="">
+							</a>
 
                         </section>
 

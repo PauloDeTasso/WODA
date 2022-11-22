@@ -72,12 +72,6 @@ if(request.getAttribute("searchOption").equals("name"))
 
             <section id="sectionButtons">
 
-  				<button type="button" Class="Buttons" onclick="openPage('main','_self')">
-
-                	<img class="Buttons" src="images/icons/voltar.png" alt="">
-
-            	</button>
-
                 <button type="button" id="seacherButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""

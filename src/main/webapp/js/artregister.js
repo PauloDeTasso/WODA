@@ -25,6 +25,7 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 /////////
 
+var nameValidate;
 
  ////////////////////////
  /////////////////////
@@ -163,20 +164,32 @@ function openClose(elemento, propriedade, conteiner)
 
 function validateDate(campo, msgAlert)
 {
-    var data = document.getElementById(campo).value;
+	var date = document.getElementById(campo).value;
 
-    data = data.replace(/\//g, "-");
+	var ano = parseInt(date.slice(0, 4));
 
-    var data_array = data.split("-");
+	var mes = date.slice(5, 7);
 
-    if (data_array[ 0 ].length != 4)
+	var dia = parseInt(date.slice(8, 10));
+
+	var diaValidate;
+
+	var mesValidate;
+
+	var anoValidate;
+		
+	date = date.replace(/\//g, "-");
+
+    var date_array = date.split("-");
+
+    if (date_array[ 0 ].length != 4)
     {
-        data = data_array[ 2 ] + "-" + data_array[ 1 ] + "-" + data_array[ 0 ];
+        date = date_array[ 2 ] + "-" + date_array[ 1 ] + "-" + date_array[ 0 ];
     }
 
     var hoje = new Date();
 
-    var nasc = new Date(data);
+    var nasc = new Date(date);
 
     var idade = hoje.getFullYear() - nasc.getFullYear();
 
@@ -184,15 +197,111 @@ function validateDate(campo, msgAlert)
 
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
-    if (idade < 18)
+    if (idade < 0)
     {
         msgAlert.innerHTML = "Invalid date!";
+        ageValidate = false;
     } else
     {
         msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
+        ageValidate = true;
     }
-
-    if (campo == "publicationDate")
+		
+	switch(mes)
+	{
+    	case "01": case "03": case "05": case "07": case "08": case "10": case "12":
+     
+     		if(dia <= 31 && dia > 0)
+     		{
+     			msgAlert.innerHTML = "Valid day!";
+     			diaValidate = true;
+     		}else
+     		{ 
+	 			msgAlert.innerHTML = "Invalid day!";
+	 			diaValidate = false;
+     		}
+      
+     	 	mesValidate = true;
+     	     	
+    		break ;
+     
+     	case "04": case "06": case "09": case "11":
+     
+     		if(dia <= 30 && dia > 0)
+       		{
+       			msgAlert.innerHTML = "Valid day!";
+       			diaValidate = true;
+       	
+      		}else
+       		{
+       			msgAlert.innerHTML = "Invalid day!";
+       			diaValidate = false;
+      		}
+      	
+      		mesValidate = true;
+      		      	
+     	break ;
+     
+     	case "02":
+      
+      		if((ano%400 == 0) || (ano%4==0 && ano%100!=0))
+       		{
+       			if( dia <= 29 && dia > 0)
+        		{
+        			msgAlert.innerHTML = "Valid day!";        			
+        		
+       			}else
+        		{
+        			msgAlert.innerHTML = "Invalid day!";        			
+      			}
+      
+      		}else       
+			{      
+	 			if( dia <= 28 && dia > 0)
+     			{
+	   				msgAlert.innerHTML = "Valid day!";
+	   				diaValidate = true;
+      		
+      			}else
+      			{
+        			msgAlert.innerHTML = "Invalid day!";
+        			diaValidate = false;        		
+    			}   			
+    		}
+    
+   	 		mesValidate = true;	
+    	    	
+    	break;
+    
+    	default:
+        
+        	mesValidate = false;
+        	anoValidate = false;
+        	msgAlert.innerHTML = "Invalid date!";       
+	} 
+			
+	var date2 = new Date();
+	var year = date2.getFullYear();
+	
+	if(ano <= year)
+	{
+		anoValidate = true;
+	}else
+	{
+		anoValidate = false;
+	}
+				
+	if(diaValidate && mesValidate && anoValidate && ageValidate)
+	{
+		birthdayValidate = true;
+		msgAlert.innerHTML = "<font color= 'green'>Ok</font>";
+	}else
+	{
+		birthdayValidate = false;
+		msgAlert.innerHTML = "Invalid date!";
+	}
+	
+	 if (campo == "publicationDate")
     {		
 		if (publicationDate.value)
     	{  	  			
@@ -224,6 +333,8 @@ function validateDate(campo, msgAlert)
     }   
 }
 
+//
+
 function verificarGenero(valor)
 {
     if (valor == "gender" || valor == null)
@@ -242,9 +353,11 @@ function verificarNome(valor)
     if (valor == "" || valor == null)
     {
         msgName.innerHTML = "Inform your name!";
+        nameValidate = false;
     } else
     {
         msgName.innerHTML = "<font color= 'green'>Ok</font>";
+        nameValidate = true;
     }
 }
 

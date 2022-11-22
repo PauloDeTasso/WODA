@@ -404,10 +404,7 @@ footer {
 #titleArtistName {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(172, 116, 53);
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   */
+    background-color: rgba(252, 178, 100,0.7);
     text-shadow: 2px 1px 4px rgb(0, 0, 0);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -422,14 +419,10 @@ footer {
     width: auto;
     height: auto;
     border: 20px solid rgba(255, 174, 0, 0);
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
     font-size: 100%;
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(252, 178, 100,0.9);
     color: rgb(0, 4, 255);
     cursor: pointer;
-
     border-radius: 10px;
 }
 
@@ -445,8 +438,8 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     */
     font-size: 100%;
-    background-color: rgb(172, 116, 53);
-    border-radius: 7px;
+    background-color: rgba(252, 178, 100,0.9);
+    border-radius: 10px;
     color: rgb(255, 252, 210);
     font-weight: 400;
     text-shadow: 2px 1px 4px rgb(0, 0, 0);
@@ -459,13 +452,9 @@ footer {
     align-items: center;
     width: auto;
     height: auto;
-    border: 10px solid rgba(0, 225, 255, 0);
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
+    border: 10px solid rgba(0, 225, 255, 0);    
     font-size: 100%;
-    background-color: rgb(211, 145, 69);
-
+    background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
 }
 
@@ -474,13 +463,6 @@ footer {
     cursor: pointer;
 }
 
-/***/
-/***/
-/***/
-/***/
-/***/
-/***/
-/***/
 /***/
 
 body::-webkit-scrollbar {
@@ -598,7 +580,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgba(211, 145, 69, 0);
+    background-color: rgba(211, 145, 69, 0.3);
     border-top: 10px solid rgb(252, 178, 100);
     border-radius: 3px;
 }
@@ -631,6 +613,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: auto;
     border: 10px solid rgba(211, 145, 69,0);
+    background-color: rgba(211, 145, 69,0.3);
 }
 
 #imageArtist {
@@ -675,28 +658,25 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(211, 145, 69,0);
 }
 
-#artArtist {}
-
 .TitlesArts {
     justify-content: flex-start;
     align-items: flex-start;
     width: 94%;
     height: auto;
     border: 0px solid rgb(172, 116, 53);
+    border-radius: 10px;
 }
 
 .TitlesNames {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(172, 116, 53);
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
+    background-color: rgba(252, 178, 100,0.7);
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
     margin: 1%;
+    border-radius: 10px;
 }
 
 .DataTitlesArtist {
@@ -711,7 +691,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
-    background-color: rgba(252, 178, 100,0);
+    background-color: rgba(252, 178, 100,0.5);
     border-radius: 100px;
 }
 
@@ -722,14 +702,11 @@ body::-webkit-scrollbar-thumb {
     vertical-align: middle;
     align-items: stretch;
     width: 100%;
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 0px solid rgb(0, 0, 0);	
-    font-weight: 500;
-    color: rgb(68, 0, 255);
+    font-weight: 500;	
+    color: rgb(68, 0, 255);    
 }
 
 .EditButtonsSection {
@@ -739,6 +716,8 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 100%;
+    background-color: rgba(252, 178, 100,0.3);
+    border-radius: 100px;
 }
 
 .TextDescription {
@@ -749,7 +728,9 @@ body::-webkit-scrollbar-thumb {
     */
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
-    text-align: justify;
+    text-align: center;
+    background-color: rgba(252, 178, 100,0.9);
+    border-radius: 10px;
 }
 
 .buttonsZoom {

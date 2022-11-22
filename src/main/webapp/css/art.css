@@ -10,8 +10,6 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgb(211, 145, 69);
-    opacity: 1;
 	background-image: url("../images/logos/LogoWODA5.png");
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -45,7 +43,7 @@ header {
     width: 100%;
     height: 100%;
     border: 10px solid rgba(255, 255, 255, .1);
-    background-color: rgba(255, 159, 70, 0.7);
+    background-color: rgba(255, 159, 70, 0.3);
     /*background-color: rgb(255, 205, 159);*/
 }
 
@@ -290,14 +288,14 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 20px solid rgb(252, 178, 100);
+    border: 20px solid rgba(252, 178, 100,0.5);
     font-size: 200%;
     /*
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     */
     color: rgb(44, 41, 0);
     font-weight: 700;
-    background-color: rgb(252, 178, 100);
+    background-color: rgba(252, 178, 100,0.9);
     margin: 1%;
     border-radius: 100px;
 }
@@ -404,10 +402,10 @@ footer {
 #titleArtistName {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(172, 116, 53);
+    background-color: rgba(252, 178, 100,0.7);
     /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   */
+   	*/
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.589);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -425,7 +423,7 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     */
     font-size: 100%;
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(252, 178, 100,0.9);
     color: rgb(0, 4, 255);
     cursor: pointer;
 
@@ -445,7 +443,7 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     */
     font-size: 100%;
-    background-color: rgb(172, 116, 53);
+    background-color: rgba(252, 178, 100,0.9);
     border-radius: 7px;
 }
 
@@ -461,8 +459,7 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     */
     font-size: 100%;
-    background-color: rgb(211, 145, 69);
-
+    background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
 }
 
@@ -616,7 +613,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(211, 145, 69);
+    border: 10px solid rgba(211, 145, 69,0.7);
 }
 
 .SectionImageArtist {
@@ -626,10 +623,8 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgb(211, 145, 69);
+    border: 10px solid rgba(211, 145, 69,0.7);
 }
-
-#sectionImageArtist {}
 
 #imageArtist {
     justify-content: center;
@@ -671,20 +666,18 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(211, 145, 69,0);
 }
 
-#artArtist {}
-
 .TitlesArts {
     justify-content: flex-start;
     align-items: flex-start;
-    width: 94%;
+    width: 70%;
     height: auto;
-    border: 0px solid rgb(172, 116, 53);
+    border: 0px solid rgba(252, 178, 100,0.9);
 }
-
+    
 .TitlesNames {
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(172, 116, 53);
+    background-color: rgba(252, 178, 100,0.7);
     /*
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     */
@@ -709,7 +702,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
-    background-color: rgb(252, 178, 100);
+    background-color: rgba(252, 178, 100,0.7);
     border-radius: 100px;
 }
 
@@ -742,13 +735,11 @@ body::-webkit-scrollbar-thumb {
 .TextDescription {
     justify-content: center;
     align-items: center;
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
+    text-align: center;
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
-    text-align: justify;
-    background-color: rgb(211, 145, 69);
+    background-color: rgba(252, 178, 100,0.7);
+    border-radius: 10px;
 }
 
 #buttonsZoom {
@@ -758,8 +749,8 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgb(211, 145, 69);
-    border-top: 10px solid rgb(252, 178, 100);
+    background-color: rgba(252, 178, 100,0.3);
+    border-top: 10px solid rgba(252, 178, 100,0.7);
     border-radius: 100px;
     margin-top: 10px;
 }
@@ -768,10 +759,11 @@ body::-webkit-scrollbar-thumb {
 {
 	display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    background-color: rgb(211, 145, 69);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(252, 178, 100,0.7);
     margin-top: 5px;
     padding: 5px;
+    border-radius: 10px;
 }
