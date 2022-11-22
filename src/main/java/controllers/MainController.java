@@ -10,10 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import model.Artists;
 import model.Arts;
 import model.Associates;
+import model.Authentication;
 import model.BooleansTests;
 import model.ConnectionDB;
 import model.IdsArtsArtist;
@@ -23,7 +25,7 @@ import model.Searcher;
 @WebServlet(urlPatterns =
 { "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteartist", "/deleteart", "/artregister",
 		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts", "/addartist", "/removeassociate",
-		"/tests", "/arteditselect", "/artistsearch"
+		"/tests", "/arteditselect", "/artistsearch", "/authenticate"
 })
 
 public class MainController extends HttpServlet
@@ -39,6 +41,8 @@ public class MainController extends HttpServlet
 	Associates associated = new Associates();
 
 	Searcher searcherMain = new Searcher();
+
+	Authentication authentication = new Authentication();
 
 	NamesArtsArtist nameArtsArtist = new NamesArtsArtist();
 
@@ -143,6 +147,10 @@ public class MainController extends HttpServlet
 		} else if (action.equals("/artedit"))
 		{
 			artEdit(request, response);
+
+		} else if (action.equals("/authenticate"))
+		{
+			authenticate(request, response);
 
 		} else
 		{
@@ -1108,6 +1116,35 @@ public class MainController extends HttpServlet
 		System.out.println("Fora delete: " + delete);
 
 	}
+
+	//
+
+	// removeAssociate : /removeAssociate
+
+	protected void authenticate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
+
+		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
+
+		for (int i = 0; i < listAllUsers.size(); i++)
+		{
+
+			if (login.equals(listAllUsers.get(i).getLogin()) && password.equals(listAllUsers.get(i).getPassword()))
+			{
+				response.sendRedirect("main");
+			} else
+			{
+				JOptionPane.showMessageDialog(null, "Invalid login or passaword!", "Please, try again.",
+						JOptionPane.WARNING_MESSAGE);
+
+				response.sendRedirect("index.html");
+			}
+		}
+	}
+
 	/*-
 	//
 	// throw

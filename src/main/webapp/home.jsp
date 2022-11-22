@@ -57,7 +57,7 @@
                 <button type="button" id="configButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openClose(config,'display','menuConfig')">
+                        onclick="openCloseOption(config,'display')">
 
                 </button>
 
@@ -96,28 +96,33 @@
 
         <section id="config">
 
-            <table>
+			<section class="SectionRegisterButtons2">
 
-                <th>
-
-                    <h3>SAVE SYSTEM <br> ACTIONS</h3>
-
-                <td>
-
-                    <label for="saveStatus">ON
-                        <input type="radio" name="saveStatus" id="saveStatusOn"
+                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
+                				
+                   	 	<label for="saveStatus">ON
+                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
                             onchange="saveConfig('statusSaveConfig',true)"></label>
 
-                    <label for="saveStatus">OFF
-                        <input type="radio" name="saveStatus" id="saveStatusOff"
+                    	<label for="saveStatus">OFF
+                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
                             onchange="saveConfig('statusSaveConfig',false)"></label>
 
-                </td>
+            </section> 	
 
-                </th>
+			<section class="SectionRegisterButtons2">							
 
-            </table>
+                    	<h3>REGISTER USERS</h3>
+                    	
+                  		<button type="button" class="Buttons">
 
+                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('userRegister.jsp','_self')">
+
+               			</button>
+
+			</section>
+				
         </section>        
        
         <section id="info">

@@ -1572,6 +1572,43 @@ public class ConnectionDB
 		}
 	}
 
-}
+//
 
+///// INSERIR ART - /artregister:
+
+	public ArrayList<Authentication> listAllUsersDb()
+	{
+		ArrayList<Authentication> listAllUsers = new ArrayList<>();
+
+		String query = "select userlogin, userpassword from authenticate";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next())
+			{
+				String userLogin = rs.getString(1);
+				String userPassword = rs.getString(2);
+
+				listAllUsers.add(new Authentication(userLogin, userPassword));
+			}
+
+			pst.close();
+
+			con.close();
+
+			return listAllUsers;
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
+	}
+}
 //
