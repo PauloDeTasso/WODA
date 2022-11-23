@@ -114,13 +114,9 @@ String dataDePublicacao;
 
             <section class="SectionArtistArts">
 
-                <section class="buttonsZoom">                   
-
                     <section class="TitlesAuthor">
                        <%out.print(request.getAttribute("name"));%>
                     </section>
-
-                </section>
 
                 <section class="SectionImageArtist">
 
@@ -286,8 +282,6 @@ String dataDePublicacao;
  				
                     <section class="ArtsArtist">
 
-                        <section class="buttonsZoom">
-
                             <section class="TitlesAuthor">
                             
                             	<a href="art?idart=<%=listAllArtsArtist.get(i).getIdart()%>">
@@ -296,7 +290,6 @@ String dataDePublicacao;
                             
                             </section>
 
-                        </section>
 
                         <section class="buttonsZoom">
 

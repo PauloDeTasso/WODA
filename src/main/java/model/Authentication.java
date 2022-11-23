@@ -7,44 +7,59 @@ public class Authentication implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	private String login;
+	private long userId;
 
-	private String password;
+	private String userLogin;
+
+	private String userPassword;
 
 	public Authentication()
 	{
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Authentication(String login, String password)
+	public Authentication(long userId, String userLogin, String userPassword)
 	{
 		super();
-		this.login = login;
-		this.password = password;
+		this.userId = userId;
+		this.userLogin = userLogin;
+		this.userPassword = userPassword;
 	}
 
-	public String getLogin()
+	public long getUserId()
 	{
-		return login;
+		return userId;
 	}
 
-	public void setLogin(String login)
+	public void setUserId(long userId)
 	{
-		this.login = login;
+		this.userId = userId;
 	}
 
-	public String getPassword()
+	public String getUserLogin()
 	{
-		return password;
+		return userLogin;
 	}
 
-	public void setPassword(String password)
+	public void setUserLogin(String userLogin)
 	{
-		this.password = password;
+		this.userLogin = userLogin;
+	}
+
+	public String getUserPassword()
+	{
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword)
+	{
+		this.userPassword = userPassword;
 	}
 
 	public static long getSerialversionuid()
 	{
 		return serialVersionUID;
 	}
+
 }

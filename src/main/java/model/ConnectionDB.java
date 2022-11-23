@@ -1580,7 +1580,7 @@ public class ConnectionDB
 	{
 		ArrayList<Authentication> listAllUsers = new ArrayList<>();
 
-		String query = "select userlogin, userpassword from authenticate";
+		String query = "select userId, userLogin, userPassword from authenticate";
 
 		try
 		{
@@ -1592,10 +1592,11 @@ public class ConnectionDB
 
 			while (rs.next())
 			{
-				String userLogin = rs.getString(1);
-				String userPassword = rs.getString(2);
+				Long userId = rs.getLong(1);
+				String userLogin = rs.getString(2);
+				String userPassword = rs.getString(3);
 
-				listAllUsers.add(new Authentication(userLogin, userPassword));
+				listAllUsers.add(new Authentication(userId, userLogin, userPassword));
 			}
 
 			pst.close();
@@ -1610,5 +1611,94 @@ public class ConnectionDB
 			return null;
 		}
 	}
+
+	//
+
+	///// INSERIR ART - /artregister:
+
+	public void userAddDb(Authentication authentication)
+	{
+		String query = "insert into authenticate (userId,userLogin,userPassword) values (?,?,?)";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, (int) authentication.getUserId());
+			pst.setString(2, authentication.getUserLogin());
+			pst.setString(3, authentication.getUserPassword());
+
+			pst.executeUpdate();
+
+			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// INSERIR ART - /artregister:
+
+	public void userEditDb(Authentication authentication)
+	{
+		String query = "update authenticate set userLogin=?, userPassword=? where userId=?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setString(1, authentication.getUserLogin());
+			pst.setString(2, authentication.getUserPassword());
+			pst.setInt(3, (int) authentication.getUserId());
+
+			pst.executeUpdate();
+
+			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
+	///// INSERIR ART - /artregister:
+
+	public void userDeleteDb(int userId)
+	{
+		String query = "delete from authenticate where userId = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setInt(1, userId);
+
+			pst.executeUpdate();
+
+			pst.close();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 }
 //

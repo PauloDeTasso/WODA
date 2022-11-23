@@ -117,13 +117,9 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
             <section id="artArtist" class="ArtsArtist">
 
-                <section id="buttonsZoom">
-
                     <section class="TitlesAuthor">
                      <%=listArt.get(0).getName()%>
                     </section>
-
-                </section>
 
                 <section id="buttonsZoom">
 

@@ -25,7 +25,8 @@ import model.Searcher;
 @WebServlet(urlPatterns =
 { "/main", "/artistregister", "/selectartistedit", "/editartist", "/deleteartist", "/deleteart", "/artregister",
 		"/artist", "/searchartist", "/addart", "/artedit", "/art", "/searcharts", "/addartist", "/removeassociate",
-		"/tests", "/arteditselect", "/artistsearch", "/authenticate"
+		"/tests", "/arteditselect", "/artistsearch", "/userauthenticate", "/users", "/useradd", "/useredit",
+		"/userremove", "/userselect"
 })
 
 public class MainController extends HttpServlet
@@ -116,9 +117,21 @@ public class MainController extends HttpServlet
 		{
 			selectArtsArtist(request, response);
 
-		} else if (action.equals("/tests"))
+		} else if (action.equals("/addartist"))
 		{
-			tests(request, response);
+			selectArtsArtist(request, response);
+
+		} else if (action.equals("/users"))
+		{
+			users(request, response);
+
+		} else if (action.equals("/userremove"))
+		{
+			userDelete(request, response);
+
+		} else if (action.equals("/userselect"))
+		{
+			userSelect(request, response);
 
 		} else
 		{
@@ -148,9 +161,17 @@ public class MainController extends HttpServlet
 		{
 			artEdit(request, response);
 
-		} else if (action.equals("/authenticate"))
+		} else if (action.equals("/userauthenticate"))
 		{
-			authenticate(request, response);
+			userAuthenticate(request, response);
+
+		} else if (action.equals("/useradd"))
+		{
+			userAdd(request, response);
+
+		} else if (action.equals("/useredit"))
+		{
+			userEdit(request, response);
 
 		} else
 		{
@@ -1119,30 +1140,154 @@ public class MainController extends HttpServlet
 
 	//
 
-	// removeAssociate : /removeAssociate
+	// authenticate : /authenticate
 
-	protected void authenticate(HttpServletRequest request, HttpServletResponse response)
+	protected void userAuthenticate(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
+		String login = request.getParameter("userlogin");
+		String password = request.getParameter("userpassword");
+		boolean pass = false;
+
+		System.out.println(login);
+		System.out.println(password);
 
 		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
 
 		for (int i = 0; i < listAllUsers.size(); i++)
 		{
 
-			if (login.equals(listAllUsers.get(i).getLogin()) && password.equals(listAllUsers.get(i).getPassword()))
+			if (login.equals(listAllUsers.get(i).getUserLogin())
+					&& password.equals(listAllUsers.get(i).getUserPassword()))
 			{
-				response.sendRedirect("main");
-			} else
-			{
-				JOptionPane.showMessageDialog(null, "Invalid login or passaword!", "Please, try again.",
-						JOptionPane.WARNING_MESSAGE);
-
-				response.sendRedirect("index.html");
+				pass = true;
 			}
 		}
+
+		if (pass == true)
+		{
+			response.sendRedirect("main");
+		} else
+		{
+			JOptionPane.showMessageDialog(null, "Invalid login or passaword!", "Please, try again.",
+					JOptionPane.WARNING_MESSAGE);
+
+			response.sendRedirect("index.html");
+		}
+
+	}
+
+	//
+
+	// addAuthenticate : /addAuthenticate
+
+	protected void userAdd(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		long userId = Long.parseLong(request.getParameter("userid"));
+		String userLogin = request.getParameter("userlogin");
+		String userPassword = request.getParameter("userpassword");
+
+		authentication.setUserId(userId);
+		authentication.setUserLogin(userLogin);
+		authentication.setUserPassword(userPassword);
+
+		dao.userAddDb(authentication);
+
+		response.sendRedirect("users");
+	}
+
+	//
+
+	// editAuthenticate : /editAuthenticate
+
+	protected void userEdit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		long userId = Long.parseLong(request.getParameter("userid"));
+		String userLogin = request.getParameter("userlogin");
+		String userPassword = request.getParameter("userpassword");
+
+		authentication.setUserId(userId);
+		authentication.setUserLogin(userLogin);
+		authentication.setUserPassword(userPassword);
+
+		dao.userEditDb(authentication);
+
+		response.sendRedirect("users");
+	}
+
+	//
+
+	// removeAuthenticate : /removeAuthenticate
+
+	protected void userDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		int idUser = Integer.parseInt(request.getParameter("userid"));
+		String userLogin = request.getParameter("userlogin");
+		String userPassword = request.getParameter("userpassword");
+
+		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
+
+		if (listAllUsers.size() <= 1)
+		{
+			JOptionPane.showMessageDialog(null, "You cannot delete the last registered user!", "Please, try to edit..",
+					JOptionPane.WARNING_MESSAGE);
+
+			System.out.println("SAIU");
+
+			response.sendRedirect(
+					"userselect?userid=" + idUser + "&userlogin=" + userLogin + "&userpassword=" + userPassword);
+
+		} else
+		{
+			dao.userDeleteDb(idUser);
+			response.sendRedirect("users");
+		}
+
+	}
+
+	//
+
+	// removeAuthenticate : /removeAuthenticate
+
+	protected void users(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
+
+		request.setAttribute("listAllUsers", listAllUsers);
+
+		RequestDispatcher rd = request.getRequestDispatcher("users.jsp");
+
+		rd.forward(request, response);
+	}
+
+	//
+
+	// removeAuthenticate : /removeAuthenticate
+
+	protected void userSelect(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		long userId = Long.parseLong(request.getParameter("userid"));
+		String userLogin = request.getParameter("userlogin");
+		String userPassword = request.getParameter("userpassword");
+
+		authentication.setUserId(userId);
+		authentication.setUserLogin(userLogin);
+		authentication.setUserPassword(userPassword);
+
+		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
+
+		request.setAttribute("listAllUsers", listAllUsers);
+
+		request.setAttribute("authentication", authentication);
+
+		RequestDispatcher rd = request.getRequestDispatcher("useredit.jsp");
+
+		rd.forward(request, response);
 	}
 
 	/*-

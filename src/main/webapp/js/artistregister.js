@@ -25,6 +25,15 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 var nameValidate, emailValidate, genderValidate, birthdayValidate, nationalityValidate, cpfValidate;
 
+var sectionUserEdit = document.getElementById('sectionUserEdit');
+
+var sectionTableSeacher = document.getElementById('sectionTableSeacher');
+
+var sectionCloseUserEdit = document.getElementById('sectionCloseUserEdit');
+
+var imgViewPassword = document.getElementById('imgViewPassword');
+
+
 /////////
 
 function openPage(link, target)
@@ -630,6 +639,34 @@ function statusCpf()
     }
 }
 
+
+function showPassword()
+{
+	if(passwordInput.type == "password")
+	{
+		passwordInput.type = "text";	
+		imgViewPassword.src = "images/icons/ver02.png";
+		
+	}else
+	{
+		passwordInput.type = "password";	
+		imgViewPassword.src = "images/icons/veresconder.png";	
+	}
+
+}
+
+//
+
+function removeUser(id,login,password)
+{	
+		var resposta = confirm("Delete user " + "(" + login + ")?");
+
+	    if (resposta === true)
+    	{      		
+        	window.location.href = "userremove?userid=" + id + "&userlogin=" + login + "&userpassword=" + password;
+		}
+}
+
 //
 
 setTimeout(() =>
@@ -638,4 +675,3 @@ setTimeout(() =>
 }, 2000);
 
 statusCpf();
-

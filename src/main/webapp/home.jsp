@@ -117,7 +117,7 @@
                   		<button type="button" class="Buttons">
 
                    			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
-                        	onclick="openPage('userRegister.jsp','_self')">
+                        	onclick="openPage('users','_self')">
 
                			</button>
 

@@ -23,6 +23,8 @@ var searchButton = document.getElementById('searchButton');
 
 var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
+var passwordInput = document.getElementsByClassName('passwordInput');
+
 /////////
 
 var nameValidate;

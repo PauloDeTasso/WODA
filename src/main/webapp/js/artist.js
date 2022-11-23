@@ -109,5 +109,4 @@ function removeArtConfirm(idArt,nameArt)
     	{      		
         	window.location.href = "deleteart?idart=" + idArt;
 		}
-
 }
