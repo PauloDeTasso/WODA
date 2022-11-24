@@ -46,9 +46,9 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
     <header>
 
-        <section id="sectionMenu">
+         <section id="sectionMenu">
 
-            <section id="sectionButtons">                          
+            <section id="sectionButtons">                              
                 
         		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
 
@@ -66,7 +66,7 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
                 <button type="button" id="configButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openClose(config,'display','menuConfig')">
+                        onclick="openCloseOption(config,'display')">
 
                 </button>
 
@@ -74,6 +74,13 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
                     <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
                         onclick="openClose(info,'display','menuInfo')">
+
+                </button>
+
+    			<button type="button" id="registerButton" class="Buttons">
+
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                        onclick="openPage('index.html', '_self')">
 
                 </button>
 
@@ -95,32 +102,6 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
     </header>
 
     <body>
-
-        <section id="config">
-
-            <table>
-
-                <th>
-
-                    <h3>SAVE SYSTEM <br> ACTIONS</h3>
-
-                <td>
-
-                    <label for="saveStatus">ON
-                        <input type="radio" name="saveStatus" id="saveStatusOn"
-                            onchange="saveConfig('statusSaveConfig',true)"></label>
-
-                    <label for="saveStatus">OFF
-                        <input type="radio" name="saveStatus" id="saveStatusOff"
-                            onchange="saveConfig('statusSaveConfig',false)"></label>
-
-                </td>
-
-                </th>
-
-            </table>
-
-        </section>
 
         <section id="seacher">
         
@@ -244,6 +225,37 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 			</section>					
 
         </section>
+       
+       <section id="config">
+
+			<section class="SectionRegisterButtons2">
+
+                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
+                				
+                   	 	<label for="saveStatus">ON
+                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
+                            onchange="saveConfig('statusSaveConfig',true)"></label>
+
+                    	<label for="saveStatus">OFF
+                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
+                            onchange="saveConfig('statusSaveConfig',false)"></label>
+
+            </section> 	
+
+			<section class="SectionRegisterButtons2">							
+
+                    	<h3>REGISTER USERS</h3>
+                    	
+                  		<button type="button" class="Buttons">
+
+                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('users','_self')">
+
+               			</button>
+
+			</section>
+				
+        </section>     
        
         <section id="info">
 

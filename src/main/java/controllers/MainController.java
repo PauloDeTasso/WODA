@@ -317,6 +317,14 @@ public class MainController extends HttpServlet
 			}
 		}
 
+		ArrayList<Arts> listArtsAllOrderName = dao.listArtsAllOrderNameDb();
+
+		ArrayList<Artists> listArtistsAllOrderName = dao.listArtistsAllOrderNameDb();
+
+		request.setAttribute("listArtsAllOrderName", listArtsAllOrderName);
+
+		request.setAttribute("listArtistsAllOrderName", listArtistsAllOrderName);
+
 		request.setAttribute("listAllArts", listAllArts);
 
 		request.setAttribute("listAllIdsArtsForIdArtist", listAllIdsArtsForIdArtist);
@@ -1148,9 +1156,6 @@ public class MainController extends HttpServlet
 		String login = request.getParameter("userlogin");
 		String password = request.getParameter("userpassword");
 		boolean pass = false;
-
-		System.out.println(login);
-		System.out.println(password);
 
 		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
 

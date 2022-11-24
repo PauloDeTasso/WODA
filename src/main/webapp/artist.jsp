@@ -71,7 +71,7 @@ String dataDePublicacao;
                 <button type="button" id="configButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openClose(config,'display','menuConfig')">
+                        onclick="openCloseOption(config,'display')">
 
                 </button>
 
@@ -96,7 +96,7 @@ String dataDePublicacao;
                 <button type="button" id="buttonMenu">
 
                     <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
-                        onclick="openClose(sectionButtons,'visibility')">
+                        onclick="openClose(sectionButtons,'visibility','menuMain')">
 
                 </button>
 
@@ -393,6 +393,37 @@ String dataDePublicacao;
             </section>
 
         </section>
+
+		<section id="config">
+
+			<section class="SectionRegisterButtons2">
+
+                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
+                				
+                   	 	<label for="saveStatus">ON
+                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
+                            onchange="saveConfig('statusSaveConfig',true)"></label>
+
+                    	<label for="saveStatus">OFF
+                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
+                            onchange="saveConfig('statusSaveConfig',false)"></label>
+
+            </section> 	
+
+			<section class="SectionRegisterButtons2">							
+
+                    	<h3>REGISTER USERS</h3>
+                    	
+                  		<button type="button" class="Buttons">
+
+                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('users','_self')">
+
+               			</button>
+
+			</section>
+				
+        </section>     
 
         <section id="info">
 

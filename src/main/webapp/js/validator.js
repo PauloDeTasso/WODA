@@ -860,6 +860,21 @@ function checked4()
 
 // 
  
+ function openCloseOption(elemento, propriedade)
+{
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "grid";
+
+            } else 
+            {
+                elemento.style.display = "none";
+            }
+}
+ 
 setTimeout(() =>
 {	
     selectSelects();

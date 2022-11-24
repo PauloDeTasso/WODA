@@ -90,6 +90,25 @@ function openClose(elemento, propriedade, conteiner)
 
     }}
 
+//
+
+function openCloseOption(elemento, propriedade)
+{
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "grid";
+
+            } else 
+            {
+                elemento.style.display = "none";
+            }
+}
+
+//
+
 function removeConfirm(idArtist,idArt,nameArtist,nameArt)
 {	
 		var resposta = confirm("Disassociating art " + "(" + nameArt + ") from (" + nameArtist + ") ?");

@@ -193,17 +193,7 @@ var dateType;
     var msgNationality = document.getElementById("msgNationality");
     var selectNationality = document.getElementById("selectNationality");
     var cpfInput = document.getElementById("cpf");
-    var msgCpf = document.getElementById("msgCpf");
-    var msgStatus = document.getElementById("msgStatus");
-    var fileInputArtist = document.getElementById("fileInputArtist");
-    var listArtist = document.getElementById("listArtist");
    
-    var sectionCpf = document.getElementById("sectionCpf");
-    var cpfOriginal;
-    var valueGenderJs = document.getElementById("valueGenderJs");
-    var valueNationalityJs = document.getElementById("valueNationalityJs");    
-
- 
     var publicationDate = document.getElementById("publicationDate");
     var exposureDate = document.getElementById("exposureDate");
     var associatesOn = document.getElementById("associatesOn");
@@ -668,6 +658,60 @@ function removeUser(id,login,password)
 }
 
 //
+
+function openCloseOption(elemento, propriedade)
+{
+    var estiloCabecalho = window.getComputedStyle(elemento);
+    var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
+
+            if (propriedadeCabecalho == "none")
+            {
+                elemento.style.display = "grid";
+
+            } else 
+            {
+                elemento.style.display = "none";
+            }
+}
+
+//
+
+var selectGender = document.querySelector("#selectGender");
+
+var optionsGender = [...selectGender.options];
+
+var selectNationality = document.querySelector("#selectNationality");
+
+var optionsNationality = [...selectNationality.options];
+
+function selectSelects()
+{
+	for (var i = 0; i < optionsGender.length; i++)
+	{
+		if(valueGenderJs.value == optionsGender[i].value)
+		{
+			optionsGender[i].selected = true;
+		}
+	}
+	
+	for (var i = 0; i < optionsNationality.length; i++)
+	{
+		if(valueNationalityJs.value == optionsNationality[i].value)
+		{
+			optionsNationality[i].selected = true;
+		}
+	}
+}
+
+//
+
+setTimeout(() =>
+{	
+    selectSelects();
+    
+}, 2000);
+
+ selectSelects();
 
 setTimeout(() =>
 {	

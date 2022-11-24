@@ -47,7 +47,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
             <section id="sectionButtons">
 
-               <button type="button" id="seacherButton" class="Buttons">
+                <button type="button" id="seacherButton" class="Buttons">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
                         onclick="openPage('artistsearch','_self')">
@@ -60,10 +60,10 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
 	            </button>
 
-                <button type="button" id="configButton" class="Buttons">
+                <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openClose(config,'display','menuConfig')">
+                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                        onclick="openPage('addartist', '_self')">
 
                 </button>
 
@@ -88,7 +88,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                 <button type="button" id="buttonMenu">
 
                     <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
-                        onclick="openClose(sectionButtons,'visibility')">
+                        onclick="openClose(sectionButtons,'visibility','menuMain')">
 
                 </button>
 
