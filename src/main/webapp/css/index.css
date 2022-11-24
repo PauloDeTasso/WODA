@@ -362,3 +362,25 @@ body::-webkit-scrollbar-thumb {
 #imagemTwitter {
     opacity: .9;
 }
+
+.buttonView
+{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgba(255, 159, 70, 0.5);
+    border: 0px solid rgba(255, 159, 70, 0); 
+}
+
+.ImagesView {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    background-color: rgba(255, 159, 70, 0); 
+    border: 0px solid rgba(255, 159, 70, 0);
+}

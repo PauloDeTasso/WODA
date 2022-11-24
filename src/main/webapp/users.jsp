@@ -104,7 +104,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <legend class="LegendResgiter">
 
-                    <img class="Buttons" src="images/icons/USUARIOS08.png" alt="">
+                    <img class="Buttons2" src="images/icons/userAdd01.png" alt="">
 
                 </legend>
 
@@ -114,7 +114,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                 
                         <td>
 
-                            <input type="number" name="userid" maxlength="5" size="5" placeholder="ID"
+                            <input id="idInput" type="number" name="userid" placeholder="ID"
                                 value="" required>
 
                         </td>
@@ -145,7 +145,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 							<button class="buttonView" type="button" onclick="showPassword()">
               					                                	
-              					<img id="imgViewPassword" class="ImagesView" src="images/icons/veresconder.png" alt="">
+              					<img id="imgViewPassword" class="ImagesView" src="images/icons/ver02.png" alt="">
               					
               				</button>
                     	
@@ -270,7 +270,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
 										<a href="userselect?userid=<%=listAllUsers.get(i).getUserId()%>&userlogin=<%=listAllUsers.get(i).getUserLogin()%>&userpassword=<%=listAllUsers.get(i).getUserPassword()%>">
 										
-                                    		<img class="ImagesButtons" src="images/icons/editar03.png"alt="">
+                                    		<img class="ImagesButtons" src="images/icons/userEdit01.png"alt="">
                                     		
 										</a>
 	
@@ -280,7 +280,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>','<%=listAllUsers.get(i).getUserPassword()%>')">
 										
-											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+											<img class="ImagesButtons" src="images/icons/userDelete01.png" alt="">
 											
 										</a>
 

@@ -33,6 +33,7 @@ var sectionCloseUserEdit = document.getElementById('sectionCloseUserEdit');
 
 var imgViewPassword = document.getElementById('imgViewPassword');
 
+var passwordInput = document.getElementById('passwordInput');
 
 /////////
 

@@ -48,7 +48,7 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                <button type="button" id="seacherButton" class="Buttons2">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
                         onclick="openPage('artistsearch','_self')">
@@ -111,6 +111,14 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
         <section class="SectionArtsArtist">
 
             <!-- ARTS 1 -->
+            
+            <fieldset>
+
+                <legend class="LegendResgiter">
+
+                    <img class="Buttons" src="images/icons/art01.png" alt="">
+
+                </legend>
 
             <section id="artArtist" class="ArtsArtist">
 
@@ -235,6 +243,8 @@ ArrayList<NamesArtsArtist> checkNamesArtist = (ArrayList<NamesArtsArtist>) reque
 
             </section>
 
+		 </fieldset>
+		 
         </section>
 
 		<section id="config">

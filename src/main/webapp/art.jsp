@@ -114,6 +114,14 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
         <section class="SectionArtsArtist">
 
             <!-- ARTS 1 -->
+            
+            <fieldset>
+
+                <legend class="LegendResgiter">
+
+                    <img class="Buttons2" src="images/icons/art01.png" alt="">
+
+                </legend>
 
             <section id="artArtist" class="ArtsArtist">
 
@@ -236,6 +244,8 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
                 </section>
 
             </section>
+
+		</fieldset>
 
         </section>
         

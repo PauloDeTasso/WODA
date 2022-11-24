@@ -106,12 +106,8 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <legend class="LegendResgiter">
 
-				<a href="users">	
-                
-                    <img class="Buttons" src="images/icons/USUARIOS08.png" alt="">
-				
-				</a>
-				
+                    <img class="Buttons2" src="images/icons/userEdit01.png" alt="">
+								
                 </legend>
 
                 <table class="tableForm">
@@ -120,7 +116,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                     
                         <td>
 
-                            <input id="idInput" type="number" name="userid" maxlength="5" size='5' placeholder="ID"
+                            <input id="idInputEdit" type="number" name="userid" placeholder="ID"
                                 value="<%out.print(authentication.getUserId());%>" readonly>
 
                         </td>
@@ -151,7 +147,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 							<button class="buttonView" type="button" onclick="showPassword()">
               					                                	
-              					<img id="imgViewPassword" class="ImagesView" src="images/icons/veresconder.png" alt="">
+              					<img id="imgViewPassword" class="ImagesView" src="images/icons/ver02.png" alt="">
               					
               				</button>
                     	
@@ -276,7 +272,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
 										<a href="userselect?userid=<%=listAllUsers.get(i).getUserId()%>&userlogin=<%=listAllUsers.get(i).getUserLogin()%>&userpassword=<%=listAllUsers.get(i).getUserPassword()%>">
 										
-                                    		<img class="ImagesButtons" src="images/icons/editar03.png"alt="">
+                                    		<img class="ImagesButtons" src="images/icons/userEdit01.png"alt="">
                                     		
 										</a>
 	
@@ -286,7 +282,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>')">
 										
-											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+											<img class="ImagesButtons" src="images/icons/userDelete01.png" alt="">
 											
 										</a>
 

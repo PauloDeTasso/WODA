@@ -107,15 +107,15 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
         
     <body>
 
-        <form id="formRegisterArtist" name="formregisterartist" action="artistregister" method="get" onreset="clear()">
+        <form id="formRegisterArtist" name="formregisterartist" action="artistregister" method="post" onreset="clear()">
 
             <fieldset>
 
                 <legend class="LegendResgiter">
 
-                    <img class="Buttons" src="images/icons/ARTIST01.png" alt="">
+                    <img class="Buttons2" src="images/icons/ARTIST01.png" alt="">
 
-                    <img class="Buttons" src="images/icons/ARTIST02.png" alt="">
+					<img class="Buttons2" src="images/icons/ARTIST02.png" alt="">
 
                 </legend>
 

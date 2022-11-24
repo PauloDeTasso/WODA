@@ -8,6 +8,10 @@ var imagemTwitter = document.getElementById('imagemTwitter');
 
 var imagemInstagram = document.getElementById('imagemInstagram');
 
+var imgViewPassword = document.getElementById('imgViewPassword');
+
+var passwordInput = document.getElementById('passwordInput');
+
 function alterarImagem(pagina)
 {
     if (pagina == "")
@@ -88,6 +92,21 @@ function openCloseOption(elemento, propriedade)
             {
                 elemento.style.display = "none";
             }
+}
+
+function showPassword()
+{
+	if(passwordInput.type == "password")
+	{
+		passwordInput.type = "text";	
+		imgViewPassword.src = "images/icons/ver02.png";
+		
+	}else
+	{
+		passwordInput.type = "password";	
+		imgViewPassword.src = "images/icons/veresconder.png";	
+	}
+
 }
 
 //

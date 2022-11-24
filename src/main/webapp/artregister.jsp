@@ -109,7 +109,7 @@
 
                 <legend class="LegendResgiter">
 
-                    <img class="Buttons" src="images/icons/images02.png" alt="">
+                    <img class="Buttons2" src="images/icons/art01.png" alt="">
 
                 </legend>
 

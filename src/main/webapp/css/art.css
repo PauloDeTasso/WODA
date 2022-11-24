@@ -83,6 +83,17 @@ header {
     border: 0px solid rgb(255, 255, 255);
 }
 
+.Buttons2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 0px solid rgb(255, 255, 255);
+}
+
 .ImagesButtons {
     display: flex;
     flex-direction: row;
@@ -660,6 +671,18 @@ body::-webkit-scrollbar-thumb {
     height: auto;
     border: 0px solid rgb(0, 0, 0);
     background-color: rgba(211, 145, 69,0);
+}
+
+fieldset {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    border-color: rgba(255, 159, 70, 0.7);
+    border-width: 5px;
 }
 
 .ArtsArtist {

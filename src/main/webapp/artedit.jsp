@@ -52,7 +52,7 @@
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                <button type="button" id="seacherButton" class="Buttons2">
 
                     <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
                         onclick="openPage('artistsearch','_self')">

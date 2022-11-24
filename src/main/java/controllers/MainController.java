@@ -65,10 +65,6 @@ public class MainController extends HttpServlet
 		{
 			selectAll(request, response);
 
-		} else if (action.equals("/artistregister"))
-		{
-			addArtist(request, response);
-
 		} else if (action.equals("/main"))
 		{
 			response.sendRedirect("home.jsp");
@@ -95,7 +91,7 @@ public class MainController extends HttpServlet
 
 		} else if (action.equals("/addart"))
 		{
-			artRegister(request, response);
+			selectArtRegister(request, response);
 
 		} else if (action.equals("/art"))
 		{
@@ -149,6 +145,10 @@ public class MainController extends HttpServlet
 		if (action.equals(""))
 		{
 
+		} else if (action.equals("/artistregister"))
+		{
+			addArtist(request, response);
+
 		} else if (action.equals("/editartist"))
 		{
 			editArtist(request, response);
@@ -178,6 +178,27 @@ public class MainController extends HttpServlet
 			response.sendRedirect("index.html");
 		}
 
+	}
+
+	@Override
+	public void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String action = request.getServletPath();
+		System.out.println(action);
+		System.out.println("doDelete");
+
+		if (action.equals(""))
+		{
+
+		} else if (action.equals(""))
+		{
+			// addArtist(request, response);
+
+		} else
+		{
+			// editArtist(request, response);
+
+		}
 	}
 
 	//
@@ -759,7 +780,7 @@ public class MainController extends HttpServlet
 
 	// ART REGISTER - /addart:
 
-	protected void artRegister(HttpServletRequest request, HttpServletResponse response)
+	protected void selectArtRegister(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
 		ArrayList<Artists> listArtistsAllOrderName = dao.listArtistsAllOrderNameDb();
@@ -1158,6 +1179,11 @@ public class MainController extends HttpServlet
 		boolean pass = false;
 
 		ArrayList<Authentication> listAllUsers = dao.listAllUsersDb();
+
+		for (int i = 0; i < listAllUsers.size(); i++)
+		{
+			System.out.println(listAllUsers.get(i).getUserLogin());
+		}
 
 		for (int i = 0; i < listAllUsers.size(); i++)
 		{

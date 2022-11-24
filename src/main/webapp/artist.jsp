@@ -110,6 +110,8 @@ String dataDePublicacao;
 
         <section id="sectionArtist">
 
+           <fieldset>
+
             <!-- ARTIST -->
 
             <section class="SectionArtistArts">
@@ -390,8 +392,10 @@ String dataDePublicacao;
  										
                 </section>
 
-            </section>
+            </section>            
 
+		 </fieldset>
+		 
         </section>
 
 		<section id="config">
