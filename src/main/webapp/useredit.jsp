@@ -49,7 +49,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <button type="button" id="seacherButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
+                    <img class="ImageButton3" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
                         onclick="openPage('artistsearch','_self')">
 
                 </button>                
@@ -62,21 +62,21 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
 
                 <button type="button" id="infoButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
-                        onclick="openClose(info,'display','menuInfo')">
+                    <img class="ImageButton3" id="imageInfoButton" src="images/icons/info.png" alt=""
+                        onclick="openClose(info,'display')">
 
                 </button>
 
     			<button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
                         onclick="openPage('index.html', '_self')">
 
                 </button>
@@ -87,8 +87,8 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
-                        onclick="openClose(sectionButtons,'visibility','menuMain')">
+                    <img id="imagemButtonMenu" src="images/icons/menu03.png" alt=""
+                        onclick="abrirOptions()">
 
                 </button>
 
@@ -147,7 +147,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 							<button class="buttonView" type="button" onclick="showPassword()">
               					                                	
-              					<img id="imgViewPassword" class="ImagesView" src="images/icons/ver02.png" alt="">
+              					<img id="imgViewPassword" class="ImagesView" src="images/icons/esconder01.png" alt="">
               					
               				</button>
                     	
@@ -185,37 +185,31 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
         </form>
 
-          <section id="info">
+         <section id="info">
+            
+            WODA®<br>
+            World of digital artists<br>
+			Developer App: <br>
+			Paulo de Tasso - Brazil <br>
+            Software Application - Full Stack<br>
 
-            Dev - Paulo de Tasso <br>
-            Senior Full Stack Developer <br>
-            World of digital artists - WODA®
-
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
-
+			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+			</a>
+			
         </section>
 
 		<section id="sectionUserEdit">
                              	 
-             <button type="button" class="Buttons" onclick="openCloseSection(sectionTableSeacher,'display', true)">
+             <button type="button" class="Buttons" onclick="openClose(sectionTableSeacher,'display')">
                  
-                 <img class="ImagesButtons" src="images/icons/USUARIOS09.png" alt="">
+                 <img class="ImageButton3" src="images/icons/USUARIOS09.png" alt="">
              
               </button>
                                     
         </section>       
 
  		<section id="sectionTableSeacher">
-
-			<section id="sectionCloseUserEdit">
-                             	 
-            	 <button type="button" class="Buttons" onclick="openCloseSection(sectionTableSeacher,'display', false)">
-                 
-            	     <img id="imageButton" src="images/icons/fechar01.png" alt="">
-             
-           	   </button>
-                                    
-       		</section>
        		
         	<table id="tableArtists" class="tabela">
 
@@ -272,7 +266,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
 										<a href="userselect?userid=<%=listAllUsers.get(i).getUserId()%>&userlogin=<%=listAllUsers.get(i).getUserLogin()%>&userpassword=<%=listAllUsers.get(i).getUserPassword()%>">
 										
-                                    		<img class="ImagesButtons" src="images/icons/userEdit01.png"alt="">
+                                    		<img class="ImageButton3" src="images/icons/userEdit01.png"alt="">
                                     		
 										</a>
 	
@@ -282,7 +276,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>')">
 										
-											<img class="ImagesButtons" src="images/icons/userDelete01.png" alt="">
+											<img class="ImageButton3" src="images/icons/userDelete01.png" alt="">
 											
 										</a>
 

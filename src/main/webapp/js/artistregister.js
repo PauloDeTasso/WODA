@@ -95,7 +95,7 @@ function openCloseSection(elemento, propriedade, action)
 
 ////
 
-function openClose(elemento, propriedade, conteiner)
+function openClose(elemento, propriedade)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -108,13 +108,9 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.display = "flex";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.display = "none";
-
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -124,12 +120,10 @@ function openClose(elemento, propriedade, conteiner)
             if (propriedadeCabecalho == "hidden")
             {
                 elemento.style.visibility = "visible";
-                localStorage.setItem(conteiner, true);
 
             } else 
             {
                 elemento.style.visibility = "hidden";
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -636,12 +630,12 @@ function showPassword()
 	if(passwordInput.type == "password")
 	{
 		passwordInput.type = "text";	
-		imgViewPassword.src = "images/icons/ver02.png";
+		imgViewPassword.src = "images/icons/ver01.png";
 		
 	}else
 	{
 		passwordInput.type = "password";	
-		imgViewPassword.src = "images/icons/veresconder.png";	
+		imgViewPassword.src = "images/icons/esconder01.png";	
 	}
 
 }
@@ -702,6 +696,46 @@ function selectSelects()
 			optionsNationality[i].selected = true;
 		}
 	}
+}
+
+//
+
+ var optionAction;
+  
+ function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');
+				
+    	//sectionButtons.classList.remove('abrirMenu');
+    	//sectionButtons.classList.add('abrirMenu');
+    	optionAction = false;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');		
+		
+    	//sectionButtons.classList.remove('fecharMenu');
+    	//sectionButtons.classList.add('fecharMenu');
+    	    	
+    	optionAction = true;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+	}	
 }
 
 //

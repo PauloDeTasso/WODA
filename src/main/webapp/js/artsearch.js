@@ -28,52 +28,6 @@ function openPage(link, target)
     window.open(link, target);
 };
 
-//SE SALVE ESTADO FOR TRUE ENTAO:
-
-if (localStorage.getItem("statusSaveConfig") == "true")
-{
-    if (localStorage.getItem('menuMain') == "true")
-    {
-        sectionButtons.style.visibility = "visible";
-
-    } else if (localStorage.getItem('menuMain') == "false")
-    {
-        sectionButtons.style.visibility = "hidden";
-
-    } else
-    {
-        sectionButtons.style.visibility = "hidden";
-    }
-
-    //
-
-    if (localStorage.getItem('menuSeacher') == "true")
-    {
-        seacher.style.display = "flex";
-
-    } else if (localStorage.getItem('menuSeacher') == "false")
-    {
-        seacher.style.display = "none";
-
-    } else
-    {
-        seacher.style.display = "none";
-    }
-
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-
-} else if (localStorage.getItem("statusSaveConfig") == "false")
-{
-    saveStatusOn.checked = false;
-    saveStatusOff.checked = true;
-
-} else
-{
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-}
-
 //
 
 function openCloseSection(elemento, propriedade, action)
@@ -110,7 +64,7 @@ function openCloseSection(elemento, propriedade, action)
 
 ////
 
-function openClose(elemento, propriedade, conteiner)
+function openClose(elemento, propriedade)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -246,6 +200,46 @@ function openCloseOption(elemento, propriedade)
             }
 }
 
+//
+
+ var optionAction;
+  
+ function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');
+				
+    	//sectionButtons.classList.remove('abrirMenu');
+    	//sectionButtons.classList.add('abrirMenu');
+    	optionAction = false;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');		
+		
+    	//sectionButtons.classList.remove('fecharMenu');
+    	//sectionButtons.classList.add('fecharMenu');
+    	    	
+    	optionAction = true;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+	}	
+}
+
 function changeButton(button)
 {
 	var estiloCabecalho = window.getComputedStyle(button);
@@ -261,3 +255,42 @@ function changeButton(button)
 	}
 }
 
+//
+
+var optionAction;
+  
+function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');
+				
+    	//sectionButtons.classList.remove('abrirMenu');
+    	//sectionButtons.classList.add('abrirMenu');
+    	optionAction = false;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');		
+		
+    	//sectionButtons.classList.remove('fecharMenu');
+    	//sectionButtons.classList.add('fecharMenu');
+    	    	
+    	optionAction = true;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+	}	
+}

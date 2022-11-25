@@ -27,54 +27,6 @@ var searchOption = document.getElementsByName('searchoption');
 
 /////////
 
-//SE SALVE ESTADO FOR TRUE ENTAO:
-
-if (localStorage.getItem("statusSaveConfig") == "true")
-{
-    if (localStorage.getItem('menuMain') == "true")
-    {
-        sectionButtons.style.visibility = "visible";
-
-    } else if (localStorage.getItem('menuMain') == "false")
-    {
-        sectionButtons.style.visibility = "hidden";
-
-    } else
-    {
-        sectionButtons.style.visibility = "hidden";
-    }
-
-    //
-
-    if (localStorage.getItem('menuSeacher') == "true")
-    {
-        seacher.style.display = "flex";
-
-    } else if (localStorage.getItem('menuSeacher') == "false")
-    {
-        seacher.style.display = "none";
-
-    } else
-    {
-        seacher.style.display = "none";
-    }
-
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-
-} else if (localStorage.getItem("statusSaveConfig") == "false")
-{
-    saveStatusOn.checked = false;
-    saveStatusOff.checked = true;
-
-} else
-{
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-}
-
-//
-
 function openPage(link, target)
 {
     window.open(link, target);
@@ -116,7 +68,7 @@ function openCloseSection(elemento, propriedade, action)
 
 ////
 
-function openClose(elemento, propriedade, conteiner)
+function openClose(elemento, propriedade)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -129,13 +81,9 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.display = "flex";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.display = "none";
-
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -146,39 +94,9 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.visibility = "visible";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.visibility = "hidden";
-
-                localStorage.setItem(conteiner, false);
-            }
-
-            break;
-
-        default:
-
-    }
-}
-
-function saveConfig(option, status)
-{
-    switch (option)
-    {
-        case "statusSaveConfig":
-
-            if (status == true)
-            {
-                localStorage.setItem("statusSaveConfig", true);
-
-            } else if (status == false)
-            {
-                localStorage.setItem("statusSaveConfig", false);
-
-            } else
-            {
-                localStorage.setItem("statusSaveConfig", false);
             }
 
             break;
@@ -297,4 +215,44 @@ function openCloseOption(elemento, propriedade)
             {
                 elemento.style.display = "none";
             }
+}
+
+//
+
+ var optionAction;
+  
+ function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');
+				
+    	//sectionButtons.classList.remove('abrirMenu');
+    	//sectionButtons.classList.add('abrirMenu');
+    	optionAction = false;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');		
+		
+    	//sectionButtons.classList.remove('fecharMenu');
+    	//sectionButtons.classList.add('fecharMenu');
+    	    	
+    	optionAction = true;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+	}	
 }

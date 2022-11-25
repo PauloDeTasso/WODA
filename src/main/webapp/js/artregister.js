@@ -123,7 +123,7 @@ function openCloseSection(elemento, propriedade, action)
 
 ////
 
-function openClose(elemento, propriedade, conteiner)
+function openClose(elemento, propriedade)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -486,6 +486,46 @@ function openCloseOption(elemento, propriedade)
             {
                 elemento.style.display = "none";
             }
+}
+
+//
+
+ var optionAction;
+  
+ function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');
+				
+    	//sectionButtons.classList.remove('abrirMenu');
+    	//sectionButtons.classList.add('abrirMenu');
+    	optionAction = false;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');		
+		
+    	//sectionButtons.classList.remove('fecharMenu');
+    	//sectionButtons.classList.add('fecharMenu');
+    	    	
+    	optionAction = true;
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+	}	
 }
 
 //

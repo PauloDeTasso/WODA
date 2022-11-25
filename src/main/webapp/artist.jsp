@@ -48,43 +48,43 @@ String dataDePublicacao;
 
             <section id="sectionButtons">
 
-                <button type="button" id="seacherButton" class="Buttons">
+                <button type="button" class="Buttons4">
 
-                    <img class="ImagesButtons" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
+                    <img class="ImageButton3" id="imageSeacherButton" src="images/icons/pesquisar04.png" alt=""
                         onclick="openPage('artistsearch','_self')">
 
                 </button>                
                 
-        		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
+        		<button type="button" Class="Buttons4" onclick="openPage('searcharts','_self')">
 
-                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+                <img class="ImageButton3" src="images/icons/pesquisar05.png" alt="">
 
 	            </button>
 
-                <button type="button" id="registerButton" class="Buttons">
+                <button type="button" class="Buttons4">
 
-                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
 
-                <button type="button" id="configButton" class="Buttons">
+                <button type="button" class="Buttons4">
 
-                    <img class="ImagesButtons" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
+                    <img class="ImageButton3" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
                         onclick="openCloseOption(config,'display')">
 
                 </button>
 
-                <button type="button" id="infoButton" class="Buttons">
+                <button type="button" class="Buttons4">
 
-                    <img class="ImagesButtons" id="imageInfoButton" src="images/icons/info.png" alt=""
-                        onclick="openClose(info,'display','menuInfo')">
+                    <img class="ImageButton3" id="imageInfoButton" src="images/icons/info.png" alt=""
+                        onclick="openClose(info,'display')">
 
                 </button>
 
-    			<button type="button" id="registerButton" class="Buttons">
+    			<button type="button" class="Buttons4">
 
-                    <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
                         onclick="openPage('index.html', '_self')">
 
                 </button>
@@ -95,8 +95,8 @@ String dataDePublicacao;
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
-                        onclick="openClose(sectionButtons,'visibility','menuMain')">
+                    <img id="imagemButtonMenu" src="images/icons/menu03.png" alt=""
+                        onclick="abrirOptions()">
 
                 </button>
 
@@ -130,7 +130,7 @@ String dataDePublicacao;
 
                                 <button type="button" class="Buttons" onclick="openPage('selectartistedit?idartist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
 
-                                    <img class="ImagesButtons" src="images/icons/editar03.png"
+                                    <img class="ImageButton3" src="images/icons/editar03.png"
                                         alt="">
 
                                 </button>
@@ -142,7 +142,7 @@ String dataDePublicacao;
                                 <button type="button" class="Buttons">
 									
 									<a href="javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>,'artist')">
-										<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
 									</a>
 
                                 </button>
@@ -261,11 +261,11 @@ String dataDePublicacao;
 
                 <section id="sectionRegisterButtons">
 
-                    <section>                        
+                    <section id="registerButton">                        
 
-                        <button type="button" class="Buttons" onclick="openPage('addart','_self')">
+                        <button type="button" class="Button3" onclick="openPage('addart','_self')">
 
-                            <img class="ImagesButtons" id="imageRegisterButton" src="images/icons/ADD01.png"
+                            <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artAdd01.png"
                                 alt="">
 
                         </button>
@@ -302,7 +302,7 @@ String dataDePublicacao;
                                     <button type="button" class="Buttons">
  									
  									<a href="arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%out.print(request.getAttribute("name"));%>">										
-                                        <img class="ImagesButtons" 
+                                        <img class="ImageButton3" 
                                             src="images/icons/editar03.png" alt="">
 									</a>
  
@@ -315,7 +315,7 @@ String dataDePublicacao;
                                     <button type="button" class="Buttons">
 
                                        <a href="javascript: removeConfirm('<%out.print(request.getAttribute("idArtist"));%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%out.print(request.getAttribute("name"));%>','<%=listAllArtsArtist.get(i).getName()%>')">
-											<img class="ImagesButtons" src="images/icons/deletar01Vazio.png" alt="">
+											<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
 									   </a>
 
                                     </button>
@@ -418,7 +418,7 @@ String dataDePublicacao;
 
                     	<h3>REGISTER USERS</h3>
                     	
-                  		<button type="button" class="Buttons">
+                  		<button type="button" class="Buttons3">
 
                    			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
                         	onclick="openPage('users','_self')">
@@ -429,14 +429,18 @@ String dataDePublicacao;
 				
         </section>     
 
-        <section id="info">
+      <section id="info">
+            
+            WODA®<br>
+            World of digital artists<br>
+			Developer App: <br>
+			Paulo de Tasso - Brazil <br>
+            Software Application - Full Stack<br>
 
-            Dev - Paulo de Tasso <br>
-            Senior Full Stack Developer <br>
-            World of digital artists - WODA®
-
-            <img class="ImagesButtons" src="images/icons/SUPORTE01.png" alt="">
-
+			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+			</a>
+			
         </section>
 
     </body>

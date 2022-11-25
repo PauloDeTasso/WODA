@@ -25,53 +25,8 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 var searchOption = document.getElementsByName('searchoption');
 
+
 /////////
-
-//SE SALVE ESTADO FOR TRUE ENTAO:
-
-if (localStorage.getItem("statusSaveConfig") == "true")
-{
-    if (localStorage.getItem('menuMain') == "true")
-    {
-        sectionButtons.style.visibility = "visible";
-
-    } else if (localStorage.getItem('menuMain') == "false")
-    {
-        sectionButtons.style.visibility = "hidden";
-
-    } else
-    {
-        sectionButtons.style.visibility = "hidden";
-    }
-
-    //
-
-    if (localStorage.getItem('menuSeacher') == "true")
-    {
-        seacher.style.display = "flex";
-
-    } else if (localStorage.getItem('menuSeacher') == "false")
-    {
-        seacher.style.display = "none";
-
-    } else
-    {
-        seacher.style.display = "none";
-    }
-
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-
-} else if (localStorage.getItem("statusSaveConfig") == "false")
-{
-    saveStatusOn.checked = false;
-    saveStatusOff.checked = true;
-
-} else
-{
-    saveStatusOn.checked = true;
-    saveStatusOff.checked = false;
-}
 
 //
 
@@ -150,7 +105,7 @@ function openCloseSection(elemento, propriedade, action)
 
 ////
 
-function openClose(elemento, propriedade, conteiner)
+function openClose(elemento, propriedade)
 {
     var estiloCabecalho = window.getComputedStyle(elemento);
     var propriedadeCabecalho = estiloCabecalho.getPropertyValue(propriedade);
@@ -163,13 +118,9 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.display = "flex";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.display = "none";
-
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -180,13 +131,9 @@ function openClose(elemento, propriedade, conteiner)
             {
                 elemento.style.visibility = "visible";
 
-                localStorage.setItem(conteiner, true);
-
             } else 
             {
                 elemento.style.visibility = "hidden";
-
-                localStorage.setItem(conteiner, false);
             }
 
             break;
@@ -209,32 +156,6 @@ function openCloseOption(elemento, propriedade)
             {
                 elemento.style.display = "none";
             }
-}
-
-function saveConfig(option, status)
-{
-    switch (option)
-    {
-        case "statusSaveConfig":
-
-            if (status == true)
-            {
-                localStorage.setItem("statusSaveConfig", true);
-
-            } else if (status == false)
-            {
-                localStorage.setItem("statusSaveConfig", false);
-
-            } else
-            {
-                localStorage.setItem("statusSaveConfig", false);
-            }
-
-            break;
-
-        default:
-
-    }
 }
 
 function zoom(image, zoom)
@@ -376,63 +297,6 @@ reader.onload = function()
 
 //
 
-
-mySearchArts.addEventListener("search",()=>
-{
-	submitSearcher(mySearchArts.value,"arts");
-},false);
-
-//
-
-mySearchArtists.addEventListener("search",()=>
-{
-	submitSearcher(mySearchArtists.value,"artists");
-},false);
-
-//
-
-
-//
-
-function submitSearcher(value,type)
-{		
-	switch(type)
-	{
-		case 'artists':
-		/*
-		if(value == null || value == undefined ||value == "" || value == " ")
-		{
-		
-		}else
-		{
-			*/
-	 	window.location.href = "searchartist?text=" + value;
-		//}
-		
-		break;
-		
-		case 'arts':
-		/*
-		if(value == null || value == undefined ||value == "" || value == " ")
-		{
-		
-		}else
-		{*/
-	 	for (let i = 0; i < searchOption.length; i++)
-            {
-                if (searchOption[ i ].checked)
-                {
-                    window.location.href = "searcharts?text=" + value + "&option=" + searchOption[ i ].value;
-                }
-            }
-		//}
-		
-		break;
-		
-		default:		
-	}	
-};
-
 function changeButton(button)
 {
 	var estiloCabecalho = window.getComputedStyle(button);
@@ -448,50 +312,62 @@ function changeButton(button)
 	}
 }
 
-
-var selectGender = document.querySelector("#selectGender");
-
-var optionsGender = [...selectGender.options];
-
-var selectNationality = document.querySelector("#selectNationality");
-
-var optionsNationality = [...selectNationality.options];
-
 //
 
-/*
-
-<option value="<%out.print(request.getAttribute("nationality"));%>" selected>
-								<%out.print(request.getAttribute("nationality"));%>
-								</option>
-
-*/
-
-function selectSelects()
-{
-	for (var i = 0; i < optionsGender.length; i++)
-	{
-		if(valueGenderJs.value == optionsGender[i].value)
-		{
-			optionsGender[i].selected = true;
-		}
-	}
-	
-	for (var i = 0; i < optionsNationality.length; i++)
-	{
-		if(valueNationalityJs.value == optionsNationality[i].value)
-		{
-			optionsNationality[i].selected = true;
-		}
-	}
+ var optionAction;
+  
+ function abrirOptions()
+{	
+	if (optionAction == undefined ||optionAction == "undefined" || optionAction == true)
+	{		
+		sectionButtons.classList.toggle('abrirMenu');	
+		
+    	optionAction = false;
+    	
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";
+    	}, 1000);
+    	
+    }else
+    {
+	    sectionButtons.classList.toggle('fecharMenu');				 	
+    	
+    	optionAction = true;    	
+    	
+    	//sectionButtons.style.animation = "none";
+    	
+    	setTimeout(function ()
+    	{
+        sectionButtons.style.animation = "";	
+    	}, 1000);
+    	
+	}	
 }
 
- 
-setTimeout(() =>
-{	
-    selectSelects();
-    
-}, 5000);
+/*
+		Email.send
+		(
+		{
+        	Host: "smtp.gmail.com",
+        	Username: "sender@email_address.com",
+        	Password: "Enter your password",
+        	To: 'receiver@email_address.com',
+        	From: "sender@email_address.com",
+        	Subject: "Sending Email using javascript",
+        	Body: "Well that was easy!!",
+        	Attachments:
+        	[
+          	{
+            	name: "File_Name_with_Extension",
+            	path: "Full Path of the file"
+          	}
+          	]
+      	}
+      	)
+*/
 
- selectSelects();
-
+//onclick="openClose(sectionButtons,'visibility','menuMain')"

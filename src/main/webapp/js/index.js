@@ -99,12 +99,12 @@ function showPassword()
 	if(passwordInput.type == "password")
 	{
 		passwordInput.type = "text";	
-		imgViewPassword.src = "images/icons/ver02.png";
+		imgViewPassword.src = "images/icons/ver01.png";
 		
 	}else
 	{
 		passwordInput.type = "password";	
-		imgViewPassword.src = "images/icons/veresconder.png";	
+		imgViewPassword.src = "images/icons/esconder01.png";	
 	}
 
 }

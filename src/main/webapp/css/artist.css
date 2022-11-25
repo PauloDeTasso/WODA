@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-
 html {
     display: flex;
     flex-direction: column;
@@ -10,17 +9,16 @@ html {
     align-items: center;
     width: 100%;
     height: auto;
-    background-color: rgba(211, 145, 69,0);
-    opacity: 1;    
-    font-family: 'Open Sans', sans-serif;
-    border-bottom: 10px solid rgb(252, 178, 100);
-    border-radius: 100px;
-    margin-bottom: 100px;
+    background-color: rgb(211, 145, 69);
     background-image: url("../images/logos/LogoWODA4.png");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-attachment: fixed;
     background-position: center;
+    font-family: 'Open Sans', sans-serif;
+    /*border-bottom: 10px solid rgba(252, 178, 100,0.7);*/
+    border-radius: 100px;
+    margin-bottom: 200px;    
 }
 
 /*////////////////////////////*/
@@ -34,7 +32,7 @@ header {
     width: 100%;
     height: 100px;
     top: 0px;
-    border: 2px solid rgba(189, 118, 53, 0.2);
+    border: 10px solid rgba(189, 118, 53, 0);
 }
 
 #sectionMenu {
@@ -44,9 +42,8 @@ header {
     align-items: center;
     width: 100%;
     height: auto;
-    border: 10px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(255, 159, 70, 0.7);
-    /*background-color: rgb(255, 205, 159);*/
+    border: 10px solid rgba(255, 255, 255, 0);
+    background-color: rgba(255, 159, 70, 0);
 }
 
 #sectionButtons {
@@ -59,18 +56,6 @@ header {
     visibility: visible;
     border: 0px solid rgb(255, 0, 0);
     background-color: rgba(255, 159, 70, 0);
-    border-radius: 10px;
-}
-
-.SectionButtons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    height: auto;
-    border: 0px solid rgb(255, 0, 0);
-    background-color: rgba(255, 159, 70, 0.7);
     border-radius: 10px;
 }
 
@@ -96,13 +81,74 @@ header {
     border: 0px solid rgb(255, 255, 255);
 }
 
+.Button3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 159, 70, 0);
+    border: 10px solid rgb(255, 255, 255,0);
+    border-radius: 20px;
+    cursor: pointer;
+   	margin: 4px;
+}
+
+#registerButton
+{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background-color: rgba(255, 159, 70, 0.7);
+    border: 2px solid rgb(255, 255, 255,0);
+    border-radius: 20px;
+    cursor: pointer;
+   	margin: 2px;
+}
+
+.Buttons4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;     
+	text-align: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 2px solid rgba(255, 255, 255,0);
+}
+
+.Buttons4:hover {
+    cursor: pointer;
+    background-color: rgba(255, 159, 70, 0);
+    opacity: 0.7;
+}
+
+.ImageButton3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgb(255, 255, 255,0);
+    cursor: pointer;
+}
+
+
 .ImagesButtons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: auto;
+    border: 10px solid rgb(255, 255, 255,0);
+    cursor: pointer;
 }
 
 .Buttons:hover {
@@ -110,37 +156,9 @@ header {
     cursor: pointer;
 }
 
-#sectionMenuButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-}
-
-#buttonMenu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: 0px solid rgb(85, 85, 85);
-    background-color: rgba(0, 0, 0, 0.0);
-}
-
-#imagemButtonMenu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: 0px solid rgba(85, 85, 85, .1);
-    background-color: rgba(0, 0, 0, 0.0);
-    margin: 2%;
+.Button3:hover {
     opacity: .8;
+    cursor: pointer;
 }
 
 #imagemButtonMenu:hover {
@@ -159,8 +177,8 @@ body {
     width: 100%;
     height: auto;
     border: 0px solid rgb(0, 22, 119);
-    margin-top: 120px;
-    margin-bottom: 100px;
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 
 #config {
@@ -168,7 +186,7 @@ body {
     grid-template-columns: 40% 40%;    
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     width: 400px;
@@ -180,6 +198,26 @@ body {
     text-align: center;
     z-index: 1000;
     border-radius: 20px;
+}
+
+#info {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 140px;
+    margin-left: -100px;
+    margin-top: -100px;
+    color: rgb(209, 209, 209);
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    z-index: 1000;
+    border: 10px solid rgba(255, 255, 255, 0.3);
+    font-size: 100%;
+    border-radius: 7px;
 }
 
 #seacher {
@@ -320,8 +358,10 @@ body {
 }
 
 .SectionDataArtist {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 1%;
+    row-gap: 1%;
     justify-content: center;
     align-items: stretch;
     width: 100%;
@@ -386,38 +426,6 @@ footer {
     font-size: 87%;
 }
 
-#info {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-
-    /* posição absoluta ao elemento pai, neste caso o BODY */
-    /* Posiciona no meio, tanto em relação a esquerda como ao topo */
-    left: 50%;
-    top: 50%;
-    width: 200px;
-    /* Largura da DIV */
-    height: 70px;
-    /* Altura da DIV */
-    /* A margem a esquerda deve ser menos a metade da largura */
-    /* A margem ao topo deve ser menos a metade da altura */
-    /* Fazendo isso, centralizará a DIV */
-    margin-left: -100px;
-    margin-top: -100px;
-    color: rgb(209, 209, 209);
-    background-color: rgba(0, 0, 0, 0.959);
-    text-align: center;
-    /* Centraliza o texto */
-    z-index: 1000;
-    /* Faz com que fique sobre todos os elementos da página */
-    border: 5px solid rgba(255, 255, 255, 0.363);
-    /*
-    font-family: Arial, Helvetica, sans-serif;
-   */
-    font-size: 70%;
-}
-
 #titleArtistName {
     justify-content: flex-start;
     align-items: flex-start;
@@ -447,14 +455,13 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: stretch;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    text-align: center;
+    vertical-align: center;    
+    width: 80%;
+    height: 50px;
     border: 2px solid rgb(0, 0, 0);
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
-    font-size: 100%;
+    font-size: 120%;
     background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
     color: rgb(255, 252, 210);
@@ -595,11 +602,9 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 40%;
     height: auto;
-    background-color: rgba(211, 145, 69, 0.3);
-    border-top: 10px solid rgb(252, 178, 100);
-    border-radius: 3px;
+    border-top: 10px solid rgba(252, 178, 100,0);   
 }
 
 #sectionArtist {
@@ -620,6 +625,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: auto;
     border: 10px solid rgba(211, 145, 69,0);
+    background-color: rgba(211, 145, 69,0.3);
 }
 
 .SectionImageArtist {
@@ -630,7 +636,8 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: auto;
     border: 10px solid rgba(211, 145, 69,0);
-    background-color: rgba(211, 145, 69,0.3);
+    background-color: rgba(211, 145, 69,0.5);
+    border-radius: 30px;
 }
 
 #imageArtist {
@@ -701,15 +708,15 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    width: 80%;
+    height: auto;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
-    font-size: 100%;
+    font-size: 120%;
     border: 10px solid rgba(0, 0, 0, 0);
     font-weight: 700;
     background-color: rgba(252, 178, 100,0.5);
-    border-radius: 100px;
+    border-radius: 30px;
 }
 
 .TitlesArtist {
@@ -732,8 +739,8 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgba(252, 178, 100,0.3);
-    border-radius: 100px;
+    background-color: rgba(252, 178, 100,0.7);
+    border-radius: 20px;
 }
 
 .TextDescription {
@@ -752,13 +759,12 @@ body::-webkit-scrollbar-thumb {
 .buttonsZoom {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 40%;
+    width: auto;
     background-color: rgba(211, 145, 69,0);
-    border-top: 10px solid rgb(252, 178, 100);
-    border-radius: 100px;
-    margin: 1%;
+    border-top: 10px solid rgba(252, 178, 100,0.7);
+    border-radius: 40px;
 }
 
 .SectionRegisterButtons2
@@ -799,4 +805,120 @@ fieldset {
     border-radius: 10px;
     border-color: rgba(255, 159, 70, 0.7);
     border-width: 5px;
+}
+
+.SectionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgb(255, 0, 0);
+    background-color: rgba(255, 159, 70, 0);
+    border-radius: 10px;
+}
+
+/**/
+
+#sectionMenuButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    right:10px;
+    width: 70px;
+    height: 70px;
+}
+
+#buttonMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0px solid rgb(85, 85, 85);
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+#imagemButtonMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 0px solid rgba(85, 85, 85, .1);
+    background-color: rgba(0, 0, 0, 0.0);
+    margin: 2%;
+    opacity: .8;
+}
+
+
+#sectionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 159, 70, 0);
+    border-radius: 3px;
+    margin-right: 170%;
+    border-right: 100px solid rgba(255, 0, 0,0);
+}
+
+.abrirMenu {
+    animation: abrirMenuCss 5s;
+    animation-iteration-count:1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes abrirMenuCss
+{
+    0%
+    {
+       margin-right: 200%;
+       border: 10px solid rgba(255, 255, 255, 0);
+       border-right: 100px solid rgba(255, 0, 0,0);
+       border-left: 100px solid rgba(255, 0, 0,0);
+    }
+
+    100%
+    {
+       margin-right: 0%;
+       border: 10px solid rgba(255, 255, 255, 0.7);
+       border-right: 100px solid rgba(255, 0, 0,0);
+       border-left: 100px solid rgba(255, 0, 0,0);
+    }
+}
+
+.fecharMenu {
+    animation: fecharMenuCss 5s;
+    animation-iteration-count:1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fecharMenuCss
+{
+    0%
+    {
+        margin-right: 0%;
+      	border: 10px solid rgba(255, 255, 255, 0.7);
+      	border-right: 100px solid rgba(255, 0, 0,0);
+      	border-left: 100px solid rgba(255, 0, 0,0);
+    }
+
+    100%
+    {
+        margin-right: 200%;
+       	border: 10px solid rgba(255, 255, 255, 0);
+       	border-right: 100px solid rgba(255, 0, 0,0);
+       	border-left: 100px solid rgba(255, 0, 0,0);
+       		
+    }
 }
