@@ -25,9 +25,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="css/register.css" />
-        
-        <link rel="stylesheet" href="css/home.css"/>
+        <link rel="stylesheet" href="css/user.css" />
 
         <title>WODA</title>
 
@@ -56,7 +54,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                 
         		<button type="button" Class="Buttons" onclick="openPage('searcharts','_self')">
 
-                <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
+                <img class="ImageButton3" src="images/icons/pesquisar05.png" alt="">
 
 	            </button>
 
@@ -76,8 +74,8 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
     			<button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
-                        onclick="openPage('index.html', '_self')">
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/exit01.png" alt=""
+                        onclick="openPage('javascript: exit()', '_self')">
 
                 </button>
 
@@ -117,7 +115,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                         <td>
 
                             <input id="idInputEdit" type="number" name="userid" placeholder="ID"
-                                value="<%out.print(authentication.getUserId());%>" readonly>
+                                value="<%out.print(authentication.getUserId());%>" min="1" max="1000" readonly>
 
                         </td>
 					
@@ -127,7 +125,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                     
                         <td>
 
-                            <input type="text" name="userlogin" maxlength="50" size='50' placeholder="LOGIN" value="<%out.print(authentication.getUserLogin());%>"
+                            <input type="text" name="userlogin" maxlength="20" size="20" placeholder="LOGIN" value="<%out.print(authentication.getUserLogin());%>"
                                 required>
 
                         </td>                      
@@ -138,7 +136,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                      
                         <td>
 
-                            <input id="passwordInput" type="password" name="userpassword" maxlength="50" size='50' placeholder="PASSWORD"
+                            <input id="passwordInput" type="password" name="userpassword" maxlength="20" size="20" placeholder="PASSWORD"
                              value="<%out.print(authentication.getUserPassword());%>"   required>
 									              					
                         </td>    
@@ -189,13 +187,20 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
             
             WODA®<br>
             World of digital artists<br>
-			Developer App: <br>
-			Paulo de Tasso - Brazil <br>
-            Software Application - Full Stack<br>
+			Developer: <br>
+			Paulo de Tasso<br>
+            Web Software Application<br>
+            Full Stack<br>			
+			
+			 <button type="button" id="seacherButton" class="Buttons">
 
-			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-			</a>
+             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+             	
+          	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+          	  		
+				</a>
+
+             </button>      
 			
         </section>
 
@@ -203,7 +208,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                              	 
              <button type="button" class="Buttons" onclick="openClose(sectionTableSeacher,'display')">
                  
-                 <img class="ImageButton3" src="images/icons/USUARIOS09.png" alt="">
+                 <img class="ImagesButtonsRegister" src="images/icons/userList01.png" alt="">
              
               </button>
                                     
@@ -266,7 +271,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
 										<a href="userselect?userid=<%=listAllUsers.get(i).getUserId()%>&userlogin=<%=listAllUsers.get(i).getUserLogin()%>&userpassword=<%=listAllUsers.get(i).getUserPassword()%>">
 										
-                                    		<img class="ImageButton3" src="images/icons/userEdit01.png"alt="">
+                                    		<img class="ImagesButtonsRegister" src="images/icons/userEdit01.png"alt="">
                                     		
 										</a>
 	
@@ -276,7 +281,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									
 										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>')">
 										
-											<img class="ImageButton3" src="images/icons/userDelete01.png" alt="">
+											<img class="ImagesButtonsRegister" src="images/icons/userDelete01.png" alt="">
 											
 										</a>
 
@@ -306,7 +311,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
     </footer>
 
-    <script src="js/artistregister.js">
+    <script src="js/user.js">
 
     </script>    
 

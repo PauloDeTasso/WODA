@@ -16,7 +16,6 @@ html {
     background-attachment: fixed;
     background-position: center;
     font-family: 'Open Sans', sans-serif;
-    /*border-bottom: 10px solid rgba(252, 178, 100,0.7);*/
     border-radius: 100px;
     margin-bottom: 200px;    
 }
@@ -868,13 +867,10 @@ a
 }
 
 p
-{
-	display: flex;
-    flex-direction: column;
+{	
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 90%;
 	font-size: 70%;
 	font-style: italic;
 	color: rgb(20,20,20);
@@ -1143,7 +1139,7 @@ fieldset {
     height: auto;
     background-color: rgba(255, 159, 70, 0);
     border-radius: 10px;
-    margin-right: 140%;
+    margin-right: 200%;
     border-right: 100px solid rgba(255, 0, 0,0);
 }
 
@@ -1161,9 +1157,15 @@ fieldset {
        margin-right: 200%;
        border: 10px solid rgba(255, 255, 255, 0);
        border-right: 100px solid rgba(255, 0, 0,0);
-       border-left: 100px solid rgba(255, 0, 0,0);
+       border-left: 100px solid rgba(255, 0, 0,0);  
+       opacity: 0;     
     }
 
+	50%
+	{
+	 opacity: 1;
+	}
+    
     100%
     {
        margin-right: 0%;
@@ -1174,7 +1176,7 @@ fieldset {
 }
 
 .fecharMenu {
-    animation: fecharMenuCss 10s;
+    animation: fecharMenuCss 7s;
     animation-iteration-count:1;
     animation-direction: normal;
     animation-fill-mode: forwards;
@@ -1187,16 +1189,21 @@ fieldset {
         margin-right: 0%;
       	border: 10px solid rgba(255, 255, 255, 0.7);
       	border-right: 100px solid rgba(255, 0, 0,0);
-      	border-left: 100px solid rgba(255, 0, 0,0);
+      	border-left: 100px solid rgba(255, 0, 0,0);    	
     }
 
+	50%
+	{
+		opacity: 1;
+	}
+	
     100%
     {
         margin-right: 200%;
        	border: 10px solid rgba(255, 255, 255, 0);
        	border-right: 100px solid rgba(255, 0, 0,0);
        	border-left: 100px solid rgba(255, 0, 0,0);
-       		
+       	opacity: 0;	
     }
 }
 

@@ -70,8 +70,8 @@ String dataDePublicacao;
 
                 <button type="button" class="Buttons4">
 
-                    <img class="ImageButton3" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openCloseOption(config,'display')">
+                    <img class="ImageButton3" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('users','_self')">
 
                 </button>
 
@@ -84,8 +84,8 @@ String dataDePublicacao;
 
     			<button type="button" class="Buttons4">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
-                        onclick="openPage('index.html', '_self')">
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/exit01.png" alt=""
+                        onclick="openPage('javascript: exit()', '_self')">
 
                 </button>
 
@@ -396,50 +396,26 @@ String dataDePublicacao;
 
 		 </fieldset>
 		 
-        </section>
+        </section>		
 
-		<section id="config">
-
-			<section class="SectionRegisterButtons2">
-
-                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
-                				
-                   	 	<label for="saveStatus">ON
-                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
-                            onchange="saveConfig('statusSaveConfig',true)"></label>
-
-                    	<label for="saveStatus">OFF
-                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
-                            onchange="saveConfig('statusSaveConfig',false)"></label>
-
-            </section> 	
-
-			<section class="SectionRegisterButtons2">							
-
-                    	<h3>REGISTER USERS</h3>
-                    	
-                  		<button type="button" class="Buttons3">
-
-                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
-                        	onclick="openPage('users','_self')">
-
-               			</button>
-
-			</section>
-				
-        </section>     
-
-      <section id="info">
+     <section id="info">
             
             WODA®<br>
             World of digital artists<br>
-			Developer App: <br>
-			Paulo de Tasso - Brazil <br>
-            Software Application - Full Stack<br>
+			Developer: <br>
+			Paulo de Tasso<br>
+            Web Software Application<br>
+            Full Stack<br>			
+			
+			 <button type="button" id="seacherButton" class="Buttons">
 
-			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-			</a>
+             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+             	
+          	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+          	  		
+				</a>
+
+             </button>      
 			
         </section>
 

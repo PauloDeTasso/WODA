@@ -73,8 +73,8 @@
 
                 <button type="button" id="configButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openCloseOption(config,'display')">
+                   <img class="ImageButton3" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('users','_self')">
 
                 </button>
 
@@ -87,8 +87,8 @@
 
     			<button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
-                        onclick="openPage('index.html', '_self')">
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/exit01.png" alt=""
+                        onclick="openPage('javascript: exit()', '_self')">
 
                 </button>
 
@@ -138,7 +138,7 @@
                     <tr>
                         <td>
 
-                            <input id="nameInputEdit" type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
+                            <input id="nameInputEdit" type="text" name="name" maxlength="40" size="40" placeholder="ART NAME"
                                 onblur="validateName(this.value)" onchange="validateName(this.value)" value="<%=listArtByIdArt.get(0).getName()%>" required>
 
                         </td>
@@ -150,8 +150,8 @@
                     <tr>
                         <td>
 
-                            <input id="descriptionInputEdit" type="text" id="description" name="description"
-                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" placeholder="ART DESCRIPTION" value="<%=listArtByIdArt.get(0).getDescription()%>"
+                            <input id="descriptionInputEdit" type="text" name="description"
+                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" size="40" placeholder="ART DESCRIPTION" value="<%=listArtByIdArt.get(0).getDescription()%>"
                                 required>
 
                         </td>
@@ -166,7 +166,7 @@
 
                             <input id="publicationDate" type="text" name="publicationdate" 
                             placeholder="...PUBLICATION DATE..." value="<%=(listArtByIdArt.get(0).getDataDePublicacao() == null) ? "" : listArtByIdArt.get(0).getDataDePublicacao()%>"
-                            onfocus="(this.type='date')" onblur="validateDate('publicationDate',msgPublicationDate)" onchange="validateDate('publicationDate',msgPublicationDate)"  required>
+                            onfocus="(this.type='date')" min="1900-01-01" onblur="validateDate('publicationDate',msgPublicationDate)" onchange="validateDate('publicationDate',msgPublicationDate)"  required>
 
                         </td>
                         <td>
@@ -180,7 +180,7 @@
 
                             <input id="exposureDate" type="text" name="exposuredate" 
                             placeholder="...EXPOSURE DATE..." value="<%=(listArtByIdArt.get(0).getDataDeExposicao() == null) ? "" : listArtByIdArt.get(0).getDataDeExposicao()%>" 
-                            onfocus="(this.type='date')" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" required>
+                            onfocus="(this.type='date')" min="1900-01-01" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" required>
 
                         </td>
 
@@ -336,48 +336,24 @@
 
         </form>
 
-		<section id="config">
-
-			<section class="SectionRegisterButtons2">
-
-                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
-                				
-                   	 	<label for="saveStatus">ON
-                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
-                            onchange="saveConfig('statusSaveConfig',true)"></label>
-
-                    	<label for="saveStatus">OFF
-                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
-                            onchange="saveConfig('statusSaveConfig',false)"></label>
-
-            </section> 	
-
-			<section class="SectionRegisterButtons2">							
-
-                    	<h3>REGISTER USERS</h3>
-                    	
-                  		<button type="button" class="Buttons">
-
-                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
-                        	onclick="openPage('users','_self')">
-
-               			</button>
-
-			</section>
-				
-        </section>     
-
        <section id="info">
             
             WODA®<br>
             World of digital artists<br>
-			Developer App: <br>
-			Paulo de Tasso - Brazil <br>
-            Software Application - Full Stack<br>
+			Developer: <br>
+			Paulo de Tasso<br>
+            Web Software Application<br>
+            Full Stack<br>			
+			
+			 <button type="button" id="seacherButton" class="Buttons">
 
-			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-			</a>
+             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+             	
+          	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+          	  		
+				</a>
+
+             </button>      
 			
         </section>
 

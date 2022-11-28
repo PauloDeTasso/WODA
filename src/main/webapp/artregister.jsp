@@ -64,8 +64,8 @@
 
                 <button type="button" id="configButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageConfigButton" src="images/icons/configurações02.png" alt=""
-                        onclick="openCloseOption(config,'display')">
+                    <img class="ImageButton3" src="images/icons/USUARIOS08.png" alt=""
+                        	onclick="openPage('users','_self')">
 
                 </button>
 
@@ -78,8 +78,8 @@
 
     			<button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/fechar03.png" alt=""
-                        onclick="openPage('index.html', '_self')">
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/exit01.png" alt=""
+                        onclick="openPage('javascript: exit()', '_self')">
 
                 </button>
 
@@ -117,7 +117,7 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
+                            <input type="text" name="name" maxlength="40" size="40" placeholder="ART NAME"
                                 onblur="validateName(this.value)" onchange="validateName(this.value)" required>
 
                         </td>
@@ -130,7 +130,7 @@
                         <td>
 
                             <input type="text" id="description" name="description"
-                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" placeholder="ART DESCRIPTION"
+                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" size="40" placeholder="ART DESCRIPTION"
                                 required>
 
                         </td>
@@ -144,7 +144,7 @@
                         <td>
 
                             <input type="text" name="publicationdate" id="publicationDate"
-                                placeholder="PUBLICATION DATE" onfocus="(this.type='date')"                                 
+                                placeholder="PUBLICATION DATE" onfocus="(this.type='date')" min="1900-01-01"                                
                                 onblur="validateDate('publicationDate',msgPublicationDate)" onchange="validateDate('publicationDate',msgPublicationDate)" value="" required>
 
                         </td>
@@ -158,7 +158,7 @@
                         <td>
 
                             <input type="text" name="exposuredate" id="exposureDate" placeholder="EXPOSURE DATE"
-                                onfocus="(this.type='date')" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" value=""
+                                onfocus="(this.type='date')" min="1900-01-01" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" value=""
                                 required>
 
                         </td>
@@ -285,50 +285,26 @@
 
             </fieldset>
 
-        </form>
-        
-        <section id="config">
-
-			<section class="SectionRegisterButtons2">
-
-                    	<h3>SAVE SYSTEM <br> ACTIONS</h3>
-                				
-                   	 	<label for="saveStatus">ON
-                       		 <input type="radio" name="saveStatus" id="saveStatusOn"
-                            onchange="saveConfig('statusSaveConfig',true)"></label>
-
-                    	<label for="saveStatus">OFF
-                      	  <input type="radio" name="saveStatus" id="saveStatusOff"
-                            onchange="saveConfig('statusSaveConfig',false)"></label>
-
-            </section> 	
-
-			<section class="SectionRegisterButtons2">							
-
-                    	<h3>REGISTER USERS</h3>
-                    	
-                  		<button type="button" class="Buttons">
-
-                   			<img class="Images" src="images/icons/USUARIOS08.png" alt=""
-                        	onclick="openPage('users','_self')">
-
-               			</button>
-
-			</section>
-				
-        </section>     
+        </form>               
 
        <section id="info">
             
             WODA®<br>
             World of digital artists<br>
-			Developer App: <br>
-			Paulo de Tasso - Brazil <br>
-            Software Application - Full Stack<br>
+			Developer: <br>
+			Paulo de Tasso<br>
+            Web Software Application<br>
+            Full Stack<br>			
+			
+			 <button type="button" id="seacherButton" class="Buttons">
 
-			<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-          	  <img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-			</a>
+             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
+             	
+          	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
+          	  		
+				</a>
+
+             </button>      
 			
         </section>
 

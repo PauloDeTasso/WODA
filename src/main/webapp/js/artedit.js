@@ -572,6 +572,23 @@ function selectSelects()
 
 //
 
+function exit()
+{
+	var exitResponse = confirm("Exit application?");
+
+	    if (exitResponse === true)
+    	{
+        	//TESTE DE RECEBIMENTO:
+        	//alert(idcon);
+
+        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+        	window.location.href = "index.html";
+    	}
+}
+
+//
+
 setTimeout(() =>
 {	
     selectSelects();
