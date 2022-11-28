@@ -511,6 +511,35 @@ public class ConnectionDB
 		}
 	}
 
+	/* CRUD DELETE */
+
+	// DELETE ART - /deleteart:
+
+	public void deleteArtForIdLongDb(long idArt)
+	{
+		String query = "delete from arts where idart = ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			//
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, idArt);
+
+			pst.executeUpdate();
+
+			//
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
 	//
 
 	// SEARCHER ARTIST - /searcher:
@@ -719,11 +748,9 @@ public class ConnectionDB
 	public void editArtDb(Arts art, String dateType)
 	{
 		String query;
-		System.out.println("DB ENTROU DB");
 
 		if (dateType.equals("exposureDate"))
 		{
-			System.out.println("exposureDate");
 			query = "update arts set nome=?, descricao=?, datadepublicacao=?, datadeexposicao=? where idart=?";
 
 			try
@@ -742,8 +769,6 @@ public class ConnectionDB
 
 				con.close();
 
-				System.out.println("exposureDate EDITOU");
-
 			} catch (Exception e)
 			{
 				System.out.println(e);
@@ -752,7 +777,6 @@ public class ConnectionDB
 		} else if (dateType.equals("publicationDate"))
 		{
 			query = "update arts set nome=?, descricao=?, datadepublicacao=?, datadeexposicao=? where idart=?";
-			System.out.println("exposureDate");
 
 			try
 			{
@@ -769,7 +793,6 @@ public class ConnectionDB
 				pst.executeUpdate();
 
 				con.close();
-				System.out.println("publicationDate EDITOU");
 
 			} catch (Exception e)
 			{
@@ -780,7 +803,6 @@ public class ConnectionDB
 		{
 			System.out.println("ART NO ADD!");
 		}
-		System.out.println("DB TERMINOU DB");
 	}
 
 	//
@@ -1250,9 +1272,36 @@ public class ConnectionDB
 
 	//
 
+	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
+
+	public void removeAssociatesArtsExtrasDb(Arts idArt, Long checked)
+	{
+		String query = "delete from properties where idartfk = ? and idartistfk like ?";
+
+		try
+		{
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setLong(1, idArt.getIdart());
+			pst.setLong(2, checked);
+
+			pst.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	//
+
 	///// SELECT ART - /art:
 
-	public ArrayList<Arts> selectArtDb(Arts art)
+	public ArrayList<Arts> listArtByIdArtDb(Arts art)
 	{
 		ArrayList<Arts> listArt = new ArrayList<>();
 

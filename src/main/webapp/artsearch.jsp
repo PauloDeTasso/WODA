@@ -137,12 +137,7 @@ if(request.getAttribute("searchOption").equals("name"))
 
                             <legend class="LegendResgiter">
 
-                                <button id="searchButton" type="button" Class="Buttons"
-                                    onclick="submitSearcher(mySearchArts.value,'arts')">
-
-                                    <img class="Buttons" src="images/icons/pesquisar05.png" alt="">
-
-                                </button>
+                                    <img class="Buttons2" src="images/icons/pesquisar05.png" alt="">
 
                             </legend>
 
@@ -175,79 +170,39 @@ if(request.getAttribute("searchOption").equals("name"))
 
             <section id="sectionTableSeacher">
 
-                 <table id="tableArts" class="tabela">
+				<section id="titleArt">
+                	ART'S:
+                </section>                                          
 
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                ID
-                            </th>
-
-                            <th>
-                                NAME
-                            </th>
-
-                            <th>
-                                DESCRIPTION
-                            </th>
-
-                            <th>
-                             	EXPOSURE DATE
-                            </th>
-
-                            <th>
-                                PUBLICATION DATE
-                            </th>                                                 
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <%for (int i=0; i < listAllArts.size(); i++)                          
-                        { 
-                        %>
-                            <tr>
-                                <td>
-                                	<%=listAllArts.get(i).getIdart()%>
-                                </td>
-                                <td>
+                <section id="listArts">
+                 
+                	<%for (int i=0; i < listAllArts.size(); i++)                          
+                    { 
+                    %>
+                            
+                    <section class="Arts" onclick="openPage('art?idart=<%=listAllArts.get(i).getIdart()%>','_self')">
                                 
-                                   <a href="art?idart=<%=listAllArts.get(i).getIdart()%>">
-                                   <%=listAllArts.get(i).getName()%>
-                                   </a> 
-                                   
-                                </td>
-                                <td>
-                                    <%=listAllArts.get(i).getDescription()%>
-                                </td>
-                                <td>
-                                     <%
-                           		    dataDeExposicao = (listAllArts.get(i).getDataDeExposicao() == null) ? "" : listAllArts.get(i).getDataDeExposicao("br"); 
-                           		 	
-                           			out.print(dataDeExposicao);
-                           		 	%>
-                                </td>
-                                <td>
-                                   <%
-                           			dataDePublicacao = (listAllArts.get(i).getDataDePublicacao() == null) ? "" : listAllArts.get(i).getDataDePublicacao("br"); 
-                           		 	
-                       				out.print(dataDePublicacao);
-                       		 		%>
-                                </td>                                                                                                                  
-                                                               
-                            </tr>          
+                    	<a href="art?idart=<%=listAllArts.get(i).getIdart()%>">
+                    	
+                    		<%=listAllArts.get(i).getName()%>
+                   		
+                   		</a>                                    
+                                                                
+                    	<hr>                                
+								
+						<p>
+                               	
+                    		<%=listAllArts.get(i).getDescription()%>
+                               	 	
+                    	</p>
+                                
+              		</section>                                          
                                                         
-                            <%
-                            }
-                        	%>  
-          
-                    </tbody>
-
-                </table>
+                   <%
+                   }
+                   %>  
+          				
+          		</section>           				
 
 			</section>	
 			

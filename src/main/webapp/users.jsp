@@ -141,7 +141,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                                           					
                         </td>          
                     
-                    	<td>
+                    	<td id="userTd">
 									
 							<button class="buttonView" type="button" onclick="showPassword()">
               					                                	

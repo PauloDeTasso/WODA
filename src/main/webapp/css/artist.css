@@ -16,7 +16,6 @@ html {
     background-attachment: fixed;
     background-position: center;
     font-family: 'Open Sans', sans-serif;
-    /*border-bottom: 10px solid rgba(252, 178, 100,0.7);*/
     border-radius: 100px;
     margin-bottom: 200px;    
 }
@@ -221,7 +220,7 @@ body {
 }
 
 #seacher {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -334,8 +333,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20%;
-    border: 0px solid rgb(255, 255, 255);
+    height: auto;
+    border: 10px solid rgba(255, 255, 255,0);
     background-color: rgba(255, 184, 104,0);
 }
 
@@ -344,36 +343,32 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    border: 10px solid rgb(252, 178, 100);
-    background-color: rgba(255, 184, 104,.7);
+    width: 80%;
+    border: 7px solid rgba(200, 200, 200,0.7);
+    background-color: rgba(255, 184, 104,0.7);
     font-size: 200%;
-    /*
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    */
     color: rgb(44, 41, 0);
     font-weight: 700;
     margin: 1%;
     border-radius: 100px;
+    text-decoration: none;
+    font-style: italic;
 }
 
-.SectionDataArtist {
+.SectionDataArtist
+{
     display: grid;
     grid-template-columns: 50% 50%;
     column-gap: 1%;
     row-gap: 1%;
+    place-items: center;
+    justify-items: center;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     width: 100%;
     height: 100%;
-    border: 0px solid rgb(255, 0, 0);
+    border: 10px solid rgba(255, 0, 0,0);
     background-color: rgba(211, 145, 69,0);
-    font-size: 100%;
-    /*
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    */
-    color: rgb(44, 41, 0);
-    font-weight: 400;
 }
 
 .sectionImageAuthorArts {
@@ -438,9 +433,9 @@ footer {
 .Names {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: auto;
     height: auto;
     border: 20px solid rgba(255, 174, 0, 0);
@@ -460,13 +455,14 @@ footer {
     vertical-align: center;    
     width: 80%;
     height: 50px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgba(200, 200, 200, 0.3);
     font-size: 120%;
     background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
     color: rgb(255, 252, 210);
     font-weight: 400;
     text-shadow: 2px 1px 4px rgb(0, 0, 0);
+    margin: 5px;
 }
 
 .Data {
@@ -480,6 +476,7 @@ footer {
     font-size: 100%;
     background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
+    color: rgb(255,70,0);
 }
 
 .Name:hover {
@@ -597,14 +594,75 @@ body::-webkit-scrollbar-thumb {
 
 /* ARTIST.HTML */
 
+#sectionTableSeacher
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border-top: 10px solid rgba(252, 178, 100,1); 
+    font-size: 200%; 
+}
+
+.tabela
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(252, 178, 100,1);  
+    font-size: 200%;
+}
+
+form
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(252, 178, 100,1);
+    font-size: 200%;
+}
+
+th
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(252, 178, 100,1);
+    font-size: 200%;
+}
+
+td
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border: 10px solid rgba(252, 178, 100,1);
+    font-size: 200%;
+}
+
 #sectionRegisterButtons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: auto;
     height: auto;
     border-top: 10px solid rgba(252, 178, 100,0);   
+    margin-bottom: 10px;
 }
 
 #sectionArtist {
@@ -621,7 +679,8 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    text-align: center;
     width: 100%;
     height: auto;
     border: 10px solid rgba(211, 145, 69,0);
@@ -633,11 +692,14 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    vertical-align: center;
     width: 100%;
     height: auto;
     border: 10px solid rgba(211, 145, 69,0);
     background-color: rgba(211, 145, 69,0.5);
     border-radius: 30px;
+    margin-top: 10px;
 }
 
 #imageArtist {
@@ -661,11 +723,15 @@ body::-webkit-scrollbar-thumb {
 .SectionArtsArtist {
     display: grid;
     grid-template-columns: 50% 50%;
-    column-gap: 1%;
-    row-gap: 1%;
+    column-gap: 2%;
+    row-gap: 2%;
+    justify-items: center;
     justify-content: center;
-    align-items: center;
-    width: 94%;
+    align-items: flex-start;
+    align-content: stretch;
+    place-content: center;
+    text-align: center;
+    width: 100%;
     height: auto;
     border: 0px solid rgb(0, 0, 0);
     background-color: rgba(211, 145, 69,0);
@@ -676,10 +742,12 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 90%;
     height: auto;
-    border: 10px solid rgb(172, 116, 53);
+    border: 7px solid rgba(200, 200, 200,0.7);
+    border-radius: 20px;
     background-color: rgba(211, 145, 69,0);
+    margin: 10px;
 }
 
 .TitlesArts {
@@ -692,9 +760,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .TitlesNames {
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: rgba(252, 178, 100,0.7);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(252, 178, 100,0.8);
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -704,7 +773,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .DataTitlesArtist {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -712,11 +780,12 @@ body::-webkit-scrollbar-thumb {
     width: 80%;
     height: auto;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
-    font-size: 120%;
-    border: 10px solid rgba(0, 0, 0, 0);
+    font-size: 110%;
+    border: 2px solid rgba(200, 200, 200, 0.7);
     font-weight: 700;
     background-color: rgba(252, 178, 100,0.5);
     border-radius: 30px;
+    margin: 5px;
 }
 
 .TitlesArtist {
@@ -724,13 +793,14 @@ body::-webkit-scrollbar-thumb {
     flex-direction: row;
     justify-content: center;
     vertical-align: middle;
-    align-items: stretch;
+    align-items: center;
     width: 100%;
     text-shadow: 2px 2px 1px rgba(255, 153, 0, 0.2);
-    font-size: 100%;
-    border: 0px solid rgb(0, 0, 0);	
-    font-weight: 500;	
+    font-size: 140%;
+    border: 10px solid rgba(0, 0, 0,0);	
+    font-weight: 700;	
     color: rgb(68, 0, 255);    
+    font-style: italic;
 }
 
 .EditButtonsSection {
@@ -739,21 +809,20 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgba(252, 178, 100,0.7);
+    background-color: rgba(200, 200, 200,0.3);
     border-radius: 20px;
+    margin: 10px;
 }
 
 .TextDescription {
     justify-content: center;
     align-items: center;
-    /*
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    */
     font-size: 100%;
     border: 10px solid rgba(0, 0, 0, 0);
     text-align: center;
     background-color: rgba(252, 178, 100,0.9);
     border-radius: 10px;
+    color: rgb(255,70,0);
 }
 
 .buttonsZoom {
@@ -762,9 +831,9 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     width: auto;
-    background-color: rgba(211, 145, 69,0);
-    border-top: 10px solid rgba(252, 178, 100,0.7);
+    border-top: 10px solid rgba(200, 200, 200,0.7);
     border-radius: 40px;
+    margin: 5px;
 }
 
 .SectionRegisterButtons2
@@ -776,6 +845,11 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     border-radius: 20px;
+}
+
+a
+{
+	text-decoration: none;
 }
 
 .Images
@@ -871,7 +945,7 @@ fieldset {
 }
 
 .abrirMenu {
-    animation: abrirMenuCss 5s;
+    animation: abrirMenuCss 4s;
     animation-iteration-count:1;
     animation-direction: normal;
     animation-fill-mode: forwards;
@@ -897,7 +971,7 @@ fieldset {
 }
 
 .fecharMenu {
-    animation: fecharMenuCss 5s;
+    animation: fecharMenuCss 10s;
     animation-iteration-count:1;
     animation-direction: normal;
     animation-fill-mode: forwards;

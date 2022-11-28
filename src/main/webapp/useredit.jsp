@@ -143,7 +143,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 									              					
                         </td>    
                         
-                        <td>
+                        <td id="userTd">
 									
 							<button class="buttonView" type="button" onclick="showPassword()">
               					                                	
@@ -159,9 +159,9 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                     
                     	<td>
 						
-							<button type="reset" class="Buttons">
+							<button type="button" class="ButtonsDisabled">
 
-                     			<img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
+                        		<img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
 
                    			</button>
                 

@@ -13,10 +13,10 @@
     
     ArrayList<NamesArtsArtist> listAllArtsNamesForIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listAllArtsNamesForIdArtist");  
     
-	ArrayList<Arts> listArtsAllOrderName = (ArrayList<Arts>) request.getAttribute("listArtsAllOrderName");  
-
 	ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAttribute("listArtistsAllOrderName");  
 
+	Artists artist = (Artists) request.getAttribute("artist");  
+	
     %>
 
 <!DOCTYPE html>
@@ -137,7 +137,7 @@
                     <tr>
                         <td>
 
-                            <input id="idInput" type="text" name="idartist" size='5' placeholder="ID" value="<%out.print(request.getAttribute("idArtist"));%>" readonly>
+                            <input id="idInputEdit" type="text" name="idartist" size='5' placeholder="ID" value="<%=artist.getIdArtist()%>" readonly>
 
                         </td>
                         <td>
@@ -148,8 +148,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="57" size='57' placeholder="Name"
-                                onchange="verificarNome(this.value)" value="<%out.print(request.getAttribute("name"));%>" required>
+                            <input id="nameInputEdit" type="text" name="name" maxlength="57" size='57' placeholder="Name"
+                                onchange="verificarNome(this.value)" value="<%=artist.getNome()%>" required>
 
                         </td>
                         <td>
@@ -162,8 +162,8 @@
                     <tr>
                         <td>
 
-                            <input type="email" name="email" onchange="validacaoEmail(formRegister.email)"
-                                maxlength="57" size='57' placeholder="E-mail" value="<%out.print(request.getAttribute("email"));%>">
+                            <input id="emailInputEdit" type="email" name="email" onchange="validacaoEmail(formRegisterArtist.email, this.value)"
+                                maxlength="57" size='57' placeholder="E-mail" value="<%=artist.getEmail()%>">
 
                         </td>
                         <td>
@@ -194,7 +194,7 @@
 								
                             </select>
 
-							<input id="valueGenderJs" type="hidden" value="<%out.print(request.getAttribute("gender"));%>">
+							<input id="valueGenderJs" type="hidden" value="<%=artist.getSexo()%>">
 
                         </td>
                         <td>
@@ -207,8 +207,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" value="<%out.print(request.getAttribute("birthday"));%>" required>
+                            <input id="birthday" type="text" name="birthday" placeholder="...Birthday..."
+                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" value="<%=artist.getDatadenascimento()%>" required>
 
                         </td>
                         <td>
@@ -401,7 +401,7 @@
 
                             </select>
 
-							<input id="valueNationalityJs" type="hidden" value="<%out.print(request.getAttribute("nationality"));%>">
+							<input id="valueNationalityJs" type="hidden" value="<%=artist.getNacionalidade()%>">
 
                         </td>
                         <td>
@@ -414,8 +414,8 @@
                     <tr id="sectionCpf">
                         <td>
 
-                            <input type="text" id="cpf" name="cpf" onchange="formatarCpf(this.value)" maxlength="11" size='11'
-                                placeholder="CPF" value="<%out.print(request.getAttribute("cpf"));%>" required>
+                            <input id="cpfInputEdit" type="text" name="cpf" onchange="formatarCpf(this.value)" maxlength="11" size='11'
+                                placeholder="CPF" value="<%=artist.getCpf()%>" required>
 
                         </td>
 
@@ -459,7 +459,7 @@
                         				
   										<td class="idArtist">                               				
                          				     
-                          					<input type="checkbox" name="checkallids" value="<%=listAllArts.get(i).getIdart()%>">
+                          					<input type="checkbox" name="addartsidscheck" value="<%=listAllArts.get(i).getIdart()%>">
                        					 
                          				    	<%=listAllArts.get(i).getName()%>          
                        							
@@ -513,7 +513,7 @@
                         				
   										<td class="idArtist">                               				
                          				     
-                          					<input type="checkbox" name="checkallidsedit" value="<%=listAllIdsArtsForIdArtist.get(i).getIdArt()%>" checked>
+                          					<input type="checkbox" name="editartsidscheck" value="<%=listAllIdsArtsForIdArtist.get(i).getIdArt()%>" checked>
                        					 
                        					 		<%=listAllArtsNamesForIdArtist.get(i).getNameArt()%>          
                        							
@@ -544,14 +544,13 @@
 
                     </section>
 
-
-                    <button type="reset" class="Buttons">
+                    <button type="button" class="ButtonsDisabled">
 
                         <img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArtist')">
+                    <button type="button" id="submitButton" class="Buttons" onclick="formValidate('formRegisterArtist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
@@ -620,7 +619,7 @@
 
     </footer>
 
-    <script src="js/artistregister.js">
+    <script src="js/artistedit.js">
 
     </script>
 

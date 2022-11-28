@@ -118,7 +118,7 @@
                         <td>
 
                             <input type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
-                                onchange="verificarNome(this.value)" required>
+                                onblur="validateName(this.value)" onchange="validateName(this.value)" required>
 
                         </td>
                         <td>
@@ -130,7 +130,7 @@
                         <td>
 
                             <input type="text" id="description" name="description"
-                                onchange="descriptionValidate(this.value)" maxlength="240" placeholder="ART DESCRIPTION"
+                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" placeholder="ART DESCRIPTION"
                                 required>
 
                         </td>
@@ -145,7 +145,7 @@
 
                             <input type="text" name="publicationdate" id="publicationDate"
                                 placeholder="PUBLICATION DATE" onfocus="(this.type='date')"                                 
-                                onchange="validateDate('publicationDate',msgPublicationDate)" value="" required>
+                                onblur="validateDate('publicationDate',msgPublicationDate)" onchange="validateDate('publicationDate',msgPublicationDate)" value="" required>
 
                         </td>
                         <td>
@@ -158,7 +158,7 @@
                         <td>
 
                             <input type="text" name="exposuredate" id="exposureDate" placeholder="EXPOSURE DATE"
-                                onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)" value=""
+                                onfocus="(this.type='date')" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" value=""
                                 required>
 
                         </td>
@@ -179,7 +179,7 @@
 						</h3>
 
                             <input class="idInput" type="text" name="artist" maxlength="60" size='65'
-                                value="<%out.print(request.getAttribute("artistName"));%>" readonly>
+                                value="<%=request.getAttribute("artistName")%>" readonly>
 
                         </td>
                         
@@ -275,7 +275,7 @@
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formRegisterArt')">
+                    <button type="button" id="submitButton" class="Buttons" onclick="formValidate('formRegisterArt')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 

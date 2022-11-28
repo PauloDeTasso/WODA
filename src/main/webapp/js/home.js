@@ -371,3 +371,38 @@ function changeButton(button)
 */
 
 //onclick="openClose(sectionButtons,'visibility','menuMain')"
+
+
+function abrirFecharPopup()
+{
+    var estiloPopup = window.getComputedStyle(secaoPopup);
+    var estiloPropriedade = estiloPopup.getPropertyValue('display');
+
+    if (estiloPropriedade == "none")    
+    {
+        secaoPopup.style.display = 'flex';
+    } else
+    {
+        secaoPopup.style.display = 'none';
+    }
+}
+
+var botaoStatus = document.getElementById('imagemBotaoStatus');
+
+function abrirFecharStatus()
+{
+    var estiloStatus = window.getComputedStyle(nome);
+    var valorEstiloStatus = estiloStatus.getPropertyValue('visibility');
+
+    if (valorEstiloStatus == "hidden")    
+    {
+        flutuante.style.display = 'flex';
+        nome.style.visibility = 'visible';
+        botaoStatus.style.opacity = 1;
+    } else
+    {
+        nome.style.visibility = 'hidden';
+        flutuante.style.display = 'none';
+        botaoStatus.style.opacity = 0.0;
+    }
+}

@@ -116,9 +116,9 @@ String dataDePublicacao;
 
             <section class="SectionArtistArts">
 
-                    <section class="TitlesAuthor">
-                       <%out.print(request.getAttribute("name"));%>
-                    </section>
+                <section class="TitlesAuthor">
+                	<%out.print(request.getAttribute("name"));%>
+                </section>
 
                 <section class="SectionImageArtist">
 
@@ -128,7 +128,7 @@ String dataDePublicacao;
 
                             <section>
 
-                                <button type="button" class="Buttons" onclick="openPage('selectartistedit?idartist=<%out.print(request.getAttribute("idArtist"));%>','_self')">
+                                <button type="button" class="Buttons" onclick="openPage('selectartistedit?idartist=<%=request.getAttribute("idArtist")%>','_self')">
 
                                     <img class="ImageButton3" src="images/icons/editar03.png"
                                         alt="">
@@ -141,7 +141,7 @@ String dataDePublicacao;
 
                                 <button type="button" class="Buttons">
 									
-									<a href="javascript: confirmar(<%out.print(request.getAttribute("idArtist"));%>,'artist')">
+									<a href="javascript: confirmar(<%=request.getAttribute("idArtist")%>,'artist')">
 										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
 									</a>
 
@@ -166,7 +166,7 @@ String dataDePublicacao;
                                 </section>
 
                                 <section class="DataArtist">
-                                      <%out.print(request.getAttribute("name"));%>
+                                      <%=request.getAttribute("name")%>
                                 </section>
 
                             </section>
@@ -181,7 +181,7 @@ String dataDePublicacao;
 
                                 <section class="DataArtist">
 
-                                      <%out.print(request.getAttribute("gender"));%>
+                                      <%=request.getAttribute("gender")%>
 
                                 </section>
 
@@ -301,7 +301,7 @@ String dataDePublicacao;
 
                                     <button type="button" class="Buttons">
  									
- 									<a href="arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%out.print(request.getAttribute("name"));%>">										
+ 									<a href="arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%=request.getAttribute("name")%>">										
                                         <img class="ImageButton3" 
                                             src="images/icons/editar03.png" alt="">
 									</a>
@@ -354,7 +354,7 @@ String dataDePublicacao;
 
                             <section class="TitlesNames">
                             
-                                EXHIBITION DATE:
+                                EXPOSURE DATE:
 
                                 <section class="Data">
                            		    <%

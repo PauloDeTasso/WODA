@@ -550,8 +550,11 @@ function openCloseOption(elemento, propriedade)
 
 //
 
-setTimeout(()=>
-{
+function selectSelects()
+{			
+	validateName(nameInputEdit.value);
+	validateDescription(descriptionInputEdit.value);		
+		
 	dateType = dateTypeInput2.value;
 
 	if(dateType == 'publicationDate')
@@ -565,4 +568,14 @@ setTimeout(()=>
 	{
 		alert("Choose a date!!")
 	}
-},1000);
+}
+
+//
+
+setTimeout(() =>
+{	
+    selectSelects();
+    
+}, 1000);
+
+ selectSelects(); 

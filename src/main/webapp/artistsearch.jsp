@@ -134,92 +134,46 @@ String searchArtist = (request.getAttribute("searchArtist") == null) ? "" : requ
 
 				</section>
 
-            </section>
+            </section>	
+			
+			 <section id="sectionTableSeacher">
 
-            <section id="sectionTableSeacher">
+				<section id="titleArt">
+                	 ARTIST'S:
+                </section>                                          
 
-                <table id="tableArtists" class="tabela">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                ID
-                            </th>
-
-                            <th>
-                                NAME
-                            </th>
-
-                            <th>
-                                E-MAIL
-                            </th>
-
-                            <th>
-                               GENDER
-                            </th>
-
-                            <th>
-                                BIRTHDAY
-                            </th>
-                            
-                              <th>
-                                NATIONALITY
-                            </th>
-                            
-                              <th>
-                                CPF
-                            </th>                                                      
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <%for (int i=0; i < listArtistsAllOrderName.size(); i++)
+                <section id="listArts">
+                 
+                 
+                <%for (int i=0; i < listArtistsAllOrderName.size(); i++)
                           
-                        { %>
-                        
-                            <tr>
-                                <td>
-                                	<%=listArtistsAllOrderName.get(i).getIdArtist()%>
-                                </td>
-                                <td>
+                { %>                                                    
+                	
+                	<section class="Arts" onclick="openPage('artist?idartist=<%=listArtistsAllOrderName.get(i).getIdArtist()%>','_self')">
                                 
-                                   <a href="artist?idartist=<%=listArtistsAllOrderName.get(i).getIdArtist()%>">
+                    	<a href="artist?idartist=<%=listArtistsAllOrderName.get(i).getIdArtist()%>">
                                    
-                                   <%=listArtistsAllOrderName.get(i).getNome()%>
+                        	<%=listArtistsAllOrderName.get(i).getNome()%>   
                                    
-                                   </a> 
+                        </a> 
                                    
-                                </td>
-                                <td>
-                                    <%=listArtistsAllOrderName.get(i).getEmail()%>
-                                </td>
-                                <td>
-                                    <%=listArtistsAllOrderName.get(i).getSexo()%>
-                                </td>
-                                <td>
-                                    <%=listArtistsAllOrderName.get(i).getDatadenascimento("br")%>
-                                </td>
-                                <td>
-                                    <%=listArtistsAllOrderName.get(i).getNacionalidade()%>
-                                </td>
-                                <td>
-                                    <%=(listArtistsAllOrderName.get(i).getCpf() == null) ? "Don't have!" : listArtistsAllOrderName.get(i).getCpf()%>
-                                </td>                                                             
-                                                              
-                            </tr>          
+                        <hr>
+
+						<p>
+						
+                            <%=listArtistsAllOrderName.get(i).getEmail()%>
+                       
+                        </p>
+                                  	
+                   </section>      
                                                         
-                            <%} %>  
-          
-                    </tbody>
+              <%
+              }
+              %>         
+          				
+          		</section>           				
 
-                </table>
-
-			</section>					
+			</section>		
 
         </section>
        

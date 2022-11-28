@@ -124,7 +124,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                         <td>
 
                             <input type="text" name="name" maxlength="57" size='57' placeholder="Name"
-                                onchange="verificarNome(this.value)" required>
+                                onblur="verificarNome(this.value)" onchange="verificarNome(this.value)" required>
 
                         </td>
                         <td>
@@ -137,7 +137,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                     <tr>
                         <td>
 
-                            <input type="email" name="email" onchange="validacaoEmail(formRegisterArtist.email, this.value)" maxlength="57" size='57' placeholder="E-mail">
+                            <input type="email" name="email" onblur="validacaoEmail(formRegisterArtist.email, this.value)" onchange="validacaoEmail(formRegisterArtist.email, this.value)" maxlength="57" size='57' placeholder="E-mail">
 
                         </td>
                         <td>
@@ -150,7 +150,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                     <tr>
                         <td>
 
-                            <select name="gender" onchange="verificarGenero(this.value)">
+                            <select name="gender" onblur="verificarGenero(this.value)" onchange="verificarGenero(this.value)">
 
                                 <option value="gender" selected>...Gender...</option>
 
@@ -180,7 +180,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                         <td>
 
                             <input type="text" name="birthday" id="birthday" placeholder="...Birthday..."
-                                onfocus="(this.type='date')" onchange="validateDate('birthday',msgBirthday)" required>
+                                onfocus="(this.type='date')" onblur="validateDate('birthday',msgBirthday)" onchange="validateDate('birthday',msgBirthday)" required>
 
                         </td>
                         <td>
@@ -193,7 +193,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                     <tr>
                         <td>
 
-                            <select id="selectNationality" name="nationality" onchange="verificarNacionalidade(this.value)"
+                            <select id="selectNationality" name="nationality" onblur="verificarNacionalidade(this.value)" onchange="verificarNacionalidade(this.value)"
                                 required>
 
                                 <option value="nationality" selected>...Nationality...</option>
@@ -385,7 +385,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
                         <td>
 
                             <input type="text" id="cpf" name="cpf" maxlength="11" size='11'
-                                placeholder="CPF" onchange="formatarCpf(this.value)" required>
+                                placeholder="CPF" onblur="formatarCpf(this.value)" onchange="formatarCpf(this.value)" required>
 
                         </td>
 
@@ -466,7 +466,7 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
 
                     </button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formregisterartist')">
+                    <button type="button" id="submitButton" class="Buttons" onclick="formValidate('formregisterartist')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 

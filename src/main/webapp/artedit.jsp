@@ -9,7 +9,7 @@
     
 <%
 
-	ArrayList<Arts> artEdit = (ArrayList<Arts>) request.getAttribute("artEdit");  
+	ArrayList<Arts> listArtByIdArt = (ArrayList<Arts>) request.getAttribute("listArtByIdArt");  
 
     ArrayList<Artists> listAllArtistsOrderIdDesc = (ArrayList<Artists>) request.getAttribute("listAllArtistsOrderIdDesc");  
 
@@ -18,7 +18,6 @@
     ArrayList<NamesArtsArtist> listNamesArtistByIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listNamesArtistByIdArtist");  
         
     String dateType = (String) request.getAttribute("dateType");
-    System.out.println("JSP - dateType: " + dateType);
 %>
 
     <!DOCTYPE html>
@@ -128,8 +127,8 @@
                     <tr>
                         <td>
 
-                            <input id="idInput" type="text" name="idArt" size='10' placeholder="ID" value="<%=artEdit.get(0).getIdart()%>" readonly>
-
+                            <input id="idInputEdit" type="text" name="idArt" size='10' placeholder="ID" value="<%=listArtByIdArt.get(0).getIdart()%>" readonly>
+	
                         </td>
                         <td>
                             <div id="msgIdArtist" class="AlertMsgs"></div>
@@ -139,8 +138,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
-                                onchange="verificarNome(this.value)" value="<%=artEdit.get(0).getName()%>" required>
+                            <input id="nameInputEdit" type="text" name="name" maxlength="60" size='65' placeholder="ART NAME"
+                                onblur="validateName(this.value)" onchange="validateName(this.value)" value="<%=listArtByIdArt.get(0).getName()%>" required>
 
                         </td>
                         <td>
@@ -151,8 +150,8 @@
                     <tr>
                         <td>
 
-                            <input type="text" id="description" name="description"
-                                onchange="descriptionValidate(this.value)" maxlength="240" placeholder="ART DESCRIPTION" value="<%=artEdit.get(0).getDescription()%>"
+                            <input id="descriptionInputEdit" type="text" id="description" name="description"
+                                onblur="validateDescription(this.value)" onchange="validateDescription(this.value)" maxlength="240" placeholder="ART DESCRIPTION" value="<%=listArtByIdArt.get(0).getDescription()%>"
                                 required>
 
                         </td>
@@ -165,9 +164,9 @@
 
                         <td>
 
-                            <input type="text" name="publicationdate" id="publicationDate"
-                            placeholder="...PUBLICATION DATE..." value="<%=(artEdit.get(0).getDataDePublicacao() == null) ? "" : artEdit.get(0).getDataDePublicacao()%>"
-                            onfocus="(this.type='date')" onchange="validateDate('publicationDate',msgPublicationDate)"  required>
+                            <input id="publicationDate" type="text" name="publicationdate" 
+                            placeholder="...PUBLICATION DATE..." value="<%=(listArtByIdArt.get(0).getDataDePublicacao() == null) ? "" : listArtByIdArt.get(0).getDataDePublicacao()%>"
+                            onfocus="(this.type='date')" onblur="validateDate('publicationDate',msgPublicationDate)" onchange="validateDate('publicationDate',msgPublicationDate)"  required>
 
                         </td>
                         <td>
@@ -179,9 +178,9 @@
 
                         <td>
 
-                            <input type="text" name="exposuredate" id="exposureDate"
-                            placeholder="...EXPOSURE DATE..." value="<%=(artEdit.get(0).getDataDeExposicao() == null) ? "" : artEdit.get(0).getDataDeExposicao()%>" 
-                            onfocus="(this.type='date')" onchange="validateDate('exposureDate',msgExposureDate)" required>
+                            <input id="exposureDate" type="text" name="exposuredate" 
+                            placeholder="...EXPOSURE DATE..." value="<%=(listArtByIdArt.get(0).getDataDeExposicao() == null) ? "" : listArtByIdArt.get(0).getDataDeExposicao()%>" 
+                            onfocus="(this.type='date')" onblur="validateDate('exposureDate',msgExposureDate)" onchange="validateDate('exposureDate',msgExposureDate)" required>
 
                         </td>
 
@@ -246,6 +245,60 @@
                     </tr>    				
 
 					<tr>
+
+                        <td>
+                                          
+							<h3 class="TitlesH3">
+								EDIT ASSOCIATED ARTISTS: 
+							</h3>		
+							
+							<section id="sectionAssociateEdit">
+							
+								<input type="radio" id="associatesOnEdit" name="associatesedit" value="YES" onchange="openCloseSection(sectionAssociateListEdit,'display',true)">
+  								<label for="associates">YES</label>
+  						
+								<input type="radio" id="associatesOffEdit" name="associatesedit" value="NO" onchange="openCloseSection(sectionAssociateListEdit,'display',false)" checked>
+								<label for="associates">NO</label>
+                       			
+                       		</section>														
+                            	
+                            <section id="sectionAssociateListEdit">                                                   
+                    	   		             
+                    	   		<table>
+                   			 	
+                   			 	<% 
+                   			 		
+								for (int i = 0; i < listNamesArtistByIdArtist.size(); i++)
+								{
+									
+								%>													
+									<tr>
+                        				
+  										<td class="idArtist">                               				
+                         				     
+                          					<input type="checkbox" name="editartistsidscheck" value="<%=listIdsArtistByIdArt.get(i).getIdArt()%>" checked>
+                       					 
+                       					 		<%=listNamesArtistByIdArtist.get(i).getNameArt()%>          
+                       							
+                       					</td>
+                       					
+                        			</tr>  
+                        		<%
+								}
+								%>  
+                         
+                        		</table>                        
+                                 
+                            </section>
+                        </td>
+
+                        <td>
+                            <div id="msgExtraArtistId2" class="AlertMsgs"></div>
+                        </td>
+
+                    </tr> 
+
+					<tr>
 					
 						<td>
 
@@ -265,13 +318,13 @@
 
                     </section>
 
-                    <button type="reset" class="Buttons">
+                    	<button type="button" class="ButtonsDisabled">
 
-                        <img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
+                        	<img class="ImagesButtonsRegister" src="images/icons/LIMPAR.png" alt="">
 
-                    </button>
+                   		</button>
 
-                    <button type="submit" id="submitButton" class="Buttons" onclick="validar('formregisterart')">
+                    <button type="button" id="submitButton" class="Buttons" onclick="formValidate('formregisterart')">
 
                         <img class="ImagesButtonsRegister" src="images/icons/save01.png" alt="">
 
@@ -345,12 +398,12 @@
         <section id="sectionFooter">
 
             World of digital artists - WODA®
-
+		
         </section>
 
     </footer>
 
-    <script src="js/artregister.js">
+    <script src="js/artedit.js">
 
     </script>
 

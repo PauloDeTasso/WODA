@@ -7,16 +7,9 @@
 
 <%
 
-//String associatesOn = (String) request.getAttribute("associatesOn");
-
-//String checkedIds[] = (String[]) request.getAttribute("checkedIds");
-	
-//String checkedNames[] = (String[]) request.getAttribute("checkedNames");
-
 ArrayList<Arts> listArt = (ArrayList<Arts>) request.getAttribute("Art");
 
-ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAttribute("listAllArtistForIdArtist");
- 
+ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAttribute("listAllArtistForIdArtist"); 
 
 %>
 
@@ -129,7 +122,7 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
                      <%=listArt.get(0).getName()%>
                     </section>
 
-                <section id="buttonsZoom">
+                <section class="buttonsZoom">
 
                     <section class="EditButtonsSection">
 
@@ -137,7 +130,7 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
                            <button type="button" class="Buttons">                                    	
                                       
-                                        <a href="arteditselect?idart=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposureDate=<%=listArt.get(0).getDataDeExposicao()%>&publicationDate=<%=listArt.get(0).getDataDePublicacao()%>&artistname=<%out.print(request.getAttribute("name"));%>">										
+                                        <a href="arteditselect?idart=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposureDate=<%=listArt.get(0).getDataDeExposicao()%>&publicationDate=<%=listArt.get(0).getDataDePublicacao()%>&artistname=<%=request.getAttribute("name")%>">										
         								 <img class="ImageButton3" src="images/icons/editar03.png" alt="">                                    	
 										</a>
                                 	

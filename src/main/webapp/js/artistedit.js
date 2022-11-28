@@ -37,11 +37,7 @@ var passwordInput = document.getElementById('passwordInput');
 
 /////////
 
-var selectNationality = document.querySelector("#selectNationality");
 
-
-
- 
 var botaoLogin = document.getElementById('body');
 
 var html = document.getElementsByTagName('html');
@@ -84,9 +80,8 @@ var dateType;
     var msgEmail = document.getElementById("msgEmail");
     var msgGender = document.getElementById("msgGender");
     var msgBirthday = document.getElementById("msgBirthday");
-    var msgNationality = document.getElementById("msgNationality");
+    var msgNationality = document.getElementById("msgNationality");    
     var msgCpf = document.getElementById("msgCpf");
-    var cpfInput = document.getElementById("cpf");
    
     var publicationDate = document.getElementById("publicationDate");
     var exposureDate = document.getElementById("exposureDate");
@@ -94,7 +89,26 @@ var dateType;
     var associatesOff = document.getElementById("associatesOff");    
     var dateTypeInput = document.getElementById("dateTypeInput");
 
+//
 
+
+
+var selectGender = document.querySelector("#selectGender");
+
+var optionsGender = [...selectGender.options];
+
+var selectNationality = document.querySelector("#selectNationality");
+
+var optionsNationality = [...selectNationality.options];
+
+
+var idInputEdit = document.getElementById("idInputEdit");
+var nameInputEdit = document.getElementById("nameInputEdit");
+var emailInputEdit = document.getElementById("emailInputEdit");
+var birthday = document.getElementById("birthday");
+var cpfInputEdit = document.getElementById("cpfInputEdit");
+
+//
 
 function openPage(link, target)
 {
@@ -190,7 +204,7 @@ function verificarNome(valor)
 }
 
 //
-
+ 
 function validacaoEmail(campo, email)
 {	
 	var listEmailArtists = document.getElementsByName('listEmailArtists');
@@ -227,6 +241,7 @@ function validacaoEmail(campo, email)
         emailValidate = false;
     }
 }
+
 
 //
 
@@ -458,7 +473,7 @@ function formatarCpf(cpf)
 		{
    			cpfOriginal = cpf;
     
-    		cpfInput.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+    		//cpfInputEdit.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
 						
 			cpfValidate	= true;
 								
@@ -495,25 +510,6 @@ function formatarCpf(cpf)
 }
 
 //
-
-function clear()
-{
-        msgName.innerHTML = "*";
-        msgEmail.innerHTML = "";
-        msgGender.innerHTML = "";
-        msgBirthday.innerHTML = "*";
-        msgNationality.innerHTML = "*";
-        msgImage.innerHTML = "";
-        msgCpf.innerHTML = "*";
-        msgStatus.innerHTML = ""; 
-}
-
-//
-   
-formRegisterArtist.onreset = function ()
-{
-	clear()
-};
 
 function formValidate(form)
 {    	          
@@ -652,16 +648,15 @@ function formValidate(form)
   		{
    	   		if(TestaCPF(cpfOriginal))
 			{
-				cpfInput.value = cpfOriginal;  	
+				cpfInputEdit.value = cpfOriginal;  	
     			document.forms[ form ].submit();
     		}else
     		{
 				msgCpf.innerHTML = "CPF invalid!!!";
 			}    
-			
     	}else
     	{
-			cpfInput.value = cpfOriginal;   	
+			cpfInputEdit.value = cpfOriginal; 		
     		document.forms[ form ].submit();
 		}
 		
@@ -675,13 +670,41 @@ function statusCpf()
 {
 	if (selectNationality.value == "Brasil")
     {	
-   	   cpfInput.style.visibility = "visible";   
+   	   cpfInputEdit.style.visibility = "visible";   
        sectionCpf.style.visibility = "visible";	   
     } else 
     {		    	
-       cpfInput.style.visibility = "hidden"; 
+       cpfInputEdit.style.visibility = "hidden"; 
        sectionCpf.style.visibility = "hidden";  
     }
+}
+
+
+function showPassword()
+{
+	if(passwordInput.type == "password")
+	{
+		passwordInput.type = "text";	
+		imgViewPassword.src = "images/icons/ver01.png";
+		
+	}else
+	{
+		passwordInput.type = "password";	
+		imgViewPassword.src = "images/icons/esconder01.png";	
+	}
+
+}
+
+//
+
+function removeUser(id,login,password)
+{	
+		var resposta = confirm("Delete user " + "(" + login + ")?");
+
+	    if (resposta === true)
+    	{      		
+        	window.location.href = "userremove?userid=" + id + "&userlogin=" + login + "&userpassword=" + password;
+		}
 }
 
 //
@@ -699,6 +722,34 @@ function openCloseOption(elemento, propriedade)
             {
                 elemento.style.display = "none";
             }
+}
+
+//
+
+function selectSelects()
+{	
+	verificarNome(nameInputEdit.value);
+	validacaoEmail(emailInputEdit, emailInputEdit.value);
+	verificarGenero(selectGender.value);
+	validateDate('birthday', msgBirthday);
+	verificarNacionalidade(selectNationality.value);
+	formatarCpf(cpfInputEdit.value);
+	
+	for (var i = 0; i < optionsGender.length; i++)
+	{
+		if(valueGenderJs.value == optionsGender[i].value)
+		{
+			optionsGender[i].selected = true;
+		}
+	}
+	
+	for (var i = 0; i < optionsNationality.length; i++)
+	{
+		if(valueNationalityJs.value == optionsNationality[i].value)
+		{
+			optionsNationality[i].selected = true;
+		}
+	}	
 }
 
 //
@@ -743,38 +794,38 @@ function openCloseOption(elemento, propriedade)
 
 //
 
-function showPassword()
+function clear()
 {
-	if(passwordInput.type == "password")
-	{
-		passwordInput.type = "text";	
-		imgViewPassword.src = "images/icons/ver01.png";
-		
-	}else
-	{
-		passwordInput.type = "password";	
-		imgViewPassword.src = "images/icons/esconder01.png";	
-	}
-
+        msgName.innerHTML = "*";
+        msgEmail.innerHTML = "";
+        msgGender.innerHTML = "";
+        msgBirthday.innerHTML = "*";
+        msgNationality.innerHTML = "*";
+        msgImage.innerHTML = "";
+        msgCpf.innerHTML = "*";
+        msgStatus.innerHTML = "";         
 }
 
 //
-
-function removeUser(id,login,password)
-{	
-		var resposta = confirm("Delete user " + "(" + login + ")?");
-
-	    if (resposta === true)
-    	{      		
-        	window.location.href = "userremove?userid=" + id + "&userlogin=" + login + "&userpassword=" + password;
-		}
-}
+   
+formRegisterArtist.onreset = function ()
+{
+	clear()
+};
 
 //
 
 setTimeout(() =>
 {	
+    selectSelects();
+    
+}, 1000);
+
+ selectSelects();
+
+setTimeout(() =>
+{	
     statusCpf();
-}, 2000);
+}, 1000);
 
 statusCpf();
