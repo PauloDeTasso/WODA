@@ -126,28 +126,17 @@ String dataDePublicacao;
 
                         <section class="EditButtonsSection">
 
-                            <section>
-
                                 <button type="button" class="Buttons" onclick="openPage('selectartistedit?idartist=<%=request.getAttribute("idArtist")%>','_self')">
 
-                                    <img class="ImageButton3" src="images/icons/editar03.png"
-                                        alt="">
+                                    <img class="ImageButton3" src="images/icons/editar03.png" alt="">
 
                                 </button>
 
-                            </section>
-
-                            <section>
-
-                                <button type="button" class="Buttons">
-									
-									<a href="javascript: confirmar(<%=request.getAttribute("idArtist")%>,'artist')">
-										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
-									</a>
+                                <button type="button" class="Buttons" onclick="javascript: removeConfirm(<%=request.getAttribute("idArtist")%>,'artist')">
+																		
+										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">										
 
                                 </button>
-
-                            </section>
 
                         </section>
 
@@ -295,32 +284,19 @@ String dataDePublicacao;
 
                         <section class="buttonsZoom">
 
-                            <section class="EditButtonsSection">
+                            <section class="EditButtonsSection">                                    
 
-                                <section>
+      							<button type="button" class="Buttons" onclick="openPage('arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%=request.getAttribute("name")%>','_self')">
 
-                                    <button type="button" class="Buttons">
- 									
- 									<a href="arteditselect?idart=<%=listAllArtsArtist.get(i).getIdart()%>&name=<%=listAllArtsArtist.get(i).getIdart()%>&description=<%=listAllArtsArtist.get(i).getIdart()%>&exposureDate=<%=listAllArtsArtist.get(i).getIdart()%>&publicationDate=<%=listAllArtsArtist.get(i).getIdart()%>&artistname=<%=request.getAttribute("name")%>">										
-                                        <img class="ImageButton3" 
-                                            src="images/icons/editar03.png" alt="">
-									</a>
- 
-                                    </button>
+                                    <img class="ImageButton3" src="images/icons/editar03.png" alt="">
 
-                                </section>
+                                </button>
 
-                                <section>
+                                <button type="button" class="Buttons" onclick="javascript: removeConfirm('<%out.print(request.getAttribute("idArtist"));%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%out.print(request.getAttribute("name"));%>','<%=listAllArtsArtist.get(i).getName()%>')">
+																		
+										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">										
 
-                                    <button type="button" class="Buttons">
-
-                                       <a href="javascript: removeConfirm('<%out.print(request.getAttribute("idArtist"));%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%out.print(request.getAttribute("name"));%>','<%=listAllArtsArtist.get(i).getName()%>')">
-											<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
-									   </a>
-
-                                    </button>
-
-                                </section>
+                                </button>
 
                             </section>
 
@@ -398,7 +374,7 @@ String dataDePublicacao;
 		 
         </section>		
 
-     <section id="info">
+      <section id="info">
             
             WODA®<br>
             World of digital artists<br>
@@ -407,15 +383,11 @@ String dataDePublicacao;
             Web Software Application<br>
             Full Stack<br>			
 			
-			 <button type="button" id="seacherButton" class="Buttons">
+			 <button type="button" id="seacherButton" class="Buttons" onclick="openPage('mailto:atedimento.site@gmail.com?subject=Contact_WODA','_self')">
 
-             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-             	
           	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-          	  		
-				</a>
-
-             </button>      
+          	  						
+             </button> 
 			
         </section>
 

@@ -98,7 +98,7 @@
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
+                    <img id="imagemButtonMenu" src="images/icons/menu03.png" alt=""
                         onclick="abrirOptions()">
 
                 </button>
@@ -200,10 +200,10 @@
 							
 							<section id="sectionAssociate">
 							
-								<input type="radio" id="associatesOn" name="associates" value="YES" onchange="openCloseSection(sectionAssociateList,'display',true)">
+								<input type="radio" id="associatesOn" name="associates" value="YES" onblur="openCloseSection(sectionAssociateList,'display',true)" onchange="openCloseSection(sectionAssociateList,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOff" name="associates" value="NO" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
+								<input type="radio" id="associatesOff" name="associates" value="NO" onblur="openCloseSection(sectionAssociateList,'display',false)" onchange="openCloseSection(sectionAssociateList,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
@@ -254,10 +254,10 @@
 							
 							<section id="sectionAssociateEdit">
 							
-								<input type="radio" id="associatesOnEdit" name="associatesedit" value="YES" onchange="openCloseSection(sectionAssociateListEdit,'display',true)">
+								<input type="radio" id="associatesOnEdit" name="associatesedit" value="YES" onblur="openCloseSection(sectionAssociateListEdit,'display',true)" onchange="openCloseSection(sectionAssociateListEdit,'display',true)">
   								<label for="associates">YES</label>
   						
-								<input type="radio" id="associatesOffEdit" name="associatesedit" value="NO" onchange="openCloseSection(sectionAssociateListEdit,'display',false)" checked>
+								<input type="radio" id="associatesOffEdit" name="associatesedit" value="NO" onblur="openCloseSection(sectionAssociateListEdit,'display',false)" onchange="openCloseSection(sectionAssociateListEdit,'display',false)" checked>
 								<label for="associates">NO</label>
                        			
                        		</section>														
@@ -336,7 +336,7 @@
 
         </form>
 
-       <section id="info">
+        <section id="info">
             
             WODA®<br>
             World of digital artists<br>
@@ -345,15 +345,11 @@
             Web Software Application<br>
             Full Stack<br>			
 			
-			 <button type="button" id="seacherButton" class="Buttons">
+			 <button type="button" id="seacherButton" class="Buttons" onclick="openPage('mailto:atedimento.site@gmail.com?subject=Contact_WODA','_self')">
 
-             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-             	
           	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-          	  		
-				</a>
-
-             </button>      
+          	  						
+             </button> 
 			
         </section>
 

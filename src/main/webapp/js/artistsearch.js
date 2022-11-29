@@ -273,3 +273,10 @@ function exit()
     	
 	}	
 }
+
+//
+
+setInterval(()=>
+{
+	document.getElementById('imagemButtonMenu').style.opacity = "0.9";		
+},0);

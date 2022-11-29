@@ -139,11 +139,6 @@ header {
     border: 10px solid rgba(85, 85, 85, 0);
 }
 
-#imagemButtonMenu:hover {
-    opacity: .7;
-    cursor: pointer;
-    animation: escala .5s alternate infinite;
-}
 
 /**/
 
@@ -584,7 +579,7 @@ body::-webkit-scrollbar-thumb {
     }
 
     100% {
-        transform: scale(.5);
+        transform: scale(.7);
     }
 }
 
@@ -1126,9 +1121,15 @@ fieldset {
     border: 0px solid rgba(85, 85, 85, .1);
     background-color: rgba(0, 0, 0, 0.0);
     margin: 2%;
-    opacity: .8;
+    opacity: 0;
 }
 
+
+#imagemButtonMenu:hover {
+    opacity: .7;
+    cursor: pointer;
+    animation: escala .5s alternate infinite;
+}
 
 #sectionButtons {
     display: flex;
@@ -1272,7 +1273,7 @@ fieldset {
 }
 
 #flutuante {
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -1313,4 +1314,55 @@ fieldset {
     opacity: 1;
     border-bottom: 50px dashed rgba(255, 255, 255, 0);
 
+}
+
+.opacidade01 {
+    animation: opacidade01Css 4s;
+    animation-iteration-count:1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes opacidade01Css
+{
+    0%
+    {
+        opacity: 0;	 	
+        margin-right: 2000%;        
+    }
+
+	20%
+	{
+		opacity: 1;	
+       	margin-right: 0%;
+       	transform: rotate(45deg);       	
+	}	
+
+ 	40%
+    {
+       	opacity: 0.5;	
+       	transform: rotate(-30deg); 
+       	margin-right: 10%;    	
+    }
+    
+    60%
+    {
+    	opacity: 1;	
+    	transform: rotate(15deg);
+    	margin-right: -5%;   
+    }
+    
+    80%
+    {
+    	opacity: 0.5;
+    	transform: rotate(-5deg);
+    	margin-right: 1%; 
+    }
+    
+    100%
+    {
+       	opacity: 1;	
+       	margin-right: 0%;
+       	transform: rotate(0deg);
+    }
 }

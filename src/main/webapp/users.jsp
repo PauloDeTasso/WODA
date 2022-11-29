@@ -181,7 +181,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
         </form>		
 
-        <section id="info">
+         <section id="info">
             
             WODA®<br>
             World of digital artists<br>
@@ -190,15 +190,11 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
             Web Software Application<br>
             Full Stack<br>			
 			
-			 <button type="button" id="seacherButton" class="Buttons">
+			 <button type="button" id="seacherButton" class="Buttons" onclick="openPage('mailto:atedimento.site@gmail.com?subject=Contact_WODA','_self')">
 
-             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-             	
           	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-          	  		
-				</a>
-
-             </button>      
+          	  						
+             </button> 
 			
         </section>
 
@@ -213,7 +209,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
         </section>       
 
  		<section id="sectionTableSeacher">
-
+       		
         	<table id="tableArtists" class="tabela">
 
             	<thead>
@@ -231,9 +227,13 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                         <th>
 	                        PASSWORD
                         </th>      
-                               
+                        
                         <th>
-	                        OPTIONS
+	                        EDIT
+                        </th>  
+                        
+                        <th>
+	                        DELETE
                         </th>                                              
 
                     </tr>
@@ -247,23 +247,23 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
                         { %>
                         
                         	<tr>
-                                <td>
+                                <td class="tds">
                                 	<%=listAllUsers.get(i).getUserId()%>
                                 </td>
                             
-                                <td>        
+                                <td class="tds">        
                                    
                                    <%=listAllUsers.get(i).getUserLogin()%>
                                    
                                 </td>
                             
-                                <td>
+                                <td class="tds">
                                 
                                     <%=listAllUsers.get(i).getUserPassword()%>
                                     
                                 </td>
                                                         
-                            	<td class="tdOption">
+                            	<td class="tds">
                             	
                                 	<button type="button" class="Buttons">
 
@@ -274,20 +274,24 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 										</a>
 	
                                 	</button>
-                                	
+                                	                                	
+								</td>  
+								
+								<td class="tds">
+                            	                                	
                                 	<button type="button" class="Buttons">
 									
-										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>','<%=listAllUsers.get(i).getUserPassword()%>')">
+										<a href="javascript: removeUser('<%=listAllUsers.get(i).getUserId()%>','<%=listAllUsers.get(i).getUserLogin()%>')">
 										
 											<img class="ImagesButtonsRegister" src="images/icons/userDelete01.png" alt="">
 											
 										</a>
 
-                                	</button>  
+                                	</button> 
                                 	
 								</td>                               
                             
-                            </tr>                                 
+                            </tr>                             
                                                         
                             <%} %>  
           

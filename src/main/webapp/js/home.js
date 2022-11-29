@@ -1,5 +1,5 @@
 
-var botaoLogin = document.getElementById('body');
+var body = document.getElementById('body');
 
 var html = document.getElementsByTagName('html');
 
@@ -25,6 +25,7 @@ var ImagesArtist = document.getElementsByClassName('ImagesArtist');
 
 var searchOption = document.getElementsByName('searchoption');
 
+var status2 = document.getElementById('status');
 
 /////////
 
@@ -421,3 +422,19 @@ function exit()
         	window.location.href = "index.html";
     	}
 }
+
+//
+
+function loadComplete()
+{		
+	document.getElementById('imagemButtonMenu').classList.add('opacidade01');			
+}	
+
+//
+
+setInterval(()=>
+{
+	document.getElementById('imagemButtonMenu').classList.remove('opacidade01');
+	document.getElementById('imagemButtonMenu').style.opacity = "0.9";		
+},4000);
+

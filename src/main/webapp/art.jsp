@@ -91,7 +91,7 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
                 <button type="button" id="buttonMenu">
 
-                    <img id="imagemButtonMenu" src="images/icons/menu01.png" alt=""
+                    <img id="imagemButtonMenu" src="images/icons/menu03.png" alt=""
                         onclick="abrirOptions()">
 
                 </button>
@@ -242,7 +242,7 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
         </section>                   
 
-        <section id="info">
+         <section id="info">
             
             WODA®<br>
             World of digital artists<br>
@@ -251,15 +251,11 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
             Web Software Application<br>
             Full Stack<br>			
 			
-			 <button type="button" id="seacherButton" class="Buttons">
+			 <button type="button" id="seacherButton" class="Buttons" onclick="openPage('mailto:atedimento.site@gmail.com?subject=Contact_WODA','_self')">
 
-             	<a href=mailto:atedimento.site@gmail.com?subject=Contact_WODA>
-             	
           	  		<img class="ImageButton3" src="images/icons/SUPORTE01.png" alt="">
-          	  		
-				</a>
-
-             </button>      
+          	  						
+             </button> 
 			
         </section>
 

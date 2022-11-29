@@ -339,86 +339,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*
-  .load
-  {
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 10px solid rgb(60, 255, 0);
-  }
-*/
-
-.load {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 1%;
-    padding: 3%;
-}
-
-.load .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 255, 255);
-    transform: scale(0.2);
-    animation: animacao 1.2s infinite;
-    /*border: 10px solid rgb(107, 31, 247);*/
-}
-
-.dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.dot:nth-child(4) {
-    animation-delay: 0.7s;
-}
-
-.dot:nth-child(5) {
-    animation-delay: 1s;
-}
-
-.dot:nth-child(6) {
-    animation-delay: 1.2s;
-}
-
-@keyframes animacao {
-
-    0%,
-    100% {
-        transform: scale(0.2);
-    }
-
-    50% {
-        background-color: rgb(107, 31, 247);
-        transform: scale(1);
-    }
-}
-
-@keyframes escala {
-
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(.7);
-    }
-}
-
-/*
 #statusSistema {
     display: none;
     flex-direction: row;
@@ -430,18 +350,14 @@ body::-webkit-scrollbar-thumb {
 }
 */
 
-#sectionCpf {
-
-    visibility: visible;
-}
 
 input {
     height: 50px;
     border-radius: 7px;
     font-size: 100%;
-    background-color: rgb(252, 215, 166);
+    background-color: rgba(252, 215, 166,1);
     color: rgb(0, 54, 155);
-    padding-left: 1%;
+    text-align: center;
 }
 
 .ButtonsDisabled
@@ -456,14 +372,6 @@ input {
     border: 0px solid rgb(255, 255, 255);
     border-radius: 7px;
     opacity: 0.3;
-}
-
-textarea {
-    height: 50px;
-    border-radius: 7px;
-    background-color: rgb(252, 215, 166);
-    color: rgb(0, 54, 155);
-    font: 100% 'Open Sans', sans-serif;
 }
 
 ::placeholder {
@@ -481,40 +389,6 @@ textarea {
 ::-ms-input-placeholder {
     /* Microsoft Edge */
     color: rgba(0, 89, 255, 0.3);
-}
-
-select {
-    border-radius: 7px;
-    border: 2px solid rgb(0, 0, 0);
-    height: 50px;
-    background-color: rgb(252, 215, 166);
-    color: rgb(0, 54, 155);
-    font-size: 100%;
-    padding-left: 1%;
-}
-
-option:not(:first-of-type) {
-    color: rgb(0, 54, 155);
-}
-
-input[type=date]:invalid::-webkit-datetime-edit {
-    color: rgb(0, 54, 155);
-}
-
-input[type="date"]::-webkit-datetime-edit-text,
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field,
-input[type="date"]::-webkit-datetime-edit-year-field {
-    color: rgb(0, 54, 155);
-}
-
-
-/* regular text style */
-input[type="date"].date-input--has-value::-webkit-datetime-edit-text,
-input[type="date"].date-input--has-value::-webkit-datetime-edit-month-field,
-input[type="date"].date-input--has-value::-webkit-datetime-edit-day-field,
-input[type="date"].date-input--has-value::-webkit-datetime-edit-year-field {
-    color: rgb(0, 54, 155);
 }
 
 input,
@@ -574,19 +448,6 @@ fieldset {
     border-width: 5px;
 }
 
-#filesInputArts {
-    background-color: rgb(255, 192, 120);
-}
-
-#fileInputArtist {
-    background-color: rgb(255, 192, 120);
-}
-
-#description {
-    width: 100%;
-    height: 100px;
-}
-
 input:invalid {
     border: 2px dashed red;
 }
@@ -604,13 +465,15 @@ input:valid {
 
 #idInputEdit
 {
-	width: 70px;
+	width: auto;
    	height: 50px;
     border-radius: 7px;
     font-size: 100%;
-    background-color: rgba(252, 215, 166,0);
+    background-color: rgba(200, 200, 200,0.7);
     color: rgb(40, 40, 40);
-    text-align: center;
+    text-align: center;	
+    font-weight: 700;
+    cursor: default;
 }
 
 
@@ -699,11 +562,11 @@ input:valid {
 .tableForm
 {	 	
     justify-content: center;    
-    background-color: rgba(255, 159, 70, 0.5);    
+    background-color: rgba(255, 159, 70, 0.3);    
     width: 100%; 
-    border: 2px solid rgba(255, 159, 70, 1);
-    border-radius: 10px;
-	margin-bottom: 3px;  
+    border: 5px solid rgba(200, 200, 200, 0.7);
+    border-radius: 20px;
+	margin: 20px;  
 }
 
 .tdOption
@@ -923,7 +786,7 @@ td
     border: 0px solid rgba(85, 85, 85, .1);
     background-color: rgba(0, 0, 0, 0.0);
     margin: 2%;
-    opacity: .8;
+    opacity: 0.9;
 }
 
 
@@ -1008,34 +871,25 @@ td
 
 /**/
 
-.tabela {
-    /*margin-top: 30px;*/
-    /*border-collapse: collapse;*/
+.tabela
+{
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 4px 4px 4px 4px;
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
-    font-size: 140%;
-    margin-top: 10px;
+    border: 10px solid rgba(200, 200, 200,0.7);
+    border-radius: 30px;
+    padding: 20px;
+    background-color: rgba(255, 159, 70, 0.3); 
 }
 
-.tabela th {
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 100%;
-    border: 1px solid rgb(252, 178, 100);
-    text-align: center;
-    background-color: rgb(110, 70, 220);
+th {    
+    text-align: center;    
+    border: 4px solid rgba(200, 200, 200,0.7);    
+    background-color: rgba(110, 70, 220,1);
     color: #fff;
     padding: 4px 4px 4px 4px;
-    font-size: 200%;
+    font-size: 120%;
     border-radius: 10px;    
-    margin-top: 10px;
+    margin: 10px;
 }
 
 .LegendResgiter {
@@ -1045,38 +899,14 @@ td
     align-items: center;
 }
 
-.tabela td {
-    justify-content: center;
-    align-items: center;
+td {    
     text-align: center;
-    width: auto;
-    height: auto;
-    border: 2px solid rgba(252, 178, 100,0.5);
+    border: 2px solid rgba(200, 200, 200,0);
     padding: 4px 4px 4px 4px;
-    background-color: rgba(211, 145, 69,0.9);
-    font-size: 140%;
+    background-color: rgba(252, 178, 100,0);
+    font-size: 100%;
     border-radius: 10px;
-    margin-top: 20px;
-}
-
-td {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: auto;
-    border: 7px solid rgba(252, 178, 100,0.3);
-    padding: 4px 4px 4px 4px;
-    background-color: rgba(252, 178, 100,0.7);
-    font-size: 140%;
-    border-radius: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-td:hover
-{
-    background-color: rgba(252, 178, 100,1);
+    margin: 10px;
 }
 
 tr
@@ -1084,17 +914,15 @@ tr
 	margin-top: 10px;
 }
 
-.tds {	
-    justify-content: center;
-    align-items: center;    
+.tds
+{	
     text-align: center;
-    width: 100%;
-    height: auto;
     padding: 4px 4px 4px 4px;
-    border: 7px solid rgba(252, 178, 100,0.5);
-    font-size: 140%;
+    border: 4px solid rgba(200, 200, 200,0.7);
+    background-color: rgba(252, 215, 166,1);
+    font-size: 100%;
     border-radius: 10px;
-    margin-top: 20px;
+    margin: 10px;
 }
 
 a

@@ -739,89 +739,6 @@ public class MainController extends HttpServlet
 	protected void artEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		/*-
-		artist.setIdArtist(request.getParameter("idartist"));
-		artist.setNome(request.getParameter("name"));
-		artist.setEmail(request.getParameter("email"));
-		artist.setSexo(request.getParameter("gender"));
-		artist.setDatadenascimento(request.getParameter("birthday"));
-		artist.setNacionalidade(request.getParameter("nationality"));
-		artist.setCpf(request.getParameter("cpf"));
-		
-		dao.editArtistDb(artist);
-		
-		associated.setIdArtist(Long.parseLong(artist.getIdArtist()));
-		
-		String associatesOn = request.getParameter("associates");
-		
-		String associatesedit = request.getParameter("associatesedit");
-		
-		String addArtsIdsCheck[] = (request.getParameterValues("addartsidscheck") == null) ? new String[] {}
-				: request.getParameterValues("addartsidscheck");
-		
-		ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtist = dao.listAllIdsArtsForIdArtistDb(artist.getIdArtist());
-		
-		String editArtsIdsCheck[] = (request.getParameterValues("editartsidscheck") == null) ? new String[] {}
-				: request.getParameterValues("editartsidscheck");
-		
-		// SEPARA AS ARTES PARA SEREM DESASSOCIADAS:
-		for (int i = 0; i < editArtsIdsCheck.length; i++)
-		{
-		
-			for (int x = 0; x < listAllIdsArtsForIdArtist.size(); x++)
-			{
-		
-				if (editArtsIdsCheck[i].equals(listAllIdsArtsForIdArtist.get(x).getIdArt().toString()))
-				{
-					listAllIdsArtsForIdArtist.remove(x);
-				}
-			}
-		}
-		
-		// CRIA LISTA DE ARTISTAS EXTRAS ASSOCIADOS DA ARTE A SER DESASSOSIADA.
-		ArrayList<IdsArtsArtist> listIdsArtistByIdArt = new ArrayList<>();
-		
-		for (int i = 0; i < listAllIdsArtsForIdArtist.size(); i++)
-		{
-			dao.listIdsArtistByIdArtDb(listIdsArtistByIdArt, "", listAllIdsArtsForIdArtist.get(i).getIdArt());
-		}
-		
-		// VERIFICAR E REMOVE A ARTE DE PROPRIEDADES E DE ARTS NO DB:
-		if (associatesedit.equals("YES"))
-		{
-		
-			for (int i = 0; i < listAllIdsArtsForIdArtist.size(); i++)
-			{
-		
-				if (listIdsArtistByIdArt.size() == 1)
-				{
-					dao.removeAssociatesArtistExtrasDb(associated, listAllIdsArtsForIdArtist.get(i).getIdArt());
-					dao.deleteArtForIdDb(listAllIdsArtsForIdArtist.get(0).getIdArt().toString());
-		
-				} else
-				{
-					dao.removeAssociatesArtistExtrasDb(associated, listAllIdsArtsForIdArtist.get(i).getIdArt());
-				}
-			}
-		}
-		
-		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
-		if (associatesOn.equals("YES"))
-		{
-		
-			for (int i = 0; i < addArtsIdsCheck.length; i++)
-			{
-				dao.AddArtsExtrasAssociatesForArtistDb(associated, Integer.parseInt(addArtsIdsCheck[i]));
-			}
-		}
-		
-		//
-		
-		response.sendRedirect("artist?idartist=" + artist.getIdArtist());
-		
-		
-		*/
-
 		// SETAR DADOS DA ART:
 		art.setName(request.getParameter("name"));
 		art.setDescription(request.getParameter("description"));
@@ -846,42 +763,51 @@ public class MainController extends HttpServlet
 		String editArtistsIdsCheck[] = (request.getParameterValues("editartistsidscheck") == null) ? new String[] {}
 				: request.getParameterValues("editartistsidscheck");
 
-		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
-		if (associatesOn.equals("YES"))
-		{
+		// SELECIONA TODOS OS ARTISTAS ASSOCIADOS A ARTE A SER EDITADA:
+		ArrayList<IdsArtsArtist> listIdsArtistByIdArt = new ArrayList<>();
 
-			for (int i = 0; i < addArtistsIdsCheck.length; i++)
-			{
-				dao.AddArtistsExtrasAssociatesForArtDb(associated, Integer.parseInt(addArtistsIdsCheck[i]));
-			}
+		dao.listIdsArtistByIdArtDb(listIdsArtistByIdArt, "", art.getIdart());
+
+		for (int x = 0; x < listIdsArtistByIdArt.size(); x++)
+		{
+			System.out.println("IDS DOS ARTISTAS ASSOCIADOS: (i)= " + x);
+			System.out.println("listIdsArtistByIdArt: " + listIdsArtistByIdArt.get(x).getIdArt());
+			System.out.println("-----------------------");
 		}
 
-		// SELECIONA TODOS OS ARTISTAS JÁ ASSOCIADOS A ARTE A SER EDITADA:
-		ArrayList<IdsArtsArtist> listAllIdsArtistsForIdArt = new ArrayList<>();
-
-		dao.listIdsArtistByIdArtDb(listAllIdsArtistsForIdArt, "", art.getIdart());
-
-		// SEPARA AS ARTES PARA SEREM DESASSOCIADAS:
+		// SEPARA AS ARTES QUE SERÃO DESASSOCIADAS:
 		for (int i = 0; i < editArtistsIdsCheck.length; i++)
 		{
 
-			for (int x = 0; x < listAllIdsArtistsForIdArt.size(); x++)
+			for (int x = 0; x < listIdsArtistByIdArt.size(); x++)
 			{
 
-				if (editArtistsIdsCheck[i].equals(listAllIdsArtistsForIdArt.get(x).getIdArt().toString()))
+				if (editArtistsIdsCheck[i].equals(listIdsArtistByIdArt.get(x).getIdArt().toString()))
 				{
-					listAllIdsArtistsForIdArt.remove(x);
+					listIdsArtistByIdArt.remove(x);
 				}
 			}
 		}
 
-		// CRIA LISTA DE ARTISTAS ASSOCIADOS PELA ARTE A SER EDITADA.
-		ArrayList<IdsArtsArtist> listIdsArtistByIdArt = new ArrayList<>();
-
-		for (int i = 0; i < listAllIdsArtistsForIdArt.size(); i++)
+		for (int x = 0; x < listIdsArtistByIdArt.size(); x++)
 		{
-			dao.listIdsArtistByIdArtDb(listIdsArtistByIdArt, "", associated.getIdArt());
+			System.out.println("IDS DOS ARTISTAS A REMOVER: (i)= " + x);
+			System.out.println("listAllIdsArtistsForIdArt: " + listIdsArtistByIdArt.get(x).getIdArt());
+			System.out.println("-----------------------");
 		}
+
+		// CRIA NOVA LISTA DE ARTISTAS ASSOCIADOS PELA ARTE A SER EDITADA.
+		ArrayList<IdsArtsArtist> newListIdsArtistByIdArt = new ArrayList<>();
+		dao.listIdsArtistByIdArtDb(newListIdsArtistByIdArt, "", associated.getIdArt());
+
+		for (int i = 0; i < newListIdsArtistByIdArt.size(); i++)
+		{
+			System.out.println("IDS DE TODOS OS ARTISTAS AINDA ASSOCIADOS A ART: (i)= " + i);
+			System.out.println("listIdsArtistByIdArt: " + newListIdsArtistByIdArt.get(i).getIdArt());
+			System.out.println("-----------------------");
+		}
+
+		System.out.println("TAMANHO TOTAL DE ARTIRTAS ASSOCIADOS A ARTE: " + newListIdsArtistByIdArt.size());
 
 		// VERIFICAR E REMOVE O ARTISTA DE PROPRIEDADES E DE ARTISTAS NO DB:
 		if (associatesedit.equals("YES"))
@@ -889,63 +815,24 @@ public class MainController extends HttpServlet
 
 			for (int i = 0; i < listIdsArtistByIdArt.size(); i++)
 			{
-				System.out.println("IDS ASSOCIADOS A ART: (i)= " + i);
-				System.out.println("listIdsArtistByIdArt: " + listIdsArtistByIdArt.get(i).getIdArt());
-				System.out.println("-----------------------");
+				dao.removeAssociatesArtsExtrasDb(art, listIdsArtistByIdArt.get(i).getIdArt());
 			}
-
-			System.out.println("TAMANHO TOTAL ASSOCIADOS: " + listIdsArtistByIdArt.size());
-
-			for (int i = 0; i < listAllIdsArtistsForIdArt.size(); i++)
-			{
-
-				if (listIdsArtistByIdArt.size() == 1)
-				{
-					dao.removeAssociatesArtsExtrasDb(art, listAllIdsArtistsForIdArt.get(i).getIdArt());
-					dao.deleteArtForIdLongDb(art.getIdart());
-
-				} else if (listIdsArtistByIdArt.size() < 1)
-				{
-					dao.deleteArtForIdLongDb(art.getIdart());
-
-				} else if (listIdsArtistByIdArt.size() > 1)
-				{
-					dao.removeAssociatesArtsExtrasDb(art, listAllIdsArtistsForIdArt.get(i).getIdArt());
-
-				} else
-				{
-					System.out.println("ERRO");
-					System.out.println("TAMANHO LIST ASSOCIADOS: " + listIdsArtistByIdArt.size());
-
-				}
-			}
-
-			for (int i = 0; i < listAllIdsArtistsForIdArt.size(); i++)
-			{
-				dao.listIdsArtistByIdArtDb(listIdsArtistByIdArt, "", associated.getIdArt());
-			}
-
-			System.out.println("TAMANHO LIST ASSOCIADOS: " + listIdsArtistByIdArt.size());
-
-			for (int i = 0; i < listIdsArtistByIdArt.size(); i++)
-			{
-				System.out.println("RESTO DOS ASSOCIADOS: (i)= " + i);
-				System.out.println("listIdsArtistByIdArt: " + listIdsArtistByIdArt.get(i).getIdArt());
-				System.out.println("-----------------------");
-			}
-
-			/*-
-			if (listIdsArtistByIdArt.size() <= 1)
-			{
-				dao.deleteArtForIdLongDb(art.getIdart());
-			} else
-			{
-				System.out.println("ERRO");
-				System.out.println("TAMANHO LIST ASSOCIADOS: " + listIdsArtistByIdArt.size());
-			
-			}
-			*/
 		}
+
+		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
+		if (associatesOn.equals("YES") && addArtistsIdsCheck.length >= 1
+				|| associatesOn.equals("NO") && addArtistsIdsCheck.length >= 1)
+		{
+
+			for (int i = 0; i < addArtistsIdsCheck.length; i++)
+			{
+				dao.AddArtistsExtrasAssociatesForArtDb(associated, Integer.parseInt(addArtistsIdsCheck[i]));
+				System.out.println("(i)=" + i + " - ADICIONOU" + addArtistsIdsCheck[i]);
+			}
+
+		}
+
+		//////////////////////////////////
 
 		ArrayList<Arts> listArt = dao.listArtByIdArtDb(art);
 
@@ -960,10 +847,18 @@ public class MainController extends HttpServlet
 			dao.listArtistAllByIdArtistDb(listAllArtistForIdArtist, "", idsArtistsForIdArt.get(i).getIdArt());
 		}
 
-		if (listIdsArtistByIdArt.size() <= 1)
-		{
-			response.sendRedirect("searcharts");
+		//////////////////////////////////
 
+		// CRIA LISTA DE ARTISTAS ASSOCIADOS PELA ARTE A SER EDITADA.
+		ArrayList<IdsArtsArtist> listFinalIdsArtistByIdArt = new ArrayList<>();
+		dao.listIdsArtistByIdArtDb(listFinalIdsArtistByIdArt, "", associated.getIdArt());
+
+		System.out.println("TAMANHO FINAL DE ARTIRTAS ASSOCIADOS A ARTE: " + listFinalIdsArtistByIdArt.size());
+
+		if (listFinalIdsArtistByIdArt.size() <= 0)
+		{
+			dao.deleteArtForIdLongDb(art.getIdart());
+			response.sendRedirect("searcharts");
 		} else
 		{
 			request.setAttribute("Art", listArt);
@@ -978,98 +873,11 @@ public class MainController extends HttpServlet
 		}
 
 		/*-
-		System.out.println("name getParameter: " + request.getParameter("name") + art.getName());
-		System.out.println("description getParameter: " + request.getParameter("description") + art.getDescription());
-		System.out.println(
-				"publicationdate getParameter: " + request.getParameter("publicationdate") + art.getDataDePublicacao());
-		System.out.println(
-				"exposuredate getParameter: " + request.getParameter("exposuredate") + art.getDataDeExposicao());
-		
-		System.out.println("artist.getIdArtist() : " + artist.getIdArtist());
-		
-		System.out.println("art.getIdart(): " + art.getIdart());
-		*/
-
-		/*-
-		// SELECIONA TODAS AS ARTES SELECIONADAS PELO PELO NOME:
-		ArrayList<NamesArtsArtist> checkNamesArtist = new ArrayList<>();
-		
-		// ASSOCIA OS ARTISTAS SELECIONADOS COM A ARTE NA TABELA PROPRIEDADES NO BANCO:
-		for (int i = 0; i < addArtistsIdsCheck.length; i++)
+		for (int i = 0; i < idsArtistsForIdArt.size(); i++)
 		{
-			dao.AddArtistsExtrasAssociatesForArtDb(associated, Integer.parseInt(addArtistsIdsCheck[i]));
-			dao.listNamesArtistByIdArtistDb(checkNamesArtist, addArtistsIdsCheck[i]);
-		}
-		
-		// FORMA UM OBJETO COM TODAS AS ARTES CADASTRADAS
-		// ArrayList<Arts> listAllArts = dao.listArtsAllOrderIdDescDb();
-		
-		// FORMA UM OBJETO COM TODOS OS ARTISTAS CADASTRADOS:
-		ArrayList<Artists> listAllArtistsOrderIdDesc = dao.listAllArtistsOrderIdDescDb();
-		
-		// PEGA A ULTIMA ID DA ARTE CADASTRADA NO BANCO E SETA NA CLASSE DE PROPRIEDADE
-		// associated.setIdArt(listAllArts.get(0).getIdart());
-		// art.setIdart(listAllArts.get(0).getIdart());
-		
-		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTA PRINCIPAL
-		// dao.addAssociates(associated);
-		
-		// CADASTRA A PROPRIEDADE DA NOVA ARTE PARA O ARTISTAS EXTRAS:
-		// for (int i = 0; i < newidartistchecked.length; i++)
-		// {
-		// dao.addAssociatesArtsExtrasDb(associated,
-		// Integer.parseInt(newidartistchecked[i]));
-		// dao.listNamesArtistByIdArtistDb(checkNamesArtist, newidartistchecked[i]);
-		// }
-		
-		/*-
-		String nomeDaVez;
-		
-		//
-		
-		for (int i = 0; i < checkNamesArtist.size(); i++)
-		{
-			nomeDaVez = checkNamesArtist.get(i).getNameArt();
-		
-			for (int x = 0; x < listAllArtistsOrderIdDesc.size(); x++)
-			{
-		
-				if (listAllArtistsOrderIdDesc.get(x).getNome().equals(nomeDaVez))
-				{
-					listAllArtistsOrderIdDesc.remove(x);
-				}
-			}
-		}
-		
-		for (int i = 0; i < listAllArtistsOrderIdDesc.size(); i++)
-		{
-			System.out.println(
-					"listAllArtistsOrderIdDesc: (i)=" + i + " - " + listAllArtistsOrderIdDesc.get(i).getNome());
+			dao.listArtistAllByIdArtistDb(listAllArtistForIdArtist, "", idsArtistsForIdArt.get(i).getIdArt());
 		}
 		*/
-		/*-
-		request.setAttribute("idArt", art.getIdart());
-		request.setAttribute("nameArt", art.getName());
-		request.setAttribute("description", art.getDescription());
-		request.setAttribute("publicationdate", art.getDataDePublicacao("br"));
-		request.setAttribute("exposuredate", art.getDataDeExposicao("br"));
-		
-		request.setAttribute("idArtist", artist.getIdArtist());
-		request.setAttribute("nameArtist", artist.getNome());
-		
-		request.setAttribute("associatesOn", associatesOn);
-		
-		// request.setAttribute("addArtistsIdsCheck", addArtistsIdsCheck);
-		
-		request.setAttribute("checkedNames", checkNamesArtist);
-		
-		//
-		
-		response.sendRedirect("art?idart=" + art.getIdart());
-		*/
-		// RequestDispatcher rd = request.getRequestDispatcher("artregistered.jsp");
-
-		// rd.forward(request, response);
 	}
 
 	/*-
