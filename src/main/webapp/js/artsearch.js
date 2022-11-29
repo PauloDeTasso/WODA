@@ -36,11 +36,6 @@ function exit()
 
 	    if (exitResponse === true)
     	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
         	window.location.href = "index.html";
     	}
 }
@@ -128,11 +123,6 @@ function confirmar(id,type)
 
 	    if (resposta === true)
     	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
         	window.location.href = "deleteartist?idartist=" + id;
     	}
     }else if(type == "art")
@@ -141,11 +131,6 @@ function confirmar(id,type)
 
 	    if (resposta === true)
     	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
         	window.location.href = "deleteart?idart=" + id;
 		}
 	}else

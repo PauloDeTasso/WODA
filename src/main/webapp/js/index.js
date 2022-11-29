@@ -109,7 +109,4 @@ function showPassword()
 
 }
 
- var larguraJanela = window.outerWidth;
- var alturaJanela = window.outerHeight;
-
 //

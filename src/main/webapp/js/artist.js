@@ -132,6 +132,47 @@ function removeArtConfirm(idArt,nameArt)
 
 //
 
+function removeArtistConfirm(id,type)
+{
+	if(type == "artist")
+	{		
+		var listIdsArts = document.getElementsByName('listIdsArts');
+	
+		if(listIdsArts.length == 0)
+		{
+			var resposta = confirm("Delete this artist?");
+
+	    	if (resposta === true)
+    		{        
+        		window.location.href = "deleteartist?idartist=" + id;
+    		}
+    		
+		}else
+		{
+			alert("Arts registered by this artist! Impossible to delete!")
+		}				
+    	
+    }else if(type == "art")
+    {
+		var resposta = confirm("Delete this art?");
+
+	    if (resposta === true)
+    	{
+        	//TESTE DE RECEBIMENTO:
+        	//alert(idcon);
+
+        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
+
+        	window.location.href = "deleteart?idart=" + id;
+		}
+	}else
+	{
+		alert("Error! Could not delete!");
+	}
+}
+
+//
+
  var optionAction;
   
  function abrirOptions()
@@ -177,12 +218,9 @@ function exit()
 	var exitResponse = confirm("Exit application?");
 
 	    if (exitResponse === true)
-    	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
+    	{        
         	window.location.href = "index.html";
     	}
 }
+
+//

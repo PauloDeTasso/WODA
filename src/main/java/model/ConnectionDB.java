@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class ConnectionDB
 {
-	// PARAMETROS:
-
 	private String driver = "com.mysql.cj.jdbc.Driver";
 
 	private String url = "jdbc:mysql://localhost:3306/dbartists?useTimezone=true&serverTimezone=UTC";
@@ -19,7 +17,7 @@ public class ConnectionDB
 
 	private String password = "root";
 
-	// Metodo de conexão:
+	//
 
 	private Connection conectar()
 	{
@@ -38,8 +36,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	/* CRUD CREATE - /artistregister */
 
 	public void addArtistDb(Artists artist)
 	{
@@ -103,8 +99,6 @@ public class ConnectionDB
 
 	//
 
-	// SELECT ALL ARTISTS - /main:
-
 	public ArrayList<Artists> listArtistsAllOrderNameDb()
 	{
 		ArrayList<Artists> listAllArtists = new ArrayList<>();
@@ -156,8 +150,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	// SELECT ALL ARTISTS - /main:
 
 	public void listArtistAllByIdArtistDb(ArrayList<Artists> listAllArtistForIdArtist, String IdArtistString,
 			Long IdArtistLong)
@@ -219,8 +211,6 @@ public class ConnectionDB
 
 	//
 
-	// SELECT ALL ARTS - /main:
-
 	public ArrayList<Arts> listAllArtsForName()
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
@@ -259,9 +249,7 @@ public class ConnectionDB
 		}
 	}
 
-	// CRUD UPDATE:
-
-	// SELECIONAR CONTATO:
+	//
 
 	public void selectArtistDb(Artists artist)
 	{
@@ -297,8 +285,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	// ALTERAR CONTATO - /editartist:
 
 	public void editArtistDb(Artists artist)
 	{
@@ -349,8 +335,6 @@ public class ConnectionDB
 
 				pst.executeUpdate();
 
-				//
-
 				String query2 = "update artists set cpf = null where idartist = ?";
 
 				PreparedStatement pst2 = con.prepareStatement(query2);
@@ -358,8 +342,6 @@ public class ConnectionDB
 				pst2.setString(1, artist.getIdArtist());
 
 				pst2.executeUpdate();
-
-				//
 
 				con.close();
 
@@ -371,8 +353,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	// ALTERAR CONTATO - /editartist:
 
 	public void editArtDb(Arts art)
 	{
@@ -415,9 +395,7 @@ public class ConnectionDB
 		}
 	}
 
-	/* CRUD DELETE */
-
-	// DELETE ARTIST - /deleteartist:
+	//
 
 	public void deleteArtistDb(Artists contato)
 	{
@@ -441,9 +419,7 @@ public class ConnectionDB
 		}
 	}
 
-	/* CRUD DELETE */
-
-	// DELETE ART - /deleteart:
+	//
 
 	public void deleteArtDb(Arts art)
 	{
@@ -455,23 +431,17 @@ public class ConnectionDB
 		{
 			Connection con = conectar();
 
-			//
-
 			PreparedStatement pst = con.prepareStatement(query);
 
 			pst.setLong(1, art.getIdart());
 
 			pst.executeUpdate();
 
-			//
-
 			PreparedStatement pst2 = con.prepareStatement(query2);
 
 			pst2.setLong(1, art.getIdart());
 
 			pst2.executeUpdate();
-
-			//
 
 			con.close();
 
@@ -481,9 +451,7 @@ public class ConnectionDB
 		}
 	}
 
-	/* CRUD DELETE */
-
-	// DELETE ART - /deleteart:
+	//
 
 	public void deleteArtForIdDb(String idArt)
 	{
@@ -511,9 +479,7 @@ public class ConnectionDB
 		}
 	}
 
-	/* CRUD DELETE */
-
-	// DELETE ART - /deleteart:
+	//
 
 	public void deleteArtForIdLongDb(long idArt)
 	{
@@ -540,9 +506,8 @@ public class ConnectionDB
 			System.out.println(e);
 		}
 	}
-	//
 
-	// SEARCHER ARTIST - /searcher:
+	//
 
 	public ArrayList<Artists> setSeacherArtistDb(Searcher searcherMain)
 	{
@@ -597,8 +562,6 @@ public class ConnectionDB
 
 	//
 
-	// SEARCHER ARTIST - /searcher:
-
 	public ArrayList<Arts> setSeacherArtNameDb(Searcher searcherMain)
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
@@ -642,8 +605,6 @@ public class ConnectionDB
 
 	//
 
-	// SEARCHER ARTIST - /searcher:
-
 	public ArrayList<Arts> setSeacherArtDescriptionDb(Searcher searcherMain)
 	{
 		ArrayList<Arts> listAllArts = new ArrayList<>();
@@ -685,7 +646,7 @@ public class ConnectionDB
 		}
 	}
 
-	///// INSERIR ART - /artregister:
+	//
 
 	public void addArtDb(Arts art, String dateType)
 	{
@@ -743,7 +704,7 @@ public class ConnectionDB
 		}
 	}
 
-///// EDITAR ART - /artedit:
+	//
 
 	public void editArtDb(Arts art, String dateType)
 	{
@@ -807,8 +768,6 @@ public class ConnectionDB
 
 	//
 
-///// INSERIR ART - /artregister:
-
 	public void addAssociates(Associates associated)
 	{
 		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
@@ -833,8 +792,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// INSERIR ART - /artregister:
 
 	public ArrayList<Arts> listArtsAllOrderIdDescDb()
 	{
@@ -878,8 +835,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// ADD ARTIST - /artistregister:
 
 	public ArrayList<Artists> listAllArtistsOrderIdDescDb()
 	{
@@ -934,8 +889,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ALL ARTS ID ARTIST - /artist:
-
 	public ArrayList<IdsArtsArtist> listIdsArtsByIdArtistOrderIdDescDb(String idArtist)
 	{
 		ArrayList<IdsArtsArtist> listIdsArtsArtist = new ArrayList<>();
@@ -974,52 +927,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ALL ARTS ID ARTIST - /artist:
-	/*-
-		public ArrayList<Arts> listAllArtsArtistDb(ArrayList<IdsArtsArtist> listIdsArtsArtist)
-		{
-			ArrayList<Arts> listAllArtsArtist = new ArrayList<>();
-	
-			String query = "select * from arts where idart = ? order by idart desc";
-	
-			try
-			{
-				Connection con = conectar();
-	
-				PreparedStatement pst = con.prepareStatement(query);
-	
-				pst.setLong(1, idArtArtist);
-	
-				ResultSet rs = pst.executeQuery();
-	
-				while (rs.next())
-				{
-					Long idArt = rs.getLong(1);
-					String nome = rs.getString(2);
-					String description = rs.getString(3);
-					String dataDePublicacao = rs.getString(4);
-					String dataDeExposicao = rs.getString(5);
-	
-					listAllArtsArtist.add(new Arts(idArt, nome, description, dataDeExposicao, dataDePublicacao));
-				}
-	
-				pst.close();
-	
-				con.close();
-	
-				return listAllArtsArtist;
-	
-			} catch (Exception e)
-			{
-				System.out.println(e);
-				return null;
-			}
-		}
-	*/
-	//
-
-	///// SELECT ALL ARTS ID ARTIST - /artist:
-
 	public void listArtAllByIdArtOrderIdDescDb(ArrayList<Arts> listAllArtsArtist, Long idArtArtist)
 	{
 		String query = "select * from arts where idart = ? order by idart desc";
@@ -1056,8 +963,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// SELECT ALL NAMES ARTS - /artist:
 
 	public ArrayList<NamesArtsArtist> listNamesArtsArtistDb(String checkedIds[])
 	{
@@ -1098,8 +1003,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ALL NAMES ARTISTS - /art:
-
 	public void listNamesArtistByIdArtistDb(ArrayList<NamesArtsArtist> listNamesArtistByIdArtist, String idArtist)
 	{
 		String query = "select nome from artists where idartist = ?";
@@ -1130,8 +1033,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// SELECT ALL NAMES ARTS - /artist:
 
 	public void checkNamesArtsDb(ArrayList<NamesArtsArtist> checkNamesArts, int checked)
 	{
@@ -1164,8 +1065,6 @@ public class ConnectionDB
 
 	//
 
-	///// INSERIR ASSOCIATES EXTRAS - /artRegister:
-
 	public void addAssociatesArtsExtrasDb(Associates associated, int checked)
 	{
 		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
@@ -1190,8 +1089,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
 
 	public void AddArtsExtrasAssociatesForArtistDb(Associates associated, int checked)
 	{
@@ -1218,8 +1115,6 @@ public class ConnectionDB
 
 	//
 
-	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
-
 	public void AddArtistsExtrasAssociatesForArtDb(Associates associated, int checked)
 	{
 		String query = "insert into properties (idartistfk,idartfk) values (?,?)";
@@ -1244,8 +1139,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
 
 	public void removeAssociatesArtistExtrasDb(Associates associated, Long checked)
 	{
@@ -1272,8 +1165,6 @@ public class ConnectionDB
 
 	//
 
-	///// INSERIR ASSOCIATES EXTRAS - /artistregister:
-
 	public void removeAssociatesArtsExtrasDb(Arts idArt, Long checked)
 	{
 		String query = "delete from properties where idartfk = ? and idartistfk like ?";
@@ -1298,8 +1189,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// SELECT ART - /art:
 
 	public ArrayList<Arts> listArtByIdArtDb(Arts art)
 	{
@@ -1344,8 +1233,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAME - /addartist:
-
 	public ArrayList<Arts> listArtsAllOrderNameDb()
 	{
 		ArrayList<Arts> listAllArtsNames = new ArrayList<>();
@@ -1388,8 +1275,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS IDS FOR ID ARTIST - /selectartistedit:
-
 	public ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtistDb(String idArtist)
 	{
 		ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtist = new ArrayList<>();
@@ -1428,8 +1313,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
-
 	public void listAllArtsNamesForIdArtistDb(ArrayList<NamesArtsArtist> listAllArtsNamesForIdArtist, Long idArtist)
 	{
 
@@ -1464,8 +1347,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
-
 	public void removeAssociateDb(String idArtist, String idArt)
 	{
 
@@ -1492,12 +1373,10 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
-
 	public boolean listAssociateDb(String idArt)
 	{
 
-		String idString;
+		// String idString;
 		boolean delete = true;
 
 		String query = "select idartistfk from properties where idartfk = ?";
@@ -1514,7 +1393,7 @@ public class ConnectionDB
 
 			while (rs.next())
 			{
-				idString = rs.getString(1);
+				// idString = rs.getString(1);
 
 				delete = false;
 
@@ -1532,8 +1411,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
 
 	public void listIdsArtistByIdArtDb(ArrayList<IdsArtsArtist> listIdsArtistByIdArt, String idArtString,
 			Long idArtLong)
@@ -1580,51 +1457,6 @@ public class ConnectionDB
 
 	//
 
-	///// SELECT ARTS NAMES FOR ID ARTIST - /selectartistedit:
-
-	public boolean tests(String idArt)
-	{
-		int idint;
-		String idString;
-		boolean idBoolean;
-		boolean delete = true;
-
-		String query = "select idartistfk from properties where idartfk = ?";
-
-		try
-		{
-			Connection con = conectar();
-
-			PreparedStatement pst = con.prepareStatement(query);
-
-			pst.setString(1, idArt);
-
-			ResultSet rs = pst.executeQuery();
-
-			while (rs.next())
-			{
-				idint = rs.getInt(1);
-				idString = rs.getString(1);
-				idBoolean = rs.getBoolean(1);
-
-				delete = false;
-			}
-
-			con.close();
-
-			return delete;
-
-		} catch (Exception e)
-		{
-			System.out.println(e);
-			return false;
-		}
-	}
-
-//
-
-///// INSERIR ART - /artregister:
-
 	public ArrayList<Authentication> listAllUsersDb()
 	{
 		ArrayList<Authentication> listAllUsers = new ArrayList<>();
@@ -1663,8 +1495,6 @@ public class ConnectionDB
 
 	//
 
-	///// INSERIR ART - /artregister:
-
 	public void userAddDb(Authentication authentication)
 	{
 		String query = "insert into authenticate (userId,userLogin,userPassword) values (?,?,?)";
@@ -1692,8 +1522,6 @@ public class ConnectionDB
 	}
 
 	//
-
-	///// INSERIR ART - /artregister:
 
 	public void userEditDb(Authentication authentication)
 	{
@@ -1723,8 +1551,6 @@ public class ConnectionDB
 
 	//
 
-	///// INSERIR ART - /artregister:
-
 	public void userDeleteDb(int userId)
 	{
 		String query = "delete from authenticate where userId = ?";
@@ -1750,4 +1576,3 @@ public class ConnectionDB
 	}
 
 }
-//

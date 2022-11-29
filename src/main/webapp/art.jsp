@@ -32,12 +32,6 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
          <section id="sectionMenu">
@@ -59,7 +53,7 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
@@ -126,31 +120,18 @@ ArrayList<Artists> listAllArtistForIdArtist = (ArrayList<Artists>) request.getAt
 
                     <section class="EditButtonsSection">
 
-                        <section id="sectionButtonsArtist">
-
-                           <button type="button" class="Buttons">                                    	
+                          			<button type="button" class="Buttons" onclick="openPage('arteditselect?idart=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposureDate=<%=listArt.get(0).getDataDeExposicao()%>&publicationDate=<%=listArt.get(0).getDataDePublicacao()%>&artistname=<%=request.getAttribute("name")%>','_self')">                                    	
                                       
-                                        <a href="arteditselect?idart=<%=listArt.get(0).getIdart()%>&name=<%=listArt.get(0).getName()%>&description=<%=listArt.get(0).getDescription()%>&exposureDate=<%=listArt.get(0).getDataDeExposicao()%>&publicationDate=<%=listArt.get(0).getDataDePublicacao()%>&artistname=<%=request.getAttribute("name")%>">										
-        								 <img class="ImageButton3" src="images/icons/editar03.png" alt="">                                    	
-										</a>
-                                	
-                                	</button>
-                                	
-
-                        </section>
-
-                        <section id="sectionButtonsArtist">
+                                        <img class="ImageButton3" src="images/icons/editar03.png" alt="">                                    	
+										                                	
+                                	</button>                                	
 
                          
-                                	<button type="button" class="Buttons">
+                                	<button type="button" class="Buttons" onclick="removeArtConfirm('<%=listArt.get(0).getIdart()%>','<%=listArt.get(0).getName()%>')">
 
-										<a href="javascript: removeArtConfirm('<%=listArt.get(0).getIdart()%>','<%=listArt.get(0).getName()%>')">
 											<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">
-										</a>
-										
+																				
                                 	</button>
-
-                        </section>
 
                     </section>
 

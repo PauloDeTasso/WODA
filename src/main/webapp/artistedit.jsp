@@ -9,9 +9,9 @@
     
     ArrayList<Arts> listAllArts = (ArrayList<Arts>) request.getAttribute("listAllArts");  
     
-    ArrayList<IdsArtsArtist> listAllIdsArtsForIdArtist = (ArrayList<IdsArtsArtist>) request.getAttribute("listAllIdsArtsForIdArtist");  
+    ArrayList<IdsArtsArtist> listAllIdsArtsByIdArtist = (ArrayList<IdsArtsArtist>) request.getAttribute("listAllIdsArtsByIdArtist");  
     
-    ArrayList<NamesArtsArtist> listAllArtsNamesForIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listAllArtsNamesForIdArtist");  
+    ArrayList<NamesArtsArtist> listAllArtsNamesByIdArtist = (ArrayList<NamesArtsArtist>) request.getAttribute("listAllArtsNamesByIdArtist");  
     
 	ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAttribute("listArtistsAllOrderName");  
 
@@ -39,12 +39,6 @@
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
         <section id="sectionMenu">
@@ -66,7 +60,7 @@
 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
@@ -505,7 +499,7 @@
                    			 	
                    			 	<% 
                    			 		
-								for (int i = 0; i < listAllArtsNamesForIdArtist.size(); i++)
+								for (int i = 0; i < listAllArtsNamesByIdArtist.size(); i++)
 								{
 									
 								%>													
@@ -513,9 +507,9 @@
                         				
   										<td class="idArtist">                               				
                          				     
-                          					<input type="checkbox" name="editartsidscheck" value="<%=listAllIdsArtsForIdArtist.get(i).getIdArt()%>" checked>
+                          					<input type="checkbox" name="editartsidscheck" value="<%=listAllIdsArtsByIdArtist.get(i).getIdArt()%>" checked>
                        					 
-                       					 		<%=listAllArtsNamesForIdArtist.get(i).getNameArt()%>          
+                       					 		<%=listAllArtsNamesByIdArtist.get(i).getNameArt()%>          
                        							
                        					</td>
                        					

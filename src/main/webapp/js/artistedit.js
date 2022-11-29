@@ -467,31 +467,31 @@ function formatarCpf(cpf)
 		cpfOriginal = cpf;
 		msgCpf.innerHTML = "Invalid CPF";
 		cpfValidate	= false;
+		
 	}else
 	{
 		if(TestaCPF(cpf))
 		{
    			cpfOriginal = cpf;
     
-    		//cpfInputEdit.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
+    		//cpfInput.value = cpf.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/, "-");    
 						
-			cpfValidate	= true;
+			cpfValidate	= true;			
 								
 			for(i=0; i<listCpfArtists.length; i++)
 			{
 				if(listCpfArtists[i].value == cpfOriginal)
 				{
-					alert("Cpf existing in the database!");
 					msgCpf.innerHTML = "Cpf existing in the database!";		
 					cpfValidate	= false;	
 				}
 			}
-			
+						
 			if(cpfValidate)
 			{
 				if(TestaCPF(cpfOriginal))
 				{
-					msgCpf.innerHTML = "<font color= 'green'>Ok</font>" 
+					msgCpf.innerHTML = "<font color= 'green'>Ok</font>" ;
 					cpfValidate	= true;	
 				}else
 				{
@@ -499,6 +499,9 @@ function formatarCpf(cpf)
 					cpfValidate	= false;	
 				}	
 				
+			}else
+			{
+				msgCpf.innerHTML = "Cpf existing in the database!";	
 			}
 				
 		}else
@@ -814,11 +817,6 @@ function exit()
 
 	    if (exitResponse === true)
     	{
-        	//TESTE DE RECEBIMENTO:
-        	//alert(idcon);
-
-        	//ENCAMINHANDO A REQUISIÇÃO PARA O SERVET USANDO JAVASCRIPT JUNTO COM O PARAMETRO 'IDCON'
-
         	window.location.href = "index.html";
     	}
 }

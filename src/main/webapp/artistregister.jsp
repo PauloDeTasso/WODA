@@ -32,12 +32,6 @@ ArrayList<Artists> listArtistsAllOrderName = (ArrayList<Artists>) request.getAtt
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
          <section id="sectionMenu">

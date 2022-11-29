@@ -1328,34 +1328,35 @@ fieldset {
     0%
     {
         opacity: 0;	 	
-        margin-right: 2000%;        
+        margin-right: 2000%; 
+        transform: rotate(-10deg);       
     }
 
 	20%
 	{
 		opacity: 1;	
-       	margin-right: 0%;
+       	margin-right: -30%;
        	transform: rotate(45deg);       	
-	}	
-
- 	40%
+	}
+	
+ 	35%
     {
        	opacity: 0.5;	
-       	transform: rotate(-30deg); 
-       	margin-right: 10%;    	
+       	transform: rotate(-25deg); 
+       	margin-right: 20%;    	
     }
     
     60%
     {
     	opacity: 1;	
-    	transform: rotate(15deg);
-    	margin-right: -5%;   
+    	transform: rotate(14deg);
+    	margin-right: -10%;   
     }
     
     80%
     {
     	opacity: 0.5;
-    	transform: rotate(-5deg);
+    	transform: rotate(-1deg);
     	margin-right: 1%; 
     }
     

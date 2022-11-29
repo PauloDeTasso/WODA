@@ -60,12 +60,6 @@ if(request.getAttribute("searchOption").equals("name"))
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
         <section id="sectionMenu">
@@ -81,7 +75,7 @@ if(request.getAttribute("searchOption").equals("name"))
                 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="Buttons" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="Buttons" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>

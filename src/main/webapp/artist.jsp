@@ -11,6 +11,8 @@ ArrayList<Artists> listArtistAllByIdArtist = (ArrayList<Artists>) request.getAtt
 
 ArrayList<Arts> listAllArtsArtist = (ArrayList<Arts>) request.getAttribute("listAllArtsArtist");  
 
+ArrayList<IdsArtsArtist> listIdsArtsByIdArtistOrderIdDesc = (ArrayList<IdsArtsArtist>) request.getAttribute("listIdsArtsByIdArtistOrderIdDesc");
+
 String dataDeExposicao;
 
 String dataDePublicacao;
@@ -36,12 +38,6 @@ String dataDePublicacao;
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
         <section id="sectionMenu">
@@ -63,7 +59,7 @@ String dataDePublicacao;
 
                 <button type="button" class="Buttons4">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
@@ -105,6 +101,15 @@ String dataDePublicacao;
         </section>
 
     </header>
+    
+     <%
+     for (int i=0; i < listIdsArtsByIdArtistOrderIdDesc.size(); i++)
+     {	 
+     %>                              				
+     	<input type="hidden" name="listIdsArts" value="<%=listIdsArtsByIdArtistOrderIdDesc.get(i).getIdArt()%>" checked>
+     <%
+     }
+     %>
 
     <body>
 
@@ -132,7 +137,7 @@ String dataDePublicacao;
 
                                 </button>
 
-                                <button type="button" class="Buttons" onclick="javascript: removeConfirm(<%=request.getAttribute("idArtist")%>,'artist')">
+                                <button type="button" class="Buttons" onclick="removeArtistConfirm(<%=request.getAttribute("idArtist")%>,'artist')">
 																		
 										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">										
 
@@ -292,7 +297,7 @@ String dataDePublicacao;
 
                                 </button>
 
-                                <button type="button" class="Buttons" onclick="javascript: removeConfirm('<%out.print(request.getAttribute("idArtist"));%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%out.print(request.getAttribute("name"));%>','<%=listAllArtsArtist.get(i).getName()%>')">
+                                <button type="button" class="Buttons" onclick="removeConfirm('<%=request.getAttribute("idArtist")%>','<%=listAllArtsArtist.get(i).getIdart()%>','<%=request.getAttribute("name")%>','<%=listAllArtsArtist.get(i).getName()%>')">
 																		
 										<img class="ImageButton3" src="images/icons/deletar01Vazio.png" alt="">										
 

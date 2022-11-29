@@ -1,0 +1,14 @@
+IDE ECLIPSE - Version: 2022-09 (4.25.0)
+
+FRONT-END:
+*HTML
+*CSS
+*JAVASCRIPT
+
+********
+
+BACK-END:
+*JAVA - 17
+*MYSQL - 8
+*SERVLET/JSP - 4
+*TOMCAT  - 9.0.68

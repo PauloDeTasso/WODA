@@ -31,12 +31,6 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
         <section id="sectionMenu">
@@ -58,7 +52,7 @@ ArrayList<Authentication> listAllUsers = (ArrayList<Authentication>) request.get
 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>

@@ -22,12 +22,6 @@
 
     </head>
 
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
-
     <header>
 
         <section id="sectionMenu">
@@ -108,40 +102,6 @@
           	  						
              </button> 
 			
-        </section>
-
-		<section id="secaoPopup" class="modal-container">
-
-                <section class="modal">
-
-                    <button class="fechar" onclick="abrirFecharPopup()">
-                        x
-                    </button>
-
-                    <h5>
-                        Copyright (c) 2021 Paulo de Tasso
-                    </h5>
-
-                    <p>
-                    	TEXTO
-                    </p>
-
-                </section>
-
-            </section>
-
-			
-			<section id="flutuante">
-
-            <p id="status">
-                Hello! How can I help you!
-            </p>
-
-            <button id="botaoAbrirStatus" type="button" onclick="abrirFecharStatus()">
-                <img id="imagemBotaoStatus" src="images/icons/SUPORTE01.png" alt="Icone fechar status!" width="10px"
-                    height="auto">
-            </button>
-
         </section>
 			
     </body>

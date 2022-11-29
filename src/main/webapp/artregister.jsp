@@ -10,8 +10,8 @@
 
 %>
 
+<!DOCTYPE html>
 
-    <!DOCTYPE html>
 <html id="html5" lang="en-US">
 
     <head>
@@ -29,12 +29,6 @@
         <link rel="icon" href="images/logos/LogoWODA2.png" type="image/gif">
 
     </head>
-
-    <!-- 
-    <section id="statusSistema">
-
-    </section>
-     -->
 
     <header>
 
@@ -57,7 +51,7 @@
 
                 <button type="button" id="registerButton" class="Buttons">
 
-                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/cadastrar.png" alt=""
+                    <img class="ImageButton3" id="imageRegisterButton" src="images/icons/artistsadd01.png" alt=""
                         onclick="openPage('addartist', '_self')">
 
                 </button>
